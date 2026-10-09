@@ -1,0 +1,42 @@
+{
+  "_source": "the first run of this analysis as a standalone script (2026-10-01/02); inputs are the NWM v3.1.6 RouteLink files with the SHA-256 hashes in fetch_data.py",
+  "_tolerances": {
+    "counts": "exact (inputs are hash-verified, the test is deterministic)",
+    "percentages": "absolute 0.001 percentage points",
+    "BtmWdth_over_TopWdth": "every reach within 1e-6 of 0.6 (float32 storage)",
+    "floors": "exact"
+  },
+  "domains": {
+    "CONUS": {
+      "n_reaches": 2776734,
+      "n_TopWdthCC_eq_3TopWdth": 2487036,
+      "pct_TopWdthCC_eq_3TopWdth": 89.567,
+      "inferred_floors_by_order": {"2": 10.0, "3": 30.0, "4": 50.0, "5": 70.0, "6": 80.0, "8": 150.0},
+      "n_match_max_3TW_CONUS_floors": 2776709,
+      "n_residual_max_3TW_CONUS_floors": 25,
+      "BtmWdth_over_TopWdth": 0.6,
+      "nCC_over_n_value_counts": {"2": 2776734}
+    },
+    "AK": {
+      "n_reaches": 391528,
+      "n_TopWdthCC_eq_3TopWdth": 391528,
+      "pct_TopWdthCC_eq_3TopWdth": 100.0,
+      "BtmWdth_over_TopWdth": 0.6,
+      "nCC_over_n_value_counts": {"2": 391528}
+    },
+    "HI": {
+      "n_reaches": 13637,
+      "n_TopWdthCC_eq_3TopWdth": 13637,
+      "pct_TopWdthCC_eq_3TopWdth": 100.0,
+      "BtmWdth_over_TopWdth": 0.6,
+      "nCC_over_n_value_counts": {"3.4286": 11775, "3.1429": 1828, "2.8571": 34}
+    },
+    "PRVI": {
+      "n_reaches": 14017,
+      "n_TopWdthCC_eq_3TopWdth": 14017,
+      "pct_TopWdthCC_eq_3TopWdth": 100.0,
+      "BtmWdth_over_TopWdth": 0.6,
+      "nCC_over_n_value_counts": {"2": 14017}
+    }
+  }
+}

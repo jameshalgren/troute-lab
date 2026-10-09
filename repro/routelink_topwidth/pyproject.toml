@@ -1,0 +1,15 @@
+[project]
+name = "repro-routelink-topwidth"
+version = "1.0.0"
+description = "Reproduce the NWM v3.1.6 RouteLink compound-channel (TopWdthCC) analysis"
+requires-python = "==3.12.*"
+# Exact pins for direct dependencies; uv.lock pins the full tree with hashes.
+dependencies = [
+    "numpy==2.5.3",
+    "pandas==3.0.6",
+    "xarray==2026.9.0",
+    "netcdf4==1.7.4",
+]
+
+[tool.uv]
+package = false

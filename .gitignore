@@ -1,0 +1,19 @@
+# Generated data is never committed: it is downloaded (tools/fetch_bundle.py,
+# explorer/fetch_data.py, each experiment's fetch_data.py) or rebuilt by script.
+data/
+build/
+results/
+dist/
+.venv/
+*.pmtiles
+*.pmtiles-journal
+*.part
+__pycache__/
+.DS_Store
+*.swp
+*~
+*.bak-*
+# one-time publishing checklist (local)
+PUBLISHING.md
+# data-bundle files fetched into tracked directories (tools/fetch_bundle.py)
+repro/network_stats/domains_snapshot.json

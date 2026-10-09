@@ -1,0 +1,16 @@
+[project]
+name = "repro-network-stats"
+version = "1.0.0"
+description = "Characterize the NWM v3.1.6 RouteLink channel network as independent drainage networks"
+requires-python = "==3.12.*"
+# Exact pins for direct dependencies; uv.lock pins the full tree with hashes.
+dependencies = [
+    "numpy==2.5.3",
+    "pandas==3.0.6",
+    "xarray==2026.9.0",
+    "netcdf4==1.7.4",
+    "matplotlib==3.11.2",
+]
+
+[tool.uv]
+package = false

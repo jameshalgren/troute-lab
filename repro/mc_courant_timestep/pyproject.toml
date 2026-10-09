@@ -1,0 +1,18 @@
+[project]
+name = "repro-mc-courant-timestep"
+version = "1.0.0"
+description = "Reproduce Wlostowski's 2020 Muskingum-Cunge Courant/timestep experiment with the original Fortran kernel"
+requires-python = "==3.12.*"
+# Exact pins for direct dependencies; uv.lock pins the full tree with hashes.
+# numpy provides f2py; on Python >= 3.12 f2py builds with meson + ninja, pinned here too.
+dependencies = [
+    "numpy==2.5.3",
+    "meson==1.12.1",
+    "ninja==1.13.2",
+    "scipy==1.18.1",
+    "pandas==3.0.6",
+    "matplotlib==3.11.2",
+]
+
+[tool.uv]
+package = false

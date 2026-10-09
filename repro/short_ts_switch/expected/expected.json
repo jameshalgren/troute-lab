@@ -1,0 +1,498 @@
+{
+  "source": "First reproduction of this experiment: macOS 26 arm64, gfortran 15.2.0 (Homebrew), Python 3.12.13, T-Route CIROH-UA/t-route d29f663ac23f435b2e5c176f6e0d22ac4528c6a6; run 2026-10-07 by Claude (AI) for James Halgren. These are regression baselines, not independent observations.",
+  "tolerances": "see check.py docstring",
+  "values": [
+    {
+      "path": "lc_nwm/by_dt/60/outlet/peak_true_m3s",
+      "value": 77.023,
+      "kind": "flow"
+    },
+    {
+      "path": "lc_nwm/by_dt/60/outlet/peak_false_m3s",
+      "value": 75.3043,
+      "kind": "flow"
+    },
+    {
+      "path": "lc_nwm/by_dt/60/outlet/peak_rel_diff_pct",
+      "value": 2.2823,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/60/outlet/peak_time_shift_h",
+      "value": 0.0,
+      "kind": "time",
+      "dt_s": 60
+    },
+    {
+      "path": "lc_nwm/by_dt/60/outlet/nse_true_vs_false",
+      "value": 0.4896,
+      "kind": "index"
+    },
+    {
+      "path": "lc_nwm/by_dt/60/segments/peak_time_shift_h/p5",
+      "value": -20.4052,
+      "kind": "time",
+      "dt_s": 60
+    },
+    {
+      "path": "lc_nwm/by_dt/60/segments/peak_time_shift_h/p50",
+      "value": -1.6453,
+      "kind": "time",
+      "dt_s": 60
+    },
+    {
+      "path": "lc_nwm/by_dt/60/segments/peak_rel_diff_pct/p5",
+      "value": -18.3303,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/60/segments/peak_rel_diff_pct/p95",
+      "value": -0.001,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/300/outlet/peak_true_m3s",
+      "value": 76.941,
+      "kind": "flow"
+    },
+    {
+      "path": "lc_nwm/by_dt/300/outlet/peak_false_m3s",
+      "value": 75.3049,
+      "kind": "flow"
+    },
+    {
+      "path": "lc_nwm/by_dt/300/outlet/peak_rel_diff_pct",
+      "value": 2.1726,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/300/outlet/peak_time_shift_h",
+      "value": 0.0,
+      "kind": "time",
+      "dt_s": 300
+    },
+    {
+      "path": "lc_nwm/by_dt/300/outlet/nse_true_vs_false",
+      "value": 0.5356,
+      "kind": "index"
+    },
+    {
+      "path": "lc_nwm/by_dt/300/segments/peak_time_shift_h/p5",
+      "value": -20.3838,
+      "kind": "time",
+      "dt_s": 300
+    },
+    {
+      "path": "lc_nwm/by_dt/300/segments/peak_time_shift_h/p50",
+      "value": -1.725,
+      "kind": "time",
+      "dt_s": 300
+    },
+    {
+      "path": "lc_nwm/by_dt/300/segments/peak_rel_diff_pct/p5",
+      "value": -17.979,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/300/segments/peak_rel_diff_pct/p95",
+      "value": -0.0014,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/900/outlet/peak_true_m3s",
+      "value": 76.6672,
+      "kind": "flow"
+    },
+    {
+      "path": "lc_nwm/by_dt/900/outlet/peak_false_m3s",
+      "value": 75.2335,
+      "kind": "flow"
+    },
+    {
+      "path": "lc_nwm/by_dt/900/outlet/peak_rel_diff_pct",
+      "value": 1.9057,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/900/outlet/peak_time_shift_h",
+      "value": 0.0,
+      "kind": "time",
+      "dt_s": 900
+    },
+    {
+      "path": "lc_nwm/by_dt/900/outlet/nse_true_vs_false",
+      "value": 0.6356,
+      "kind": "index"
+    },
+    {
+      "path": "lc_nwm/by_dt/900/segments/peak_time_shift_h/p5",
+      "value": -20.9663,
+      "kind": "time",
+      "dt_s": 900
+    },
+    {
+      "path": "lc_nwm/by_dt/900/segments/peak_time_shift_h/p50",
+      "value": -3.3952,
+      "kind": "time",
+      "dt_s": 900
+    },
+    {
+      "path": "lc_nwm/by_dt/900/segments/peak_rel_diff_pct/p5",
+      "value": -19.4628,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/900/segments/peak_rel_diff_pct/p95",
+      "value": -0.0023,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/3600/outlet/peak_true_m3s",
+      "value": 75.5738,
+      "kind": "flow"
+    },
+    {
+      "path": "lc_nwm/by_dt/3600/outlet/peak_false_m3s",
+      "value": 74.8684,
+      "kind": "flow"
+    },
+    {
+      "path": "lc_nwm/by_dt/3600/outlet/peak_rel_diff_pct",
+      "value": 0.9422,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/3600/outlet/peak_time_shift_h",
+      "value": 0.0,
+      "kind": "time",
+      "dt_s": 3600
+    },
+    {
+      "path": "lc_nwm/by_dt/3600/outlet/nse_true_vs_false",
+      "value": 0.9014,
+      "kind": "index"
+    },
+    {
+      "path": "lc_nwm/by_dt/3600/segments/peak_time_shift_h/p5",
+      "value": -18.5432,
+      "kind": "time",
+      "dt_s": 3600
+    },
+    {
+      "path": "lc_nwm/by_dt/3600/segments/peak_time_shift_h/p50",
+      "value": -1.675,
+      "kind": "time",
+      "dt_s": 3600
+    },
+    {
+      "path": "lc_nwm/by_dt/3600/segments/peak_rel_diff_pct/p5",
+      "value": -65.5809,
+      "kind": "pct"
+    },
+    {
+      "path": "lc_nwm/by_dt/3600/segments/peak_rel_diff_pct/p95",
+      "value": -0.0074,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/60/outlet/peak_true_m3s",
+      "value": 2339.8042,
+      "kind": "flow"
+    },
+    {
+      "path": "potomac_storm/by_dt/60/outlet/peak_false_m3s",
+      "value": 1577.7355,
+      "kind": "flow"
+    },
+    {
+      "path": "potomac_storm/by_dt/60/outlet/peak_rel_diff_pct",
+      "value": 48.3014,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/60/outlet/peak_time_shift_h",
+      "value": -96.0569,
+      "kind": "time",
+      "dt_s": 60
+    },
+    {
+      "path": "potomac_storm/by_dt/60/outlet/nse_true_vs_false",
+      "value": -0.4901,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/60/segments/peak_time_shift_h/p5",
+      "value": -8.8161,
+      "kind": "time",
+      "dt_s": 60
+    },
+    {
+      "path": "potomac_storm/by_dt/60/segments/peak_time_shift_h/p50",
+      "value": -0.028,
+      "kind": "time",
+      "dt_s": 60
+    },
+    {
+      "path": "potomac_storm/by_dt/60/segments/peak_rel_diff_pct/p5",
+      "value": -0.0986,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/60/segments/peak_rel_diff_pct/p95",
+      "value": 36.1146,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/60/centroid/outlet_measured_shift_h",
+      "value": -87.3007,
+      "kind": "time",
+      "dt_s": 60
+    },
+    {
+      "path": "potomac_storm/by_dt/60/centroid/outlet_predicted_shift_h",
+      "value": -43.1373,
+      "kind": "time",
+      "dt_s": 60
+    },
+    {
+      "path": "potomac_storm/by_dt/60/event_volume_balance/outlet_true",
+      "value": 1.002,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/60/event_volume_balance/outlet_false",
+      "value": 0.9104,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/60/mainstem/max_abs_peak_rel_diff_pct",
+      "value": 56.4497,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/300/outlet/peak_true_m3s",
+      "value": 2194.5356,
+      "kind": "flow"
+    },
+    {
+      "path": "potomac_storm/by_dt/300/outlet/peak_false_m3s",
+      "value": 1586.9395,
+      "kind": "flow"
+    },
+    {
+      "path": "potomac_storm/by_dt/300/outlet/peak_rel_diff_pct",
+      "value": 38.2873,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/300/outlet/peak_time_shift_h",
+      "value": -77.5988,
+      "kind": "time",
+      "dt_s": 300
+    },
+    {
+      "path": "potomac_storm/by_dt/300/outlet/nse_true_vs_false",
+      "value": -0.1687,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/300/segments/peak_time_shift_h/p5",
+      "value": -7.4981,
+      "kind": "time",
+      "dt_s": 300
+    },
+    {
+      "path": "potomac_storm/by_dt/300/segments/peak_time_shift_h/p50",
+      "value": -0.0044,
+      "kind": "time",
+      "dt_s": 300
+    },
+    {
+      "path": "potomac_storm/by_dt/300/segments/peak_rel_diff_pct/p5",
+      "value": -0.0793,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/300/segments/peak_rel_diff_pct/p95",
+      "value": 26.3201,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/300/centroid/outlet_measured_shift_h",
+      "value": -74.7948,
+      "kind": "time",
+      "dt_s": 300
+    },
+    {
+      "path": "potomac_storm/by_dt/300/centroid/outlet_predicted_shift_h",
+      "value": -33.5744,
+      "kind": "time",
+      "dt_s": 300
+    },
+    {
+      "path": "potomac_storm/by_dt/300/event_volume_balance/outlet_true",
+      "value": 1.0054,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/300/event_volume_balance/outlet_false",
+      "value": 0.9188,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/300/mainstem/max_abs_peak_rel_diff_pct",
+      "value": 43.3068,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/900/outlet/peak_true_m3s",
+      "value": 1748.0846,
+      "kind": "flow"
+    },
+    {
+      "path": "potomac_storm/by_dt/900/outlet/peak_false_m3s",
+      "value": 1555.5924,
+      "kind": "flow"
+    },
+    {
+      "path": "potomac_storm/by_dt/900/outlet/peak_rel_diff_pct",
+      "value": 12.3742,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/900/outlet/peak_time_shift_h",
+      "value": -33.8045,
+      "kind": "time",
+      "dt_s": 900
+    },
+    {
+      "path": "potomac_storm/by_dt/900/outlet/nse_true_vs_false",
+      "value": 0.5094,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/900/segments/peak_time_shift_h/p5",
+      "value": -4.1137,
+      "kind": "time",
+      "dt_s": 900
+    },
+    {
+      "path": "potomac_storm/by_dt/900/segments/peak_time_shift_h/p50",
+      "value": -0.0,
+      "kind": "time",
+      "dt_s": 900
+    },
+    {
+      "path": "potomac_storm/by_dt/900/segments/peak_rel_diff_pct/p5",
+      "value": -0.0266,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/900/segments/peak_rel_diff_pct/p95",
+      "value": 12.1524,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/900/centroid/outlet_measured_shift_h",
+      "value": -47.09,
+      "kind": "time",
+      "dt_s": 900
+    },
+    {
+      "path": "potomac_storm/by_dt/900/centroid/outlet_predicted_shift_h",
+      "value": -13.1785,
+      "kind": "time",
+      "dt_s": 900
+    },
+    {
+      "path": "potomac_storm/by_dt/900/event_volume_balance/outlet_true",
+      "value": 1.0109,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/900/event_volume_balance/outlet_false",
+      "value": 0.9397,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/900/mainstem/max_abs_peak_rel_diff_pct",
+      "value": 14.5411,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/outlet/peak_true_m3s",
+      "value": 919.4557,
+      "kind": "flow"
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/outlet/peak_false_m3s",
+      "value": 955.0874,
+      "kind": "flow"
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/outlet/peak_rel_diff_pct",
+      "value": -3.7307,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/outlet/peak_time_shift_h",
+      "value": 72.0155,
+      "kind": "time",
+      "dt_s": 3600
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/outlet/nse_true_vs_false",
+      "value": 0.8026,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/segments/peak_time_shift_h/p5",
+      "value": -0.113,
+      "kind": "time",
+      "dt_s": 3600
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/segments/peak_time_shift_h/p50",
+      "value": 0.001,
+      "kind": "time",
+      "dt_s": 3600
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/segments/peak_rel_diff_pct/p5",
+      "value": -2.7229,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/segments/peak_rel_diff_pct/p95",
+      "value": 0.9381,
+      "kind": "pct"
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/centroid/outlet_measured_shift_h",
+      "value": 35.3958,
+      "kind": "time",
+      "dt_s": 3600
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/centroid/outlet_predicted_shift_h",
+      "value": 51.4958,
+      "kind": "time",
+      "dt_s": 3600
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/event_volume_balance/outlet_true",
+      "value": 1.0132,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/event_volume_balance/outlet_false",
+      "value": 0.977,
+      "kind": "index"
+    },
+    {
+      "path": "potomac_storm/by_dt/3600/mainstem/max_abs_peak_rel_diff_pct",
+      "value": 13.4666,
+      "kind": "pct"
+    }
+  ]
+}

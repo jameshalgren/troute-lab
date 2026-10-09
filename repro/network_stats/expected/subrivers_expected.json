@@ -1,0 +1,207 @@
+{
+  "_source": "First run 2026-10-06 (macOS arm64) of subrivers.py on the hash-verified RouteLink_CONUS.nc and the committed snapshot subriver_gnis.json (generated 2026-10-06 by subrivers.py --refresh; the offline run reproduced the live run's results/subrivers.csv byte for byte).",
+  "_tolerances": {
+    "integers and strings": "exact",
+    "floats (km)": "relative 1e-6",
+    "snapshot_sha256": "exact (any refresh of subriver_gnis.json must update this file, with a reason in the README)"
+  },
+  "snapshot_sha256": "9bbe72a13c1eb445831fd31a37e083c8f0f2afaf384654712ad18901efae5352",
+  "n_by_status": {
+    "confident": 199,
+    "gap": 3,
+    "not_in_parent": 1
+  },
+  "great_lakes": {
+    "maumee": {
+      "network_outlet_feature_id": 25293410,
+      "in_st_lawrence_network": true
+    },
+    "saginaw": {
+      "network_outlet_feature_id": 25293410,
+      "in_st_lawrence_network": true
+    },
+    "grand_mi": {
+      "network_outlet_feature_id": 25293410,
+      "in_st_lawrence_network": true
+    },
+    "fox_wi": {
+      "network_outlet_feature_id": 25293410,
+      "in_st_lawrence_network": true
+    },
+    "genesee": {
+      "network_outlet_feature_id": 25293410,
+      "in_st_lawrence_network": true
+    },
+    "cuyahoga": {
+      "network_outlet_feature_id": 25293410,
+      "in_st_lawrence_network": true
+    },
+    "rouge": {
+      "network_outlet_feature_id": 25293410,
+      "in_st_lawrence_network": true
+    },
+    "milwaukee": {
+      "network_outlet_feature_id": 25293410,
+      "in_st_lawrence_network": true
+    }
+  },
+  "rivers": {
+    "ohio": {
+      "status": "confident",
+      "mouth_feature_id": 1844789,
+      "joins": "Mississippi River",
+      "n_segments": 230729,
+      "n_reaches": 181131,
+      "length_km": 409423.889,
+      "max_order": 9,
+      "longest_path_segments": 1285,
+      "longest_path_reaches": 1140,
+      "longest_path_km": 2100.006,
+      "n_headwaters": 90765,
+      "n_gages": 819,
+      "n_waterbodies": 224,
+      "network_outlet_feature_id": 22811611,
+      "parent_mouth_feature_id": 22811611
+    },
+    "missouri": {
+      "status": "confident",
+      "mouth_feature_id": 6018266,
+      "joins": "Mississippi River",
+      "n_segments": 462963,
+      "n_reaches": 357847,
+      "length_km": 953802.4756962175,
+      "max_order": 9,
+      "longest_path_segments": 2733,
+      "longest_path_reaches": 1941,
+      "longest_path_km": 4162.96,
+      "n_headwaters": 179340,
+      "n_gages": 830,
+      "n_waterbodies": 382,
+      "network_outlet_feature_id": 22811611,
+      "parent_mouth_feature_id": 22811611
+    },
+    "upper_mississippi": {
+      "status": "confident",
+      "mouth_feature_id": 5093446,
+      "joins": "Mississippi River",
+      "n_segments": 648894,
+      "n_reaches": 500150,
+      "length_km": 1295646.3396962176,
+      "max_order": 10,
+      "longest_path_segments": 2866,
+      "longest_path_reaches": 2050,
+      "longest_path_km": 4478.483,
+      "n_headwaters": 250655,
+      "n_gages": 1376,
+      "n_waterbodies": 1374,
+      "network_outlet_feature_id": 22811611,
+      "parent_mouth_feature_id": 22811611
+    },
+    "arkansas": {
+      "status": "confident",
+      "mouth_feature_id": 15336672,
+      "joins": "Mississippi River",
+      "n_segments": 130183,
+      "n_reaches": 100986,
+      "length_km": 268557.134,
+      "max_order": 9,
+      "longest_path_segments": 1415,
+      "longest_path_reaches": 1074,
+      "longest_path_km": 2324.142,
+      "n_headwaters": 50603,
+      "n_gages": 342,
+      "n_waterbodies": 160,
+      "network_outlet_feature_id": 22811611,
+      "parent_mouth_feature_id": 22811611
+    },
+    "yellowstone": {
+      "status": "confident",
+      "mouth_feature_id": 21873545,
+      "joins": "Missouri River",
+      "n_segments": 62368,
+      "n_reaches": 45226,
+      "length_km": 133393.284,
+      "max_order": 8,
+      "longest_path_segments": 1154,
+      "longest_path_reaches": 786,
+      "longest_path_km": 1230.764,
+      "n_headwaters": 22650,
+      "n_gages": 88,
+      "n_waterbodies": 23,
+      "network_outlet_feature_id": 22811611,
+      "parent_mouth_feature_id": 6018266
+    },
+    "snake": {
+      "status": "confident",
+      "mouth_feature_id": 23475172,
+      "joins": "Columbia River",
+      "n_segments": 89364,
+      "n_reaches": 68219,
+      "length_km": 170507.992,
+      "max_order": 8,
+      "longest_path_segments": 1559,
+      "longest_path_reaches": 890,
+      "longest_path_km": 1704.646,
+      "n_headwaters": 34276,
+      "n_gages": 186,
+      "n_waterbodies": 75,
+      "network_outlet_feature_id": 23832907,
+      "parent_mouth_feature_id": 23832907
+    },
+    "green_ut": {
+      "status": "confident",
+      "mouth_feature_id": 4932636,
+      "joins": "Colorado River",
+      "n_segments": 42580,
+      "n_reaches": 33219,
+      "length_km": 88936.108,
+      "max_order": 8,
+      "longest_path_segments": 1109,
+      "longest_path_reaches": 750,
+      "longest_path_km": 1200.009,
+      "n_headwaters": 16673,
+      "n_gages": 74,
+      "n_waterbodies": 29,
+      "network_outlet_feature_id": 21412883,
+      "parent_mouth_feature_id": 21412883
+    },
+    "tennessee": {
+      "status": "confident",
+      "mouth_feature_id": 1861888,
+      "joins": "Ohio River",
+      "n_segments": 58603,
+      "n_reaches": 48802,
+      "length_km": 97748.042,
+      "max_order": 8,
+      "longest_path_segments": 1087,
+      "longest_path_reaches": 819,
+      "longest_path_km": 1470.125,
+      "n_headwaters": 24468,
+      "n_gages": 155,
+      "n_waterbodies": 46,
+      "network_outlet_feature_id": 22811611,
+      "parent_mouth_feature_id": 1844789
+    },
+    "platte": {
+      "status": "confident",
+      "mouth_feature_id": 17416474,
+      "joins": "Missouri River",
+      "n_segments": 60398,
+      "n_reaches": 44001,
+      "length_km": 121142.733,
+      "max_order": 8,
+      "longest_path_segments": 2011,
+      "longest_path_reaches": 1159,
+      "longest_path_km": 1730.298,
+      "n_headwaters": 22060,
+      "n_gages": 156,
+      "n_waterbodies": 66,
+      "network_outlet_feature_id": 22811611,
+      "parent_mouth_feature_id": 6018266
+    }
+  },
+  "mississippi_primary_equals_network": {
+    "n_segments": 1117312,
+    "mouth_feature_id": 22811611
+  }
+}

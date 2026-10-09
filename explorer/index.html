@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NWM Basin Explorer</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css">
+<script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/pmtiles@4.5.0/dist/pmtiles.js"></script>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6; --accent-wash: rgba(42,120,214,0.10);
+  --bar: #86b6ef; --bar-hi: #2a78d6; --place: #eb6834; --pt: #4a3aa7; --river-base: #6a88a8; --warn: #a35200;
+  --hover: rgba(42,120,214,0.06); --sel: rgba(42,120,214,0.14);
+  --tag-author: #2a78d6; --tag-ai: #6e6d68; --tag-city: #138a5e;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --accent: #3987e5; --accent-wash: rgba(57,135,229,0.14);
+    --bar: #256abf; --bar-hi: #6da7ec; --place: #d95926; --pt: #9085e9; --river-base: #7f97b0; --warn: #f0a24a;
+    --hover: rgba(57,135,229,0.10); --sel: rgba(57,135,229,0.22);
+    --tag-author: #6da7ec; --tag-ai: #a9a89f; --tag-city: #3fc493;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --accent: #3987e5; --accent-wash: rgba(57,135,229,0.14);
+  --bar: #256abf; --bar-hi: #6da7ec; --place: #d95926; --pt: #9085e9; --river-base: #7f97b0; --warn: #f0a24a;
+  --hover: rgba(57,135,229,0.10); --sel: rgba(57,135,229,0.22);
+  --tag-author: #6da7ec; --tag-ai: #a9a89f; --tag-city: #3fc493;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+nav.top { position: sticky; top: 0; z-index: 20; display: flex; gap: 16px; align-items: center;
+  padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--grid); }
+nav.top .title { font-weight: 650; }
+nav.top .badge { font-size: 11px; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--grid); color: var(--ink2); }
+nav.top .links { display: flex; gap: 14px; margin-left: auto; }
+main { max-width: 1500px; margin: 0 auto; padding: 12px 16px 40px; }
+.intro { color: var(--ink2); max-width: 980px; margin: 4px 0 12px; }
+.viz { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 12px; }
+@media (max-width: 900px) { .viz { grid-template-columns: 1fr; } }
+.panel { background: var(--surface); border: 1px solid var(--grid); border-radius: 8px; overflow: hidden; }
+#map { height: 520px; }
+@media (max-width: 900px) { #map { height: 380px; } }
+.panel h3 { margin: 0; font-size: 14px; font-weight: 650; }
+.panel .head { padding: 10px 12px 4px; }
+.panel .head p { margin: 2px 0 0; color: var(--ink2); font-size: 12.5px; }
+.seg { display: inline-flex; border: 1px solid var(--grid); border-radius: 6px; overflow: hidden; margin: 6px 12px 0; }
+.seg button { border: 0; background: transparent; color: var(--ink2); padding: 4px 10px; font: inherit; font-size: 12.5px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent-wash); color: var(--ink); }
+.seg.domsw { margin: 6px 0 2px; flex-wrap: wrap; }
+.seg.domsw button { padding: 6px 12px; font-size: 13.5px; }
+.tbx { color: var(--warn); }
+.tbdir { color: var(--muted); font-size: 12px; margin-left: 4px; }
+#hist { display: block; width: 100%; height: 330px; }
+#histnote { padding: 0 12px 10px; color: var(--muted); font-size: 12px; min-height: 2.6em; }
+.tip { position: absolute; pointer-events: none; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--grid); border-radius: 6px; padding: 6px 8px; font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12); white-space: nowrap; z-index: 30; display: none; }
+.selbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; margin: 10px 0 0; color: var(--ink2); min-height: 22px; }
+.selbar strong { color: var(--ink); }
+.crumbs a { margin-right: 4px; }
+section { margin-top: 26px; }
+section > h2 { font-size: 17px; margin: 0 0 6px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 6px 0 10px; }
+input[type=search] { flex: 1 1 240px; min-width: 0; padding: 7px 10px; border-radius: 6px;
+  border: 1px solid var(--grid); background: var(--surface); color: var(--ink); font: inherit; }
+button.btn { padding: 7px 12px; border-radius: 6px; border: 1px solid var(--grid); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; }
+button.btn:hover { border-color: var(--accent); }
+label.chk { color: var(--ink2); display: inline-flex; gap: 6px; align-items: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--grid); background: var(--surface); color: var(--ink2); cursor: pointer; font-size: 12.5px; }
+.chip[aria-pressed="true"] { border-color: var(--accent); color: var(--ink); background: var(--accent-wash); }
+.tablewrap { overflow-x: auto; border: 1px solid var(--grid); border-radius: 8px; background: var(--surface); max-height: 70vh; overflow-y: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 6px 8px; border-bottom: 1px solid var(--grid); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+th { position: sticky; top: 0; background: var(--surface); color: var(--ink2); font-weight: 600; cursor: pointer; user-select: none; z-index: 2; }
+th:first-child, td:first-child { text-align: left; }
+th.sorted::after { content: " ▾"; color: var(--accent); }
+th.sorted.asc::after { content: " ▴"; }
+tbody tr { cursor: pointer; }
+tbody tr:hover td { background: var(--hover); }
+tbody tr[aria-selected="true"] td { background: var(--sel); }
+td.name { white-space: normal; min-width: 240px; }
+.tog { display: inline-block; width: 20px; color: var(--accent); font-weight: 700; text-align: center; }
+.spacer { display: inline-block; width: 20px; }
+.rank { color: var(--muted); margin-right: 4px; }
+.tag { font-size: 11px; padding: 0 5px; border-radius: 3px; margin-left: 6px; border: 1px solid currentColor; }
+.tag.author { color: var(--tag-author); } .tag.AI { color: var(--tag-ai); } .tag.city { color: var(--tag-city); }
+.warn { color: var(--warn); font-size: 12px; margin-left: 6px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: center; padding: 8px 12px; font-size: 12.5px; color: var(--ink2); border-top: 1px solid var(--grid); }
+.legend .sw { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.legend .ln { display: inline-block; width: 18px; height: 0; border-top: 2px dashed var(--warn); margin-right: 6px; vertical-align: 3px; }
+.legend label { margin-left: auto; }
+.cls { color: var(--muted); font-size: 12px; margin-left: 6px; }
+td.note, td.flags { color: var(--ink2); font-size: 12px; white-space: normal; text-align: left; min-width: 220px; max-width: 380px; }
+.more { margin: 8px 0; }
+footer { color: var(--muted); font-size: 12px; margin-top: 28px; }
+.empty { padding: 24px; color: var(--muted); }
+.maplibregl-popup-content { background: var(--surface); color: var(--ink); font: 12px/1.4 system-ui, sans-serif; }
+</style>
+</head>
+<body>
+<nav class="top">
+  <span class="title">NWM basin explorer</span>
+  <span class="badge">AI-generated view · not approved</span>
+  <span class="links"><a href="#rivers">Rivers</a><a href="#places">Places</a><a href="#about">About</a></span>
+</nav>
+<main>
+<div class="seg domsw" role="group" aria-label="NWM domain" id="domsw">
+  <button data-dom="CONUS" aria-pressed="true">CONUS</button>
+  <button data-dom="AK" aria-pressed="false">Alaska</button>
+  <button data-dom="HI" aria-pressed="false">Hawaii</button>
+  <button data-dom="PRVI" aria-pressed="false">Puerto Rico &amp; USVI</button>
+</div>
+<p class="intro">Independent drainage networks of the NWM v3.1.6 channel network (RouteLink) in each
+NWM domain, with named tributaries nested beneath them. Click a row (or a river on the map) to highlight it.
+The histogram shows the selected river's <em>width function</em>: how many segments lie at each
+topological distance (in reaches) above its mouth, which is the work available at each level of
+just-in-time (JIT) scheduling. Hover a bar to light up that band on the map.</p>
+
+<div class="viz">
+  <div class="panel"><div id="map" role="region" aria-label="Map of NWM rivers"></div>
+    <div class="legend" aria-label="Map legend">
+      <span><span class="sw" style="background:var(--accent)"></span>selected river or network</span>
+      <span><span class="sw" style="background:var(--place)"></span>upstream of selected point</span>
+      <span id="lg-band" hidden><span class="sw" style="background:var(--ink)"></span>hovered histogram band</span>
+      <span id="lg-border" hidden><span class="ln"></span>outside the U.S. · <span class="ln" style="border-top-style:dotted"></span>along the boundary</span>
+      <label class="chk"><input id="bshow" type="checkbox"> Show border channels</label>
+    </div></div>
+  <div class="panel" style="position:relative">
+    <div class="head"><h3 id="htitle">Network sizes</h3><p id="hsub"></p></div>
+    <div class="seg" role="group" aria-label="Histogram mode">
+      <button id="m-width" aria-pressed="false">Width function</button>
+      <button id="m-sizes" aria-pressed="true">Network sizes</button>
+    </div>
+    <svg id="hist" role="img" aria-label="Histogram"></svg>
+    <div id="histnote"></div>
+    <div class="tip" id="tip"></div>
+  </div>
+</div>
+<div class="selbar" id="selbar"></div>
+
+<section id="rivers">
+  <h2>Rivers</h2>
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search rivers…" aria-label="Search rivers">
+    <button class="btn" id="expand">Expand all</button>
+    <button class="btn" id="collapse">Collapse all</button>
+    <label class="chk"><input id="onlykids" type="checkbox"> Only networks with tributaries</label>
+    <label class="chk">Tributaries:
+      <select id="torder" aria-label="Tributary order">
+        <option value="up">upstream first (walk downstream)</option>
+        <option value="down">downstream first (walk upstream)</option>
+        <option value="size">by table sort</option>
+      </select></label>
+  </div>
+  <div class="tablewrap"><table id="rt">
+    <thead><tr>
+      <th data-k="name">River</th><th data-k="n_segments" class="sorted">Segments</th>
+      <th data-k="share">% parent / domain</th><th data-k="n_reaches">Reaches</th>
+      <th data-k="length_km">Channel km</th><th data-k="max_order">Max order</th>
+      <th data-k="longest_path_reaches">Longest path (reaches)</th><th data-k="longest_path_km">Longest path (km)</th>
+      <th data-k="n_gages">Gages</th><th data-k="n_waterbodies">Waterbodies</th>
+      <th data-k="tb_out_km" title="A river is transboundary if its channel crosses the U.S. international boundary (Canada or Mexico). km outside the U.S. (U.S. Census TIGER/Line 2024 boundary); crossings along the flow, ↘ into the U.S. / ↗ out of it; channel that follows the boundary (border rivers, within 500 m) is reported separately and is not a crossing">Transboundary: km outside U.S. / crossings</th>
+      <th data-k="feature_id">Outlet / mouth ID</th><th data-k="notes">Notes</th>
+    </tr></thead><tbody></tbody></table></div>
+</section>
+
+<section id="places">
+  <h2>Places of interest</h2>
+  <p class="intro" id="placesintro">RouteLink feature IDs for USGS gages, NWS forecast points, reservoirs,
+  dams, and bridges. Flags mark locations whose segment assignment may be inaccurate. Click a row
+  to zoom to it and highlight its segment.</p>
+  <div class="controls">
+    <div class="chips" id="ptypes" role="group" aria-label="Place types"></div>
+    <input id="pq" type="search" placeholder="Search places (name, ID, river)…" aria-label="Search places">
+    <label class="chk"><input id="pflag" type="checkbox"> Flagged only</label>
+    <label class="chk"><input id="pinsel" type="checkbox"> Within selected river</label>
+    <label class="chk"><input id="pshow" type="checkbox" checked> Show on map</label>
+  </div>
+  <div class="tablewrap"><table id="pt">
+    <thead><tr>
+      <th data-k="name">Name</th><th data-k="type">Type</th><th data-k="key">ID</th>
+      <th data-k="feature_id">Feature ID</th><th data-k="rivername">River</th><th data-k="order">Order</th>
+      <th data-k="nflags">Flags</th>
+    </tr></thead><tbody></tbody></table></div>
+  <div class="more"><button class="btn" id="pmore" hidden>Show more</button> <span id="pcount" style="color:var(--muted)"></span></div>
+</section>
+
+<footer id="about">
+  <p><strong>About.</strong> Generated from the reproducible experiment <code>repro/network_stats/</code>
+  (NWM v3.1.6 RouteLink) and the NWM v3 hydrofabric geodatabase; see <code>explorer/DATA_CONTRACT.md</code>.
+  A segment starts a new reach unless it has exactly one upstream segment. CONUS feature IDs link to the USGS NLDI
+  record (NHDPlus V2 COMID); Hawaii and Puerto Rico IDs are NHDPlus V2.1 COMIDs and Alaska IDs NHDPlus HR
+  NHDPlusIDs (or Arc-Hydro segments on the Copper River), which NLDI does not serve. The NWM Alaska domain covers
+  Cook Inlet and the Copper River only. <strong>Transboundary</strong>: a river whose channel crosses the U.S.
+  international boundary (U.S. Census TIGER/Line 2024); channel outside the U.S. is drawn dashed, channel that
+  follows the boundary (border rivers) dotted. Tags: author = listed by James Halgren; AI = suggested; city =
+  important to a major city; ⚠ = mouth needs checking. Basemap © OpenStreetMap contributors, © OpenFreeMap / CARTO.</p>
+  <p id="tilesrc"></p>
+</footer>
+</main>
+
+<script>
+"use strict";
+const $ = s => document.querySelector(s);
+const fmt = v => v == null ? "–" : (typeof v === "number" ? (Number.isInteger(v) ? v.toLocaleString() : (Math.abs(v) >= 100 ? Math.round(v).toLocaleString() : v.toFixed(v < 1 ? 2 : 1))) : String(v));
+// accent- and case-insensitive search key ("Loíza" matches "Loiza")
+const fold = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const NLDI = id => `https://api.water.usgs.gov/nldi/linked-data/comid/${id}`;
+// NLDI serves NHDPlus V2 COMIDs (CONUS) only; other domains show the ID without a link
+const fidLink = (id, dom) => id == null ? "–" : (dom || "CONUS") === "CONUS" ? `<a href="${NLDI(id)}" target="_blank" rel="noopener">${id}</a>` : `<span title="${dom === "AK" ? "NHDPlus HR NHDPlusID or Arc-Hydro segment" : "NHDPlus V2.1 COMID"}">${id}</span>`;
+const DOMS = ["CONUS", "AK", "HI", "PRVI"];
+const DOM_NAME = {CONUS: "CONUS", AK: "Alaska", HI: "Hawaii", PRVI: "Puerto Rico and USVI"};
+
+const S = { nodes: [], by: new Map(), kids: new Map(), widths: {}, bboxes: {}, places: [],
+  selected: null, open: new Set(), sortKey: "n_segments", asc: false, q: "", onlyKids: false,
+  mode: "sizes", band: null, map: null, mapReady: false,
+  ptype: null, pq: "", pflag: false, pinsel: false, psort: "nflags", pasc: false, plimit: 300, psel: null,
+  pshow: true, up: null, hasIntervals: false, torder: "up", dom: "CONUS" };
+
+async function getJSON(path, fallback) {
+  try { const r = await fetch(path); if (!r.ok) throw new Error(r.status); return await r.json(); }
+  catch (e) { console.warn("missing", path, e); return fallback; }
+}
+
+/* ---------------- data ---------------- */
+async function load() {
+  const [rivers, widths, bboxes, places] = await Promise.all([
+    getJSON("data/rivers.json", {nodes: []}), getJSON("data/widths.json", {}),
+    getJSON("data/bboxes.json", {}), getJSON("data/places.json", {places: []})]);
+  S.nodes = rivers.nodes || []; S.meta = rivers.meta || {};
+  S.widths = widths; S.bboxes = bboxes; S.places = places.places || []; S.pmeta = places.meta || {};
+  for (const n of S.nodes) { n.children = []; S.by.set(n.code, n); }
+  for (const n of S.nodes) {
+    if (n.kind === "sub" && n.parent != null && S.by.has(n.parent)) S.by.get(n.parent).children.push(n);
+  }
+  for (const n of S.nodes) n.dom = n.dom || "CONUS";
+  for (const p of S.places) {
+    p.dom = p.dom || "CONUS";
+    p.rivername = p.river ? (S.by.get(p.river)?.name ?? "") : (p.net ? S.by.get(p.net)?.name ?? "" : "");
+    p.nflags = (p.flags || []).length;
+  }
+}
+const roots = () => S.nodes.filter(n => n.kind === "network" && n.dom === S.dom);
+function descendants(n, out = []) { out.push(n.code); for (const c of n.children) descendants(c, out); return out; }
+function ancestors(n) { const a = []; let p = n; while (p && p.parent != null && S.by.has(p.parent)) { p = S.by.get(p.parent); a.unshift(p); } return a; }
+function networkOf(n) { return n.kind === "network" ? n : S.by.get(n.network) || ancestors(n)[0]; }
+
+/* ---------------- rivers table ---------------- */
+function matches(n) { return !S.q || fold(n.name).includes(S.q) || n.children.some(matches); }
+function val(n, k) { return k === "share" ? (n.kind === "network" ? n.pct_domain_segments : n.pct_parent) ?? -1 : k === "name" ? n.name : (n[k] ?? -1); }
+function sorted(list, key, asc) {
+  return [...list].sort((a, b) => { const x = val(a, key), y = val(b, key);
+    const c = typeof x === "string" ? x.localeCompare(y) : x - y; return asc ? c : -c; });
+}
+// Position of a tributary's mouth along its network: distance (in reaches) from the
+// network outlet (widths.json d0). Siblings sorted by it walk the parent river.
+const mouthD = n => S.widths[n.code]?.d0 ?? 0;
+function orderKids(kids) {
+  if (S.torder === "size") return sorted(kids, S.sortKey, S.asc);
+  const dir = S.torder === "down" ? 1 : -1;
+  return [...kids].sort((a, b) => dir * (mouthD(a) - mouthD(b)));
+}
+// Transboundary cell: km outside the U.S. / crossings (↘ into the U.S., ↗ out of it);
+// border-river channel (within 500 m of the boundary) is shown separately
+function tbCell(n) {
+  if (!n.tb && !n.tb_on_km && !n.tb_out_km) return "–";
+  const dir = {inbound: "flows into the U.S.", outbound: "flows out of the U.S.", both: "crosses in both directions"}[n.tb_dir] || "";
+  const ctry = (n.tb_countries || []).join(", ");
+  const title = `${n.tb ? "Transboundary" : "Not transboundary"}${ctry ? " (" + ctry + ")" : ""}: ${fmt(n.tb_out_km ?? 0)} km in ${fmt(n.tb_out_segments ?? 0)} segments outside the U.S.; `
+    + `${fmt(n.tb_cross_in ?? 0)} crossing(s) into and ${fmt(n.tb_cross_out ?? 0)} out of the U.S.; ${fmt(n.tb_on_km ?? 0)} km along the boundary; `
+    + `outlet ${n.tb_outlet === "out" ? "outside the U.S." : n.tb_outlet === "on" ? "on the boundary" : "inside the U.S."}${dir ? "; " + dir : ""}`;
+  const main = n.tb ? `<span class="tbx">${fmt(n.tb_out_km)} km</span> / ${fmt(n.tb_cross_in)}↘ ${fmt(n.tb_cross_out)}↗` : (n.tb_foreign_only ? `${fmt(n.tb_out_km)} km (all outside)` : "–");
+  const on = n.tb_on_km ? `<span class="tbdir">· ${fmt(n.tb_on_km)} km on boundary</span>` : "";
+  return `<span title="${esc(title)}">${main}${on}</span>`;
+}
+function rrow(n, depth) {
+  const kids = n.children.length > 0, isOpen = S.open.has(n.code) || (S.q && kids);
+  const tog = kids ? `<span class="tog" data-tog="${n.code}" role="button" aria-label="${isOpen ? "Collapse" : "Expand"}">${isOpen ? "−" : "+"}</span>` : `<span class="spacer"></span>`;
+  const rank = n.kind === "network" ? `<span class="rank" title="code ${n.code}">#${n.rank ?? n.code}</span>` : "";
+  const src = n.source ? `<span class="tag ${n.source === "JH" ? "author" : n.source === "city" ? "city" : "AI"}">${n.source === "JH" ? "author" : esc(n.source)}</span>` : "";
+  const cls = n.outlet_class ? `<span class="cls">${esc(n.outlet_class)}</span>` : "";
+  const warn = n.status && n.status !== "confident" ? `<span class="warn" title="${esc(n.status)}">⚠ ${esc(n.status)}</span>` : "";
+  const share = n.kind === "network" ? `${fmt(n.pct_domain_segments)}%` : `${fmt(n.pct_parent)}% / ${fmt(n.pct_domain ?? n.pct_conus)}%`;
+  const note = [n.city ? "city: " + n.city : "", n.joins ? "joins " + n.joins : "", n.notes || "",
+                n.xb_segments ? `hydrography source: ${fmt(n.xb_segments)} segments (${fmt(n.xb_km)} km) not from NHDPlus` : "",
+                ].filter(Boolean).join(" · ");
+  const sel = S.selected && S.selected.code === n.code;
+  let h = `<tr data-code="${n.code}" aria-selected="${sel}"><td class="name"><span style="padding-left:${depth * 18}px"></span>${tog}${rank}<strong>${esc(n.name)}</strong>${src}${cls}${warn}</td>
+    <td>${fmt(n.n_segments)}</td><td>${share}</td><td>${fmt(n.n_reaches)}</td><td>${fmt(n.length_km)}</td>
+    <td>${fmt(n.max_order)}</td><td>${fmt(n.longest_path_reaches)}</td><td>${fmt(n.longest_path_km)}</td>
+    <td>${fmt(n.n_gages)}</td><td>${fmt(n.n_waterbodies)}</td>
+    <td>${tbCell(n)}</td>
+    <td>${fidLink(n.feature_id, n.dom)}</td><td class="note">${esc(note)}</td></tr>`;
+  if (kids && isOpen) for (const c of orderKids(n.children.filter(matches))) h += rrow(c, depth + 1);
+  return h;
+}
+function renderRivers() {
+  let list = roots().filter(matches); if (S.onlyKids) list = list.filter(n => n.children.length);
+  $("#rt tbody").innerHTML = list.length ? sorted(list, S.sortKey, S.asc).map(n => rrow(n, 0)).join("")
+    : `<tr><td colspan="13" class="empty">No rivers loaded. Run explorer/fetch_data.py (or build: explorer/scripts/build_codes.py).</td></tr>`;
+  document.querySelectorAll("#rt th").forEach(th => { th.classList.toggle("sorted", th.dataset.k === S.sortKey); th.classList.toggle("asc", th.dataset.k === S.sortKey && S.asc); });
+}
+$("#rt tbody").addEventListener("click", e => {
+  const t = e.target.closest("[data-tog]");
+  if (t) { const c = +t.dataset.tog; S.open.has(c) ? S.open.delete(c) : S.open.add(c); renderRivers(); return; }
+  if (e.target.closest("a")) return;
+  const tr = e.target.closest("tr[data-code]"); if (tr) select(+tr.dataset.code, {fly: true});
+});
+document.querySelectorAll("#rt th").forEach(th => th.addEventListener("click", () => {
+  const k = th.dataset.k; S.asc = S.sortKey === k ? !S.asc : k === "name"; S.sortKey = k; renderRivers(); }));
+$("#q").addEventListener("input", e => { S.q = fold(e.target.value.trim()); renderRivers(); });
+$("#onlykids").addEventListener("change", e => { S.onlyKids = e.target.checked; renderRivers(); });
+$("#torder").addEventListener("change", e => { S.torder = e.target.value; renderRivers(); renderSel(); });
+$("#expand").addEventListener("click", () => { for (const n of S.nodes) if (n.children.length) S.open.add(n.code); renderRivers(); });
+$("#collapse").addEventListener("click", () => { S.open.clear(); renderRivers(); });
+
+/* ---------------- selection ---------------- */
+// Bring a row to the top of its own scrolling table without moving the page.
+function slideRowToTop(tr) {
+  if (!tr) return;
+  const wrap = tr.closest(".tablewrap"), head = wrap.querySelector("thead");
+  wrap.scrollTo({top: tr.offsetTop - (head ? head.offsetHeight : 0), behavior: "smooth"});
+}
+/* ---------------- domain switcher ---------------- */
+function domBBox(dom) { return S.meta?.domains?.[dom]?.bbox; }
+function setDomain(dom, {recenter = true} = {}) {
+  if (!DOMS.includes(dom)) return;
+  const changed = dom !== S.dom; S.dom = dom;
+  document.querySelectorAll("#domsw button").forEach(b => b.setAttribute("aria-pressed", b.dataset.dom === dom));
+  if (changed) {
+    S.selected = null; S.band = null; S.up = null; S.psel = null; S.plimit = 300;
+    if (S.mapReady) { setF("flow-up", ["==", ["get", "id"], -1]); setF("flow-seg", ["==", ["get", "id"], -1]); }
+  }
+  renderRivers(); renderSel(); renderHist(); renderChips(); renderPlaces(); updateMap(false); updatePlacesLayer();
+  if (recenter && S.mapReady) {
+    const b = domBBox(dom);
+    if (dom === "CONUS") S.map.flyTo({center: [-96.5, 38.5], zoom: 3.2, duration: 700});
+    else if (b) S.map.fitBounds([[b[0], b[1]], [b[2], b[3]]], {padding: 30, maxZoom: 9, duration: 700});
+  }
+}
+$("#domsw").addEventListener("click", e => { const b = e.target.closest("[data-dom]"); if (b) setDomain(b.dataset.dom); });
+
+function select(code, {fly = false, fromMap = false} = {}) {
+  const n = S.by.get(code); if (!n) return;
+  if (n.dom !== S.dom) setDomain(n.dom, {recenter: false});
+  S.selected = n; S.band = null;
+  for (const a of ancestors(n)) S.open.add(a.code);
+  S.mode = S.widths[code] ? "width" : "sizes";   // a click always shows the river's own histogram
+  renderRivers(); renderSel(); renderHist(); updateMap(fly); if (S.pinsel) renderPlaces();
+  if (fromMap) slideRowToTop(document.querySelector(`#rt tr[data-code="${code}"]`));
+}
+function renderSel() {
+  const n = S.selected;
+  const upInfo = S.up ? ` <span>· <span style="color:var(--place)">■</span> upstream of ${esc(S.up.label)}: ${fmt(S.up.z)} segments</span>` : "";
+  if (!n) { $("#selbar").innerHTML = `<span>No river selected. Click a row or a river on the map.</span>${upInfo}`; return; }
+  const par = n.parent != null ? S.by.get(n.parent) : null;
+  const sibs = par ? [...par.children].sort((a, b) => mouthD(a) - mouthD(b)) : [];   // downstream -> upstream
+  const k = sibs.indexOf(n), dn = k > 0 ? sibs[k - 1] : null, upn = k >= 0 && k < sibs.length - 1 ? sibs[k + 1] : null;
+  const walk = par ? ` <span class="walk">${dn ? `<a href="#" data-crumb="${dn.code}" title="next tributary downstream">◀ ${esc(dn.name)}</a>` : `<span style="color:var(--muted)">◀ (most downstream)</span>`}
+    · ${upn ? `<a href="#" data-crumb="${upn.code}" title="next tributary upstream">${esc(upn.name)} ▶</a>` : `<span style="color:var(--muted)">(most upstream) ▶</span>`}</span>` : "";
+  const crumbs = [...ancestors(n), n].map(a => a === n ? `<strong>${esc(a.name)}</strong>` : `<a href="#" data-crumb="${a.code}">${esc(a.name)}</a> ›`).join(" ");
+  $("#selbar").innerHTML = `<span class="crumbs">${crumbs}</span><span>· ${fmt(n.n_segments)} segments · ${fmt(n.n_reaches)} reaches · longest path ${fmt(n.longest_path_reaches)} reaches / ${fmt(n.longest_path_km)} km</span>${upInfo}${walk} <a href="#" id="clearsel">clear</a>`;
+}
+$("#selbar").addEventListener("click", e => {
+  const c = e.target.closest("[data-crumb]"); if (c) { e.preventDefault(); select(+c.dataset.crumb, {fly: true}); }
+  if (e.target.id === "clearsel") { e.preventDefault(); S.selected = null; S.band = null; clearPoint(); S.up = null; renderPlaces(); renderRivers(); renderSel(); renderHist(); updateMap(false); if (S.pinsel) renderPlaces(); }
+});
+
+/* ---------------- histogram (SVG) ---------------- */
+const tip = $("#tip");
+function showTip(html, x, y) { tip.innerHTML = html; tip.style.display = "block";
+  const host = tip.parentElement.getBoundingClientRect(); let left = x - host.left + 12, top = y - host.top - 10;
+  if (left + tip.offsetWidth > host.width) left = x - host.left - tip.offsetWidth - 12; tip.style.left = left + "px"; tip.style.top = top + "px"; }
+function hideTip() { tip.style.display = "none"; }
+function niceTicks(max, n = 4) { if (max <= 0) return [0]; const raw = max / n, p = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p;
+  const step = (m <= 1 ? 1 : m <= 2 ? 2 : m <= 5 ? 5 : 10) * p; const t = [0]; while (t[t.length - 1] < max - 1e-9) t.push(t[t.length - 1] + step); return t; }
+function setMode(m) { S.mode = m; $("#m-width").setAttribute("aria-pressed", m === "width"); $("#m-sizes").setAttribute("aria-pressed", m === "sizes"); S.band = null; renderHist(); updateMap(false); }
+$("#m-width").addEventListener("click", () => setMode("width"));
+$("#m-sizes").addEventListener("click", () => setMode("sizes"));
+
+function drawBars(bins, opt) {
+  // bins: [{x0,x1,v,label,hi}] ; linear x across bin index, linear y
+  const svg = $("#hist"), W = svg.clientWidth || 500, H = svg.clientHeight || 330;
+  const m = {l: 56, r: 12, t: 10, b: 38}, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const vmax = Math.max(1, ...bins.map(b => b.v)); const ticks = niceTicks(vmax); const ymax = ticks[ticks.length - 1] || vmax;
+  const n = bins.length, slot = iw / Math.max(n, 1), bw = Math.max(1, Math.min(24, slot - (slot > 4 ? 2 : 0)));
+  let g = `<g transform="translate(${m.l},${m.t})">`;
+  for (const t of ticks) { const y = ih - t / ymax * ih; g += `<line x1="0" x2="${iw}" y1="${y}" y2="${y}" stroke="${css('--grid')}" stroke-width="1"/><text x="-8" y="${y + 4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${fmt(t)}</text>`; }
+  bins.forEach((b, i) => {
+    const h = b.v / ymax * ih, x = i * slot + (slot - bw) / 2, y = ih - h, r = Math.min(4, bw / 2, h);
+    const fill = b.hi ? css('--bar-hi') : css('--bar');
+    const path = h <= 0 ? "" : `M${x},${ih} V${y + r} Q${x},${y} ${x + r},${y} H${x + bw - r} Q${x + bw},${y} ${x + bw},${y + r} V${ih} Z`;
+    g += `<path d="${path}" fill="${fill}"/>`;
+    g += `<rect class="hit" data-i="${i}" x="${i * slot}" y="0" width="${slot}" height="${ih}" fill="transparent"/>`;
+  });
+  g += `<line x1="0" x2="${iw}" y1="${ih}" y2="${ih}" stroke="${css('--axis')}" stroke-width="1"/>`;
+  if (opt.marker != null) {   // keep a selected bin visible even when its bar is tiny
+    const mx = opt.marker * slot + slot / 2;
+    g += `<line x1="${mx}" x2="${mx}" y1="${ih * 0.18}" y2="${ih}" stroke="${css('--bar-hi')}" stroke-width="2"/>`
+       + `<circle cx="${mx}" cy="${ih * 0.18}" r="4" fill="${css('--bar-hi')}" stroke="${css('--surface')}" stroke-width="2"/>`
+       + `<text x="${mx - 8}" y="${ih * 0.18 - 8}" text-anchor="end" font-size="11.5" fill="${css('--ink')}">${esc(opt.markerLabel || "")}</text>`;
+  }
+  const every = Math.max(1, Math.ceil(n / 6));
+  bins.forEach((b, i) => { if (i % every === 0) g += `<text x="${i * slot + slot / 2}" y="${ih + 14}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${esc(b.tick ?? "")}</text>`; });
+  g += `<text x="${iw / 2}" y="${ih + 32}" text-anchor="middle" font-size="11.5" fill="${css('--ink2')}">${esc(opt.xlabel)}</text>`;
+  g += `<text transform="translate(${-44},${ih / 2}) rotate(-90)" text-anchor="middle" font-size="11.5" fill="${css('--ink2')}">${esc(opt.ylabel)}</text></g>`;
+  svg.innerHTML = g;
+  svg.querySelectorAll(".hit").forEach(r => {
+    const b = bins[+r.dataset.i];
+    r.addEventListener("mousemove", e => { showTip(b.label, e.clientX, e.clientY); if (opt.onHover) opt.onHover(b); });
+    r.addEventListener("mouseleave", () => { hideTip(); if (opt.onHover) opt.onHover(null); });
+  });
+}
+function renderHist() {
+  $("#m-width").setAttribute("aria-pressed", S.mode === "width"); $("#m-sizes").setAttribute("aria-pressed", S.mode === "sizes");
+  const n = S.selected;
+  if (S.mode === "width" && n && S.widths[n.code]) {
+    const w = S.widths[n.code], b = w.bin;
+    $("#htitle").textContent = `Width function: ${n.name}`;
+    $("#hsub").textContent = `Segments by distance above the mouth (bins of ${b} reach${b > 1 ? "es" : ""}). Each bar is the work available at one JIT level.`;
+    const bins = w.counts.map((v, i) => ({ v, x0: i * b, x1: (i + 1) * b, tick: fmt(i * b),
+      label: `<strong>${fmt(v)}</strong> segments<br>${fmt(i * b)}–${fmt((i + 1) * b - 1)} reaches above the mouth` }));
+    drawBars(bins, { xlabel: "Distance above mouth (reaches)", ylabel: "Segments",
+      onHover: bin => { S.band = bin ? [w.d0 + bin.x0, w.d0 + bin.x1] : null; updateBand(); } });
+    const peak = w.counts.indexOf(Math.max(...w.counts));
+    $("#histnote").textContent = `Peak ${fmt(w.counts[peak])} segments at ${fmt(peak * b)}–${fmt((peak + 1) * b - 1)} reaches; deepest headwater ${fmt(w.max_d)} reaches above the mouth. Hover a bar to light that band on the map.`;
+    return;
+  }
+  // network sizes: log2 bins of all network sizes of the current domain
+  const nw = S.widths._networks || {};
+  const sizes = (nw.by_domain && nw.by_domain[S.dom]) || (S.dom === "CONUS" && nw.sizes) || roots().map(r => r.n_segments);
+  $("#htitle").textContent = `Network sizes: ${DOM_NAME[S.dom]}`;
+  $("#hsub").textContent = `${fmt(sizes.length)} independent ${DOM_NAME[S.dom]} networks by number of segments (log₂ bins). ${n ? "The selected river's network is highlighted." : "Select a river to see its width function."}`;
+  const maxe = Math.ceil(Math.log2(Math.max(...sizes, 2)));
+  const counts = new Array(maxe + 1).fill(0); for (const s of sizes) counts[Math.min(maxe, Math.floor(Math.log2(Math.max(1, s))))]++;
+  const net = n ? networkOf(n) : null, hiBin = net ? Math.floor(Math.log2(Math.max(1, net.n_segments))) : -1;
+  const lab = e => (2 ** e >= 1e6 ? (2 ** e / 1e6).toFixed(1) + "M" : 2 ** e >= 1e3 ? Math.round(2 ** e / 1e3) + "k" : String(2 ** e));
+  const bins = counts.map((v, e) => ({ v, tick: lab(e), hi: e === hiBin,
+    label: `<strong>${fmt(v)}</strong> networks with ${fmt(2 ** e)}–${fmt(2 ** (e + 1) - 1)} segments${e === hiBin ? `<br>includes ${esc(net.name)}` : ""}` }));
+  drawBars(bins, { xlabel: "Segments in network (log₂ bins)", ylabel: "Networks",
+    marker: hiBin >= 0 ? hiBin : null, markerLabel: net ? `${net.name} (${fmt(net.n_segments)})` : "" });
+  const total = sizes.reduce((a, b) => a + b, 0), big = Math.max(...sizes);
+  $("#histnote").textContent = `The largest network holds ${(100 * big / total).toFixed(1)}% of all segments, which caps by-network parallelism. Median network: ${fmt(sizes.slice().sort((a, b) => a - b)[Math.floor(sizes.length / 2)])} segments.`;
+}
+
+/* ---------------- map ---------------- */
+// River tiles: the full file (all domains; gitignored, built locally) if present, else the two
+// committed overview files (CONUS; AK + HI + PRVI). Every map layer exists once per source.
+async function exists(f) { try { const r = await fetch(f, {method: "HEAD"}); return r.ok; } catch (e) { return false; } }
+async function tileSources() {
+  if (await exists("data/flowlines.pmtiles")) return ["data/flowlines.pmtiles"];
+  const ov = [];
+  for (const f of ["data/flowlines_overview.pmtiles", "data/flowlines_overview_other.pmtiles"]) if (await exists(f)) ov.push(f);
+  return ov;
+}
+const lid = (role, k) => k ? `${role}~${k}` : role;
+function eachL(role, fn) { if (!S.map) return; (S.srcs || []).forEach((_, k) => { const id = lid(role, k); if (S.map.getLayer(id)) fn(id); }); }
+const setF = (role, f) => eachL(role, id => S.map.setFilter(id, f));
+function darkMode() { return getComputedStyle(document.documentElement).colorScheme === "dark"; }
+async function initMap() {
+  const protocol = new pmtiles.Protocol(); maplibregl.addProtocol("pmtiles", protocol.tile);
+  const style = darkMode() ? "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json" : "https://tiles.openfreemap.org/styles/positron";
+  const map = S.map = new maplibregl.Map({ container: "map", style, center: [-96.5, 38.5], zoom: 3.2, attributionControl: {compact: true} });
+  map.addControl(new maplibregl.NavigationControl({showCompass: false}), "top-right");
+  const srcs = S.srcs = await tileSources(), tiles = srcs.length > 0;
+  $("#tilesrc").textContent = tiles ? `River tiles: ${srcs.join(", ")}${srcs[0].endsWith("flowlines.pmtiles") ? "" : " (overview: large rivers only; upstream-of-point and waterbodies need the full tiles)"}` : "River tiles not found: run explorer/fetch_data.py or explorer/scripts/build_map_data.py (see DATA_CONTRACT.md). The tables and histogram still work.";
+  map.on("load", async () => {
+    const outlets = await getJSON("data/outlets.geojson", null);
+    if (tiles) {
+      srcs.forEach((url, k) => {
+      // promoteId lets the histogram band use feature state (see applyBand): changing a
+      // filter would make MapLibre re-parse every tile on each hover; feature state doesn't.
+      const src = "flow" + (k || "");
+      map.addSource(src, { type: "vector", url: "pmtiles://" + new URL(url, location.href).href, promoteId: {flow: "id"} });
+      // zoom-dependent width; the offset w0 keeps highlight layers wider than the base
+      const width = (w0 = 0) => ["interpolate", ["linear"], ["zoom"],
+        3, ["+", w0 + 0.3, ["*", 0.16, ["get", "o"]]], 8, ["+", w0 + 0.2, ["*", 0.38, ["get", "o"]]], 12, ["+", w0, ["*", 0.6, ["get", "o"]]]];
+      if (url.endsWith("flowlines.pmtiles")) {   // waterbody polygons exist only in the full tiles (z6+)
+        map.addLayer({ id: lid("waterbodies", k), type: "fill", source: src, "source-layer": "waterbodies", minzoom: 6,
+          paint: { "fill-color": css('--river-base'), "fill-opacity": 0.35 } });
+      }
+      map.addLayer({ id: lid("flow-base", k), type: "line", source: src, "source-layer": "flow",
+        paint: { "line-color": css('--river-base'), "line-width": width(0), "line-opacity": 0.9 }, layout: {"line-cap": "round", "line-join": "round"} });
+      // transboundary styling (off by default; "Show border channels"):
+      // x = 1 outside the U.S. (dashed), x = 2 along the boundary (dotted)
+      const bvis = $("#bshow").checked ? "visible" : "none";
+      map.addLayer({ id: lid("flow-xb", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "x"], 1],
+        paint: { "line-color": css('--warn'), "line-width": width(0.8), "line-dasharray": [2, 1.5], "line-opacity": 0.8 }, layout: {visibility: bvis} });
+      map.addLayer({ id: lid("flow-on", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "x"], 2],
+        paint: { "line-color": css('--warn'), "line-width": width(0.8), "line-dasharray": [0.6, 1.2], "line-opacity": 0.9 },
+        layout: {"line-cap": "round", visibility: bvis} });
+      map.addLayer({ id: lid("flow-hi", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "r"], -999],
+        paint: { "line-color": css('--accent'), "line-width": width(1.2) }, layout: {"line-cap": "round", "line-join": "round"} });
+      map.addLayer({ id: lid("flow-hi-x", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "r"], -999],
+        paint: { "line-color": css('--accent'), "line-width": width(1.2), "line-dasharray": [2, 1.5] } });
+      map.addLayer({ id: lid("flow-up", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "id"], -1],
+        paint: { "line-color": css('--place'), "line-width": width(1.6), "line-opacity": 0.9 }, layout: {"line-cap": "round", "line-join": "round"} });
+      map.addLayer({ id: lid("flow-seg", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "id"], -1],
+        paint: { "line-color": css('--place'), "line-width": 6 }, layout: {"line-cap": "round"} });
+      // band: the selected river (filter set on selection); a segment shows when its
+      // feature state "band" is true
+      map.addLayer({ id: lid("flow-band", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "r"], -999],
+        paint: { "line-color": css('--ink'), "line-width": width(2),
+                 "line-opacity": ["case", ["boolean", ["feature-state", "band"], false], 1, 0],
+                 "line-opacity-transition": {duration: 0} }, layout: {"line-cap": "round"} });
+      });
+      // Click tolerance: look for rivers within 7 px and prefer the highest stream order,
+      // so a click near a line selects it (exact hits on 1-px lines are hard).
+      map.on("click", e => {
+        if (map.queryRenderedFeatures(e.point, {layers: ["places"].filter(l => map.getLayer(l))}).length) return;
+        const box = [[e.point.x - 7, e.point.y - 7], [e.point.x + 7, e.point.y + 7]];
+        const fs = map.queryRenderedFeatures(box, {layers: srcs.map((_, k) => lid("flow-base", k)).filter(l => map.getLayer(l))});
+        if (!fs.length) return;
+        const f = fs.reduce((a, b) => (b.properties.o > a.properties.o ? b : a)), p = f.properties;
+        const code = p.r > 0 ? p.r : (p.n > 0 ? p.n : null);
+        const fdom = DOMS[p.dm ?? 0] || "CONUS";
+        new maplibregl.Popup({closeButton: false}).setLngLat(e.lngLat).setHTML(`Feature ${fidLink(p.id, fdom)} <span style="color:var(--muted)">(${esc(DOM_NAME[fdom])})</span><br>order ${p.o} · ${p.d} reaches from outlet${p.z != null ? `<br>${fmt(p.z)} segments upstream (inclusive)` : ""}${p.x === 1 ? "<br>outside the U.S. (transboundary channel)" : p.x === 2 ? "<br>along the international boundary" : ""}${p.h ? "<br>hydrography source: not NHDPlus" : ""}${code ? `<br>in ${esc(S.by.get(code)?.name ?? "")}` : "<br>(network not listed)"}`).addTo(map);
+        clearPoint();   // a new click replaces any earlier point or place
+        setF("flow-seg", ["all", ["==", ["get", "id"], p.id], ["==", ["coalesce", ["get", "dm"], 0], p.dm ?? 0]]);
+        setUpstream(p, `feature ${p.id}`);
+        if (code) select(code, {fromMap: true}); else { renderSel(); }
+        renderPlaces();
+      });
+      map.getCanvas().style.cursor = "crosshair";
+    }
+    if (outlets) {
+      map.addSource("outlets", { type: "geojson", data: outlets });
+      map.addLayer({ id: "outlets", type: "circle", source: "outlets", minzoom: 6.5,
+        paint: { "circle-radius": 3, "circle-color": css('--surface'), "circle-stroke-color": css('--ink2'), "circle-stroke-width": 1.2 } });
+    }
+    map.addSource("places", { type: "geojson", data: {type: "FeatureCollection", features: []} });
+    map.addLayer({ id: "places", type: "circle", source: "places",
+      paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 3, 1.2, 6, 2.5, 10, 5], "circle-color": css('--pt'),
+               "circle-opacity": ["interpolate", ["linear"], ["zoom"], 3, 0.25, 6, 0.6, 9, 0.95],
+               "circle-stroke-color": css('--surface'), "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 3, 0, 7, 1] },
+      layout: { visibility: S.pshow ? "visible" : "none" } });
+    map.addLayer({ id: "place-sel", type: "circle", source: "places", filter: ["==", ["get", "i"], -1],
+      paint: { "circle-radius": 8, "circle-color": css('--pt'), "circle-stroke-color": css('--surface'), "circle-stroke-width": 2 } });
+    map.on("click", "places", e => { const i = e.features[0].properties.i; selectPlace(i, {fly: false, fromMap: true}); });
+    map.on("data", e => { if (e.dataType === "source" && e.tile) bandIdx = null; });   // new tiles: re-index the band on next hover
+    S.mapReady = true; updateMap(false); updatePlacesLayer();
+  });
+}
+function riverFilter() {
+  const n = S.selected; if (!n) return ["==", ["get", "r"], -999];
+  if (n.kind === "network") return ["==", ["get", "n"], n.code];
+  return ["in", ["get", "r"], ["literal", descendants(n)]];
+}
+function updateMap(fly) {
+  if (!S.mapReady || !S.map.getLayer("flow-hi")) return;
+  const isOut = ["==", ["coalesce", ["get", "x"], 0], 1];
+  setF("flow-hi", ["all", riverFilter(), ["!", isOut]]);
+  setF("flow-hi-x", ["all", riverFilter(), isOut]);
+  setF("flow-band", riverFilter()); bandKey = null; applyBand(); bandIdx = null;
+  eachL("flow-base", id => S.map.setPaintProperty(id, "line-opacity", S.selected ? 0.35 : 0.75));
+  updateBand();
+  if (fly && S.selected && S.bboxes[S.selected.code]) {
+    const [w, s, e, n] = S.bboxes[S.selected.code];
+    S.map.fitBounds([[w, s], [e, n]], {padding: 30, maxZoom: 9, duration: 700});
+  }
+}
+// Histogram hover. The band layer's filter is the selected river (set once per selection);
+// hovering only flips the feature state of the segments entering or leaving the band, which
+// repaints without re-parsing tiles. The segments of the selected river in the loaded tiles
+// are indexed by distance d on first hover, and re-indexed after new tiles load.
+let bandKey = null, bandFrame = 0, bandIdx = null, bandOn = [];
+function buildBandIndex() {
+  bandIdx = new Map();
+  (S.srcs || []).forEach((_, k) => { const source = "flow" + (k || "");
+    for (const f of S.map.querySourceFeatures(source, {sourceLayer: "flow", filter: riverFilter()})) {
+      const d = f.properties.d; if (!bandIdx.has(d)) bandIdx.set(d, []); bandIdx.get(d).push([source, f.id]); } });
+}
+function applyBand() {
+  for (const [source, id] of bandOn) S.map.setFeatureState({source, sourceLayer: "flow", id}, {band: false});
+  bandOn = [];
+  if (!bandKey) return;
+  if (!bandIdx) buildBandIndex();
+  for (let d = S.band[0]; d < S.band[1]; d++) for (const x of bandIdx.get(d) || []) {
+    S.map.setFeatureState({source: x[0], sourceLayer: "flow", id: x[1]}, {band: true}); bandOn.push(x); }
+}
+function updateBand() {
+  if (!S.mapReady || !S.map.getLayer("flow-band")) return;
+  const key = S.band && S.selected ? `${S.selected.code}:${S.band[0]}:${S.band[1]}` : null;
+  if (key === bandKey) return;
+  bandKey = key;
+  $("#lg-band").hidden = !key;
+  cancelAnimationFrame(bandFrame);
+  bandFrame = requestAnimationFrame(applyBand);   // at most once per frame
+}
+function clearPoint() {   // forget the clicked point / place (upstream trace, segment mark, place marker)
+  S.psel = null;
+  if (!S.mapReady) return;
+  setUpstream({p: null});
+  setF("flow-seg", ["==", ["get", "id"], -1]);
+  if (S.map.getLayer("place-sel")) S.map.setFilter("place-sel", ["==", ["get", "i"], -1]);
+}
+$("#bshow").addEventListener("change", e => {
+  $("#lg-border").hidden = !e.target.checked;
+  for (const r of ["flow-xb", "flow-on"]) eachL(r, id => S.map.setLayoutProperty(id, "visibility", e.target.checked ? "visible" : "none"));
+});
+
+/* ---------------- places ---------------- */
+const TYPE_LABEL = {gage: "USGS gages", forecast_point: "Forecast points", reservoir: "Reservoirs / lakes", dam: "Dams", bridge: "Bridges"};
+function placeTypes() { const c = {}; for (const p of S.places) if (p.dom === S.dom) c[p.type] = (c[p.type] || 0) + 1; return c; }
+function renderChips() {
+  const c = placeTypes(), types = Object.keys(TYPE_LABEL).filter(t => c[t]);
+  if ((!S.ptype || !c[S.ptype]) && types.length) S.ptype = types[0];
+  $("#ptypes").innerHTML = types.map(t => `<button class="chip" data-t="${t}" aria-pressed="${t === S.ptype}">${TYPE_LABEL[t]} <span style="color:var(--muted)">${fmt(c[t])}</span></button>`).join("")
+    || `<span style="color:var(--muted)">No places for ${esc(DOM_NAME[S.dom])} (explorer/scripts/build_places.py).</span>`;
+}
+$("#ptypes").addEventListener("click", e => { const b = e.target.closest("[data-t]"); if (!b) return; S.ptype = b.dataset.t; S.plimit = 300; S.psel = null; renderChips(); renderPlaces(); updatePlacesLayer(); });
+function filteredPlaces() {
+  let L = S.places.map((p, i) => (p.i = i, p)).filter(p => p.type === S.ptype && p.dom === S.dom);
+  if (S.pflag) L = L.filter(p => p.nflags);
+  if (S.pinsel && S.selected) { const set = new Set(S.selected.kind === "network" ? [] : descendants(S.selected));
+    L = L.filter(p => S.selected.kind === "network" ? p.net === S.selected.code : set.has(p.river)); }
+  if (S.pq) L = L.filter(p => fold([p.name, p.key, p.feature_id, p.rivername].join(" ")).includes(S.pq));
+  return L.sort((a, b) => { const x = a[S.psort] ?? "", y = b[S.psort] ?? ""; const c = typeof x === "string" ? String(x).localeCompare(y) : x - y; return S.pasc ? c : -c; });
+}
+function renderPlaces() {
+  const L = filteredPlaces(), shown = L.slice(0, S.plimit);
+  $("#pt tbody").innerHTML = shown.map(p => `<tr data-i="${p.i}" aria-selected="${S.psel === p.i}"><td class="name"><strong>${esc(p.name || "(unnamed)")}</strong></td>
+    <td>${esc(TYPE_LABEL[p.type] || p.type)}</td><td>${esc(p.key)}</td>
+    <td>${fidLink(p.feature_id, p.dom)}</td>
+    <td style="text-align:left">${esc(p.rivername)}</td><td>${fmt(p.order)}</td>
+    <td class="flags">${(p.flags || []).map(f => `<span title="${esc(S.pmeta.flags?.[f] || f)}">⚠ ${esc(f)}</span>`).join("<br>")}</td></tr>`).join("")
+    || `<tr><td colspan="7" class="empty">No matching places.</td></tr>`;
+  $("#pcount").textContent = `${fmt(Math.min(L.length, S.plimit))} of ${fmt(L.length)} shown`;
+  $("#pmore").hidden = L.length <= S.plimit;
+  document.querySelectorAll("#pt th").forEach(th => { th.classList.toggle("sorted", th.dataset.k === S.psort); th.classList.toggle("asc", th.dataset.k === S.psort && S.pasc); });
+}
+function updatePlacesLayer() {
+  if (!S.mapReady) return;
+  const L = filteredPlaces();
+  S.map.getSource("places").setData({ type: "FeatureCollection", features: L.filter(p => p.lon != null).map(p => ({ type: "Feature",
+    geometry: {type: "Point", coordinates: [p.lon, p.lat]}, properties: {i: p.i, name: p.name || ""} })) });
+  S.map.setFilter("place-sel", ["==", ["get", "i"], S.psel ?? -1]);
+}
+function selectPlace(i, {fly = true, fromMap = false} = {}) {
+  const p = S.places[i]; if (!p) return;
+  if (p.dom !== S.dom) setDomain(p.dom, {recenter: false});
+  S.psel = i;
+  if (S.mapReady) {
+    S.map.setFilter("place-sel", ["==", ["get", "i"], i]);
+    setF("flow-seg", ["all", ["==", ["get", "id"], p.feature_id ?? -1], ["==", ["coalesce", ["get", "dm"], 0], DOMS.indexOf(p.dom)]]);
+    if (p.p != null) setUpstream({p: p.p, z: p.z, id: p.feature_id}, `${TYPE_LABEL[p.type]?.replace(/s$/, "") || p.type} ${p.key}`);
+    if (fly && p.lon != null) { $("#map").scrollIntoView({behavior: "smooth", block: "center"}); S.map.flyTo({center: [p.lon, p.lat], zoom: 11, duration: 800}); }
+    new maplibregl.Popup({closeButton: false}).setLngLat([p.lon, p.lat]).setHTML(`<strong>${esc(p.name || p.key)}</strong><br>${esc(TYPE_LABEL[p.type])} ${esc(p.key)}<br>feature ${p.feature_id ?? "–"}${(p.flags||[]).length ? "<br>⚠ " + p.flags.map(esc).join("<br>⚠ ") : ""}`).addTo(S.map);
+  }
+  renderPlaces();
+  if (fromMap) slideRowToTop(document.querySelector(`#pt tr[data-i="${i}"]`));
+}
+$("#pt tbody").addEventListener("click", e => { if (e.target.closest("a")) return; const tr = e.target.closest("tr[data-i]"); if (tr) selectPlace(+tr.dataset.i); });
+document.querySelectorAll("#pt th").forEach(th => th.addEventListener("click", () => { const k = th.dataset.k; S.pasc = S.psort === k ? !S.pasc : ["name","type","key","rivername"].includes(k); S.psort = k; renderPlaces(); }));
+$("#pq").addEventListener("input", e => { S.pq = fold(e.target.value.trim()); S.plimit = 300; renderPlaces(); updatePlacesLayer(); });
+$("#pflag").addEventListener("change", e => { S.pflag = e.target.checked; renderPlaces(); updatePlacesLayer(); });
+$("#pinsel").addEventListener("change", e => { S.pinsel = e.target.checked; renderPlaces(); updatePlacesLayer(); });
+$("#pmore").addEventListener("click", () => { S.plimit += 500; renderPlaces(); });
+$("#pshow").addEventListener("change", e => { S.pshow = e.target.checked;
+  if (S.mapReady) for (const l of ["places", "place-sel"]) S.map.setLayoutProperty(l, "visibility", S.pshow ? "visible" : "none"); });
+
+/* ---------------- upstream of a point ---------------- */
+// Segments upstream of a segment s (inclusive) are exactly those with DFS preorder
+// p in [p_s, p_s + z_s): one range filter on the tiles (full tiles only).
+function setUpstream(props, label) {
+  if (!S.mapReady || !S.map.getLayer("flow-up")) return;
+  if (props.p == null || props.p < 0) { S.up = null; setF("flow-up", ["==", ["get", "id"], -1]); return; }
+  S.up = {p: +props.p, z: +props.z, label};
+  setF("flow-up", ["all", [">=", ["get", "p"], S.up.p], ["<", ["get", "p"], S.up.p + S.up.z]]);
+  renderSel();
+}
+
+/* ---------------- boot ---------------- */
+(async function () {
+  await load();
+  renderRivers(); renderSel(); renderHist(); renderChips(); renderPlaces();
+  try { await initMap(); } catch (e) { console.error(e); $("#map").innerHTML = `<div class="empty">Map unavailable (${esc(e.message)}). The tables and histogram still work.</div>`; }
+  new ResizeObserver(() => renderHist()).observe($("#hist"));
+})();
+</script>
+</body>
+</html>
