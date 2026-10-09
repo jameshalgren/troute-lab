@@ -1,0 +1,332 @@
+{
+  "_source": "First run 2026-10-06 (macOS arm64) of analyze.py on the hash-verified inputs in fetch_data.py. Independent cross-checks of the same numbers: the coordinator's quick script on v3.1.6 (12,820 networks; Mississippi 1,117,312 segments, longest path 3,174 segments / 6,041 km / 2,219 reaches, 868,651 reaches; CONUS 2,114,380 reaches, 1,046,104 junctions; largest 1/3/10 hold 40.2/53.6/69.7%; 30 networks >= 10k segments; 2,592 singletons).",
+  "_tolerances": {
+    "integers": "exact",
+    "floats (km, %)": "relative 1e-6",
+    "river names": "exact string (from committed river_names.json)"
+  },
+  "domains": {
+    "CONUS": {
+      "n_segments": 2776734,
+      "n_networks": 12820,
+      "n_reaches": 2114380,
+      "n_headwaters": 1068276,
+      "n_junctions": 1046104,
+      "n_single_segment_networks": 2592,
+      "network_size_median": 4.0,
+      "n_segments_on_cycles": 0,
+      "n_gage_segments": 8735,
+      "n_waterbodies": 5782,
+      "n_segments_in_canada_mexico": 110327,
+      "largest": {
+        "outlet_feature_id": 22811611,
+        "n_segments": 1117312,
+        "n_reaches": 868651,
+        "longest_path_segments": 3174,
+        "longest_path_reaches": 2219,
+        "longest_path_km": 6041.014,
+        "max_order": 10
+      },
+      "share_of_segments_in_largest_k_pct": {
+        "1": 40.23835196313367,
+        "3": 53.64979144563361,
+        "10": 69.68341223898292
+      },
+      "n_networks_ge_10000": 30,
+      "ffd_processors_segments": 3,
+      "ffd_processors_length": 3,
+      "n_ids_ge_1e9": 62215,
+      "networks_without_ids_ge_1e9": 13268,
+      "networks_without_segments_in_canada_mexico": 14341
+    },
+    "AK": {
+      "n_segments": 391528,
+      "n_networks": 4102,
+      "n_reaches": 336536,
+      "n_headwaters": 171157,
+      "n_junctions": 165379,
+      "n_single_segment_networks": 2171,
+      "network_size_median": 1.0,
+      "n_segments_on_cycles": 0,
+      "n_gage_segments": 65,
+      "n_waterbodies": 237,
+      "n_segments_in_canada_mexico": 210,
+      "largest": {
+        "outlet_feature_id": 75000200000234,
+        "n_segments": 121538,
+        "n_reaches": 89288,
+        "longest_path_segments": 832,
+        "longest_path_reaches": 488,
+        "longest_path_km": 579.366699719429,
+        "max_order": 9
+      },
+      "share_of_segments_in_largest_k_pct": {
+        "1": 31.041968901330172,
+        "3": 58.10414580821806,
+        "10": 71.46794099017184
+      },
+      "n_networks_ge_10000": 4,
+      "ffd_processors_segments": 4,
+      "ffd_processors_length": 4
+    },
+    "HI": {
+      "n_segments": 13637,
+      "n_networks": 1273,
+      "n_reaches": 8331,
+      "n_headwaters": 4823,
+      "n_junctions": 3508,
+      "n_single_segment_networks": 512,
+      "network_size_median": 3.0,
+      "n_segments_on_cycles": 0,
+      "n_gage_segments": 58,
+      "n_waterbodies": 9,
+      "n_segments_in_canada_mexico": 0,
+      "largest": {
+        "outlet_feature_id": 800013609,
+        "n_segments": 723,
+        "n_reaches": 475,
+        "longest_path_segments": 78,
+        "longest_path_reaches": 49,
+        "longest_path_km": 39.284,
+        "max_order": 5
+      },
+      "share_of_segments_in_largest_k_pct": {
+        "1": 5.301752584879372,
+        "3": 13.265380948889051,
+        "10": 26.134780376915742
+      },
+      "n_networks_ge_10000": 0,
+      "ffd_processors_segments": 19,
+      "ffd_processors_length": 30
+    },
+    "PRVI": {
+      "n_segments": 14017,
+      "n_networks": 747,
+      "n_reaches": 10610,
+      "n_headwaters": 5704,
+      "n_junctions": 4906,
+      "n_single_segment_networks": 330,
+      "network_size_median": 2.0,
+      "n_segments_on_cycles": 0,
+      "n_gage_segments": 83,
+      "n_waterbodies": 16,
+      "n_segments_in_canada_mexico": 0,
+      "largest": {
+        "outlet_feature_id": 800040713,
+        "n_segments": 1541,
+        "n_reaches": 1097,
+        "longest_path_segments": 100,
+        "longest_path_reaches": 83,
+        "longest_path_km": 74.34820066213608,
+        "max_order": 6
+      },
+      "share_of_segments_in_largest_k_pct": {
+        "1": 10.993793251052294,
+        "3": 25.875722337162017,
+        "10": 54.59085396304487
+      },
+      "n_networks_ge_10000": 0,
+      "ffd_processors_segments": 10,
+      "ffd_processors_length": 10
+    },
+    "CONUS_v2.1": {
+      "n_segments": 2776738,
+      "n_networks": 12822,
+      "n_reaches": 2114381,
+      "n_headwaters": 1068279,
+      "n_junctions": 1046102,
+      "n_single_segment_networks": 2593,
+      "network_size_median": 4.0,
+      "n_segments_on_cycles": 0,
+      "n_gage_segments": 7994,
+      "n_waterbodies": 5783,
+      "n_segments_in_canada_mexico": 110328,
+      "largest": {
+        "outlet_feature_id": 22811611,
+        "n_segments": 1117312,
+        "n_reaches": 868650,
+        "longest_path_segments": 3174,
+        "longest_path_reaches": 2219,
+        "longest_path_km": 6041.014,
+        "max_order": 10
+      },
+      "share_of_segments_in_largest_k_pct": {
+        "1": 40.23829399820941,
+        "3": 53.649678147524185,
+        "10": 69.68320381685272
+      },
+      "n_networks_ge_10000": 30,
+      "ffd_processors_segments": 3,
+      "ffd_processors_length": 3,
+      "n_ids_ge_1e9": 62215,
+      "networks_without_ids_ge_1e9": 13270,
+      "networks_without_segments_in_canada_mexico": 14343
+    }
+  },
+  "conus_top": [
+    {
+      "rank": 1,
+      "outlet_feature_id": 22811611,
+      "river_name": "Mississippi River",
+      "n_segments": 1117312,
+      "n_reaches": 868651,
+      "max_order": 10,
+      "longest_path_segments": 3174,
+      "longest_path_reaches": 2219,
+      "longest_path_km": 6041.014,
+      "n_gages": 2685,
+      "n_waterbodies": 1849,
+      "n_ids_ge_1e9": 5858,
+      "outlet_class": "coastal"
+    },
+    {
+      "rank": 2,
+      "outlet_feature_id": 23832907,
+      "river_name": "Columbia River",
+      "n_segments": 206811,
+      "n_reaches": 167623,
+      "max_order": 9,
+      "longest_path_segments": 1768,
+      "longest_path_reaches": 1144,
+      "longest_path_km": 2218.639,
+      "n_gages": 491,
+      "n_waterbodies": 230,
+      "n_ids_ge_1e9": 24203,
+      "outlet_class": "coastal"
+    },
+    {
+      "rank": 3,
+      "outlet_feature_id": 21412883,
+      "river_name": "Colorado River",
+      "n_segments": 165589,
+      "n_reaches": 132554,
+      "max_order": 9,
+      "longest_path_segments": 2470,
+      "longest_path_reaches": 1630,
+      "longest_path_km": 2643.2717999687193,
+      "n_gages": 463,
+      "n_waterbodies": 113,
+      "n_ids_ge_1e9": 763,
+      "outlet_class": "international_boundary_cut"
+    },
+    {
+      "rank": 4,
+      "outlet_feature_id": 25293410,
+      "river_name": "Saint Lawrence River",
+      "n_segments": 149708,
+      "n_reaches": 117515,
+      "max_order": 7,
+      "longest_path_segments": 477,
+      "longest_path_reaches": 419,
+      "longest_path_km": 1363.201,
+      "n_gages": 821,
+      "n_waterbodies": 969,
+      "n_ids_ge_1e9": 0,
+      "outlet_class": "international_boundary_cut"
+    },
+    {
+      "rank": 5,
+      "outlet_feature_id": 15183793,
+      "river_name": "Lower Atchafalaya River",
+      "n_segments": 87017,
+      "n_reaches": 63309,
+      "max_order": 8,
+      "longest_path_segments": 883,
+      "longest_path_reaches": 600,
+      "longest_path_km": 2407.005,
+      "n_gages": 166,
+      "n_waterbodies": 173,
+      "n_ids_ge_1e9": 0,
+      "outlet_class": "coastal"
+    },
+    {
+      "rank": 6,
+      "outlet_feature_id": 18524217,
+      "river_name": "Mobile River",
+      "n_segments": 67601,
+      "n_reaches": 51903,
+      "max_order": 8,
+      "longest_path_segments": 728,
+      "longest_path_reaches": 634,
+      "longest_path_km": 1288.514,
+      "n_gages": 172,
+      "n_waterbodies": 38,
+      "n_ids_ge_1e9": 0,
+      "outlet_class": "coastal"
+    },
+    {
+      "rank": 7,
+      "outlet_feature_id": 626220,
+      "river_name": "Rio Grande",
+      "n_segments": 54182,
+      "n_reaches": 45074,
+      "max_order": 8,
+      "longest_path_segments": 1739,
+      "longest_path_reaches": 1032,
+      "longest_path_km": 3119.7931017665865,
+      "n_gages": 158,
+      "n_waterbodies": 32,
+      "n_ids_ge_1e9": 10416,
+      "outlet_class": "coastal"
+    }
+  ],
+  "scheduling": {
+    "CONUS_segments_lpt_makespan_pct_P1_to_4": [
+      100.0,
+      50.0,
+      40.238352,
+      40.238352
+    ],
+    "CONUS_lpt_smallest_P_with_makespan_equal_largest": 3
+  },
+  "continuity": {
+    "626220": {
+      "present_in_routelink": 1409,
+      "n_networks_holding_mainstem": 1
+    },
+    "21412883": {
+      "present_in_routelink": 1871,
+      "n_networks_holding_mainstem": 1
+    },
+    "22811611": {
+      "present_in_routelink": 1701,
+      "n_networks_holding_mainstem": 1
+    },
+    "23832907": {
+      "present_in_routelink": 1174,
+      "n_networks_holding_mainstem": 1
+    },
+    "tributaries": {
+      "626220:Pecos River": {
+        "present_in_routelink": 697,
+        "networks": {
+          "626220": 697
+        },
+        "confluence_flows_to": 1131000531
+      },
+      "626220:Rio Chama": {
+        "present_in_routelink": 224,
+        "networks": {
+          "626220": 224
+        },
+        "confluence_flows_to": 17870388
+      }
+    }
+  },
+  "splits": {
+    "rio_grande_without_ids_ge_1e9": {
+      "n_pieces": 200,
+      "largest_two_outlets": [
+        2539831,
+        335000
+      ],
+      "largest_two_sizes": [
+        21829,
+        12179
+      ]
+    }
+  },
+  "_optional": [
+    "CONUS_v2.1"
+  ]
+}

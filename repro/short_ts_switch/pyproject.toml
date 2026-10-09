@@ -1,0 +1,37 @@
+[project]
+name = "repro-short-ts-switch"
+version = "1.0.0"
+description = "Impact of T-Route's assume_short_ts (WRF-Hydro one-step upstream-inflow lag) on Muskingum-Cunge network routing"
+requires-python = "==3.12.*"
+# Exact pins for direct dependencies; uv.lock pins the full tree with hashes.
+# The t-route packages themselves (troute.network, troute.routing, troute.config,
+# nwm_routing) are NOT listed: build_troute.py compiles them from the pinned commit
+# into this environment (no build isolation, as t-route's own Dockerfile does).
+# Version ceilings come from t-route's requirements.txt at that commit:
+# numpy~=1.0, Cython>3,!=3.0.4, pandas<=2.2.0, setuptools<69; pydantic~=1.10 from
+# src/troute-config/pyproject.toml.
+dependencies = [
+    "numpy==1.26.4",
+    "cython==3.0.12",
+    "setuptools==68.2.2",
+    "wheel==0.48.0",
+    "pandas==2.2.0",
+    "xarray==2026.9.0",
+    "netcdf4==1.7.4",
+    "pyyaml==6.0.3",
+    "toolz==1.2.0",
+    "joblib==1.6.0",
+    "deprecated==3.0.0",
+    "pyarrow==25.0.1",
+    "geopandas==1.1.4",
+    "typing-extensions==4.16.0",
+    "pydantic==1.10.26",
+    "hydrotools-nwis-client==4.1.1",
+    "matplotlib==3.11.2",
+    "scipy==1.17.1",
+]
+
+[tool.uv]
+package = false
+# t-route builds on Linux and macOS only (its compile scripts are bash + make).
+environments = ["sys_platform == 'darwin'", "sys_platform == 'linux'"]

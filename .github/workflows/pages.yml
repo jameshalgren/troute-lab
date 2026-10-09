@@ -1,0 +1,56 @@
+# Publish the basin explorer on GitHub Pages. No data is in git: the job downloads the
+# web data bundle (JSON + overview tiles, ~31 MB) from this repo's release assets
+# (data_bundles.json, bundle "explorer"), checks SHA-256, and deploys explorer/ as the site.
+# The full-resolution tiles (983 MB) are left out: GitHub Pages allows 100 MB per file and
+# 1 GB per site. PMTiles reads tiles with HTTP Range requests, which GitHub Pages serves
+# (206 Partial Content).
+# One-time setup: Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Download explorer data bundle (SHA-256 checked)
+        run: python3 tools/fetch_bundle.py explorer
+      - name: Assemble site
+        run: |
+          mkdir -p _site/data
+          cp explorer/index.html _site/
+          python3 - <<'EOF'
+          import json, shutil
+          b = json.load(open("data_bundles.json"))["bundles"]["explorer"]
+          for name, meta in b["files"].items():
+              if meta.get("required", True):
+                  shutil.copy2(f"explorer/data/{name}", f"_site/data/{name}")
+          EOF
+          du -ah _site
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

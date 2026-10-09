@@ -1,0 +1,69 @@
+{
+  "_about": "Data that is generated, not committed. Each bundle is a GitHub release (tag) of this repo whose assets are the listed files; tools/fetch_bundle.py downloads them and checks size and SHA-256. A published tag never changes: new data gets a new tag (export side: scripts/export_public.py --bundle NAME --tag NAME=<tag> in the paper repo).",
+  "_repo": "owner/name of this public repository on GitHub. Change it here (and in the README title) if the repository is renamed.",
+  "repo": "jameshalgren/troute-lab",
+  "_hydroshare": "TODO (author): archive each bundle as a HydroShare resource, then set its \"hydroshare\" to the resource's file base URL, e.g. https://www.hydroshare.org/resource/<resource id>/data/contents/ ; fetch_bundle.py then uses it as fallback (or with --source hydroshare).",
+  "bundles": {
+    "explorer": {
+      "about": "Basin explorer web data (overview tiles + JSON); optional full-resolution tiles",
+      "tag": "explorer-data-v1",
+      "dest": "explorer/data",
+      "hydroshare": null,
+      "files": {
+        "rivers.json": {
+          "sha256": "fff392c0fe191370319480ed0555a3dc5e4e8c1087216f82c647a4ce77275d9f",
+          "size": 575001,
+          "required": true
+        },
+        "widths.json": {
+          "sha256": "1d7e2b53123a4213623a359e5890cfd7a5336f432e3c620c52e16cc6e8fb8188",
+          "size": 353270,
+          "required": true
+        },
+        "bboxes.json": {
+          "sha256": "f58383e53dd5eaa80965535e79462de7fa9fb790a7739875dda541d171b9a09f",
+          "size": 50967,
+          "required": true
+        },
+        "outlets.geojson": {
+          "sha256": "3af16aa79968b640fc11de4ca6b0e055d05f4a785e2f5cc97459c4981db3e45e",
+          "size": 191625,
+          "required": true
+        },
+        "places.json": {
+          "sha256": "0bb577ea6a32f159e0e617f17a26fe7898b18d36364f5ab04ffae9247818af7c",
+          "size": 12847583,
+          "required": true
+        },
+        "flowlines_overview.pmtiles": {
+          "sha256": "c8aa78bd193341fca4f79d6c24060a98af4005ae01be3651f7ebe138bdc3704a",
+          "size": 14354058,
+          "required": true
+        },
+        "flowlines_overview_other.pmtiles": {
+          "sha256": "a66188574168b90e7fba61eecd9c58abe7b07c40301678e295660c24b6c8ae08",
+          "size": 2744457,
+          "required": true
+        },
+        "flowlines.pmtiles": {
+          "sha256": "60baf1e3e7d1b6f58662c4da3bef2d79b550ff8aefffeed0115074a538a0db65",
+          "size": 983103132,
+          "required": false
+        }
+      }
+    },
+    "network-stats": {
+      "about": "EPA/GNIS query snapshot read by repro/network_stats/domains.py",
+      "tag": "network-stats-data-v1",
+      "dest": "repro/network_stats",
+      "hydroshare": null,
+      "files": {
+        "domains_snapshot.json": {
+          "sha256": "5af3611de8937d314d0e50d84ffbd19f04b317c5dfd2312baab976eb3b9f026f",
+          "size": 4775470,
+          "required": true
+        }
+      }
+    }
+  }
+}

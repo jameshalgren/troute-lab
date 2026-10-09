@@ -1,0 +1,14 @@
+{
+  "_source": "mc_numerical_dispersion.ipynb at awlostowski-noaa/t-route@de529705a11f0e305f9b4d46c32d65d08e289de7 (branch segment-merge), saved stdout of code cell 3; dx = 300 m, assume_short_timestep = False",
+  "_status": "EXPLORATORY. The kernel at this commit reads an uninitialized local variable (AREAC), so the notebook's numbers depend on memory contents on the 2020 machine. check.py compares the deterministic -finit-real=zero build against the runs marked reproducible=true (relative tolerance 1e-5, i.e. a few float32 ulps). Runs marked false are reported, not checked: they could not be reproduced (see README).",
+  "rtol": 1e-5,
+  "runs": [
+    {"dt_s": 5,   "courant_at_peakflow": 0.57908034, "max_depth_outlet_m": 161.86197, "reproducible": false},
+    {"dt_s": 10,  "courant_at_peakflow": 0.09609824, "max_depth_outlet_m": 1.2637823, "reproducible": true},
+    {"dt_s": 30,  "courant_at_peakflow": 0.28829488, "max_depth_outlet_m": 1.2637833, "reproducible": true},
+    {"dt_s": 60,  "courant_at_peakflow": 6.9798503,  "max_depth_outlet_m": 451.22644, "reproducible": false},
+    {"dt_s": 120, "courant_at_peakflow": 12.288318,  "max_depth_outlet_m": 443.38892, "reproducible": false},
+    {"dt_s": 400, "courant_at_peakflow": 3.8034992,  "max_depth_outlet_m": 1.2431936, "reproducible": true},
+    {"dt_s": 600, "courant_at_peakflow": 5.6340904,  "max_depth_outlet_m": 1.2192045, "reproducible": true}
+  ]
+}

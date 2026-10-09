@@ -1,0 +1,19 @@
+{
+  "_source": "courant_test.ipynb at awlostowski-noaa/t-route@27e06eefc43135a767f20cd0561190af7b8f4ed1: peak times from the saved stdout of code cell 7 ('Peak time = [...] hours'); max C from the legend of the saved figure in the same cell (rounded to 2 decimals by the notebook: round(courant.max().max(), 2))",
+  "_tolerances": {
+    "peak_time_h": "+-1 output interval (dt/3600 h); check.py also requires the reproduced peak time list to contain one value",
+    "max_courant": "+-0.01 (absolute) against the notebook's 2-decimal legend value"
+  },
+  "runs": [
+    {"dt_s": 30,  "max_courant": 0.18, "peak_time_h": 6.43333333},
+    {"dt_s": 60,  "max_courant": 0.36, "peak_time_h": 6.43333333},
+    {"dt_s": 120, "max_courant": 0.72, "peak_time_h": 6.4},
+    {"dt_s": 300, "max_courant": 1.8,  "peak_time_h": 6.75},
+    {"dt_s": 600, "max_courant": 3.6,  "peak_time_h": 7.5}
+  ],
+  "regression_baseline": {
+    "_source": "NOT from the notebook (which printed no peak flows). Values from this reproduction, 2026-10-05, macOS arm64, gfortran 15.2.0, numpy 2.5.3 f2py/meson. Checked with relative tolerance 1e-4 to detect drift in the toolchain.",
+    "rtol": 1e-4,
+    "peak_flow_cms": {"30": 2497.669, "60": 2497.717, "120": 2497.944, "300": 2494.460, "600": 2479.283}
+  }
+}

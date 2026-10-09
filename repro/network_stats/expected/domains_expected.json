@@ -1,0 +1,1475 @@
+{
+ "_source": "First run 2026-10-07 (macOS arm64) of domains.py on the hash-verified RouteLink files and the committed snapshot domains_snapshot.json (generated 2026-10-07 by domains.py --refresh; the offline run reproduced the refresh run's results/domains.json).",
+ "_tolerances": {
+  "integers and strings": "exact",
+  "snapshot_sha256": "exact (a refresh of domains_snapshot.json must update this file, with a reason in the README)"
+ },
+ "snapshot_sha256": "5af3611de8937d314d0e50d84ffbd19f04b317c5dfd2312baab976eb3b9f026f",
+ "snapshot_sha256_file": "5af3611de8937d314d0e50d84ffbd19f04b317c5dfd2312baab976eb3b9f026f",
+ "domains": {
+  "CONUS": {
+   "n_top": 500,
+   "top": [
+    {
+     "rank": 1,
+     "outlet_feature_id": 22811611,
+     "n_segments": 1117312,
+     "river_name": "Mississippi River",
+     "display_name": "Mississippi River",
+     "outlet_class": "coastal"
+    },
+    {
+     "rank": 2,
+     "outlet_feature_id": 23832907,
+     "n_segments": 206811,
+     "river_name": "Columbia River",
+     "display_name": "Columbia River",
+     "outlet_class": "coastal"
+    },
+    {
+     "rank": 3,
+     "outlet_feature_id": 21412883,
+     "n_segments": 165589,
+     "river_name": "Colorado River",
+     "display_name": "Colorado River",
+     "outlet_class": "international_boundary_cut"
+    },
+    {
+     "rank": 4,
+     "outlet_feature_id": 25293410,
+     "n_segments": 149708,
+     "river_name": "Saint Lawrence River",
+     "display_name": "Saint Lawrence River",
+     "outlet_class": "international_boundary_cut"
+    },
+    {
+     "rank": 5,
+     "outlet_feature_id": 15183793,
+     "n_segments": 87017,
+     "river_name": "Lower Atchafalaya River",
+     "display_name": "Lower Atchafalaya River",
+     "outlet_class": "coastal"
+    }
+   ],
+   "name_rule_counts": {
+    "lake_outlet": 20,
+    "levelpath_gnis": 406,
+    "outlet_confluence": 26,
+    "unverified": 48
+   },
+   "n_lake_renamed": 46
+  },
+  "AK": {
+   "n_top": 200,
+   "top": [
+    {
+     "rank": 1,
+     "outlet_feature_id": 75000200000234,
+     "n_segments": 121538,
+     "river_name": "Susitna River",
+     "display_name": "Susitna River",
+     "outlet_class": "not_classified"
+    },
+    {
+     "rank": 2,
+     "outlet_feature_id": 19020190101757,
+     "n_segments": 73370,
+     "river_name": "Copper River",
+     "display_name": "Copper River",
+     "outlet_class": "not_classified"
+    },
+    {
+     "rank": 3,
+     "outlet_feature_id": 75000400000017,
+     "n_segments": 32586,
+     "river_name": "Matanuska River",
+     "display_name": "Matanuska River",
+     "outlet_class": "not_classified"
+    },
+    {
+     "rank": 4,
+     "outlet_feature_id": 19020190106493,
+     "n_segments": 10411,
+     "river_name": "UNVERIFIED",
+     "display_name": "UNVERIFIED (60.313, -144.985)",
+     "outlet_class": "not_classified"
+    },
+    {
+     "rank": 5,
+     "outlet_feature_id": 75005300010442,
+     "n_segments": 9014,
+     "river_name": "Chakachatna River",
+     "display_name": "Chakachatna River",
+     "outlet_class": "not_classified"
+    }
+   ],
+   "name_rule_counts": {
+    "gnis_mouth_source": 55,
+    "lake_outlet": 1,
+    "unverified": 144
+   },
+   "n_lake_renamed": 1
+  },
+  "HI": {
+   "n_top": 100,
+   "top": [
+    {
+     "rank": 1,
+     "outlet_feature_id": 800013609,
+     "n_segments": 723,
+     "river_name": "Waimea River",
+     "display_name": "Waimea River",
+     "outlet_class": "coastal"
+    },
+    {
+     "rank": 2,
+     "outlet_feature_id": 800007520,
+     "n_segments": 571,
+     "river_name": "Wailua River",
+     "display_name": "Wailua River",
+     "outlet_class": "coastal"
+    },
+    {
+     "rank": 3,
+     "outlet_feature_id": 800013463,
+     "n_segments": 515,
+     "river_name": "Wailuku River",
+     "display_name": "Wailuku River",
+     "outlet_class": "coastal"
+    },
+    {
+     "rank": 4,
+     "outlet_feature_id": 800018955,
+     "n_segments": 371,
+     "river_name": "Huleia Stream",
+     "display_name": "Huleia Stream",
+     "outlet_class": "coastal"
+    },
+    {
+     "rank": 5,
+     "outlet_feature_id": 800016093,
+     "n_segments": 353,
+     "river_name": "Wainiha River",
+     "display_name": "Wainiha River",
+     "outlet_class": "coastal"
+    }
+   ],
+   "name_rule_counts": {
+    "lake_outlet": 4,
+    "levelpath_gnis": 61,
+    "outlet_confluence": 2,
+    "unverified": 33
+   },
+   "n_lake_renamed": 6
+  },
+  "PRVI": {
+   "n_top": 100,
+   "top": [
+    {
+     "rank": 1,
+     "outlet_feature_id": 800040713,
+     "n_segments": 1541,
+     "river_name": "Río Grande De Loiza",
+     "display_name": "Río Grande De Loiza",
+     "outlet_class": "coastal"
+    },
+    {
+     "rank": 2,
+     "outlet_feature_id": 800040141,
+     "n_segments": 1086,
+     "river_name": "Río de la Plata",
+     "display_name": "Río de la Plata",
+     "outlet_class": "coastal"
+    },
+    {
+     "rank": 3,
+     "outlet_feature_id": 800023781,
+     "n_segments": 1000,
+     "river_name": "Río Grande de Añasco",
+     "display_name": "Río Grande de Añasco",
+     "outlet_class": "coastal"
+    },
+    {
+     "rank": 4,
+     "outlet_feature_id": 800035193,
+     "n_segments": 919,
+     "river_name": "Río Grande de Arecibo",
+     "display_name": "Río Grande de Arecibo",
+     "outlet_class": "coastal"
+    },
+    {
+     "rank": 5,
+     "outlet_feature_id": 800031171,
+     "n_segments": 772,
+     "river_name": "Río Grande de Manati",
+     "display_name": "Río Grande de Manati",
+     "outlet_class": "coastal"
+    }
+   ],
+   "name_rule_counts": {
+    "lake_outlet": 11,
+    "levelpath_gnis": 48,
+    "unverified": 41
+   },
+   "n_lake_renamed": 11
+  }
+ },
+ "lake_renames": {
+  "CONUS:29": {
+   "outlet_feature_id": 24719331,
+   "lake_id": 1477365,
+   "display_name": "Sabine Lake (Sabine River, Neches River)",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:33": {
+   "outlet_feature_id": 167578935,
+   "lake_id": 167166635,
+   "display_name": "Lake Pontchartrain (Amite River, Tangipahoa River, Tchefuncte River)",
+   "renamed": true,
+   "flags": [
+    "lake_name_from_gnis_point",
+    "tributary_below_lake"
+   ]
+  },
+  "CONUS:82": {
+   "outlet_feature_id": 1440477,
+   "lake_id": null,
+   "display_name": "San Jacinto River and Buffalo Bayou",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:85": {
+   "outlet_feature_id": 17159214,
+   "lake_id": null,
+   "display_name": "Mill Creek and Tule River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:95": {
+   "outlet_feature_id": 5846422,
+   "lake_id": null,
+   "display_name": "Pawtuckaway River and Piscataqua River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:98": {
+   "outlet_feature_id": 15842570,
+   "lake_id": null,
+   "display_name": "Vamori Wash and San Simon Wash",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:119": {
+   "outlet_feature_id": 7917743,
+   "lake_id": 120052284,
+   "display_name": "Goose Lake (Thomas Creek, Drews Creek, Dry Creek)",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:121": {
+   "outlet_feature_id": 18082798,
+   "lake_id": 166759522,
+   "display_name": "Big Lake (Biloxi River, Tchoutacabouffa River, Bernard, Bayou)",
+   "renamed": true,
+   "flags": [
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "CONUS:122": {
+   "outlet_feature_id": 943030266,
+   "lake_id": null,
+   "display_name": "Silva Creek and Mimbres River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:123": {
+   "outlet_feature_id": 23980371,
+   "lake_id": null,
+   "display_name": "White River and Puyallup River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:135": {
+   "outlet_feature_id": 7843189,
+   "lake_id": null,
+   "display_name": "Navidad River and Lavaca River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:142": {
+   "outlet_feature_id": 24044347,
+   "lake_id": 24052303,
+   "display_name": "Hart Lake (Deep Creek, Honey Creek, Fish Creek)",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:166": {
+   "outlet_feature_id": 16683705,
+   "lake_id": null,
+   "display_name": "Tolomato River and Matanzas River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:168": {
+   "outlet_feature_id": 15852025,
+   "lake_id": null,
+   "display_name": "Growler Wash and San Cristobal Wash",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:191": {
+   "outlet_feature_id": 14301857,
+   "lake_id": 14292945,
+   "display_name": "Lake Alice (Mauvais Coulee)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed"
+   ]
+  },
+  "CONUS:212": {
+   "outlet_feature_id": 24537862,
+   "lake_id": 24539574,
+   "display_name": "Lake Washington (Cedar River, Sammamish River)",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:228": {
+   "outlet_feature_id": 11392210,
+   "lake_id": null,
+   "display_name": "Currant Creek and Duckwater Creek",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:244": {
+   "outlet_feature_id": 17605441,
+   "lake_id": null,
+   "display_name": "Alisal Slough and Elkhorn Slough",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:256": {
+   "outlet_feature_id": 20849799,
+   "lake_id": null,
+   "display_name": "Nogal Arroyo and Salt Creek",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:298": {
+   "outlet_feature_id": 25068048,
+   "lake_id": 166196269,
+   "display_name": "Lake Memphremagog (Clyde River, Barton River, Black River)",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:309": {
+   "outlet_feature_id": 4769258,
+   "lake_id": null,
+   "display_name": "Wye East River and Wye River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:323": {
+   "outlet_feature_id": 20161695,
+   "lake_id": null,
+   "display_name": "Colleton River and Chechessee River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:355": {
+   "outlet_feature_id": 15182421,
+   "lake_id": 15176789,
+   "display_name": "Wax Lake (Bayou Blue, Hog Bayou, Leopard Bayou)",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:372": {
+   "outlet_feature_id": 24748285,
+   "lake_id": 12654491,
+   "display_name": "Upper Waterton Lake (Waterton River, Boundary Creek, Street Creek)",
+   "renamed": true,
+   "flags": [
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "CONUS:388": {
+   "outlet_feature_id": 20322614,
+   "lake_id": 20318000,
+   "display_name": "Lower Lake (Bare Creek)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed"
+   ]
+  },
+  "CONUS:393": {
+   "outlet_feature_id": 22383931,
+   "lake_id": 22361257,
+   "display_name": "Round Lake",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "tributary_below_lake"
+   ]
+  },
+  "CONUS:398": {
+   "outlet_feature_id": 17715840,
+   "lake_id": 17714708,
+   "display_name": "Playas Lake",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed"
+   ]
+  },
+  "CONUS:400": {
+   "outlet_feature_id": 6261976,
+   "lake_id": null,
+   "display_name": "Navesink River and Shrewsbury River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:401": {
+   "outlet_feature_id": 8077930,
+   "lake_id": null,
+   "display_name": "Sowbridge Branch and Broadkill River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:403": {
+   "outlet_feature_id": 22832490,
+   "lake_id": 120052369,
+   "display_name": "Snow Water Lake (Johnson Creek)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed"
+   ]
+  },
+  "CONUS:404": {
+   "outlet_feature_id": 944040176,
+   "lake_id": 18289778,
+   "display_name": "Hay Reservoir (Bush Creek, Red Creek)",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:407": {
+   "outlet_feature_id": 11690040,
+   "lake_id": null,
+   "display_name": "Otter Point Creek and Bush River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:409": {
+   "outlet_feature_id": 9302509,
+   "lake_id": null,
+   "display_name": "Mokowanis River and Belly River",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:412": {
+   "outlet_feature_id": 20315378,
+   "lake_id": 20314430,
+   "display_name": "Upper Lake (Bidwell Creek, Venning Creek)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed"
+   ]
+  },
+  "CONUS:415": {
+   "outlet_feature_id": 20287722,
+   "lake_id": 120053921,
+   "display_name": "Mono Lake (Rush Creek)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed"
+   ]
+  },
+  "CONUS:422": {
+   "outlet_feature_id": 9888492,
+   "lake_id": 9887942,
+   "display_name": "Hampton Lake (Southwest Branch Back River, Back River)",
+   "renamed": true,
+   "flags": [
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "CONUS:428": {
+   "outlet_feature_id": 9356820,
+   "lake_id": null,
+   "display_name": "West Carancahua Creek and East Carancahua Creek",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:430": {
+   "outlet_feature_id": 946050252,
+   "lake_id": 10734232,
+   "display_name": "Walker Lake (Walker River)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed"
+   ]
+  },
+  "CONUS:436": {
+   "outlet_feature_id": 25335151,
+   "lake_id": 21899931,
+   "display_name": "Lake Tom",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "CONUS:438": {
+   "outlet_feature_id": 17695739,
+   "lake_id": 17693783,
+   "display_name": "Vasona Reservoir (Los Gatos Creek, Guadalupe River)",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:441": {
+   "outlet_feature_id": 24061225,
+   "lake_id": 24068627,
+   "display_name": "Swan Lake (Fish Creek, Bald Mountain Creek)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "tributary_below_lake"
+   ]
+  },
+  "CONUS:459": {
+   "outlet_feature_id": 21901875,
+   "lake_id": 21899871,
+   "display_name": "Bayou Platte",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "CONUS:463": {
+   "outlet_feature_id": 9350061,
+   "lake_id": null,
+   "display_name": "Arenosa Creek and Garcitas Creek",
+   "renamed": true,
+   "flags": []
+  },
+  "CONUS:468": {
+   "outlet_feature_id": 22770726,
+   "lake_id": 22765290,
+   "display_name": "Bobs Lakes (Bayou Magill)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "CONUS:475": {
+   "outlet_feature_id": 90276,
+   "lake_id": 86222,
+   "display_name": "Lane Bay (Lane River, Roberts River)",
+   "renamed": true,
+   "flags": [
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "CONUS:494": {
+   "outlet_feature_id": 15838510,
+   "lake_id": 15838132,
+   "display_name": "Menagers Lake (Siovi Shuatak Wash, Pia Oik Wash, Ali Chuk Wash)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed"
+   ]
+  },
+  "AK:147": {
+   "outlet_feature_id": 75005400008444,
+   "lake_id": 75005400047674,
+   "display_name": "Kirschner Lake",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "HI:10": {
+   "outlet_feature_id": 800007533,
+   "lake_id": null,
+   "display_name": "Kealia Stream and Kapaa Stream",
+   "renamed": true,
+   "flags": []
+  },
+  "HI:18": {
+   "outlet_feature_id": 800006145,
+   "lake_id": 800022251,
+   "display_name": "Keālia Pond (Waikapu Stream)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "HI:31": {
+   "outlet_feature_id": 800005237,
+   "lake_id": 800021313,
+   "display_name": "De Mello Reservoir",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "HI:39": {
+   "outlet_feature_id": 800012023,
+   "lake_id": null,
+   "display_name": "Kaupuni Stream and Kawiwi Stream",
+   "renamed": true,
+   "flags": []
+  },
+  "HI:43": {
+   "outlet_feature_id": 800009458,
+   "lake_id": 800020541,
+   "display_name": "Aepoeha Reservoir",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed"
+   ]
+  },
+  "HI:79": {
+   "outlet_feature_id": 800002322,
+   "lake_id": 800021704,
+   "display_name": "Keawanui Bay",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "PRVI:19": {
+   "outlet_feature_id": 800024696,
+   "lake_id": 800043166,
+   "display_name": "Lago Guayabal (Río Toa Vaca)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "PRVI:26": {
+   "outlet_feature_id": 800031808,
+   "lake_id": 800045562,
+   "display_name": "Lago Patillas (Río Marín)",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "PRVI:30": {
+   "outlet_feature_id": 800041718,
+   "lake_id": 800046805,
+   "display_name": "Fredensborg Pond",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point",
+    "tributary_below_lake"
+   ]
+  },
+  "PRVI:67": {
+   "outlet_feature_id": 800041858,
+   "lake_id": 800047045,
+   "display_name": "Great Pond",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "PRVI:72": {
+   "outlet_feature_id": 800038854,
+   "lake_id": 800044790,
+   "display_name": "Laguna Joyuda",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "PRVI:77": {
+   "outlet_feature_id": 800040930,
+   "lake_id": 800043869,
+   "display_name": "Laguna Playa Grande",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "PRVI:80": {
+   "outlet_feature_id": 800036278,
+   "lake_id": 800045145,
+   "display_name": "Laguna de Pinoñes",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "PRVI:83": {
+   "outlet_feature_id": 800041961,
+   "lake_id": 800046973,
+   "display_name": "Manchenil Bay",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "PRVI:88": {
+   "outlet_feature_id": 800035784,
+   "lake_id": 800044616,
+   "display_name": "Mar Negro",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "PRVI:89": {
+   "outlet_feature_id": 800040949,
+   "lake_id": 800046571,
+   "display_name": "Laguna Yanuel",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  },
+  "PRVI:93": {
+   "outlet_feature_id": 800030198,
+   "lake_id": 800044340,
+   "display_name": "Laguna El Pobre",
+   "renamed": true,
+   "flags": [
+    "inflow_unnamed",
+    "lake_name_from_gnis_point"
+   ]
+  }
+ },
+ "subrivers_ext": {
+  "ak_susitna": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75000200000234,
+   "n_segments": 121538,
+   "n_reaches": 89288,
+   "longest_path_reaches": 488,
+   "network_rank": 1
+  },
+  "ak_copper": {
+   "status": "gnis_points",
+   "mouth_feature_id": 19020190101757,
+   "n_segments": 73370,
+   "n_reaches": 73368,
+   "longest_path_reaches": 455,
+   "network_rank": 2
+  },
+  "ak_matanuska": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75000400000017,
+   "n_segments": 32586,
+   "n_reaches": 26821,
+   "longest_path_reaches": 260,
+   "network_rank": 3
+  },
+  "ak_knik": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75000100000409,
+   "n_segments": 5866,
+   "n_reaches": 4503,
+   "longest_path_reaches": 203,
+   "network_rank": 9
+  },
+  "ak_kenai": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75004400010386,
+   "n_segments": 5761,
+   "n_reaches": 4343,
+   "longest_path_reaches": 229,
+   "network_rank": 10
+  },
+  "ak_little_susitna": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75000200010768,
+   "n_segments": 3920,
+   "n_reaches": 3372,
+   "longest_path_reaches": 305,
+   "network_rank": 11
+  },
+  "ak_kasilof": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75004300002688,
+   "n_segments": 1152,
+   "n_reaches": 898,
+   "longest_path_reaches": 79,
+   "network_rank": 31
+  },
+  "ak_yentna": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75000200005370,
+   "n_segments": 40669,
+   "n_reaches": 29346,
+   "longest_path_reaches": 315,
+   "network_rank": 1
+  },
+  "ak_skwentna": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75000600005135,
+   "n_segments": 18085,
+   "n_reaches": 13140,
+   "longest_path_reaches": 265,
+   "network_rank": 1
+  },
+  "ak_chulitna": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75000200003344,
+   "n_segments": 15839,
+   "n_reaches": 12051,
+   "longest_path_reaches": 206,
+   "network_rank": 1
+  },
+  "ak_talkeetna": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75000300014464,
+   "n_segments": 28652,
+   "n_reaches": 22174,
+   "longest_path_reaches": 330,
+   "network_rank": 1
+  },
+  "ak_deshka": {
+   "status": "gnis_points",
+   "mouth_feature_id": 75000200003138,
+   "n_segments": 2485,
+   "n_reaches": 1837,
+   "longest_path_reaches": 224,
+   "network_rank": 1
+  },
+  "ak_chitina": {
+   "status": "gnis_points",
+   "mouth_feature_id": 19020190030951,
+   "n_segments": 12801,
+   "n_reaches": 12801,
+   "longest_path_reaches": 177,
+   "network_rank": 2
+  },
+  "ak_gulkana": {
+   "status": "gnis_points",
+   "mouth_feature_id": 19020190014490,
+   "n_segments": 2059,
+   "n_reaches": 2057,
+   "longest_path_reaches": 144,
+   "network_rank": 2
+  },
+  "ak_tazlina": {
+   "status": "gnis_points",
+   "mouth_feature_id": 19020190015896,
+   "n_segments": 4913,
+   "n_reaches": 4913,
+   "longest_path_reaches": 151,
+   "network_rank": 2
+  },
+  "ak_klutina": {
+   "status": "gnis_points",
+   "mouth_feature_id": 19020190017502,
+   "n_segments": 3830,
+   "n_reaches": 3830,
+   "longest_path_reaches": 133,
+   "network_rank": 2
+  },
+  "ak_tonsina": {
+   "status": "gnis_points",
+   "mouth_feature_id": 19020190025844,
+   "n_segments": 3146,
+   "n_reaches": 3146,
+   "longest_path_reaches": 173,
+   "network_rank": 2
+  },
+  "hi_waimea": {
+   "status": "confident",
+   "mouth_feature_id": 800013609,
+   "n_segments": 723,
+   "n_reaches": 475,
+   "longest_path_reaches": 49,
+   "network_rank": 1
+  },
+  "hi_makaweli": {
+   "status": "confident",
+   "mouth_feature_id": 800009206,
+   "n_segments": 204,
+   "n_reaches": 149,
+   "longest_path_reaches": 32,
+   "network_rank": 1
+  },
+  "hi_wailua": {
+   "status": "confident",
+   "mouth_feature_id": 800007520,
+   "n_segments": 571,
+   "n_reaches": 300,
+   "longest_path_reaches": 29,
+   "network_rank": 2
+  },
+  "hi_hanalei": {
+   "status": "confident",
+   "mouth_feature_id": 800013880,
+   "n_segments": 251,
+   "n_reaches": 173,
+   "longest_path_reaches": 44,
+   "network_rank": 6
+  },
+  "hi_hanapepe": {
+   "status": "confident",
+   "mouth_feature_id": 800015984,
+   "n_segments": 233,
+   "n_reaches": 159,
+   "longest_path_reaches": 34,
+   "network_rank": 8
+  },
+  "hi_wainiha": {
+   "status": "confident",
+   "mouth_feature_id": 800016093,
+   "n_segments": 353,
+   "n_reaches": 254,
+   "longest_path_reaches": 64,
+   "network_rank": 5
+  },
+  "hi_wailuku": {
+   "status": "confident",
+   "mouth_feature_id": 800013463,
+   "n_segments": 515,
+   "n_reaches": 128,
+   "longest_path_reaches": 26,
+   "network_rank": 3
+  },
+  "hi_kaukonahua": {
+   "status": "confident",
+   "mouth_feature_id": 800000846,
+   "n_segments": 233,
+   "n_reaches": 145,
+   "longest_path_reaches": 23,
+   "network_rank": 7
+  },
+  "pr_loiza": {
+   "status": "confident",
+   "mouth_feature_id": 800040713,
+   "n_segments": 1541,
+   "n_reaches": 1097,
+   "longest_path_reaches": 83,
+   "network_rank": 1
+  },
+  "pr_gurabo": {
+   "status": "confident",
+   "mouth_feature_id": 800027632,
+   "n_segments": 400,
+   "n_reaches": 299,
+   "longest_path_reaches": 43,
+   "network_rank": 1
+  },
+  "pr_plata": {
+   "status": "confident",
+   "mouth_feature_id": 800040141,
+   "n_segments": 1086,
+   "n_reaches": 867,
+   "longest_path_reaches": 100,
+   "network_rank": 2
+  },
+  "pr_arecibo": {
+   "status": "confident",
+   "mouth_feature_id": 800035193,
+   "n_segments": 919,
+   "n_reaches": 758,
+   "longest_path_reaches": 72,
+   "network_rank": 4
+  },
+  "pr_caonillas": {
+   "status": "confident",
+   "mouth_feature_id": 800026702,
+   "n_segments": 349,
+   "n_reaches": 311,
+   "longest_path_reaches": 63,
+   "network_rank": 4
+  },
+  "pr_anasco": {
+   "status": "confident",
+   "mouth_feature_id": 800023781,
+   "n_segments": 1000,
+   "n_reaches": 850,
+   "longest_path_reaches": 108,
+   "network_rank": 3
+  },
+  "pr_manati": {
+   "status": "confident",
+   "mouth_feature_id": 800031171,
+   "n_segments": 772,
+   "n_reaches": 648,
+   "longest_path_reaches": 73,
+   "network_rank": 5
+  },
+  "pr_culebrinas": {
+   "status": "confident",
+   "mouth_feature_id": 800034544,
+   "n_segments": 661,
+   "n_reaches": 535,
+   "longest_path_reaches": 64,
+   "network_rank": 6
+  },
+  "pr_guanajibo": {
+   "status": "confident",
+   "mouth_feature_id": 800023776,
+   "n_segments": 645,
+   "n_reaches": 529,
+   "longest_path_reaches": 52,
+   "network_rank": 7
+  },
+  "pr_cibuco": {
+   "status": "confident",
+   "mouth_feature_id": 800027114,
+   "n_segments": 252,
+   "n_reaches": 215,
+   "longest_path_reaches": 39,
+   "network_rank": 10
+  }
+ },
+ "lake_inflow_subrivers": {
+  "CONUS:29:Sabine River": {
+   "mouth_feature_id": 1477597,
+   "n_segments": 5837
+  },
+  "CONUS:29:Neches River": {
+   "mouth_feature_id": 1477599,
+   "n_segments": 5641
+  },
+  "CONUS:33:Amite River": {
+   "mouth_feature_id": 15208243,
+   "n_segments": 4697
+  },
+  "CONUS:33:Tangipahoa River": {
+   "mouth_feature_id": 18976571,
+   "n_segments": 1208
+  },
+  "CONUS:33:Tchefuncte River": {
+   "mouth_feature_id": 938090191,
+   "n_segments": 564
+  },
+  "CONUS:33:Bogue Chitto": {
+   "mouth_feature_id": 22762964,
+   "n_segments": 2327
+  },
+  "CONUS:82:San Jacinto River": {
+   "mouth_feature_id": 1440475,
+   "n_segments": 1518
+  },
+  "CONUS:82:Buffalo Bayou": {
+   "mouth_feature_id": 1440485,
+   "n_segments": 415
+  },
+  "CONUS:85:Mill Creek": {
+   "mouth_feature_id": 17155464,
+   "n_segments": 1145
+  },
+  "CONUS:85:Tule River": {
+   "mouth_feature_id": 17155470,
+   "n_segments": 621
+  },
+  "CONUS:95:Pawtuckaway River": {
+   "mouth_feature_id": 5846392,
+   "n_segments": 788
+  },
+  "CONUS:95:Piscataqua River": {
+   "mouth_feature_id": 5846388,
+   "n_segments": 740
+  },
+  "CONUS:98:Vamori Wash": {
+   "mouth_feature_id": 15842122,
+   "n_segments": 1136
+  },
+  "CONUS:98:San Simon Wash": {
+   "mouth_feature_id": 15842124,
+   "n_segments": 307
+  },
+  "CONUS:119:Thomas Creek": {
+   "mouth_feature_id": 7916407,
+   "n_segments": 406
+  },
+  "CONUS:119:Drews Creek": {
+   "mouth_feature_id": 7916551,
+   "n_segments": 257
+  },
+  "CONUS:119:Dry Creek": {
+   "mouth_feature_id": 7917501,
+   "n_segments": 59
+  },
+  "CONUS:121:Biloxi River": {
+   "mouth_feature_id": 18082786,
+   "n_segments": 541
+  },
+  "CONUS:121:Tchoutacabouffa River": {
+   "mouth_feature_id": 18073062,
+   "n_segments": 333
+  },
+  "CONUS:121:Bernard, Bayou": {
+   "mouth_feature_id": 18077078,
+   "n_segments": 116
+  },
+  "CONUS:122:Silva Creek": {
+   "mouth_feature_id": 17705849,
+   "n_segments": 584
+  },
+  "CONUS:122:Mimbres River": {
+   "mouth_feature_id": 943030267,
+   "n_segments": 327
+  },
+  "CONUS:123:White River": {
+   "mouth_feature_id": 23980801,
+   "n_segments": 540
+  },
+  "CONUS:123:Puyallup River": {
+   "mouth_feature_id": 23980379,
+   "n_segments": 427
+  },
+  "CONUS:135:Navidad River": {
+   "mouth_feature_id": 7847707,
+   "n_segments": 433
+  },
+  "CONUS:135:Lavaca River": {
+   "mouth_feature_id": 7843177,
+   "n_segments": 336
+  },
+  "CONUS:142:Deep Creek": {
+   "mouth_feature_id": 947120025,
+   "n_segments": 392
+  },
+  "CONUS:142:Honey Creek": {
+   "mouth_feature_id": 24043069,
+   "n_segments": 202
+  },
+  "CONUS:142:Fish Creek": {
+   "mouth_feature_id": 24044883,
+   "n_segments": 86
+  },
+  "CONUS:166:Tolomato River": {
+   "mouth_feature_id": 16684245,
+   "n_segments": 433
+  },
+  "CONUS:166:Matanzas River": {
+   "mouth_feature_id": 16683723,
+   "n_segments": 180
+  },
+  "CONUS:168:Growler Wash": {
+   "mouth_feature_id": 15852077,
+   "n_segments": 485
+  },
+  "CONUS:168:San Cristobal Wash": {
+   "mouth_feature_id": 15852063,
+   "n_segments": 111
+  },
+  "CONUS:191:Mauvais Coulee": {
+   "mouth_feature_id": 14293861,
+   "n_segments": 257
+  },
+  "CONUS:212:Cedar River": {
+   "mouth_feature_id": 24537872,
+   "n_segments": 205
+  },
+  "CONUS:212:Sammamish River": {
+   "mouth_feature_id": 24537878,
+   "n_segments": 193
+  },
+  "CONUS:228:Currant Creek": {
+   "mouth_feature_id": 11391759,
+   "n_segments": 203
+  },
+  "CONUS:228:Duckwater Creek": {
+   "mouth_feature_id": 11391762,
+   "n_segments": 170
+  },
+  "CONUS:244:Alisal Slough": {
+   "mouth_feature_id": 17605449,
+   "n_segments": 241
+  },
+  "CONUS:244:Elkhorn Slough": {
+   "mouth_feature_id": 17605437,
+   "n_segments": 110
+  },
+  "CONUS:256:Nogal Arroyo": {
+   "mouth_feature_id": 20849611,
+   "n_segments": 248
+  },
+  "CONUS:256:Salt Creek": {
+   "mouth_feature_id": 20849609,
+   "n_segments": 76
+  },
+  "CONUS:298:Clyde River": {
+   "mouth_feature_id": 4599753,
+   "n_segments": 100
+  },
+  "CONUS:298:Barton River": {
+   "mouth_feature_id": 4599973,
+   "n_segments": 81
+  },
+  "CONUS:298:Black River": {
+   "mouth_feature_id": 4599975,
+   "n_segments": 55
+  },
+  "CONUS:309:Wye East River": {
+   "mouth_feature_id": 4774698,
+   "n_segments": 138
+  },
+  "CONUS:309:Wye River": {
+   "mouth_feature_id": 4769606,
+   "n_segments": 100
+  },
+  "CONUS:323:Colleton River": {
+   "mouth_feature_id": 20155515,
+   "n_segments": 120
+  },
+  "CONUS:323:Chechessee River": {
+   "mouth_feature_id": 20161731,
+   "n_segments": 112
+  },
+  "CONUS:355:Bayou Blue": {
+   "mouth_feature_id": 15182255,
+   "n_segments": 97
+  },
+  "CONUS:355:Hog Bayou": {
+   "mouth_feature_id": 15182379,
+   "n_segments": 63
+  },
+  "CONUS:355:Leopard Bayou": {
+   "mouth_feature_id": 15180901,
+   "n_segments": 14
+  },
+  "CONUS:372:Waterton River": {
+   "mouth_feature_id": 9302577,
+   "n_segments": 109
+  },
+  "CONUS:372:Boundary Creek": {
+   "mouth_feature_id": 9302477,
+   "n_segments": 42
+  },
+  "CONUS:372:Street Creek": {
+   "mouth_feature_id": 9302499,
+   "n_segments": 12
+  },
+  "CONUS:388:Bare Creek": {
+   "mouth_feature_id": 20318546,
+   "n_segments": 39
+  },
+  "CONUS:400:Navesink River": {
+   "mouth_feature_id": 6261978,
+   "n_segments": 126
+  },
+  "CONUS:400:Shrewsbury River": {
+   "mouth_feature_id": 6264196,
+   "n_segments": 42
+  },
+  "CONUS:401:Sowbridge Branch": {
+   "mouth_feature_id": 8078044,
+   "n_segments": 66
+  },
+  "CONUS:401:Broadkill River": {
+   "mouth_feature_id": 8077942,
+   "n_segments": 41
+  },
+  "CONUS:403:Johnson Creek": {
+   "mouth_feature_id": 22821322,
+   "n_segments": 15
+  },
+  "CONUS:404:Bush Creek": {
+   "mouth_feature_id": 18290530,
+   "n_segments": 134
+  },
+  "CONUS:404:Red Creek": {
+   "mouth_feature_id": 18290524,
+   "n_segments": 33
+  },
+  "CONUS:407:Otter Point Creek": {
+   "mouth_feature_id": 11689852,
+   "n_segments": 90
+  },
+  "CONUS:407:Bush River": {
+   "mouth_feature_id": 11694016,
+   "n_segments": 54
+  },
+  "CONUS:409:Mokowanis River": {
+   "mouth_feature_id": 9302677,
+   "n_segments": 79
+  },
+  "CONUS:409:Belly River": {
+   "mouth_feature_id": 9302685,
+   "n_segments": 59
+  },
+  "CONUS:412:Bidwell Creek": {
+   "mouth_feature_id": 20314658,
+   "n_segments": 19
+  },
+  "CONUS:412:Venning Creek": {
+   "mouth_feature_id": 20314646,
+   "n_segments": 11
+  },
+  "CONUS:415:Rush Creek": {
+   "mouth_feature_id": 20287298,
+   "n_segments": 121
+  },
+  "CONUS:422:Southwest Branch Back River": {
+   "mouth_feature_id": 9888576,
+   "n_segments": 67
+  },
+  "CONUS:422:Back River": {
+   "mouth_feature_id": 9888510,
+   "n_segments": 50
+  },
+  "CONUS:428:West Carancahua Creek": {
+   "mouth_feature_id": 9356644,
+   "n_segments": 71
+  },
+  "CONUS:428:East Carancahua Creek": {
+   "mouth_feature_id": 9356646,
+   "n_segments": 54
+  },
+  "CONUS:430:Walker River": {
+   "mouth_feature_id": 10734312,
+   "n_segments": 87
+  },
+  "CONUS:438:Los Gatos Creek": {
+   "mouth_feature_id": 17694149,
+   "n_segments": 76
+  },
+  "CONUS:438:Guadalupe River": {
+   "mouth_feature_id": 17694189,
+   "n_segments": 69
+  },
+  "CONUS:441:Fish Creek": {
+   "mouth_feature_id": 24061421,
+   "n_segments": 45
+  },
+  "CONUS:441:Bald Mountain Creek": {
+   "mouth_feature_id": 24061415,
+   "n_segments": 27
+  },
+  "CONUS:441:Catnip Creek": {
+   "mouth_feature_id": 24061239,
+   "n_segments": 52
+  },
+  "CONUS:463:Arenosa Creek": {
+   "mouth_feature_id": 9349349,
+   "n_segments": 66
+  },
+  "CONUS:463:Garcitas Creek": {
+   "mouth_feature_id": 9349353,
+   "n_segments": 65
+  },
+  "CONUS:468:Bayou Magill": {
+   "mouth_feature_id": 167578915,
+   "n_segments": 89
+  },
+  "CONUS:475:Lane River": {
+   "mouth_feature_id": 90248,
+   "n_segments": 110
+  },
+  "CONUS:475:Roberts River": {
+   "mouth_feature_id": 90246,
+   "n_segments": 24
+  },
+  "CONUS:494:Siovi Shuatak Wash": {
+   "mouth_feature_id": 15838488,
+   "n_segments": 53
+  },
+  "CONUS:494:Pia Oik Wash": {
+   "mouth_feature_id": 15838494,
+   "n_segments": 42
+  },
+  "CONUS:494:Ali Chuk Wash": {
+   "mouth_feature_id": 15838490,
+   "n_segments": 12
+  },
+  "HI:10:Kealia Stream": {
+   "mouth_feature_id": 800009771,
+   "n_segments": 76
+  },
+  "HI:10:Kapaa Stream": {
+   "mouth_feature_id": 800000751,
+   "n_segments": 56
+  },
+  "HI:18:Waikapu Stream": {
+   "mouth_feature_id": 800012823,
+   "n_segments": 85
+  },
+  "HI:39:Kaupuni Stream": {
+   "mouth_feature_id": 800014216,
+   "n_segments": 44
+  },
+  "HI:39:Kawiwi Stream": {
+   "mouth_feature_id": 800014215,
+   "n_segments": 14
+  },
+  "PRVI:19:Río Toa Vaca": {
+   "mouth_feature_id": 800029032,
+   "n_segments": 56
+  },
+  "PRVI:26:Río Marín": {
+   "mouth_feature_id": 800031839,
+   "n_segments": 22
+  }
+ },
+ "bays": {
+  "Galveston Bay": {
+   "n_networks_ending_nearby": 3,
+   "contained_in": "network outlet 1561634 (not listed) (nearest segment 7.8 km from the GNIS point)"
+  },
+  "Sabine Lake": {
+   "n_networks_ending_nearby": 1,
+   "contained_in": "#29 Sabine Lake (Sabine River, Neches River) (nearest segment 1.9 km from the GNIS point)"
+  },
+  "Lake Pontchartrain": {
+   "n_networks_ending_nearby": 0,
+   "contained_in": "#33 Lake Pontchartrain (Amite River, Tangipahoa River, Tchefuncte River) (nearest segment 1.1 km from the GNIS point)"
+  },
+  "Mobile Bay": {
+   "n_networks_ending_nearby": 3,
+   "contained_in": "network outlet 18516924 (not listed) (nearest segment 10.0 km from the GNIS point)"
+  },
+  "Chesapeake Bay": {
+   "n_networks_ending_nearby": 29,
+   "contained_in": "#16 Potomac River (nearest segment 12.4 km from the GNIS point)"
+  },
+  "Delaware Bay": {
+   "n_networks_ending_nearby": 7,
+   "contained_in": "network outlet 9485228 (not listed) (nearest segment 16.1 km from the GNIS point)"
+  },
+  "San Francisco Bay": {
+   "n_networks_ending_nearby": 11,
+   "contained_in": "network outlet 2803913 (not listed) (nearest segment 7.3 km from the GNIS point)"
+  },
+  "Puget Sound": {
+   "n_networks_ending_nearby": 10,
+   "contained_in": "network outlet 23990171 (not listed) (nearest segment 5.6 km from the GNIS point)"
+  },
+  "Pamlico Sound": {
+   "n_networks_ending_nearby": 3,
+   "contained_in": "network outlet 3359242 (not listed) (nearest segment 16.1 km from the GNIS point)"
+  },
+  "Albemarle Sound": {
+   "n_networks_ending_nearby": 4,
+   "contained_in": "network outlet 10477167 (not listed) (nearest segment 5.2 km from the GNIS point)"
+  },
+  "Lake Okeechobee": {
+   "n_networks_ending_nearby": 0,
+   "contained_in": "#68 Saint Lucie River (nearest segment 4.3 km from the GNIS point)"
+  },
+  "Great Salt Lake": {
+   "n_networks_ending_nearby": 5,
+   "contained_in": "network outlet 1190013 (not listed) (nearest segment 8.9 km from the GNIS point)"
+  },
+  "Lake Tahoe": {
+   "n_networks_ending_nearby": 0,
+   "contained_in": "#76 Truckee River (nearest segment 0.6 km from the GNIS point)"
+  }
+ }
+}
