@@ -133,7 +133,7 @@ just-in-time (JIT) scheduling. Hover a bar to light up that band on the map.</p>
   <div class="panel"><div id="map" role="region" aria-label="Map of NWM rivers"></div>
     <div class="legend" aria-label="Map legend">
       <span><span class="sw" style="background:var(--accent)"></span>selected river or network</span>
-      <span><span class="sw" style="background:var(--place)"></span>upstream of selected point</span>
+      <span id="lg-up"><span class="sw" style="background:var(--place)"></span>upstream of selected point</span>
       <span id="lg-band" hidden><span class="sw" style="background:var(--ink)"></span>hovered histogram band</span>
       <span id="lg-border" hidden><span class="ln"></span>outside the U.S. · <span class="ln" style="border-top-style:dotted"></span>along the boundary</span>
       <label class="chk"><input id="bshow" type="checkbox"> Show border channels</label>
@@ -478,6 +478,8 @@ async function initMap() {
   const map = S.map = new maplibregl.Map({ container: "map", style, center: [-96.5, 38.5], zoom: 3.2, attributionControl: {compact: true} });
   map.addControl(new maplibregl.NavigationControl({showCompass: false}), "top-right");
   const srcs = S.srcs = await tileSources(), tiles = srcs.length > 0;
+  // overview tiles carry no preorder fields: hide the upstream-of-point legend entry there
+  $("#lg-up").hidden = !(tiles && srcs[0].endsWith("flowlines.pmtiles"));
   $("#tilesrc").textContent = tiles ? `River tiles: ${srcs.join(", ")}${srcs[0].endsWith("flowlines.pmtiles") ? "" : " (overview: large rivers only; upstream-of-point and waterbodies need the full tiles)"}` : "River tiles not found: run explorer/fetch_data.py or explorer/scripts/build_map_data.py (see DATA_CONTRACT.md). The tables and histogram still work.";
   map.on("load", async () => {
     const outlets = await getJSON("data/outlets.geojson", null);
