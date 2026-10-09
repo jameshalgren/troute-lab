@@ -12,8 +12,8 @@ They were built for a forthcoming paper on the origins of T-Route (see [Citation
 and are useful beyond it.
 
 > **AI assistance.** Most of the code and text here was drafted with an AI assistant
-> (Anthropic's Claude) working for James Halgren, and much of it has not yet been reviewed by
-> him. The explorer page carries an "AI-generated view · not approved" badge, and the
+> (Anthropic's Claude) working for James Halgren. He and his students are working on reviewing everything.
+> If you would like to help with the review, please reach out to him. The explorer page carries an "AI-generated view · not approved" badge, and the
 > READMEs say what has been reviewed. Check the results before you rely on them.
 
 ## Basin explorer

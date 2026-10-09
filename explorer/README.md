@@ -11,25 +11,23 @@ and places (gages, forecast points, reservoirs, dams, bridges).
 
 ## Quick start
 
-**Just look at it**: the hosted copy is at <https://jameshalgren.github.io/troute-lab/> (GitHub Pages, overview tiles).
-Locally, download the web data bundle (about 31 MB, SHA-256 checked; it is a release
-asset, not in git) and serve:
+**Just look at it**: the hosted copy is at <https://jameshalgren.github.io/troute-lab/> (GitHub Pages; every river
+and waterbody, from the web tileset). Locally, download the web data bundle (about
+433 MB, SHA-256 checked; release assets, not in git) and serve:
 
 ```sh
 uv run explorer/fetch_data.py       # -> explorer/data/
 uv run explorer/serve.py            # then open http://localhost:8765/
 ```
 
-This uses the overview tiles (`flowlines_overview.pmtiles`: CONUS, 14.4 MB;
-`flowlines_overview_other.pmtiles`: AK/HI/PRVI, 2.7 MB). Everything works except two
-features that need the full tiles: rivers below stream order 5 (CONUS/AK) are not drawn,
-so "upstream of this point" (the orange highlight after a map click) and the waterbody
-polygons are unavailable. Tables, histograms, domain switcher, selection, band hover,
-places, and the transboundary column all work. For the full-resolution tiles (983 MB,
-local use only: GitHub Pages allows at most 100 MB per file) run
-`uv run explorer/fetch_data.py --full`. Bundle versions, URLs and checksums are in
-`data_bundles.json`; `--source hydroshare` or `--source <URL or directory>` selects a
-mirror.
+This uses the web tileset (`tiles.json` and `web_*.pmtiles`, see "Web tileset" below),
+on which everything works, including "upstream of this point" (the orange highlight
+after a map click) and the waterbody polygons; above zoom 10 the map enlarges the z10
+tiles. `uv run explorer/fetch_data.py --full` also downloads the single full-resolution
+file `flowlines.pmtiles` (983 MB, z3-12; too large for GitHub Pages, which allows at most
+100 MB per file); the page uses it when `explorer/data/tiles.json` is absent. Bundle
+versions, URLs and checksums are in `data_bundles.json`; `--source hydroshare` or
+`--source <URL or directory>` selects a mirror.
 
 **Rebuild everything** (full tiles, all data):
 
@@ -64,6 +62,7 @@ mirror.
    | 0 | `uv run explorer/scripts/build_boundary.py` | ~3 min | `data/explorer/segment_boundary.parquet` |
    | 1 | `uv run explorer/scripts/build_codes.py` | ~10 s | `rivers.json`, `data/explorer/segment_attrs.parquet` |
    | 2 | `uv run explorer/scripts/build_map_data.py` | ~2.5–3.5 min | tiles, `widths.json`, `bboxes.json`, `outlets.geojson` |
+   | 2b | `uv run explorer/scripts/build_web_tiles.py` (hosted site only) | ~1.5 min | web tileset `data/explorer/web/` (see "Web tileset") |
    | 3 | `uv run explorer/scripts/build_places.py` | ~2 min cached; ~20 min first run | `places.json`, `data/explorer/T_places.csv` (gitignored) |
 
 5. `uv run explorer/serve.py` and open <http://localhost:8765/>.
@@ -71,7 +70,8 @@ mirror.
 Disk after a full build: `data/` ≈ 9 GB (hydrofabric tarball 3.25 GB, which can be deleted
 after unpacking; geodatabase 4.7 GB; RouteLink 0.3 GB; scratch FlatGeobuf files and
 caches 2.3 GB), plus `explorer/data/flowlines.pmtiles` (983 MB, gitignored).
-Web data bundle (`explorer/fetch_data.py`, not in git) ≈ 31 MB (overview tiles 17.1, places 12.8, JSON 1.2).
+Web data bundle (`explorer/fetch_data.py`, not in git) ≈ 433 MB (web tileset 419.3,
+places 12.8, JSON 1.2).
 
 Known service problem: the USGS NHDPlus HR map service returned HTTP 502/504 or took
 > 100 s per query on 2026-10-07. On 2026-10-08 its queries by `nhdplusid` answered (12–98 s
@@ -203,8 +203,8 @@ dotted; the selected river's outside channel is dashed in the highlight color.
 ## Building the map data (details)
 
 `explorer/scripts/build_map_data.py` writes `widths.json`, `bboxes.json`,
-`outlets.geojson`, `flowlines_overview.pmtiles` and `flowlines_overview_other.pmtiles`
-(web data bundle) and `flowlines.pmtiles` (gitignored) into `explorer/data/`.
+`outlets.geojson` (web data bundle), `flowlines_overview.pmtiles` and
+`flowlines_overview_other.pmtiles` (not published) and `flowlines.pmtiles` (gitignored) into `explorer/data/`.
 
 ```sh
 uv run explorer/scripts/build_map_data.py                  # everything
@@ -238,6 +238,38 @@ its own properties. Thresholds are constants at the top of the script.
 `flowlines_overview.pmtiles` 14.35 MB; `flowlines_overview_other.pmtiles` 2.74 MB;
 `widths.json` 0.35 MB; `bboxes.json` 0.05 MB; `outlets.geojson` 0.19 MB; `rivers.json`
 0.58 MB. Scratch FlatGeobuf files in `data/explorer/` ≈ 2.1 GB (gitignored).
+
+**Web tileset (hosted site).** GitHub Pages serves at most 100 MB per file and about 1 GB
+per site, so the hosted explorer cannot use `flowlines.pmtiles`. `build_web_tiles.py`
+(after `build_map_data.py`; needs `data/explorer/flow.fgb` and `waterbodies.fgb`) makes a
+tile set with the same layers and fields up to zoom 10, in files under 95 MB each:
+
+```sh
+uv run explorer/scripts/build_web_tiles.py                     # ~1.5 min -> data/explorer/web/
+uv run explorer/scripts/build_web_tiles.py --skip-tippecanoe   # re-split the earlier z3-10 build
+```
+
+One tippecanoe run (the full tiles' command with `-z 10`) writes
+`data/explorer/web/_z3_10.pmtiles`; its tiles are copied byte for byte into
+`web_low.pmtiles` (z3–8, all domains, orders by zoom as in the table above, waterbodies
+z6+) and five regional files (z9–10, every segment and waterbody). A regional file holds a
+band of z9 tile columns, so each z9 and z10 tile is in exactly one file: no features are
+duplicated or cut at the seams. `tiles.json` lists each file with its zoom range, bounds,
+size and SHA-256; the page shows `web_low` below zoom 9 and the regional files from zoom 9
+on, overzooming the z10 tiles at higher zooms. The script checks the size limit, that the
+files hold every tile of the z3–10 build exactly once, and that probe tiles (St. Louis,
+both sides of each seam, Anchorage, Honolulu, San Juan) are identical to the source and
+carry `p` and `z`. Two runs on 2026-10-09 gave identical files (SHA-256 in `tiles.json`).
+
+| file | zooms | z9 tile columns (west edge) | MB (2026-10-09) |
+|---|---|---|---|
+| `web_low.pmtiles` | 3–8 | all | 63.3 |
+| `web_akhi.pmtiles` (Alaska, Hawaii) | 9–10 | 0–77 | 33.9 |
+| `web_west.pmtiles` | 9–10 | 78–99 (−125.16°) | 76.4 |
+| `web_plains.pmtiles` | 9–10 | 100–117 (−109.69°) | 79.9 |
+| `web_central.pmtiles` | 9–10 | 118–130 (−97.03°) | 79.0 |
+| `web_east.pmtiles` (incl. PRVI) | 9–10 | 131–511 (−87.89°) | 86.8 |
+| total | | | 419.3 |
 
 <!-- places:start (generated by explorer/scripts/build_places.py; edits here are overwritten) -->
 ## Places of interest

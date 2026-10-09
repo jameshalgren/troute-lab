@@ -1,9 +1,12 @@
 # Basin explorer: data contract
 
 The explorer (`explorer/index.html`) reads these files from `explorer/data/`.
-Each file has exactly one producer. Files in the web data bundle (a release asset fetched by `explorer/fetch_data.py`; no data
-is committed to git) stay small: each ≤ ~15 MB, total budget ≈ 35 MB (2026-10-07: 14.4 + 2.7 MB overview tiles, 12.8 MB places, ~1.2 MB JSON). The full
-tiles are an optional separate download (`fetch_data.py --full`) or are rebuilt by script.
+Each file has exactly one producer. The web data bundle (release assets fetched by `explorer/fetch_data.py`; no data is
+committed to git) holds the JSON files (places 12.8 MB, the rest ~1.2 MB) and the web
+tileset (`tiles.json`, `web_*.pmtiles`; each file < 95 MB, 419 MB in all, 2026-10-09).
+The overview tiles are not published (the page needs them only when there is no web
+tileset). The full tiles are an optional separate download (`fetch_data.py --full`) or
+are rebuilt by script.
 
 The explorer covers all four NWM v3.1.6 domains: **CONUS**, **AK** (Alaska: Cook Inlet and
 the Copper River only; that is all the NWM Alaska domain contains), **HI** and **PRVI**
@@ -16,8 +19,9 @@ the Copper River only; that is all the NWM Alaska domain contains), **HI** and *
 | `bboxes.json` | `build_map_data.py` | yes | `{code: [west, south, east, north]}` |
 | `outlets.geojson` | `build_map_data.py` | yes | Points: listed network outlets and sub-river mouths; `properties: {code, name, kind, dom}` |
 | `flowlines.pmtiles` | `build_map_data.py` (tippecanoe) | **no** (optional download, `fetch_data.py --full`, ~1 GB) | Vector tiles of all four domains, layer `flow` (z3–12). Per feature (integers): `id` feature_id; `n` listed network code or 0; `r` innermost listed river code or 0; `o` Strahler order; `d` d_reach (distance from the network outlet in reaches); `p` DFS preorder index (unique across domains); `z` upstream-subtree size; `dm` domain (1 AK, 2 HI, 3 PRVI; **absent** = CONUS); `x` boundary position (1 outside the U.S., 2 on the boundary; **absent** = inside); `h` hydrography source (1 = not the domain's NHDPlus; absent = NHDPlus). Orders shown from zoom: CONUS and AK o≥7 z3, o≥6 z5, o≥5 z6, o≥4 z7, o≥3 z8, all z9+; HI and PRVI o≥4 z3, o≥3 z5, o≥2 z6, all z7+. Layer `waterbodies` (polygons, `{id}`, z6+; CONUS, AK, HI; the hydrofabric has no PRVI waterbody layer) |
-| `flowlines_overview.pmtiles` | `build_map_data.py` | yes (14.4 MB) | CONUS only; `flow` with `id, n, r, o, d, x` (no `p`, `z`, `h`: upstream highlighting needs the full tiles), z3–8, o≥7 z3, o≥6 z5, o≥5 z7; no `waterbodies` |
-| `flowlines_overview_other.pmtiles` | `build_map_data.py` | yes (2.7 MB) | AK, HI and PRVI, same schema plus `dm`; AK o≥7 z3, o≥6 z5, o≥5 z7; HI and PRVI o≥4 z3, o≥3 z5, all z7+ |
+| `flowlines_overview.pmtiles` | `build_map_data.py` | no (14.4 MB; not published) | CONUS only; `flow` with `id, n, r, o, d, x` (no `p`, `z`, `h`: upstream highlighting needs the full tiles), z3–8, o≥7 z3, o≥6 z5, o≥5 z7; no `waterbodies` |
+| `flowlines_overview_other.pmtiles` | `build_map_data.py` | no (2.7 MB; not published) | AK, HI and PRVI, same schema plus `dm`; AK o≥7 z3, o≥6 z5, o≥5 z7; HI and PRVI o≥4 z3, o≥3 z5, all z7+ |
+| `tiles.json` + `web_*.pmtiles` (web tileset) | `explorer/scripts/build_web_tiles.py` → `data/explorer/web/` | **no** (gitignored; the hosted site's tiles, published in the explorer data bundle) | The content of `flowlines.pmtiles` up to z10, split so every file stays < 95 MB (GitHub Pages: 100 MB per file): `web_low.pmtiles` z3–8 (all domains, same orders by zoom, `waterbodies` z6+) and regional files z9–10 (every segment and waterbody) for bands of z9 tile columns (`akhi` = Alaska + Hawaii; `west`, `plains`, `central`, `east`; PRVI is in `east`), so each z9/z10 tile is in exactly one file. Same layers and fields as `flowlines.pmtiles`. `tiles.json`: `{about, source, tiles:[{file, minzoom, maxzoom, bounds:[w,s,e,n], tiles, bytes, sha256, hidefrom?, z9_columns?}]}`; the page shows a file's layers from `minzoom` and hides them from `hidefrom` (`web_low`: 9); regional layers overzoom past 10 |
 | `places.json` | `explorer/scripts/build_places.py` | yes | `{meta, places:[{type, dom, key, name, feature_id, lat, lon, net, river, order, p, z, flags:[…], source, extra:{…}}]}` (`p`, `z` = the upstream interval of the place's segment; absent when it has no segment); `type` ∈ {gage, forecast_point, reservoir, dam, bridge}. `extra` has every field of `data/explorer/T_places.csv` except pure duplicates (author X2, 2026-10-07) |
 
 Segment attributes shared by the producers: `data/explorer/segment_attrs.parquet`
@@ -80,5 +84,6 @@ descendant code of `c` in `rivers.json`. Selecting network code `k` highlights f
 with `n == k`.
 
 **Serving.** PMTiles needs HTTP Range requests, so open the explorer through
-`uv run explorer/serve.py`, not as `file://`. Without `flowlines.pmtiles` the page
-uses the two overview files.
+`uv run explorer/serve.py`, not as `file://`. The page uses the first tile set it
+finds: the web tileset listed in `data/tiles.json` (the hosted site), else
+`flowlines.pmtiles`, else the two overview files.

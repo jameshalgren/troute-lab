@@ -3,7 +3,7 @@
 # ///
 """Download the basin explorer's data into explorer/data/ (SHA-256 checked).
 
-    uv run explorer/fetch_data.py            # web data: JSON + overview tiles (~31 MB)
+    uv run explorer/fetch_data.py            # web data: JSON + web tiles (tiles.json, web_*.pmtiles; ~433 MB)
     uv run explorer/fetch_data.py --full     # + full-resolution tiles flowlines.pmtiles (983 MB)
     uv run explorer/fetch_data.py --verify   # check only
     uv run explorer/fetch_data.py --source hydroshare | <base URL> | <directory>

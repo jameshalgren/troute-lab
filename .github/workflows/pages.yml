@@ -1,9 +1,11 @@
 # Publish the basin explorer on GitHub Pages. No data is in git: the job downloads the
-# web data bundle (JSON + overview tiles, ~31 MB) from this repo's release assets
-# (data_bundles.json, bundle "explorer"), checks SHA-256, and deploys explorer/ as the site.
-# The full-resolution tiles (983 MB) are left out: GitHub Pages allows 100 MB per file and
-# 1 GB per site. PMTiles reads tiles with HTTP Range requests, which GitHub Pages serves
-# (206 Partial Content).
+# web data bundle (JSON + the web tileset listed in tiles.json, ~0.45 GB) from this repo's
+# release assets (data_bundles.json, bundle "explorer"), checks SHA-256, and deploys
+# explorer/ as the site. The web tileset has every river and waterbody (web_low.pmtiles
+# z3-8, regional web_*.pmtiles z9-10, each < 95 MB; explorer/scripts/build_web_tiles.py).
+# The single full-resolution file (983 MB, optional in the bundle) is left out: GitHub
+# Pages allows 100 MB per file and 1 GB per site. PMTiles reads tiles with HTTP Range
+# requests, which GitHub Pages serves (206 Partial Content).
 # One-time setup: Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
 name: pages
 
@@ -38,6 +40,12 @@ jobs:
           for name, meta in b["files"].items():
               if meta.get("required", True):
                   shutil.copy2(f"explorer/data/{name}", f"_site/data/{name}")
+          # GitHub Pages limits: 100 MB per file, 1 GB per site
+          import os
+          sizes = {f: os.path.getsize(f"_site/data/{f}") for f in os.listdir("_site/data")}
+          big = {f: s for f, s in sizes.items() if s > 100_000_000}
+          assert not big, f"files over 100 MB: {big}"
+          assert sum(sizes.values()) < 1_000_000_000, f"site data {sum(sizes.values()):,} bytes"
           EOF
           du -ah _site
       - uses: actions/configure-pages@v6

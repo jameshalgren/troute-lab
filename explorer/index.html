@@ -459,14 +459,29 @@ function renderHist() {
 }
 
 /* ---------------- map ---------------- */
-// River tiles: the full file (all domains; gitignored, built locally) if present, else the two
-// committed overview files (CONUS; AK + HI + PRVI). Every map layer exists once per source.
+// River tiles, first found wins: (1) the web tileset listed in data/tiles.json
+// (build_web_tiles.py; the hosted site: web_low z3-8 plus regional z9-10 files, each layer
+// shown from the file's minzoom and hidden from its "hidefrom" zoom); (2) the full file
+// (all domains; gitignored, built locally); (3) the two committed overview files (CONUS;
+// AK + HI + PRVI). Every map layer exists once per source. Each source is
+// {url, minzoom, hidefrom, full}; full = carries p, z and waterbodies.
 async function exists(f) { try { const r = await fetch(f, {method: "HEAD"}); return r.ok; } catch (e) { return false; } }
 async function tileSources() {
-  if (await exists("data/flowlines.pmtiles")) return ["data/flowlines.pmtiles"];
+  try {
+    const r = await fetch("data/tiles.json");
+    if (r.ok) return (await r.json()).tiles.map(t => ({url: "data/" + t.file, minzoom: t.minzoom, hidefrom: t.hidefrom ?? null, full: true}));
+  } catch (e) { /* no manifest: fall through */ }
+  if (await exists("data/flowlines.pmtiles")) return [{url: "data/flowlines.pmtiles", full: true}];
   const ov = [];
-  for (const f of ["data/flowlines_overview.pmtiles", "data/flowlines_overview_other.pmtiles"]) if (await exists(f)) ov.push(f);
+  for (const f of ["data/flowlines_overview.pmtiles", "data/flowlines_overview_other.pmtiles"]) if (await exists(f)) ov.push({url: f, full: false});
   return ov;
+}
+// zoom range of a source's layers (min: the layer's own minimum zoom)
+function zr(s, min = 0) {
+  const lo = Math.max(min, s.minzoom || 0), o = {};
+  if (lo > 0) o.minzoom = lo;
+  if (s.hidefrom != null) o.maxzoom = s.hidefrom;
+  return o;
 }
 const lid = (role, k) => k ? `${role}~${k}` : role;
 function eachL(role, fn) { if (!S.map) return; (S.srcs || []).forEach((_, k) => { const id = lid(role, k); if (S.map.getLayer(id)) fn(id); }); }
@@ -479,44 +494,45 @@ async function initMap() {
   map.addControl(new maplibregl.NavigationControl({showCompass: false}), "top-right");
   const srcs = S.srcs = await tileSources(), tiles = srcs.length > 0;
   // overview tiles carry no preorder fields: hide the upstream-of-point legend entry there
-  $("#lg-up").hidden = !(tiles && srcs[0].endsWith("flowlines.pmtiles"));
-  $("#tilesrc").textContent = tiles ? `River tiles: ${srcs.join(", ")}${srcs[0].endsWith("flowlines.pmtiles") ? "" : " (overview: large rivers only; upstream-of-point and waterbodies need the full tiles)"}` : "River tiles not found: run explorer/fetch_data.py or explorer/scripts/build_map_data.py (see DATA_CONTRACT.md). The tables and histogram still work.";
+  const full = tiles && srcs.every(s => s.full);
+  $("#lg-up").hidden = !full;
+  $("#tilesrc").textContent = tiles ? `River tiles: ${srcs.map(s => s.url).join(", ")}${full ? "" : " (overview: large rivers only; upstream-of-point and waterbodies need the full tiles)"}` : "River tiles not found: run explorer/fetch_data.py or explorer/scripts/build_map_data.py (see DATA_CONTRACT.md). The tables and histogram still work.";
   map.on("load", async () => {
     const outlets = await getJSON("data/outlets.geojson", null);
     if (tiles) {
-      srcs.forEach((url, k) => {
+      srcs.forEach((s, k) => {
       // promoteId lets the histogram band use feature state (see applyBand): changing a
       // filter would make MapLibre re-parse every tile on each hover; feature state doesn't.
       const src = "flow" + (k || "");
-      map.addSource(src, { type: "vector", url: "pmtiles://" + new URL(url, location.href).href, promoteId: {flow: "id"} });
+      map.addSource(src, { type: "vector", url: "pmtiles://" + new URL(s.url, location.href).href, promoteId: {flow: "id"} });
       // zoom-dependent width; the offset w0 keeps highlight layers wider than the base
       const width = (w0 = 0) => ["interpolate", ["linear"], ["zoom"],
         3, ["+", w0 + 0.3, ["*", 0.16, ["get", "o"]]], 8, ["+", w0 + 0.2, ["*", 0.38, ["get", "o"]]], 12, ["+", w0, ["*", 0.6, ["get", "o"]]]];
-      if (url.endsWith("flowlines.pmtiles")) {   // waterbody polygons exist only in the full tiles (z6+)
-        map.addLayer({ id: lid("waterbodies", k), type: "fill", source: src, "source-layer": "waterbodies", minzoom: 6,
+      if (s.full) {   // waterbody polygons exist only in the full and web tiles (z6+)
+        map.addLayer({ id: lid("waterbodies", k), type: "fill", source: src, "source-layer": "waterbodies", ...zr(s, 6),
           paint: { "fill-color": css('--river-base'), "fill-opacity": 0.35 } });
       }
-      map.addLayer({ id: lid("flow-base", k), type: "line", source: src, "source-layer": "flow",
+      map.addLayer({ id: lid("flow-base", k), type: "line", source: src, "source-layer": "flow", ...zr(s),
         paint: { "line-color": css('--river-base'), "line-width": width(0), "line-opacity": 0.9 }, layout: {"line-cap": "round", "line-join": "round"} });
       // transboundary styling (off by default; "Show border channels"):
       // x = 1 outside the U.S. (dashed), x = 2 along the boundary (dotted)
       const bvis = $("#bshow").checked ? "visible" : "none";
-      map.addLayer({ id: lid("flow-xb", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "x"], 1],
+      map.addLayer({ id: lid("flow-xb", k), type: "line", source: src, "source-layer": "flow", ...zr(s), filter: ["==", ["get", "x"], 1],
         paint: { "line-color": css('--warn'), "line-width": width(0.8), "line-dasharray": [2, 1.5], "line-opacity": 0.8 }, layout: {visibility: bvis} });
-      map.addLayer({ id: lid("flow-on", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "x"], 2],
+      map.addLayer({ id: lid("flow-on", k), type: "line", source: src, "source-layer": "flow", ...zr(s), filter: ["==", ["get", "x"], 2],
         paint: { "line-color": css('--warn'), "line-width": width(0.8), "line-dasharray": [0.6, 1.2], "line-opacity": 0.9 },
         layout: {"line-cap": "round", visibility: bvis} });
-      map.addLayer({ id: lid("flow-hi", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "r"], -999],
+      map.addLayer({ id: lid("flow-hi", k), type: "line", source: src, "source-layer": "flow", ...zr(s), filter: ["==", ["get", "r"], -999],
         paint: { "line-color": css('--accent'), "line-width": width(1.2) }, layout: {"line-cap": "round", "line-join": "round"} });
-      map.addLayer({ id: lid("flow-hi-x", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "r"], -999],
+      map.addLayer({ id: lid("flow-hi-x", k), type: "line", source: src, "source-layer": "flow", ...zr(s), filter: ["==", ["get", "r"], -999],
         paint: { "line-color": css('--accent'), "line-width": width(1.2), "line-dasharray": [2, 1.5] } });
-      map.addLayer({ id: lid("flow-up", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "id"], -1],
+      map.addLayer({ id: lid("flow-up", k), type: "line", source: src, "source-layer": "flow", ...zr(s), filter: ["==", ["get", "id"], -1],
         paint: { "line-color": css('--place'), "line-width": width(1.6), "line-opacity": 0.9 }, layout: {"line-cap": "round", "line-join": "round"} });
-      map.addLayer({ id: lid("flow-seg", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "id"], -1],
+      map.addLayer({ id: lid("flow-seg", k), type: "line", source: src, "source-layer": "flow", ...zr(s), filter: ["==", ["get", "id"], -1],
         paint: { "line-color": css('--place'), "line-width": 6 }, layout: {"line-cap": "round"} });
       // band: the selected river (filter set on selection); a segment shows when its
       // feature state "band" is true
-      map.addLayer({ id: lid("flow-band", k), type: "line", source: src, "source-layer": "flow", filter: ["==", ["get", "r"], -999],
+      map.addLayer({ id: lid("flow-band", k), type: "line", source: src, "source-layer": "flow", ...zr(s), filter: ["==", ["get", "r"], -999],
         paint: { "line-color": css('--ink'), "line-width": width(2),
                  "line-opacity": ["case", ["boolean", ["feature-state", "band"], false], 1, 0],
                  "line-opacity-transition": {duration: 0} }, layout: {"line-cap": "round"} });

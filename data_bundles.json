@@ -5,8 +5,8 @@
   "_hydroshare": "TODO (author): archive each bundle as a HydroShare resource, then set its \"hydroshare\" to the resource's file base URL, e.g. https://www.hydroshare.org/resource/<resource id>/data/contents/ ; fetch_bundle.py then uses it as fallback (or with --source hydroshare).",
   "bundles": {
     "explorer": {
-      "about": "Basin explorer web data (overview tiles + JSON); optional full-resolution tiles",
-      "tag": "explorer-data-v1",
+      "about": "Basin explorer web data (JSON + web tiles: web_low z3-8 and regional z9-10 files, each < 95 MB); optional full-resolution tiles",
+      "tag": "explorer-data-v2",
       "dest": "explorer/data",
       "hydroshare": null,
       "files": {
@@ -35,19 +35,44 @@
           "size": 12847583,
           "required": true
         },
-        "flowlines_overview.pmtiles": {
-          "sha256": "c8aa78bd193341fca4f79d6c24060a98af4005ae01be3651f7ebe138bdc3704a",
-          "size": 14354058,
+        "tiles.json": {
+          "sha256": "19d1009912c1b2b1a61290a69234cbe662cc8b1f78f4226f99778efc3269f1d8",
+          "size": 3456,
           "required": true
         },
-        "flowlines_overview_other.pmtiles": {
-          "sha256": "a66188574168b90e7fba61eecd9c58abe7b07c40301678e295660c24b6c8ae08",
-          "size": 2744457,
+        "web_low.pmtiles": {
+          "sha256": "6994c15fc883865331890c4cfdccee93d3b1de967ecaeb03831ae0247bf31054",
+          "size": 63270588,
+          "required": true
+        },
+        "web_akhi.pmtiles": {
+          "sha256": "ad0b9e58924b1bc27fe3512ed1afb23a62467c8739bb630a2fd269b996adaead",
+          "size": 33886408,
+          "required": true
+        },
+        "web_west.pmtiles": {
+          "sha256": "7fa953279204609f8fba8c2574436a167ca394df54bb967e9a843a33be7d43cc",
+          "size": 76427308,
+          "required": true
+        },
+        "web_plains.pmtiles": {
+          "sha256": "758d5852538b7d97f19ea3c3b70f99539935c62002379a49197f10508bf11b45",
+          "size": 79907991,
+          "required": true
+        },
+        "web_central.pmtiles": {
+          "sha256": "d359cece9211627d07fefdbe1ff453239410672c44d64c2a35bf48f843c1ca7b",
+          "size": 79005128,
+          "required": true
+        },
+        "web_east.pmtiles": {
+          "sha256": "ea1dfbb94b8e60aff73b5f8094d9417183841d86397b4695a225eedb06e45b19",
+          "size": 86777750,
           "required": true
         },
         "flowlines.pmtiles": {
-          "sha256": "60baf1e3e7d1b6f58662c4da3bef2d79b550ff8aefffeed0115074a538a0db65",
-          "size": 983103132,
+          "sha256": "c09d30b2857b6dd2c69d9b8c32c96d133bcd6b8138329ce64ca942063ffe9c4d",
+          "size": 983101128,
           "required": false
         }
       }

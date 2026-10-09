@@ -248,16 +248,19 @@ def zoom_filter(by_domain):
 
 
 def tippecanoe(out, layers, zooms, filters):
+    # paths relative to the repo root (and cwd=ROOT): tippecanoe records its command line in
+    # the file's metadata ("generator_options"), which must not carry local paths
     out.unlink(missing_ok=True)
-    cmd = ["tippecanoe", "-o", str(out), "--force", "-Z", str(zooms[0]), "-z", str(zooms[1]),
+    rel = lambda p: os.path.relpath(p, ROOT)
+    cmd = ["tippecanoe", "-o", rel(out), "--force", "-Z", str(zooms[0]), "-z", str(zooms[1]),
            "--no-feature-limit", "--no-tile-size-limit", "--no-tile-stats",
            "-j", json.dumps(filters), "-T", "id:int", "-T", "n:int", "-T", "r:int", "-T", "o:int", "-T", "d:int",
            "-T", "p:int", "-T", "z:int", "-T", "x:int", "-T", "h:int", "-T", "dm:int",
            "--quiet"]
     for name, path in layers:
-        cmd += ["-L", f"{name}:{path}"]
+        cmd += ["-L", f"{name}:{rel(path)}"]
     log(" ".join(cmd))
-    subprocess.run(cmd, check=True)
+    subprocess.run(cmd, check=True, cwd=ROOT)
     log(f"{out.name}: {out.stat().st_size / 1e6:.1f} MB")
 
 
