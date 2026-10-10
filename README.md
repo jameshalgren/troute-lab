@@ -74,13 +74,13 @@ reproduced). Conventions and prerequisites: [`repro/README.md`](repro/README.md)
 No generated data is committed to git. Large inputs are downloaded from their public sources
 by each experiment's `fetch_data.py` (pinned by URL and SHA-256). Data that this project
 generates and that is too large or too slow to rebuild for every user is published as
-versioned **data bundles**: release assets of this repository, listed with sizes and SHA-256 in
+versioned **data bundles**: release assets of this repository,[^hosting] listed with sizes and SHA-256 in
 [`data_bundles.json`](data_bundles.json) and downloaded by
 [`tools/fetch_bundle.py`](tools/fetch_bundle.py):
 
 | Bundle | Release tag | Contents | Used by |
 |---|---|---|---|
-| `explorer` | `explorer-data-v1` | explorer web data (JSON + overview tiles, 31 MB); optional full tiles (983 MB) | `explorer/fetch_data.py`, the Pages workflow |
+| `explorer` | `explorer-data-v2` | explorer web data: JSON plus the web tileset (`web_low` z3–8 and five regional z9–10 files, about 450 MB, listed in `tiles.json`); optional full-resolution tiles (983 MB) | `explorer/fetch_data.py`, the Pages workflow |
 | `network-stats` | `network-stats-data-v1` | `domains_snapshot.json` (4.8 MB): every EPA and GNIS answer that `domains.py` used | `repro/network_stats/run.sh` |
 
 A published tag never changes; new data gets a new tag. HydroShare is the intended archival
@@ -118,3 +118,29 @@ DOI-bearing release (Zenodo) is planned.
 
 MIT for the code ([`LICENSE`](LICENSE)). Data products
 follow their sources' terms, above.
+
+[^hosting]: **How the data is hosted, and why.** Release assets are stored by GitHub
+    *outside* the git repository: cloning this repo doesn't download them, and they never
+    enter git history (the repository itself stays under 1 MB). GitHub allows up to 2 GB
+    per file, and downloads are free. The hosted explorer (GitHub Pages) uses only the web
+    tileset and JSON, about 450 MB, which the Pages workflow copies into the site.
+
+    There is a referenced, 983 MB `flowlines.pmtiles`, which (currently) is only set up to
+    be generated and run in the explorer locally at full resolution
+    (`uv run explorer/fetch_data.py --full`); the hosted site never reads it.
+    We hope (soon) to host the full dataset in an appropriate public location, but for now,
+    you are welcome to build it.
+
+    Candidate places for hosting, provided as a reference, with different advantages:
+
+    | | GitHub release (current) | Object storage (e.g. S3) | HydroShare |
+    |---|---|---|---|
+    | Downloads for scripts (`fetch_data.py`, `fetch_bundle.py`) | yes | yes | yes |
+    | The map reading tiles directly in the browser (HTTP range requests) | no | yes, with CORS configured; would let the hosted site use the full-resolution tiles without the zoom-10 cap | to be tested |
+    | Permanent archive with a DOI, for citation | no | no | yes |
+    | Cost and effort | free; in place | small hosting cost and setup | free |
+
+    The plan (for now): keep GitHub releases as the working distribution; add HydroShare as the
+    citable archive (`data_bundles.json` has a slot for its URL, used as a fallback); and
+    use object storage only if the hosted map should serve the full-resolution tiles, by
+    pointing `tiles.json` at the bucket.
