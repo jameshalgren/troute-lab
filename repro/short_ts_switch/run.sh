@@ -4,6 +4,10 @@
 # mechanism checks ->
 # repeat four runs for the bitwise self-consistency check -> provenance -> check.
 # JOBS=n sets parallel T-Route processes (default 4). FORCE=1 reruns everything.
+# CLOSURE=1 also runs closure.sh (optional closure diagnostics) before check.py.
+# KERNEL=unpatched builds T-Route's MC kernel as published (opt-in comparison; default
+# since 2026-10-09: the corrected kernel, ../kernel_fixes; check.py then uses the
+# expected/*_unpatched_kernel.json baselines).
 set -euo pipefail
 cd "$(dirname "$0")"
 command -v uv >/dev/null || { echo "ERROR: uv is required (https://docs.astral.sh/uv/)"; exit 1; }
@@ -34,4 +38,9 @@ provenance.write(Path('.').resolve(), Path('results'),
     extra={'troute_build': {k: v for k, v in info.items() if k != 'steps'}})
 print('ok      results/provenance.json')
 "
+# Optional, about 15 min and up to ~35 GB of temporary disk: the closure diagnostics
+# (README "Closure diagnostics on the network"); check.py section 6 then checks them.
+if [ "${CLOSURE:-0}" = "1" ]; then
+  ./closure.sh
+fi
 uv run --locked python check.py

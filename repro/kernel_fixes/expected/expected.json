@@ -1,0 +1,575 @@
+{
+ "source": "first run of this experiment, macOS arm64, gfortran 15.2.0, 2026-10-09 (Claude, for James Halgren); regression baseline",
+ "values": [
+  {
+   "path": "sweep|uninitialized_reads/L0/cases_raising_invalid",
+   "value": 39104,
+   "kind": "exact"
+  },
+  {
+   "path": "sweep|per_patch/0001/cases_flow_vel_depth_differ",
+   "value": 42,
+   "kind": "exact"
+  },
+  {
+   "path": "sweep|per_patch/0006/cases_flow_vel_depth_differ",
+   "value": 17275,
+   "kind": "exact"
+  },
+  {
+   "path": "sweep|per_patch/0007/cases_flow_vel_depth_differ",
+   "value": 1309,
+   "kind": "exact"
+  },
+  {
+   "path": "sweep|per_patch/0008/cases_flow_vel_depth_differ",
+   "value": 19564,
+   "kind": "exact"
+  },
+  {
+   "path": "sweep|retry_loop_skipped/ngwpc123/of_which_qdc_zero_with_inflow",
+   "value": 7,
+   "kind": "exact"
+  },
+  {
+   "path": "sweep|events_cases/L0/negative_step",
+   "value": 17266,
+   "kind": "exact"
+  },
+  {
+   "path": "sweep|L0_vs_corrected/qdc/rel_gt_1e-3",
+   "value": 21024,
+   "kind": "exact"
+  },
+  {
+   "path": "sweep|L0_vs_L5/qdc/rel_gt_1e-3",
+   "value": 30,
+   "kind": "exact"
+  },
+  {
+   "path": "sweep|optional_x_L8_vs_L8x/bitwise_differ",
+   "value": 28249,
+   "kind": "exact"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|unpatched -> corrected|outlet_peak_change_pct",
+   "value": 0.04556,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|unpatched -> corrected|outlet_peak_time_shift_h",
+   "value": -0.1,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|unpatched -> corrected|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|unpatched -> corrected|network_volume_change_pct",
+   "value": -0.004748,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|unpatched -> corrected|segments_diff_gt_1pct_of_peak",
+   "value": 51,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|unpatched -> corrected|max_diff_pct_of_own_peak",
+   "value": 1.965,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> corrected|outlet_peak_change_pct",
+   "value": 0.04556,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> corrected|outlet_peak_time_shift_h",
+   "value": -0.1,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> corrected|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> corrected|network_volume_change_pct",
+   "value": -0.009587,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> corrected|segments_diff_gt_1pct_of_peak",
+   "value": 51,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> corrected|max_diff_pct_of_own_peak",
+   "value": 1.969,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> L7|outlet_peak_change_pct",
+   "value": 0.04556,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> L7|outlet_peak_time_shift_h",
+   "value": -0.1,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> L7|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> L7|network_volume_change_pct",
+   "value": -0.009437,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> L7|segments_diff_gt_1pct_of_peak",
+   "value": 49,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|L5 -> L7|max_diff_pct_of_own_peak",
+   "value": 1.969,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|corrected -> corrected+x|outlet_peak_change_pct",
+   "value": -1.73,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|corrected -> corrected+x|outlet_peak_time_shift_h",
+   "value": 2.5,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|corrected -> corrected+x|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|corrected -> corrected+x|network_volume_change_pct",
+   "value": -0.008658,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|corrected -> corrected+x|segments_diff_gt_1pct_of_peak",
+   "value": 3158,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts1|corrected -> corrected+x|max_diff_pct_of_own_peak",
+   "value": 30.06,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|unpatched -> corrected|outlet_peak_change_pct",
+   "value": -0.06301,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|unpatched -> corrected|outlet_peak_time_shift_h",
+   "value": -0.1,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|unpatched -> corrected|outlet_volume_change_pct",
+   "value": -0.2465,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|unpatched -> corrected|network_volume_change_pct",
+   "value": -0.1398,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|unpatched -> corrected|segments_diff_gt_1pct_of_peak",
+   "value": 2743,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|unpatched -> corrected|max_diff_pct_of_own_peak",
+   "value": 77.88,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> corrected|outlet_peak_change_pct",
+   "value": -0.1259,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> corrected|outlet_peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> corrected|outlet_volume_change_pct",
+   "value": -0.1973,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> corrected|network_volume_change_pct",
+   "value": -0.137,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> corrected|segments_diff_gt_1pct_of_peak",
+   "value": 2867,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> corrected|max_diff_pct_of_own_peak",
+   "value": 77.04,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> L7|outlet_peak_change_pct",
+   "value": -1.637,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> L7|outlet_peak_time_shift_h",
+   "value": 1.3,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> L7|outlet_volume_change_pct",
+   "value": -1.579,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> L7|network_volume_change_pct",
+   "value": -1.035,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> L7|segments_diff_gt_1pct_of_peak",
+   "value": 3919,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|L5 -> L7|max_diff_pct_of_own_peak",
+   "value": 91.09,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|corrected -> corrected+x|outlet_peak_change_pct",
+   "value": 1.261,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|corrected -> corrected+x|outlet_peak_time_shift_h",
+   "value": -0.5,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|corrected -> corrected+x|outlet_volume_change_pct",
+   "value": 0.1977,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|corrected -> corrected+x|network_volume_change_pct",
+   "value": 0.2329,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|corrected -> corrected+x|segments_diff_gt_1pct_of_peak",
+   "value": 2778,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|potomac_storm/sts0|corrected -> corrected+x|max_diff_pct_of_own_peak",
+   "value": 63.81,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|unpatched -> corrected|outlet_peak_change_pct",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|unpatched -> corrected|outlet_peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|unpatched -> corrected|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|unpatched -> corrected|network_volume_change_pct",
+   "value": 0.02777,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|unpatched -> corrected|segments_diff_gt_1pct_of_peak",
+   "value": 571,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|unpatched -> corrected|max_diff_pct_of_own_peak",
+   "value": 619.7,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> corrected|outlet_peak_change_pct",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> corrected|outlet_peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> corrected|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> corrected|network_volume_change_pct",
+   "value": 0.007526,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> corrected|segments_diff_gt_1pct_of_peak",
+   "value": 566,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> corrected|max_diff_pct_of_own_peak",
+   "value": 619.7,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> L7|outlet_peak_change_pct",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> L7|outlet_peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> L7|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> L7|network_volume_change_pct",
+   "value": -0.5591,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> L7|segments_diff_gt_1pct_of_peak",
+   "value": 197,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|L5 -> L7|max_diff_pct_of_own_peak",
+   "value": 98.54,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|corrected -> corrected+x|outlet_peak_change_pct",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|corrected -> corrected+x|outlet_peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|corrected -> corrected+x|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|corrected -> corrected+x|network_volume_change_pct",
+   "value": 0.004486,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|corrected -> corrected+x|segments_diff_gt_1pct_of_peak",
+   "value": 624,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts1|corrected -> corrected+x|max_diff_pct_of_own_peak",
+   "value": 22.14,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|unpatched -> corrected|outlet_peak_change_pct",
+   "value": 0.01328,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|unpatched -> corrected|outlet_peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|unpatched -> corrected|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|unpatched -> corrected|network_volume_change_pct",
+   "value": 0.02882,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|unpatched -> corrected|segments_diff_gt_1pct_of_peak",
+   "value": 1792,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|unpatched -> corrected|max_diff_pct_of_own_peak",
+   "value": 298.8,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> corrected|outlet_peak_change_pct",
+   "value": 0.01328,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> corrected|outlet_peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> corrected|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> corrected|network_volume_change_pct",
+   "value": 0.07271,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> corrected|segments_diff_gt_1pct_of_peak",
+   "value": 1565,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> corrected|max_diff_pct_of_own_peak",
+   "value": 439.3,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> L7|outlet_peak_change_pct",
+   "value": 0.01328,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> L7|outlet_peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> L7|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> L7|network_volume_change_pct",
+   "value": -1.099,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> L7|segments_diff_gt_1pct_of_peak",
+   "value": 1061,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|L5 -> L7|max_diff_pct_of_own_peak",
+   "value": 932.8,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|corrected -> corrected+x|outlet_peak_change_pct",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|corrected -> corrected+x|outlet_peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|corrected -> corrected+x|outlet_volume_change_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|corrected -> corrected+x|network_volume_change_pct",
+   "value": 0.0412,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|corrected -> corrected+x|segments_diff_gt_1pct_of_peak",
+   "value": 899,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|pairs|lc_nwm/sts0|corrected -> corrected+x|max_diff_pct_of_own_peak",
+   "value": 632.6,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|switch|potomac_storm|unpatched|peak_rel_diff_pct",
+   "value": 38.31,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|switch|potomac_storm|unpatched|peak_time_shift_h",
+   "value": -77.6,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|switch|potomac_storm|corrected|peak_rel_diff_pct",
+   "value": 38.46,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|switch|potomac_storm|corrected|peak_time_shift_h",
+   "value": -77.6,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|switch|lc_nwm|unpatched|peak_rel_diff_pct",
+   "value": 2.178,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|switch|lc_nwm|unpatched|peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  },
+  {
+   "path": "troute|switch|lc_nwm|corrected|peak_rel_diff_pct",
+   "value": 2.164,
+   "kind": "pct"
+  },
+  {
+   "path": "troute|switch|lc_nwm|corrected|peak_time_shift_h",
+   "value": 0.0,
+   "kind": "rel"
+  }
+ ]
+}

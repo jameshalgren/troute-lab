@@ -1,0 +1,100 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Taher Chegini <cheginit@gmail.com>
+Date: Wed, 16 Sep 2026 12:49:31 -0400
+Subject: [PATCH 08/10] fix(kernel): restart the Muskingum-Cunge depth search
+ off its degenerate root
+
+Seeded near zero depth the secant settles where C3 = 1 and the segment
+passes its own previous outflow whatever arrives. A residual above a tenth
+of the Muskingum estimate restarts the search from the flow's normal
+depths; cold-start transients change.
+
+Ported to CIROH-UA/t-route d29f663 from NGWPC/t-route commit 4ecefec1
+(PR #127, merged 2026-09-17). NGWPC's kernel hoists sqrt(s0) into a local
+(perf commit 7c9153ff); d29f663 does not, so the two seed depths call
+sqrt(s0) directly. The kernel change is otherwise line for line; the kernel
+tests of 4ecefec1 follow in a separate commit of this series.
+
+Required with "stop reading a failed Secant step as convergence" (0006):
+without this restart, 0006 lets searches settle on the near-zero degenerate
+root, which loses 13-16% of routed volume on the LowerColorado test cases
+(see the PR description) and, in a 40-day Potomac storm run, drops
+slope-floor segments to millimetre depths while they carry tens of m3/s.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ .../MCsingleSegStime_f2py_NOLOOP.f90          | 47 +++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+
+diff --git a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+index b51a699..346982e 100644
+--- a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
++++ b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+@@ -32,6 +32,8 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+     integer :: iter
+     integer :: maxiter, tries
+     logical :: converged, stalled
++    real(prec) :: qref, h_seed, h_low, h_last, qmc
++    logical :: collapsed
+     real(prec) :: mindepth, aerror, rerror
+     real(prec) :: R, twl, h_1, h, h_0, Qj, Qj_0
+ 
+@@ -67,6 +69,12 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+         !call hydro_stop("In MUSKINGCUNGE() - Error in channel coefficients")
+     end if
+ 
++    !* Restart depths for a collapsed search, computed only when one collapses.
++    qref = max(qup, quc, qdp, ql)
++    h_seed = 0.0_prec
++    h_low  = 0.0_prec
++    h_last = 0.0_prec
++
+     depthc = max(depthp, 0.0_prec)
+     h     = (depthc * 1.33_prec) + mindepth !1.50 of  depthc
+     h_0   = (depthc * 0.67_prec)            !0.50 of depthc
+@@ -146,6 +154,45 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+         end do !*do while (rerror .gt. 0.01 .and. ....
+ 111    continue
+ 
++        !* Seeded near zero depth the search settles on the equation's degenerate
++        !* root (celerity about zero, C3 = 1), where the segment passes its own
++        !* previous outflow whatever arrives. The step tests accept that root; the
++        !* residual does not, since at a root the Muskingum estimate and the Manning
++        !* flow agree. Restart from wide-rectangle normal depths, widest section
++        !* first. A repeat landing is a steep root, not a collapse, only if the
++        !* Manning flow there carries at least half the estimate.
++        qmc = (C1*qup) + (C2*quc) + (C3*qdp) + C4
++        collapsed = (qref .gt. 0.0_prec) .and. (abs(Qj) .gt. 0.1_prec * abs(qmc)) .and. &
++                    (abs(Qj) .gt. 0.01_prec)
++        if (h_last .gt. 0.0_prec .and. abs(h - h_last) .le. 0.05_prec * max(h, mindepth) &
++            .and. Qj .le. 0.5_prec * abs(qmc)) then
++            collapsed = .false.
++        endif
++        if (collapsed .and. tries .le. 4) then
++            tries = tries + 1
++            h_last = h
++            if (h_seed .eq. 0.0_prec) then
++                h_seed = (qref * n / (bw * sqrt(s0)))**0.6_prec
++                h_low  = (qref * n / (max(twcc, tw, bw) * sqrt(s0)))**0.6_prec
++            endif
++            select case (tries)
++            case (1)
++                h = h_low
++            case (2)
++                h = sqrt(h_low * h_seed)
++            case (3)
++                h = h_seed
++            case default
++                h = 4.0_prec * h_seed
++            end select
++            h_0   = h * 0.67_prec
++            h     = h * 1.33_prec
++            maxiter = maxiter + 25
++            aerror = 0.01_prec
++            rerror = 1.0_prec
++            goto 110
++        endif
++
+         !* iter alone is not failure: the loop can meet its tolerance on the
+         !* same pass that takes iter to maxiter. A stall is never convergence.
+         converged = (.not. stalled) .and. &

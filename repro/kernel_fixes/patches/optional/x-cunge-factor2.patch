@@ -1,0 +1,55 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: James Halgren <james.halgren@byu.edu>
+Date: Fri, 9 Oct 2026 13:29:50 -0600
+Subject: [PATCH] fix(kernel): match Cunge's X (drop the extra factor 2)
+ [OPTIONAL]
+
+OPTIONAL, off by default. Not part of the corrected kernel: it changes the
+numerical scheme, not a coding error of the kind fixed by patches 0001-0008.
+
+X = 0.5*(1 - Q/(2*T*S0*Ck*dx)) carries a factor 2 that Cunge's matching
+(X = 0.5*(1 - Q/(B*S0*c*dx))) does not, so the unclamped X targets half the
+physical diffusivity. The factor entered WRF-Hydro with commit 4f4ddf9e
+(2017-12-22, "Yates' muskingum routing fixes"), which rewrote the earlier
+X = 0.5 - Q/(2*Tw*So*Ck*dx) as 0.5*(1 - Q/(2*...)); T-Route's port carries it.
+The same change in WRF-Hydro: NCAR/wrf_hydro_nwm_public#921 (issue) and #923
+(draft PR).
+
+Removes `2.0_prec*` from the four X expressions in secant2_h (interval 1 and
+interval 2, over-bank and in-bank; d29f663 L281, L285, L291, L295).
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+index 346982e7..1cc4b839 100644
+--- a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
++++ b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+@@ -376,21 +376,21 @@ subroutine secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, &
+     if( (h .gt. bfd) .and. (twcc .gt. 0.0_prec) .and. (ncc .gt. 0.0_prec) .and. (Ck .gt. 0.0_prec) ) then !water outside of defined channel
+         !H0
+         if (interval .eq. upper_interval) then
+-            X = min(0.5_prec,max(0.0_prec,0.5_prec*(1.0_prec-(Qj/(2.0_prec*twcc*s0*Ck*dx)))))
++            X = min(0.5_prec,max(0.0_prec,0.5_prec*(1.0_prec-(Qj/(twcc*s0*Ck*dx)))))
+         endif
+         if (interval .eq. lower_interval) then
+         !H
+-            X = min(0.5_prec,max(0.25_prec,0.5_prec*(1.0_prec-(((C1*qup)+(C2*quc)+(C3*qdp) + C4)/(2.0_prec*twcc*s0*Ck*dx)))))
++            X = min(0.5_prec,max(0.25_prec,0.5_prec*(1.0_prec-(((C1*qup)+(C2*quc)+(C3*qdp) + C4)/(twcc*s0*Ck*dx)))))
+         endif
+     else
+         if(Ck .gt. 0.0_prec) then
+             !H0
+             if (interval .eq. upper_interval) then
+-                X = min(0.5_prec,max(0.0_prec,0.5_prec*(1.0_prec-(Qj/(2.0_prec*twl*s0*Ck*dx)))))
++                X = min(0.5_prec,max(0.0_prec,0.5_prec*(1.0_prec-(Qj/(twl*s0*Ck*dx)))))
+             endif
+             !H
+             if (interval .eq. lower_interval) then
+-                X = min(0.5_prec,max(0.25_prec,0.5_prec*(1.0_prec-(((C1*qup)+(C2*quc)+(C3*qdp) + C4)/(2.0_prec*twl*s0*Ck*dx)))))
++                X = min(0.5_prec,max(0.25_prec,0.5_prec*(1.0_prec-(((C1*qup)+(C2*quc)+(C3*qdp) + C4)/(twl*s0*Ck*dx)))))
+             endif
+         else
+             X = 0.5_prec

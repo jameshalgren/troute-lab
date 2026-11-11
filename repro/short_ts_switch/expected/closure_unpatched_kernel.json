@@ -1,0 +1,1251 @@
+{
+ "source": "UNPATCHED KERNEL (opt-in comparison, KERNEL=unpatched). first reproduction of the closure diagnostics (closure.sh), macOS arm64, gfortran 15.2.0, numba 0.61.2, 2026-10-08; values from results/closure/summary.json",
+ "tolerances": "frac abs 0.005; pct abs 0.25 points; count rel 10%; value rel 2% (check.py section 6)",
+ "values": [
+  {
+   "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/clamp",
+   "value": 0.01042,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/floor",
+   "value": 0.184,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/both",
+   "value": 0.001632,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/c2neg",
+   "value": 0.987,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/over",
+   "value": 0.1609,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1999,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/at_peak/fractions/clamp",
+   "value": 0.02352,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/at_peak/fractions/floor",
+   "value": 0.2285,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/at_peak/fractions/over",
+   "value": 0.8282,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/distributions_all_steps/Km_s/p50",
+   "value": 3286.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/distributions_all_steps/X_final/p50",
+   "value": 0.496,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts0/negative_flow_guard_steps",
+   "value": 685,
+   "kind": "count"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/clamp",
+   "value": 0.01041,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/floor",
+   "value": 0.1839,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/both",
+   "value": 0.001621,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/c2neg",
+   "value": 0.987,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/over",
+   "value": 0.1602,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1998,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/at_peak/fractions/clamp",
+   "value": 0.02395,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/at_peak/fractions/floor",
+   "value": 0.2316,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/at_peak/fractions/over",
+   "value": 0.8154,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/distributions_all_steps/Km_s/p50",
+   "value": 3287.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/distributions_all_steps/X_final/p50",
+   "value": 0.496,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt60_sts1/negative_flow_guard_steps",
+   "value": 0,
+   "kind": "count"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/clamp",
+   "value": 0.0526,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/floor",
+   "value": 0.184,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/both",
+   "value": 0.01051,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/c2neg",
+   "value": 0.9341,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/over",
+   "value": 0.1609,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1999,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/at_peak/fractions/clamp",
+   "value": 0.1119,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/at_peak/fractions/floor",
+   "value": 0.2285,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/at_peak/fractions/over",
+   "value": 0.8389,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/distributions_all_steps/Km_s/p50",
+   "value": 3286.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/distributions_all_steps/X_final/p50",
+   "value": 0.496,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/negative_flow_guard_steps",
+   "value": 805,
+   "kind": "count"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/clamp",
+   "value": 0.05263,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/floor",
+   "value": 0.1839,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/both",
+   "value": 0.01053,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/c2neg",
+   "value": 0.9341,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/over",
+   "value": 0.1603,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1998,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/at_peak/fractions/clamp",
+   "value": 0.1134,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/at_peak/fractions/floor",
+   "value": 0.2308,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/at_peak/fractions/over",
+   "value": 0.8351,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/distributions_all_steps/Km_s/p50",
+   "value": 3287.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/distributions_all_steps/X_final/p50",
+   "value": 0.496,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts1/negative_flow_guard_steps",
+   "value": 0,
+   "kind": "count"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/clamp",
+   "value": 0.15,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/floor",
+   "value": 0.184,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/both",
+   "value": 0.02896,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/c2neg",
+   "value": 0.827,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/over",
+   "value": 0.1609,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1999,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/at_peak/fractions/clamp",
+   "value": 0.3482,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/at_peak/fractions/floor",
+   "value": 0.2278,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/at_peak/fractions/over",
+   "value": 0.8435,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/distributions_all_steps/Km_s/p50",
+   "value": 3286.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/distributions_all_steps/X_final/p50",
+   "value": 0.496,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts0/negative_flow_guard_steps",
+   "value": 881,
+   "kind": "count"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/clamp",
+   "value": 0.15,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/floor",
+   "value": 0.184,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/both",
+   "value": 0.02897,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/c2neg",
+   "value": 0.827,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/over",
+   "value": 0.1605,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1999,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/at_peak/fractions/clamp",
+   "value": 0.3504,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/at_peak/fractions/floor",
+   "value": 0.2288,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/at_peak/fractions/over",
+   "value": 0.8438,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/distributions_all_steps/Km_s/p50",
+   "value": 3286.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/distributions_all_steps/X_final/p50",
+   "value": 0.496,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt900_sts1/negative_flow_guard_steps",
+   "value": 0,
+   "kind": "count"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/clamp",
+   "value": 0.5449,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/floor",
+   "value": 0.1842,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/both",
+   "value": 0.0749,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/c2neg",
+   "value": 0.4207,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/over",
+   "value": 0.1621,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/D_gt_half",
+   "value": 0.2001,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/at_peak/fractions/clamp",
+   "value": 0.8392,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/at_peak/fractions/floor",
+   "value": 0.2231,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/at_peak/fractions/over",
+   "value": 0.8202,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/distributions_all_steps/Km_s/p50",
+   "value": 3910.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/distributions_all_steps/X_final/p50",
+   "value": 0.496,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts0/negative_flow_guard_steps",
+   "value": 402,
+   "kind": "count"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/clamp",
+   "value": 0.545,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/floor",
+   "value": 0.1842,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/both",
+   "value": 0.07504,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/c2neg",
+   "value": 0.4206,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/over",
+   "value": 0.1622,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/D_gt_half",
+   "value": 0.2002,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/at_peak/fractions/clamp",
+   "value": 0.8393,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/at_peak/fractions/floor",
+   "value": 0.2229,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/at_peak/fractions/over",
+   "value": 0.8205,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/distributions_all_steps/Km_s/p50",
+   "value": 3910.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/distributions_all_steps/X_final/p50",
+   "value": 0.496,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt3600_sts1/negative_flow_guard_steps",
+   "value": 0,
+   "kind": "count"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/clamp",
+   "value": 0.003858,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/floor",
+   "value": 0.1084,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/both",
+   "value": 0.0002077,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/c2neg",
+   "value": 0.9788,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/over",
+   "value": 0.02937,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1204,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/at_peak/fractions/clamp",
+   "value": 0.003979,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/at_peak/fractions/floor",
+   "value": 0.1139,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/at_peak/fractions/over",
+   "value": 0.03545,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/distributions_all_steps/Km_s/p50",
+   "value": 19500.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/distributions_all_steps/X_final/p50",
+   "value": 0.4968,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts0/negative_flow_guard_steps",
+   "value": 1459,
+   "kind": "count"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/clamp",
+   "value": 0.00379,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/floor",
+   "value": 0.1053,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/both",
+   "value": 0.0002061,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/c2neg",
+   "value": 0.9789,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/over",
+   "value": 0.02848,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1166,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/at_peak/fractions/clamp",
+   "value": 0.003979,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/at_peak/fractions/floor",
+   "value": 0.1129,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/at_peak/fractions/over",
+   "value": 0.03445,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/distributions_all_steps/Km_s/p50",
+   "value": 19540.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/distributions_all_steps/X_final/p50",
+   "value": 0.4968,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt60_sts1/negative_flow_guard_steps",
+   "value": 0,
+   "kind": "count"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/clamp",
+   "value": 0.01866,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/floor",
+   "value": 0.1087,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/both",
+   "value": 0.002935,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/c2neg",
+   "value": 0.9604,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/over",
+   "value": 0.02939,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/D_gt_half",
+   "value": 0.12,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/at_peak/fractions/clamp",
+   "value": 0.01989,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/at_peak/fractions/floor",
+   "value": 0.1138,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/at_peak/fractions/over",
+   "value": 0.03472,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/distributions_all_steps/Km_s/p50",
+   "value": 19510.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/distributions_all_steps/X_final/p50",
+   "value": 0.4968,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts0/negative_flow_guard_steps",
+   "value": 1481,
+   "kind": "count"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/clamp",
+   "value": 0.01854,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/floor",
+   "value": 0.1053,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/both",
+   "value": 0.00294,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/c2neg",
+   "value": 0.9605,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/over",
+   "value": 0.02852,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1166,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/at_peak/fractions/clamp",
+   "value": 0.01971,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/at_peak/fractions/floor",
+   "value": 0.1129,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/at_peak/fractions/over",
+   "value": 0.03499,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/distributions_all_steps/Km_s/p50",
+   "value": 19550.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/distributions_all_steps/X_final/p50",
+   "value": 0.4968,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt300_sts1/negative_flow_guard_steps",
+   "value": 0,
+   "kind": "count"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/clamp",
+   "value": 0.04804,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/floor",
+   "value": 0.1082,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/both",
+   "value": 0.008848,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/c2neg",
+   "value": 0.9238,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/over",
+   "value": 0.0293,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1195,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/at_peak/fractions/clamp",
+   "value": 0.05,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/at_peak/fractions/floor",
+   "value": 0.1138,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/at_peak/fractions/over",
+   "value": 0.03536,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/distributions_all_steps/Km_s/p50",
+   "value": 19530.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/distributions_all_steps/X_final/p50",
+   "value": 0.4968,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts0/negative_flow_guard_steps",
+   "value": 1678,
+   "kind": "count"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/clamp",
+   "value": 0.04793,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/floor",
+   "value": 0.1052,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/both",
+   "value": 0.008858,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/c2neg",
+   "value": 0.924,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/over",
+   "value": 0.02861,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1165,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/at_peak/fractions/clamp",
+   "value": 0.04982,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/at_peak/fractions/floor",
+   "value": 0.1128,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/at_peak/fractions/over",
+   "value": 0.03463,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/distributions_all_steps/Km_s/p50",
+   "value": 19570.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/distributions_all_steps/X_final/p50",
+   "value": 0.4968,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt900_sts1/negative_flow_guard_steps",
+   "value": 0,
+   "kind": "count"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/clamp",
+   "value": 0.1555,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/floor",
+   "value": 0.1066,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/both",
+   "value": 0.0311,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/c2neg",
+   "value": 0.8079,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/over",
+   "value": 0.02921,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/D_gt_half",
+   "value": 0.1177,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/at_peak/fractions/clamp",
+   "value": 0.163,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/at_peak/fractions/floor",
+   "value": 0.1138,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/at_peak/fractions/over",
+   "value": 0.03481,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/distributions_all_steps/Km_s/p50",
+   "value": 19540.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/distributions_all_steps/X_final/p50",
+   "value": 0.4968,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts0/negative_flow_guard_steps",
+   "value": 2051,
+   "kind": "count"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/clamp",
+   "value": 0.1547,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/floor",
+   "value": 0.1046,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/both",
+   "value": 0.03124,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/c2neg",
+   "value": 0.8088,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/over",
+   "value": 0.029,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/D_gt_half",
+   "value": 0.116,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/at_peak/fractions/clamp",
+   "value": 0.1631,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/at_peak/fractions/floor",
+   "value": 0.1128,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/at_peak/fractions/over",
+   "value": 0.03219,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/distributions_all_steps/Km_s/p50",
+   "value": 19660.0,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/distributions_all_steps/X_final/p50",
+   "value": 0.4968,
+   "kind": "value"
+  },
+  {
+   "path": "closure/lc_nwm/dt3600_sts1/negative_flow_guard_steps",
+   "value": 0,
+   "kind": "count"
+  },
+  {
+   "path": "potomac/dt60_sts0/loss_patched/troute_loss_pct_of_storm",
+   "value": 8.782,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts0/loss_patched/hysteresis_terms_pct",
+   "value": 15.77,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts0/loss_patched/negative_flow_guard_pct",
+   "value": -6.891,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts0/loss_patched/hysteresis_by_regime_pct/free",
+   "value": 2.466,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts0/loss_patched/hysteresis_by_regime_pct/floor",
+   "value": 12.91,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts0/loss_patched/hysteresis_by_regime_pct/clamp",
+   "value": 5.072e-05,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts1/loss_patched/troute_loss_pct_of_storm",
+   "value": -0.2006,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts1/loss_patched/hysteresis_terms_pct",
+   "value": -0.09104,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts1/loss_patched/negative_flow_guard_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts1/loss_patched/hysteresis_by_regime_pct/free",
+   "value": -0.1823,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts1/loss_patched/hysteresis_by_regime_pct/floor",
+   "value": -0.1239,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt60_sts1/loss_patched/hysteresis_by_regime_pct/clamp",
+   "value": 5.383e-06,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts0/loss_patched/troute_loss_pct_of_storm",
+   "value": 8.176,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts0/loss_patched/hysteresis_terms_pct",
+   "value": 13.73,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts0/loss_patched/negative_flow_guard_pct",
+   "value": -5.544,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts0/loss_patched/hysteresis_by_regime_pct/free",
+   "value": 3.752,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts0/loss_patched/hysteresis_by_regime_pct/floor",
+   "value": 9.596,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts0/loss_patched/hysteresis_by_regime_pct/clamp",
+   "value": 0.001597,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts1/loss_patched/troute_loss_pct_of_storm",
+   "value": -0.5506,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts1/loss_patched/hysteresis_terms_pct",
+   "value": -0.5325,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts1/loss_patched/negative_flow_guard_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts1/loss_patched/hysteresis_by_regime_pct/free",
+   "value": -0.2651,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts1/loss_patched/hysteresis_by_regime_pct/floor",
+   "value": -0.4508,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt300_sts1/loss_patched/hysteresis_by_regime_pct/clamp",
+   "value": 0.001153,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts0/loss_patched/troute_loss_pct_of_storm",
+   "value": 6.42,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts0/loss_patched/hysteresis_terms_pct",
+   "value": 12.22,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts0/loss_patched/negative_flow_guard_pct",
+   "value": -5.794,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts0/loss_patched/hysteresis_by_regime_pct/free",
+   "value": 3.511,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts0/loss_patched/hysteresis_by_regime_pct/floor",
+   "value": 8.364,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts0/loss_patched/hysteresis_by_regime_pct/clamp",
+   "value": 0.02452,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts1/loss_patched/troute_loss_pct_of_storm",
+   "value": -1.121,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts1/loss_patched/hysteresis_terms_pct",
+   "value": -1.116,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts1/loss_patched/negative_flow_guard_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts1/loss_patched/hysteresis_by_regime_pct/free",
+   "value": -0.3262,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts1/loss_patched/hysteresis_by_regime_pct/floor",
+   "value": -0.9776,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt900_sts1/loss_patched/hysteresis_by_regime_pct/clamp",
+   "value": 0.02722,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts0/loss_patched/troute_loss_pct_of_storm",
+   "value": 2.79,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts0/loss_patched/hysteresis_terms_pct",
+   "value": 6.408,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts0/loss_patched/negative_flow_guard_pct",
+   "value": -3.614,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts0/loss_patched/hysteresis_by_regime_pct/free",
+   "value": 2.282,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts0/loss_patched/hysteresis_by_regime_pct/floor",
+   "value": 3.962,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts0/loss_patched/hysteresis_by_regime_pct/clamp",
+   "value": 0.3345,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts1/loss_patched/troute_loss_pct_of_storm",
+   "value": -1.354,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts1/loss_patched/hysteresis_terms_pct",
+   "value": -1.352,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts1/loss_patched/negative_flow_guard_pct",
+   "value": 0.0,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts1/loss_patched/hysteresis_by_regime_pct/free",
+   "value": -0.1603,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts1/loss_patched/hysteresis_by_regime_pct/floor",
+   "value": -1.38,
+   "kind": "pct"
+  },
+  {
+   "path": "potomac/dt3600_sts1/loss_patched/hysteresis_by_regime_pct/clamp",
+   "value": 0.2065,
+   "kind": "pct"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/X_unclamped_where_floored/p50",
+   "value": -23.97,
+   "kind": "value"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/by_slope_class/floor_1e-5/fractions/floor",
+   "value": 1.0,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/by_slope_class/gt_1e-3/fractions/floor",
+   "value": 0.006224,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/inbank_vs_overbank/overbank/fractions/floor",
+   "value": 0.8955,
+   "kind": "frac"
+  },
+  {
+   "path": "closure/potomac_storm/dt300_sts0/inbank_vs_overbank/inbank/fractions/floor",
+   "value": 0.04754,
+   "kind": "frac"
+  },
+  {
+   "path": "potomac/dt300_sts0/timing_shift_prediction/outlet_predicted_shift_h",
+   "value": -47.32,
+   "kind": "value"
+  },
+  {
+   "path": "potomac/dt300_sts0/timing_shift_prediction/by_regime_h/floor",
+   "value": -42.53,
+   "kind": "value"
+  },
+  {
+   "path": "screening_crosscheck_dt300_false/XF/pct_of_floor_at_peak_segments_flagged",
+   "value": 86.14,
+   "kind": "pct"
+  },
+  {
+   "path": "screening_crosscheck_dt300_false/XF/pct_of_flagged_floor_at_peak",
+   "value": 99.88,
+   "kind": "pct"
+  }
+ ]
+}

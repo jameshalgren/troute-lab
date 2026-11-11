@@ -1,0 +1,2396 @@
+{
+ "note": "regression values of this experiment with T-Route's kernel as published (unpatched, baselines of 2026-10-07/08) and with the corrected kernel (../kernel_fixes, 2026-10-09). 'change' = corrected - unpatched.",
+ "files": {
+  "expected": [
+   {
+    "path": "lc_nwm/by_dt/60/outlet/peak_true_m3s",
+    "kind": "flow",
+    "unpatched": 77.023,
+    "corrected": 77.023,
+    "change": 0.0
+   },
+   {
+    "path": "lc_nwm/by_dt/60/outlet/peak_false_m3s",
+    "kind": "flow",
+    "unpatched": 75.3043,
+    "corrected": 75.3045,
+    "change": 0.0002
+   },
+   {
+    "path": "lc_nwm/by_dt/60/outlet/peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 2.2823,
+    "corrected": 2.2821,
+    "change": -0.0002
+   },
+   {
+    "path": "lc_nwm/by_dt/60/outlet/peak_time_shift_h",
+    "kind": "time",
+    "unpatched": 0.0,
+    "corrected": 0.0,
+    "change": 0.0
+   },
+   {
+    "path": "lc_nwm/by_dt/60/outlet/nse_true_vs_false",
+    "kind": "index",
+    "unpatched": 0.4896,
+    "corrected": 0.4896,
+    "change": 0.0
+   },
+   {
+    "path": "lc_nwm/by_dt/60/segments/peak_time_shift_h/p5",
+    "kind": "time",
+    "unpatched": -20.4052,
+    "corrected": -20.5574,
+    "change": -0.1522
+   },
+   {
+    "path": "lc_nwm/by_dt/60/segments/peak_time_shift_h/p50",
+    "kind": "time",
+    "unpatched": -1.6453,
+    "corrected": -1.8667,
+    "change": -0.2214
+   },
+   {
+    "path": "lc_nwm/by_dt/60/segments/peak_rel_diff_pct/p5",
+    "kind": "pct",
+    "unpatched": -18.3303,
+    "corrected": -18.4014,
+    "change": -0.0711
+   },
+   {
+    "path": "lc_nwm/by_dt/60/segments/peak_rel_diff_pct/p95",
+    "kind": "pct",
+    "unpatched": -0.001,
+    "corrected": -0.0014,
+    "change": -0.0004
+   },
+   {
+    "path": "lc_nwm/by_dt/300/outlet/peak_true_m3s",
+    "kind": "flow",
+    "unpatched": 76.941,
+    "corrected": 76.9417,
+    "change": 0.0007
+   },
+   {
+    "path": "lc_nwm/by_dt/300/outlet/peak_false_m3s",
+    "kind": "flow",
+    "unpatched": 75.3049,
+    "corrected": 75.3054,
+    "change": 0.0005
+   },
+   {
+    "path": "lc_nwm/by_dt/300/outlet/peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 2.1726,
+    "corrected": 2.173,
+    "change": 0.0004
+   },
+   {
+    "path": "lc_nwm/by_dt/300/outlet/peak_time_shift_h",
+    "kind": "time",
+    "unpatched": 0.0,
+    "corrected": 0.0,
+    "change": 0.0
+   },
+   {
+    "path": "lc_nwm/by_dt/300/outlet/nse_true_vs_false",
+    "kind": "index",
+    "unpatched": 0.5356,
+    "corrected": 0.5354,
+    "change": -0.0002
+   },
+   {
+    "path": "lc_nwm/by_dt/300/segments/peak_time_shift_h/p5",
+    "kind": "time",
+    "unpatched": -20.3838,
+    "corrected": -20.6747,
+    "change": -0.2909
+   },
+   {
+    "path": "lc_nwm/by_dt/300/segments/peak_time_shift_h/p50",
+    "kind": "time",
+    "unpatched": -1.725,
+    "corrected": -3.6961,
+    "change": -1.9711
+   },
+   {
+    "path": "lc_nwm/by_dt/300/segments/peak_rel_diff_pct/p5",
+    "kind": "pct",
+    "unpatched": -17.979,
+    "corrected": -20.2085,
+    "change": -2.2295
+   },
+   {
+    "path": "lc_nwm/by_dt/300/segments/peak_rel_diff_pct/p95",
+    "kind": "pct",
+    "unpatched": -0.0014,
+    "corrected": -0.0095,
+    "change": -0.0081
+   },
+   {
+    "path": "lc_nwm/by_dt/900/outlet/peak_true_m3s",
+    "kind": "flow",
+    "unpatched": 76.6672,
+    "corrected": 76.6692,
+    "change": 0.002
+   },
+   {
+    "path": "lc_nwm/by_dt/900/outlet/peak_false_m3s",
+    "kind": "flow",
+    "unpatched": 75.2335,
+    "corrected": 75.2346,
+    "change": 0.0011
+   },
+   {
+    "path": "lc_nwm/by_dt/900/outlet/peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 1.9057,
+    "corrected": 1.9068,
+    "change": 0.0011
+   },
+   {
+    "path": "lc_nwm/by_dt/900/outlet/peak_time_shift_h",
+    "kind": "time",
+    "unpatched": 0.0,
+    "corrected": 0.0,
+    "change": 0.0
+   },
+   {
+    "path": "lc_nwm/by_dt/900/outlet/nse_true_vs_false",
+    "kind": "index",
+    "unpatched": 0.6356,
+    "corrected": 0.6351,
+    "change": -0.0005
+   },
+   {
+    "path": "lc_nwm/by_dt/900/segments/peak_time_shift_h/p5",
+    "kind": "time",
+    "unpatched": -20.9663,
+    "corrected": -21.2891,
+    "change": -0.3228
+   },
+   {
+    "path": "lc_nwm/by_dt/900/segments/peak_time_shift_h/p50",
+    "kind": "time",
+    "unpatched": -3.3952,
+    "corrected": -4.1569,
+    "change": -0.7617
+   },
+   {
+    "path": "lc_nwm/by_dt/900/segments/peak_rel_diff_pct/p5",
+    "kind": "pct",
+    "unpatched": -19.4628,
+    "corrected": -57.0621,
+    "change": -37.5993
+   },
+   {
+    "path": "lc_nwm/by_dt/900/segments/peak_rel_diff_pct/p95",
+    "kind": "pct",
+    "unpatched": -0.0023,
+    "corrected": -0.0058,
+    "change": -0.0035
+   },
+   {
+    "path": "lc_nwm/by_dt/3600/outlet/peak_true_m3s",
+    "kind": "flow",
+    "unpatched": 75.5738,
+    "corrected": 75.5782,
+    "change": 0.0044
+   },
+   {
+    "path": "lc_nwm/by_dt/3600/outlet/peak_false_m3s",
+    "kind": "flow",
+    "unpatched": 74.8684,
+    "corrected": 74.8684,
+    "change": 0.0
+   },
+   {
+    "path": "lc_nwm/by_dt/3600/outlet/peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 0.9422,
+    "corrected": 0.948,
+    "change": 0.0058
+   },
+   {
+    "path": "lc_nwm/by_dt/3600/outlet/peak_time_shift_h",
+    "kind": "time",
+    "unpatched": 0.0,
+    "corrected": 0.0,
+    "change": 0.0
+   },
+   {
+    "path": "lc_nwm/by_dt/3600/outlet/nse_true_vs_false",
+    "kind": "index",
+    "unpatched": 0.9014,
+    "corrected": 0.9007,
+    "change": -0.0007
+   },
+   {
+    "path": "lc_nwm/by_dt/3600/segments/peak_time_shift_h/p5",
+    "kind": "time",
+    "unpatched": -18.5432,
+    "corrected": -19.7245,
+    "change": -1.1813
+   },
+   {
+    "path": "lc_nwm/by_dt/3600/segments/peak_time_shift_h/p50",
+    "kind": "time",
+    "unpatched": -1.675,
+    "corrected": -2.5793,
+    "change": -0.9043
+   },
+   {
+    "path": "lc_nwm/by_dt/3600/segments/peak_rel_diff_pct/p5",
+    "kind": "pct",
+    "unpatched": -65.5809,
+    "corrected": -40.4575,
+    "change": 25.1234
+   },
+   {
+    "path": "lc_nwm/by_dt/3600/segments/peak_rel_diff_pct/p95",
+    "kind": "pct",
+    "unpatched": -0.0074,
+    "corrected": -0.0156,
+    "change": -0.0082
+   },
+   {
+    "path": "potomac_storm/by_dt/60/outlet/peak_true_m3s",
+    "kind": "flow",
+    "unpatched": 2339.8042,
+    "corrected": 2341.3633,
+    "change": 1.5591
+   },
+   {
+    "path": "potomac_storm/by_dt/60/outlet/peak_false_m3s",
+    "kind": "flow",
+    "unpatched": 1577.7355,
+    "corrected": 1584.2463,
+    "change": 6.5108
+   },
+   {
+    "path": "potomac_storm/by_dt/60/outlet/peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 48.3014,
+    "corrected": 47.7904,
+    "change": -0.511
+   },
+   {
+    "path": "potomac_storm/by_dt/60/outlet/peak_time_shift_h",
+    "kind": "time",
+    "unpatched": -96.0569,
+    "corrected": -95.8139,
+    "change": 0.243
+   },
+   {
+    "path": "potomac_storm/by_dt/60/outlet/nse_true_vs_false",
+    "kind": "index",
+    "unpatched": -0.4901,
+    "corrected": -0.5059,
+    "change": -0.0158
+   },
+   {
+    "path": "potomac_storm/by_dt/60/segments/peak_time_shift_h/p5",
+    "kind": "time",
+    "unpatched": -8.8161,
+    "corrected": -9.1237,
+    "change": -0.3076
+   },
+   {
+    "path": "potomac_storm/by_dt/60/segments/peak_time_shift_h/p50",
+    "kind": "time",
+    "unpatched": -0.028,
+    "corrected": -0.0278,
+    "change": 0.0002
+   },
+   {
+    "path": "potomac_storm/by_dt/60/segments/peak_rel_diff_pct/p5",
+    "kind": "pct",
+    "unpatched": -0.0986,
+    "corrected": -0.1012,
+    "change": -0.0026
+   },
+   {
+    "path": "potomac_storm/by_dt/60/segments/peak_rel_diff_pct/p95",
+    "kind": "pct",
+    "unpatched": 36.1146,
+    "corrected": 34.4829,
+    "change": -1.6317
+   },
+   {
+    "path": "potomac_storm/by_dt/60/centroid/outlet_measured_shift_h",
+    "kind": "time",
+    "unpatched": -87.3007,
+    "corrected": -87.505,
+    "change": -0.2043
+   },
+   {
+    "path": "potomac_storm/by_dt/60/centroid/outlet_predicted_shift_h",
+    "kind": "time",
+    "unpatched": -43.1373,
+    "corrected": -43.0549,
+    "change": 0.0824
+   },
+   {
+    "path": "potomac_storm/by_dt/60/event_volume_balance/outlet_true",
+    "kind": "index",
+    "unpatched": 1.002,
+    "corrected": 1.002,
+    "change": 0.0
+   },
+   {
+    "path": "potomac_storm/by_dt/60/event_volume_balance/outlet_false",
+    "kind": "index",
+    "unpatched": 0.9104,
+    "corrected": 0.9078,
+    "change": -0.0026
+   },
+   {
+    "path": "potomac_storm/by_dt/60/mainstem/max_abs_peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 56.4497,
+    "corrected": 55.7503,
+    "change": -0.6994
+   },
+   {
+    "path": "potomac_storm/by_dt/300/outlet/peak_true_m3s",
+    "kind": "flow",
+    "unpatched": 2194.5356,
+    "corrected": 2195.5596,
+    "change": 1.024
+   },
+   {
+    "path": "potomac_storm/by_dt/300/outlet/peak_false_m3s",
+    "kind": "flow",
+    "unpatched": 1586.9395,
+    "corrected": 1586.0182,
+    "change": -0.9213
+   },
+   {
+    "path": "potomac_storm/by_dt/300/outlet/peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 38.2873,
+    "corrected": 38.4322,
+    "change": 0.1449
+   },
+   {
+    "path": "potomac_storm/by_dt/300/outlet/peak_time_shift_h",
+    "kind": "time",
+    "unpatched": -77.5988,
+    "corrected": -77.5579,
+    "change": 0.0409
+   },
+   {
+    "path": "potomac_storm/by_dt/300/outlet/nse_true_vs_false",
+    "kind": "index",
+    "unpatched": -0.1687,
+    "corrected": -0.1818,
+    "change": -0.0131
+   },
+   {
+    "path": "potomac_storm/by_dt/300/segments/peak_time_shift_h/p5",
+    "kind": "time",
+    "unpatched": -7.4981,
+    "corrected": -7.4494,
+    "change": 0.0487
+   },
+   {
+    "path": "potomac_storm/by_dt/300/segments/peak_time_shift_h/p50",
+    "kind": "time",
+    "unpatched": -0.0044,
+    "corrected": -0.0043,
+    "change": 0.0001
+   },
+   {
+    "path": "potomac_storm/by_dt/300/segments/peak_rel_diff_pct/p5",
+    "kind": "pct",
+    "unpatched": -0.0793,
+    "corrected": -0.0791,
+    "change": 0.0002
+   },
+   {
+    "path": "potomac_storm/by_dt/300/segments/peak_rel_diff_pct/p95",
+    "kind": "pct",
+    "unpatched": 26.3201,
+    "corrected": 27.1094,
+    "change": 0.7893
+   },
+   {
+    "path": "potomac_storm/by_dt/300/centroid/outlet_measured_shift_h",
+    "kind": "time",
+    "unpatched": -74.7948,
+    "corrected": -75.6454,
+    "change": -0.8506
+   },
+   {
+    "path": "potomac_storm/by_dt/300/centroid/outlet_predicted_shift_h",
+    "kind": "time",
+    "unpatched": -33.5744,
+    "corrected": -33.5977,
+    "change": -0.0233
+   },
+   {
+    "path": "potomac_storm/by_dt/300/event_volume_balance/outlet_true",
+    "kind": "index",
+    "unpatched": 1.0054,
+    "corrected": 1.0053,
+    "change": -0.0001
+   },
+   {
+    "path": "potomac_storm/by_dt/300/event_volume_balance/outlet_false",
+    "kind": "index",
+    "unpatched": 0.9188,
+    "corrected": 0.9127,
+    "change": -0.0061
+   },
+   {
+    "path": "potomac_storm/by_dt/300/mainstem/max_abs_peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 43.3068,
+    "corrected": 43.0061,
+    "change": -0.3007
+   },
+   {
+    "path": "potomac_storm/by_dt/900/outlet/peak_true_m3s",
+    "kind": "flow",
+    "unpatched": 1748.0846,
+    "corrected": 1748.6191,
+    "change": 0.5345
+   },
+   {
+    "path": "potomac_storm/by_dt/900/outlet/peak_false_m3s",
+    "kind": "flow",
+    "unpatched": 1555.5924,
+    "corrected": 1536.4039,
+    "change": -19.1885
+   },
+   {
+    "path": "potomac_storm/by_dt/900/outlet/peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 12.3742,
+    "corrected": 13.8125,
+    "change": 1.4383
+   },
+   {
+    "path": "potomac_storm/by_dt/900/outlet/peak_time_shift_h",
+    "kind": "time",
+    "unpatched": -33.8045,
+    "corrected": -34.6896,
+    "change": -0.8851
+   },
+   {
+    "path": "potomac_storm/by_dt/900/outlet/nse_true_vs_false",
+    "kind": "index",
+    "unpatched": 0.5094,
+    "corrected": 0.4996,
+    "change": -0.0098
+   },
+   {
+    "path": "potomac_storm/by_dt/900/segments/peak_time_shift_h/p5",
+    "kind": "time",
+    "unpatched": -4.1137,
+    "corrected": -4.2095,
+    "change": -0.0958
+   },
+   {
+    "path": "potomac_storm/by_dt/900/segments/peak_time_shift_h/p50",
+    "kind": "time",
+    "unpatched": -0.0,
+    "corrected": 0.0,
+    "change": 0.0
+   },
+   {
+    "path": "potomac_storm/by_dt/900/segments/peak_rel_diff_pct/p5",
+    "kind": "pct",
+    "unpatched": -0.0266,
+    "corrected": -0.0222,
+    "change": 0.0044
+   },
+   {
+    "path": "potomac_storm/by_dt/900/segments/peak_rel_diff_pct/p95",
+    "kind": "pct",
+    "unpatched": 12.1524,
+    "corrected": 13.6504,
+    "change": 1.498
+   },
+   {
+    "path": "potomac_storm/by_dt/900/centroid/outlet_measured_shift_h",
+    "kind": "time",
+    "unpatched": -47.09,
+    "corrected": -47.1076,
+    "change": -0.0176
+   },
+   {
+    "path": "potomac_storm/by_dt/900/centroid/outlet_predicted_shift_h",
+    "kind": "time",
+    "unpatched": -13.1785,
+    "corrected": -13.4118,
+    "change": -0.2333
+   },
+   {
+    "path": "potomac_storm/by_dt/900/event_volume_balance/outlet_true",
+    "kind": "index",
+    "unpatched": 1.0109,
+    "corrected": 1.0109,
+    "change": 0.0
+   },
+   {
+    "path": "potomac_storm/by_dt/900/event_volume_balance/outlet_false",
+    "kind": "index",
+    "unpatched": 0.9397,
+    "corrected": 0.9352,
+    "change": -0.0045
+   },
+   {
+    "path": "potomac_storm/by_dt/900/mainstem/max_abs_peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 14.5411,
+    "corrected": 17.6042,
+    "change": 3.0631
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/outlet/peak_true_m3s",
+    "kind": "flow",
+    "unpatched": 919.4557,
+    "corrected": 919.2141,
+    "change": -0.2416
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/outlet/peak_false_m3s",
+    "kind": "flow",
+    "unpatched": 955.0874,
+    "corrected": 958.9237,
+    "change": 3.8363
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/outlet/peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": -3.7307,
+    "corrected": -4.1411,
+    "change": -0.4104
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/outlet/peak_time_shift_h",
+    "kind": "time",
+    "unpatched": 72.0155,
+    "corrected": 72.561,
+    "change": 0.5455
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/outlet/nse_true_vs_false",
+    "kind": "index",
+    "unpatched": 0.8026,
+    "corrected": 0.8017,
+    "change": -0.0009
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/segments/peak_time_shift_h/p5",
+    "kind": "time",
+    "unpatched": -0.113,
+    "corrected": -0.0996,
+    "change": 0.0134
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/segments/peak_time_shift_h/p50",
+    "kind": "time",
+    "unpatched": 0.001,
+    "corrected": 0.001,
+    "change": 0.0
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/segments/peak_rel_diff_pct/p5",
+    "kind": "pct",
+    "unpatched": -2.7229,
+    "corrected": -2.904,
+    "change": -0.1811
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/segments/peak_rel_diff_pct/p95",
+    "kind": "pct",
+    "unpatched": 0.9381,
+    "corrected": 0.7578,
+    "change": -0.1803
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/centroid/outlet_measured_shift_h",
+    "kind": "time",
+    "unpatched": 35.3958,
+    "corrected": 35.5633,
+    "change": 0.1675
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/centroid/outlet_predicted_shift_h",
+    "kind": "time",
+    "unpatched": 51.4958,
+    "corrected": 51.5834,
+    "change": 0.0876
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/event_volume_balance/outlet_true",
+    "kind": "index",
+    "unpatched": 1.0132,
+    "corrected": 1.0133,
+    "change": 0.0001
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/event_volume_balance/outlet_false",
+    "kind": "index",
+    "unpatched": 0.977,
+    "corrected": 0.9787,
+    "change": 0.0017
+   },
+   {
+    "path": "potomac_storm/by_dt/3600/mainstem/max_abs_peak_rel_diff_pct",
+    "kind": "pct",
+    "unpatched": 13.4666,
+    "corrected": 13.4105,
+    "change": -0.0561
+   }
+  ],
+  "closure": [
+   {
+    "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.01042,
+    "corrected": 0.01043,
+    "change": 1e-05
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.184,
+    "corrected": 0.1841,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.001632,
+    "corrected": 0.001634,
+    "change": 2e-06
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.987,
+    "corrected": 0.9869,
+    "change": -0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.1609,
+    "corrected": 0.1581,
+    "change": -0.0028
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1999,
+    "corrected": 0.2001,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.02352,
+    "corrected": 0.02358,
+    "change": 6e-05
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.2285,
+    "corrected": 0.2285,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.8282,
+    "corrected": 0.8182,
+    "change": -0.01
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 3286.0,
+    "corrected": 3283.0,
+    "change": -3.0
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.496,
+    "corrected": 0.496,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts0/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 685,
+    "corrected": 647,
+    "change": -38.0
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.01041,
+    "corrected": 0.01042,
+    "change": 1e-05
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1839,
+    "corrected": 0.1841,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.001621,
+    "corrected": 0.001623,
+    "change": 2e-06
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.987,
+    "corrected": 0.9869,
+    "change": -0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.1602,
+    "corrected": 0.1574,
+    "change": -0.0028
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1998,
+    "corrected": 0.2,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.02395,
+    "corrected": 0.02419,
+    "change": 0.00024
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.2316,
+    "corrected": 0.2315,
+    "change": -0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.8154,
+    "corrected": 0.8047,
+    "change": -0.0107
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 3287.0,
+    "corrected": 3284.0,
+    "change": -3.0
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.496,
+    "corrected": 0.496,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt60_sts1/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 0,
+    "corrected": 0,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.0526,
+    "corrected": 0.05262,
+    "change": 2e-05
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.184,
+    "corrected": 0.1841,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.01051,
+    "corrected": 0.01057,
+    "change": 6e-05
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.9341,
+    "corrected": 0.934,
+    "change": -0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.1609,
+    "corrected": 0.1581,
+    "change": -0.0028
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1999,
+    "corrected": 0.2001,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.1119,
+    "corrected": 0.1127,
+    "change": 0.0008
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.2285,
+    "corrected": 0.2285,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.8389,
+    "corrected": 0.8188,
+    "change": -0.0201
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 3286.0,
+    "corrected": 3283.0,
+    "change": -3.0
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.496,
+    "corrected": 0.496,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 805,
+    "corrected": 686,
+    "change": -119.0
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.05263,
+    "corrected": 0.05266,
+    "change": 3e-05
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1839,
+    "corrected": 0.1841,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.01053,
+    "corrected": 0.01059,
+    "change": 6e-05
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.9341,
+    "corrected": 0.934,
+    "change": -0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.1603,
+    "corrected": 0.1575,
+    "change": -0.0028
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1998,
+    "corrected": 0.2,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.1134,
+    "corrected": 0.1141,
+    "change": 0.0007
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.2308,
+    "corrected": 0.2308,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.8351,
+    "corrected": 0.8144,
+    "change": -0.0207
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 3287.0,
+    "corrected": 3284.0,
+    "change": -3.0
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.496,
+    "corrected": 0.496,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts1/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 0,
+    "corrected": 0,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.15,
+    "corrected": 0.1503,
+    "change": 0.0003
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.184,
+    "corrected": 0.1841,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.02896,
+    "corrected": 0.02908,
+    "change": 0.00012
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.827,
+    "corrected": 0.8266,
+    "change": -0.0004
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.1609,
+    "corrected": 0.1582,
+    "change": -0.0027
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1999,
+    "corrected": 0.2001,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.3482,
+    "corrected": 0.3529,
+    "change": 0.0047
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.2278,
+    "corrected": 0.2279,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.8435,
+    "corrected": 0.8198,
+    "change": -0.0237
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 3286.0,
+    "corrected": 3283.0,
+    "change": -3.0
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.496,
+    "corrected": 0.496,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts0/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 881,
+    "corrected": 626,
+    "change": -255.0
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.15,
+    "corrected": 0.1503,
+    "change": 0.0003
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.184,
+    "corrected": 0.1841,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.02897,
+    "corrected": 0.0291,
+    "change": 0.00013
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.827,
+    "corrected": 0.8267,
+    "change": -0.0003
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.1605,
+    "corrected": 0.1578,
+    "change": -0.0027
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1999,
+    "corrected": 0.2001,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.3504,
+    "corrected": 0.3551,
+    "change": 0.0047
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.2288,
+    "corrected": 0.2287,
+    "change": -0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.8438,
+    "corrected": 0.8197,
+    "change": -0.0241
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 3286.0,
+    "corrected": 3283.0,
+    "change": -3.0
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.496,
+    "corrected": 0.496,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt900_sts1/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 0,
+    "corrected": 0,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.5449,
+    "corrected": 0.5453,
+    "change": 0.0004
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1842,
+    "corrected": 0.1843,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.0749,
+    "corrected": 0.07513,
+    "change": 0.00023
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.4207,
+    "corrected": 0.4202,
+    "change": -0.0005
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.1621,
+    "corrected": 0.1594,
+    "change": -0.0027
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.2001,
+    "corrected": 0.2003,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.8392,
+    "corrected": 0.8409,
+    "change": 0.0017
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.2231,
+    "corrected": 0.2232,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.8202,
+    "corrected": 0.8004,
+    "change": -0.0198
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 3910.0,
+    "corrected": 3910.0,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.496,
+    "corrected": 0.496,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts0/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 402,
+    "corrected": 306,
+    "change": -96.0
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.545,
+    "corrected": 0.5454,
+    "change": 0.0004
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1842,
+    "corrected": 0.1844,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.07504,
+    "corrected": 0.07525,
+    "change": 0.00021
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.4206,
+    "corrected": 0.4202,
+    "change": -0.0004
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.1622,
+    "corrected": 0.1595,
+    "change": -0.0027
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.2002,
+    "corrected": 0.2004,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.8393,
+    "corrected": 0.841,
+    "change": 0.0017
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.2229,
+    "corrected": 0.2228,
+    "change": -0.0001
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.8205,
+    "corrected": 0.8002,
+    "change": -0.0203
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 3910.0,
+    "corrected": 3910.0,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.496,
+    "corrected": 0.496,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt3600_sts1/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 0,
+    "corrected": 0,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.003858,
+    "corrected": 0.003031,
+    "change": -0.000827
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1084,
+    "corrected": 0.1087,
+    "change": 0.0003
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.0002077,
+    "corrected": 0.0002085,
+    "change": 8e-07
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.9788,
+    "corrected": 0.9797,
+    "change": 0.0009
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.02937,
+    "corrected": 0.02848,
+    "change": -0.00089
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1204,
+    "corrected": 0.1206,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.003979,
+    "corrected": 0.003346,
+    "change": -0.000633
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.1139,
+    "corrected": 0.1147,
+    "change": 0.0008
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.03545,
+    "corrected": 0.03472,
+    "change": -0.00073
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 19500.0,
+    "corrected": 19610.0,
+    "change": 110.0
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.4968,
+    "corrected": 0.4968,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts0/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 1459,
+    "corrected": 1497,
+    "change": 38.0
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.00379,
+    "corrected": 0.002977,
+    "change": -0.000813
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1053,
+    "corrected": 0.1054,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.0002061,
+    "corrected": 0.0002076,
+    "change": 1.5e-06
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.9789,
+    "corrected": 0.9797,
+    "change": 0.0008
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.02848,
+    "corrected": 0.02758,
+    "change": -0.0009
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1166,
+    "corrected": 0.1167,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.003979,
+    "corrected": 0.003165,
+    "change": -0.000814
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.1129,
+    "corrected": 0.1129,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.03445,
+    "corrected": 0.03346,
+    "change": -0.00099
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 19540.0,
+    "corrected": 19710.0,
+    "change": 170.0
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.4968,
+    "corrected": 0.4968,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt60_sts1/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 0,
+    "corrected": 0,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.01866,
+    "corrected": 0.01802,
+    "change": -0.00064
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1087,
+    "corrected": 0.1087,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.002935,
+    "corrected": 0.002937,
+    "change": 2e-06
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.9604,
+    "corrected": 0.961,
+    "change": 0.0006
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.02939,
+    "corrected": 0.0284,
+    "change": -0.00099
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.12,
+    "corrected": 0.1201,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.01989,
+    "corrected": 0.01935,
+    "change": -0.00054
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.1138,
+    "corrected": 0.1135,
+    "change": -0.0003
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.03472,
+    "corrected": 0.0349,
+    "change": 0.00018
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 19510.0,
+    "corrected": 19640.0,
+    "change": 130.0
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.4968,
+    "corrected": 0.4968,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts0/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 1481,
+    "corrected": 1553,
+    "change": 72.0
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.01854,
+    "corrected": 0.01783,
+    "change": -0.00071
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1053,
+    "corrected": 0.1054,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.00294,
+    "corrected": 0.002941,
+    "change": 1e-06
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.9605,
+    "corrected": 0.9612,
+    "change": 0.0007
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.02852,
+    "corrected": 0.02762,
+    "change": -0.0009
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1166,
+    "corrected": 0.1167,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.01971,
+    "corrected": 0.01917,
+    "change": -0.00054
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.1129,
+    "corrected": 0.113,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.03499,
+    "corrected": 0.03346,
+    "change": -0.00153
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 19550.0,
+    "corrected": 19720.0,
+    "change": 170.0
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.4968,
+    "corrected": 0.4968,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt300_sts1/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 0,
+    "corrected": 0,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.04804,
+    "corrected": 0.04722,
+    "change": -0.00082
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1082,
+    "corrected": 0.1083,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.008848,
+    "corrected": 0.008884,
+    "change": 3.6e-05
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.9238,
+    "corrected": 0.9245,
+    "change": 0.0007
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.0293,
+    "corrected": 0.02834,
+    "change": -0.00096
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1195,
+    "corrected": 0.1195,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.05,
+    "corrected": 0.04946,
+    "change": -0.00054
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.1138,
+    "corrected": 0.1137,
+    "change": -0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.03536,
+    "corrected": 0.03427,
+    "change": -0.00109
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 19530.0,
+    "corrected": 19670.0,
+    "change": 140.0
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.4968,
+    "corrected": 0.4968,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts0/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 1678,
+    "corrected": 1678,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.04793,
+    "corrected": 0.047,
+    "change": -0.00093
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1052,
+    "corrected": 0.1055,
+    "change": 0.0003
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.008858,
+    "corrected": 0.008894,
+    "change": 3.6e-05
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.924,
+    "corrected": 0.9248,
+    "change": 0.0008
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.02861,
+    "corrected": 0.02772,
+    "change": -0.00089
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1165,
+    "corrected": 0.1167,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.04982,
+    "corrected": 0.04901,
+    "change": -0.00081
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.1128,
+    "corrected": 0.1129,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.03463,
+    "corrected": 0.034,
+    "change": -0.00063
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 19570.0,
+    "corrected": 19730.0,
+    "change": 160.0
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.4968,
+    "corrected": 0.4968,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt900_sts1/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 0,
+    "corrected": 0,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.1555,
+    "corrected": 0.1545,
+    "change": -0.001
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1066,
+    "corrected": 0.1068,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.0311,
+    "corrected": 0.03138,
+    "change": 0.00028
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.8079,
+    "corrected": 0.8088,
+    "change": 0.0009
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.02921,
+    "corrected": 0.02839,
+    "change": -0.00082
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.1177,
+    "corrected": 0.1179,
+    "change": 0.0002
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.163,
+    "corrected": 0.1629,
+    "change": -0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.1138,
+    "corrected": 0.1139,
+    "change": 0.0001
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.03481,
+    "corrected": 0.03129,
+    "change": -0.00352
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 19540.0,
+    "corrected": 19740.0,
+    "change": 200.0
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.4968,
+    "corrected": 0.4968,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts0/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 2051,
+    "corrected": 2018,
+    "change": -33.0
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/clamp",
+    "kind": "frac",
+    "unpatched": 0.1547,
+    "corrected": 0.1541,
+    "change": -0.0006
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/floor",
+    "kind": "frac",
+    "unpatched": 0.1046,
+    "corrected": 0.1053,
+    "change": 0.0007
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/both",
+    "kind": "frac",
+    "unpatched": 0.03124,
+    "corrected": 0.03159,
+    "change": 0.00035
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/c2neg",
+    "kind": "frac",
+    "unpatched": 0.8088,
+    "corrected": 0.8093,
+    "change": 0.0005
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/over",
+    "kind": "frac",
+    "unpatched": 0.029,
+    "corrected": 0.02809,
+    "change": -0.00091
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/fractions_of_segment_steps/D_gt_half",
+    "kind": "frac",
+    "unpatched": 0.116,
+    "corrected": 0.1165,
+    "change": 0.0005
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/at_peak/fractions/clamp",
+    "kind": "frac",
+    "unpatched": 0.1631,
+    "corrected": 0.1627,
+    "change": -0.0004
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/at_peak/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.1128,
+    "corrected": 0.1132,
+    "change": 0.0004
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/at_peak/fractions/over",
+    "kind": "frac",
+    "unpatched": 0.03219,
+    "corrected": 0.03039,
+    "change": -0.0018
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/distributions_all_steps/Km_s/p50",
+    "kind": "value",
+    "unpatched": 19660.0,
+    "corrected": 19810.0,
+    "change": 150.0
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/distributions_all_steps/X_final/p50",
+    "kind": "value",
+    "unpatched": 0.4968,
+    "corrected": 0.4968,
+    "change": 0.0
+   },
+   {
+    "path": "closure/lc_nwm/dt3600_sts1/negative_flow_guard_steps",
+    "kind": "count",
+    "unpatched": 0,
+    "corrected": 0,
+    "change": 0.0
+   },
+   {
+    "path": "potomac/dt60_sts0/loss_patched/troute_loss_pct_of_storm",
+    "kind": "pct",
+    "unpatched": 8.782,
+    "corrected": 9.224,
+    "change": 0.442
+   },
+   {
+    "path": "potomac/dt60_sts0/loss_patched/hysteresis_terms_pct",
+    "kind": "pct",
+    "unpatched": 15.77,
+    "corrected": 27.79,
+    "change": 12.02
+   },
+   {
+    "path": "potomac/dt60_sts0/loss_patched/negative_flow_guard_pct",
+    "kind": "pct",
+    "unpatched": -6.891,
+    "corrected": -19.06,
+    "change": -12.169
+   },
+   {
+    "path": "potomac/dt60_sts0/loss_patched/hysteresis_by_regime_pct/free",
+    "kind": "pct",
+    "unpatched": 2.466,
+    "corrected": 15.95,
+    "change": 13.484
+   },
+   {
+    "path": "potomac/dt60_sts0/loss_patched/hysteresis_by_regime_pct/floor",
+    "kind": "pct",
+    "unpatched": 12.91,
+    "corrected": 11.8,
+    "change": -1.11
+   },
+   {
+    "path": "potomac/dt60_sts0/loss_patched/hysteresis_by_regime_pct/clamp",
+    "kind": "pct",
+    "unpatched": 5.072e-05,
+    "corrected": 2.395e-05,
+    "change": -2.677e-05
+   },
+   {
+    "path": "potomac/dt60_sts1/loss_patched/troute_loss_pct_of_storm",
+    "kind": "pct",
+    "unpatched": -0.2006,
+    "corrected": -0.1971,
+    "change": 0.0035
+   },
+   {
+    "path": "potomac/dt60_sts1/loss_patched/hysteresis_terms_pct",
+    "kind": "pct",
+    "unpatched": -0.09104,
+    "corrected": -0.08705,
+    "change": 0.00399
+   },
+   {
+    "path": "potomac/dt60_sts1/loss_patched/negative_flow_guard_pct",
+    "kind": "pct",
+    "unpatched": 0.0,
+    "corrected": 0.0,
+    "change": 0.0
+   },
+   {
+    "path": "potomac/dt60_sts1/loss_patched/hysteresis_by_regime_pct/free",
+    "kind": "pct",
+    "unpatched": -0.1823,
+    "corrected": -0.0269,
+    "change": 0.1554
+   },
+   {
+    "path": "potomac/dt60_sts1/loss_patched/hysteresis_by_regime_pct/floor",
+    "kind": "pct",
+    "unpatched": -0.1239,
+    "corrected": -0.09723,
+    "change": 0.02667
+   },
+   {
+    "path": "potomac/dt60_sts1/loss_patched/hysteresis_by_regime_pct/clamp",
+    "kind": "pct",
+    "unpatched": 5.383e-06,
+    "corrected": 2.799e-06,
+    "change": -2.584e-06
+   },
+   {
+    "path": "potomac/dt300_sts0/loss_patched/troute_loss_pct_of_storm",
+    "kind": "pct",
+    "unpatched": 8.176,
+    "corrected": 8.728,
+    "change": 0.552
+   },
+   {
+    "path": "potomac/dt300_sts0/loss_patched/hysteresis_terms_pct",
+    "kind": "pct",
+    "unpatched": 13.73,
+    "corrected": 21.63,
+    "change": 7.9
+   },
+   {
+    "path": "potomac/dt300_sts0/loss_patched/negative_flow_guard_pct",
+    "kind": "pct",
+    "unpatched": -5.544,
+    "corrected": -15.08,
+    "change": -9.536
+   },
+   {
+    "path": "potomac/dt300_sts0/loss_patched/hysteresis_by_regime_pct/free",
+    "kind": "pct",
+    "unpatched": 3.752,
+    "corrected": 9.847,
+    "change": 6.095
+   },
+   {
+    "path": "potomac/dt300_sts0/loss_patched/hysteresis_by_regime_pct/floor",
+    "kind": "pct",
+    "unpatched": 9.596,
+    "corrected": 11.76,
+    "change": 2.164
+   },
+   {
+    "path": "potomac/dt300_sts0/loss_patched/hysteresis_by_regime_pct/clamp",
+    "kind": "pct",
+    "unpatched": 0.001597,
+    "corrected": 0.001326,
+    "change": -0.000271
+   },
+   {
+    "path": "potomac/dt300_sts1/loss_patched/troute_loss_pct_of_storm",
+    "kind": "pct",
+    "unpatched": -0.5506,
+    "corrected": -0.5293,
+    "change": 0.0213
+   },
+   {
+    "path": "potomac/dt300_sts1/loss_patched/hysteresis_terms_pct",
+    "kind": "pct",
+    "unpatched": -0.5325,
+    "corrected": -0.5112,
+    "change": 0.0213
+   },
+   {
+    "path": "potomac/dt300_sts1/loss_patched/negative_flow_guard_pct",
+    "kind": "pct",
+    "unpatched": 0.0,
+    "corrected": 0.0,
+    "change": 0.0
+   },
+   {
+    "path": "potomac/dt300_sts1/loss_patched/hysteresis_by_regime_pct/free",
+    "kind": "pct",
+    "unpatched": -0.2651,
+    "corrected": -0.0897,
+    "change": 0.1754
+   },
+   {
+    "path": "potomac/dt300_sts1/loss_patched/hysteresis_by_regime_pct/floor",
+    "kind": "pct",
+    "unpatched": -0.4508,
+    "corrected": -0.4503,
+    "change": 0.0005
+   },
+   {
+    "path": "potomac/dt300_sts1/loss_patched/hysteresis_by_regime_pct/clamp",
+    "kind": "pct",
+    "unpatched": 0.001153,
+    "corrected": 0.00128,
+    "change": 0.000127
+   },
+   {
+    "path": "potomac/dt900_sts0/loss_patched/troute_loss_pct_of_storm",
+    "kind": "pct",
+    "unpatched": 6.42,
+    "corrected": 6.479,
+    "change": 0.059
+   },
+   {
+    "path": "potomac/dt900_sts0/loss_patched/hysteresis_terms_pct",
+    "kind": "pct",
+    "unpatched": 12.22,
+    "corrected": 16.37,
+    "change": 4.15
+   },
+   {
+    "path": "potomac/dt900_sts0/loss_patched/negative_flow_guard_pct",
+    "kind": "pct",
+    "unpatched": -5.794,
+    "corrected": -10.78,
+    "change": -4.986
+   },
+   {
+    "path": "potomac/dt900_sts0/loss_patched/hysteresis_by_regime_pct/free",
+    "kind": "pct",
+    "unpatched": 3.511,
+    "corrected": 9.988,
+    "change": 6.477
+   },
+   {
+    "path": "potomac/dt900_sts0/loss_patched/hysteresis_by_regime_pct/floor",
+    "kind": "pct",
+    "unpatched": 8.364,
+    "corrected": 6.339,
+    "change": -2.025
+   },
+   {
+    "path": "potomac/dt900_sts0/loss_patched/hysteresis_by_regime_pct/clamp",
+    "kind": "pct",
+    "unpatched": 0.02452,
+    "corrected": 0.02458,
+    "change": 6e-05
+   },
+   {
+    "path": "potomac/dt900_sts1/loss_patched/troute_loss_pct_of_storm",
+    "kind": "pct",
+    "unpatched": -1.121,
+    "corrected": -1.086,
+    "change": 0.035
+   },
+   {
+    "path": "potomac/dt900_sts1/loss_patched/hysteresis_terms_pct",
+    "kind": "pct",
+    "unpatched": -1.116,
+    "corrected": -1.08,
+    "change": 0.036
+   },
+   {
+    "path": "potomac/dt900_sts1/loss_patched/negative_flow_guard_pct",
+    "kind": "pct",
+    "unpatched": 0.0,
+    "corrected": 0.0,
+    "change": 0.0
+   },
+   {
+    "path": "potomac/dt900_sts1/loss_patched/hysteresis_by_regime_pct/free",
+    "kind": "pct",
+    "unpatched": -0.3262,
+    "corrected": -0.1388,
+    "change": 0.1874
+   },
+   {
+    "path": "potomac/dt900_sts1/loss_patched/hysteresis_by_regime_pct/floor",
+    "kind": "pct",
+    "unpatched": -0.9776,
+    "corrected": -0.9607,
+    "change": 0.0169
+   },
+   {
+    "path": "potomac/dt900_sts1/loss_patched/hysteresis_by_regime_pct/clamp",
+    "kind": "pct",
+    "unpatched": 0.02722,
+    "corrected": 0.02044,
+    "change": -0.00678
+   },
+   {
+    "path": "potomac/dt3600_sts0/loss_patched/troute_loss_pct_of_storm",
+    "kind": "pct",
+    "unpatched": 2.79,
+    "corrected": 2.126,
+    "change": -0.664
+   },
+   {
+    "path": "potomac/dt3600_sts0/loss_patched/hysteresis_terms_pct",
+    "kind": "pct",
+    "unpatched": 6.408,
+    "corrected": 5.291,
+    "change": -1.117
+   },
+   {
+    "path": "potomac/dt3600_sts0/loss_patched/negative_flow_guard_pct",
+    "kind": "pct",
+    "unpatched": -3.614,
+    "corrected": -3.15,
+    "change": 0.464
+   },
+   {
+    "path": "potomac/dt3600_sts0/loss_patched/hysteresis_by_regime_pct/free",
+    "kind": "pct",
+    "unpatched": 2.282,
+    "corrected": 3.694,
+    "change": 1.412
+   },
+   {
+    "path": "potomac/dt3600_sts0/loss_patched/hysteresis_by_regime_pct/floor",
+    "kind": "pct",
+    "unpatched": 3.962,
+    "corrected": 1.233,
+    "change": -2.729
+   },
+   {
+    "path": "potomac/dt3600_sts0/loss_patched/hysteresis_by_regime_pct/clamp",
+    "kind": "pct",
+    "unpatched": 0.3345,
+    "corrected": 0.3338,
+    "change": -0.0007
+   },
+   {
+    "path": "potomac/dt3600_sts1/loss_patched/troute_loss_pct_of_storm",
+    "kind": "pct",
+    "unpatched": -1.354,
+    "corrected": -1.332,
+    "change": 0.022
+   },
+   {
+    "path": "potomac/dt3600_sts1/loss_patched/hysteresis_terms_pct",
+    "kind": "pct",
+    "unpatched": -1.352,
+    "corrected": -1.33,
+    "change": 0.022
+   },
+   {
+    "path": "potomac/dt3600_sts1/loss_patched/negative_flow_guard_pct",
+    "kind": "pct",
+    "unpatched": 0.0,
+    "corrected": 0.0,
+    "change": 0.0
+   },
+   {
+    "path": "potomac/dt3600_sts1/loss_patched/hysteresis_by_regime_pct/free",
+    "kind": "pct",
+    "unpatched": -0.1603,
+    "corrected": -0.2118,
+    "change": -0.0515
+   },
+   {
+    "path": "potomac/dt3600_sts1/loss_patched/hysteresis_by_regime_pct/floor",
+    "kind": "pct",
+    "unpatched": -1.38,
+    "corrected": -1.379,
+    "change": 0.001
+   },
+   {
+    "path": "potomac/dt3600_sts1/loss_patched/hysteresis_by_regime_pct/clamp",
+    "kind": "pct",
+    "unpatched": 0.2065,
+    "corrected": 0.2429,
+    "change": 0.0364
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/X_unclamped_where_floored/p50",
+    "kind": "value",
+    "unpatched": -23.97,
+    "corrected": -23.93,
+    "change": 0.04
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/by_slope_class/floor_1e-5/fractions/floor",
+    "kind": "frac",
+    "unpatched": 1.0,
+    "corrected": 1.0,
+    "change": 0.0
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/by_slope_class/gt_1e-3/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.006224,
+    "corrected": 0.006266,
+    "change": 4.2e-05
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/inbank_vs_overbank/overbank/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.8955,
+    "corrected": 0.902,
+    "change": 0.0065
+   },
+   {
+    "path": "closure/potomac_storm/dt300_sts0/inbank_vs_overbank/inbank/fractions/floor",
+    "kind": "frac",
+    "unpatched": 0.04754,
+    "corrected": 0.04931,
+    "change": 0.00177
+   },
+   {
+    "path": "potomac/dt300_sts0/timing_shift_prediction/outlet_predicted_shift_h",
+    "kind": "value",
+    "unpatched": -47.32,
+    "corrected": -47.33,
+    "change": -0.01
+   },
+   {
+    "path": "potomac/dt300_sts0/timing_shift_prediction/by_regime_h/floor",
+    "kind": "value",
+    "unpatched": -42.53,
+    "corrected": -42.53,
+    "change": 0.0
+   },
+   {
+    "path": "screening_crosscheck_dt300_false/XF/pct_of_floor_at_peak_segments_flagged",
+    "kind": "pct",
+    "unpatched": 86.14,
+    "corrected": 86.14,
+    "change": 0.0
+   },
+   {
+    "path": "screening_crosscheck_dt300_false/XF/pct_of_flagged_floor_at_peak",
+    "kind": "pct",
+    "unpatched": 99.88,
+    "corrected": 99.85,
+    "change": -0.03
+   }
+  ]
+ }
+}

@@ -1,0 +1,50 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: James Halgren <james.halgren@byu.edu>
+Date: Fri, 9 Oct 2026 13:19:10 -0600
+Subject: [PATCH 03/10] fix(kernel): restart the error measures when the Secant
+ search is expanded
+
+The retry path (tries <= 4) widened the bracket and jumped back to label 110
+without resetting rerror and aerror. When the failed pass ended with them
+already inside the loop's tolerance, the do-while test failed at once, the
+loop body did not run, and the code went on to publish:
+  - depth: the expanded guess 1.33 * h, not a solution;
+  - flow: C1..C4 as left at label 110 (0 since the determinism fix), so
+    qdc = 0 whatever flows in.
+
+In d29f663 (and WRF-Hydro) the path is reachable only when the loop leaves
+through the h < mindepth exit on its last allowed pass, so here the fix is
+defensive. It becomes the normal outcome of every stall once a degenerate
+Secant slope forces a retry ("stop reading a failed Secant step as
+convergence", NGWPC/t-route#123, patch 0006 of this series): NGWPC's kernel as
+merged in #123 publishes qdc = 0 with inflow present in 7 of the 46,128 cases
+of a 46,128-case kernel sweep (see the PR description), and this patch
+removes all 7.
+
+Fix: reset rerror and aerror to their initial values (1.0, 0.01) before
+`goto 110`, so every retry runs at least one Secant pass. NGWPC's later
+restart path (4ecefec1) resets them the same way; its main retry path, as
+merged in #123, does not.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+index d4af97e..22af4bd 100644
+--- a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
++++ b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+@@ -145,6 +145,12 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+                 h     =  h * 1.33_prec
+                 h_0   =  h_0 * 0.67_prec
+                 maxiter = maxiter + 25 !and increase the number of allowable iterations
++                !* Restart the error measures with the search. Left at the values the
++                !* failed pass ended on (rerror = aerror = 0 after a stall), they can
++                !* already meet the loop test, so the loop body is skipped and the
++                !* expanded guess is published with the C1..C4 just zeroed at label 110.
++                rerror = 1.0_prec
++                aerror = 0.01_prec
+                 goto 110
+             endif
+                     !print*, "Musk Cunge WARNING: Failure to converge"

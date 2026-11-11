@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Optional diagnostic (not part of run.sh): how much of the True/False comparison depends on
+# Optional diagnostic (not part of run.sh; historical since 2026-10-09, when the default
+# build switched to the corrected kernel, ../kernel_fixes; it compares the 2026-10-08 Qj-only
+# patch with runs of the unpatched kernel, so run it only after KERNEL=unpatched run.sh): how much of the True/False comparison depends on
 # the MC kernel's uninitialized secant variable (README "Mechanism checks", E).
 # Builds a second, patched T-Route (build_troute.py --patch-qj) in a separate copy of this
 # directory (build/qj_patch/, own .venv), reruns the Potomac storm at dt = 300 and 3600 s with
@@ -16,7 +18,7 @@ ln -sfn "$HERE/data/RouteLink_CONUS.nc" "$W/data/RouteLink_CONUS.nc"
 (
   cd "$W"
   uv sync --locked --inexact
-  uv run --locked python build_troute.py --patch-qj ${FORCE:+--force}
+  uv run --locked python build_troute.py --kernel unpatched --patch-qj ${FORCE:+--force}
   uv run --locked python make_inputs.py potomac_storm
   for dt in 300 3600; do
     for s in true false; do

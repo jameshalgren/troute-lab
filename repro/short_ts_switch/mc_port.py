@@ -12,6 +12,12 @@ Differences from the compiled kernel:
   argument (the caller's uninitialized `Qj_0`) in the X formula (L281, L291). The
   compiled kernel therefore uses whatever value that variable holds (its output varies
   between processes); see README "Mechanism checks", E.
+- corrected=True (default since 2026-10-09, when the default build switched to the
+  corrected kernel, ../kernel_fixes/patches/0001-0008): Qj_0, Qj and C1..C4 reset at label
+  110 on every try; a negative Secant step halves h and a zero slope is a stall; explicit
+  convergence; retries restart the error measures; an abandoned search holds the
+  previous depth; a collapsed search (residual > a tenth of the estimate) restarts from
+  normal-depth seeds (NGWPC 4ecefec1). corrected=False is the d29f663 kernel.
 mechanism.py validates the port against T-Route's own outputs (mainstem replays);
 qj_patch_compare.py validates it against the compiled kernel with that read patched.
 """
@@ -72,7 +78,7 @@ def _secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, qdp, ql, qup, quc, h, inter
     return qj, (c1, c2, c3, c4), x, km
 
 
-def mc(dt, qup, quc, qdp, ql, dx, bw, tw, twcc, n, ncc, cs, s0, depthp, qj0_init=0.0):
+def mc(dt, qup, quc, qdp, ql, dx, bw, tw, twcc, n, ncc, cs, s0, depthp, qj0_init=0.0, corrected=True):
     """One kernel call. Returns (qdc, depthc, diag) with diag = C (C1..C4), Km, X, clip
     (0 none, 1 negative-flow guard replaced the MC value, 2 set to zero)."""
     mindepth = 0.01
@@ -85,6 +91,8 @@ def mc(dt, qup, quc, qdp, ql, dx, bw, tw, twcc, n, ncc, cs, s0, depthp, qj0_init
         bfd = bw / (2 * z)
     else:
         bfd = (tw - bw) / (2 * z)
+    qref = max(qup, quc, qdp, ql)
+    h_seed = h_low = h_last = 0.0
     depthc = max(depthp, 0.0)
     h = depthc * 1.33 + mindepth
     h_0 = depthc * 0.67
@@ -93,14 +101,22 @@ def mc(dt, qup, quc, qdp, ql, dx, bw, tw, twcc, n, ncc, cs, s0, depthp, qj0_init
     x = km = float("nan")
     if not (ql > 0 or qup > 0 or quc > 0 or qdp > 0):
         return 0.0, 0.0, {"C": c, "Km": dt, "X": 0.5, "clip": 0}
+    qj = 0.0
     while True:
+        stalled = False
+        if corrected:
+            qj_0, qj, c = 0.0, 0.0, (0.0, 0.0, 0.0, 0.0)
         it = 0
         while rerror > 0.01 and aerror >= mindepth and it <= maxiter:
             qj_0, c, x, km = _secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, qdp, ql, qup, quc, h_0, 1, qj_0, c)
             qj, c, x, km = _secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, qdp, ql, qup, quc, h, 2, 0.0, c)
-            h_1 = h - (qj * (h_0 - h)) / (qj_0 - qj) if qj_0 - qj != 0 else h
-            if h_1 < 0:
+            if qj_0 - qj != 0:
+                h_1 = h - (qj * (h_0 - h)) / (qj_0 - qj)
+                if h_1 < 0:
+                    h_1 = 0.5 * h if corrected else h
+            else:
                 h_1 = h
+                stalled = corrected
             if h > 0:
                 rerror, aerror = abs((h_1 - h) / h), abs(h_1 - h)
             else:
@@ -108,8 +124,38 @@ def mc(dt, qup, quc, qdp, ql, dx, bw, tw, twcc, n, ncc, cs, s0, depthp, qj0_init
             h_0 = max(0.0, h)
             h = max(0.0, h_1)
             it += 1
-            if h < mindepth:
+            if h < mindepth or stalled:
                 break
+        if corrected:
+            c1, c2, c3, c4 = c
+            qmc = c1 * qup + c2 * quc + c3 * qdp + c4
+            collapsed = qref > 0 and abs(qj) > 0.1 * abs(qmc) and abs(qj) > 0.01
+            if h_last > 0 and abs(h - h_last) <= 0.05 * max(h, mindepth) and qj <= 0.5 * abs(qmc):
+                collapsed = False
+            if collapsed and tries <= 4:
+                tries += 1
+                h_last = h
+                if h_seed == 0.0:
+                    h_seed = (qref * n / (bw * math.sqrt(s0))) ** 0.6
+                    h_low = (qref * n / (max(twcc, tw, bw) * math.sqrt(s0))) ** 0.6
+                h = {1: h_low, 2: math.sqrt(h_low * h_seed), 3: h_seed}.get(tries, 4.0 * h_seed)
+                h_0, h = h * 0.67, h * 1.33
+                maxiter += 25
+                aerror, rerror = 0.01, 1.0
+                continue
+            converged = (not stalled) and (rerror <= 0.01 or aerror < mindepth)
+            if not converged and (stalled or it >= maxiter):
+                tries += 1
+                if tries <= 4:
+                    h *= 1.33
+                    h_0 *= 0.67
+                    maxiter += 25
+                    aerror, rerror = 0.01, 1.0
+                    continue
+                h = max(depthp, mindepth)
+                qj_0, c, x, km = _secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, qdp, ql, qup, quc, h, 1, qj_0, c)
+                qj, c, x, km = _secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, qdp, ql, qup, quc, h, 2, 0.0, c)
+            break
         if it >= maxiter:
             tries += 1
             if tries <= 4:

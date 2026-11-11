@@ -1,0 +1,18 @@
+{
+  "_source": "AI-assembled (Claude, 2026-10-09) from the first run of analyze.py on macOS arm64 / gfortran 15.2.0; tolerances in check.py",
+  "theory": {
+    "linear_mc_kernel_D_eff_over_D_phys": 0.5,
+    "linear_mc_cunge_D_eff_over_D_phys": 1.0
+  },
+  "harness_unclamped_cases": {
+    "_which": "small pulse, D_cell < 0.5 (neither X on the 0.25 floor)",
+    "orig_D_eff_over_D_phys_range": [0.45, 0.6],
+    "patched_D_eff_over_D_phys_range": [0.95, 1.1]
+  },
+  "harness_floor_cases": {
+    "_which": "small pulse, D_cell > 1 (both X on the 0.25 floor): the patch changes nothing",
+    "max_abs_diff_orig_vs_patched_D_eff": 0.005
+  },
+  "reference_check_max_rel_diff_peak": 0.01,
+  "build_changed_lines": [291, 294, 374, 377]
+}

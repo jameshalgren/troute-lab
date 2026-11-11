@@ -390,7 +390,8 @@ def headwater_check(seg, p, down, nup, ql):
     for init in (0.0, 1.0, 1000.0):
         qdp, hp, o = float(seg["q0"].iloc[i]), 0.0, []
         for j in range(30):
-            q, h, _ = M.mc(3600.0, 0.0, 0.0, qdp, float(np.float32(ql[i, j])), *geo, hp, qj0_init=init)
+            q, h, _ = M.mc(3600.0, 0.0, 0.0, qdp, float(np.float32(ql[i, j])), *geo, hp, qj0_init=init,
+                           corrected=False)
             o.append(q)
             qdp, hp = q, h
         series[f"port_Qj0_init_{init:g}"] = [round(v, 3) for v in o[hrs]]
@@ -398,8 +399,11 @@ def headwater_check(seg, p, down, nup, ql):
     series["troute_true"] = [round(float(v), 3) for v in A.load(CASE, 3600, True)["q_hourly"][i][hrs]]
     out["example"] = {"link": 22339871, "dt_s": 3600, "hours_index": [24, 30],
                       "note": "headwater: qup = quc = 0 in both settings, so the settings cannot differ "
-                              "through the inputs; the port reproduces both T-Route series by changing only "
-                              "the starting value of Qj_0", **series}
+                              "through the inputs. The d29f663-kernel port (corrected=False) gives different "
+                              "series for different starting values of the uninitialized Qj_0; with the "
+                              "unpatched kernel T-Route's True and False series matched two of them. "
+                              "Since 2026-10-09 T-Route runs the corrected kernel, and its True and False "
+                              "series are identical", **series}
     return out
 
 
@@ -621,8 +625,8 @@ def fig_mass(bal, dec_df, path):
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.2))
     ax = axes[0]
     style(ax)
-    for name, col, lab in (("false", BLUE, "False: current-step inflow (T-Route config default)"),
-                           ("true", ORANGE, "True: short-time-step assumption on (WRF-Hydro/NWM)")):
+    for name, col, lab in (("false", BLUE, "False (STS off): current-step inflow"),
+                           ("true", ORANGE, "True (STS on): previous-step inflow (WRF-Hydro/NWM)")):
         ax.plot(A.DTS, [bal[str(dt)][name]["outlet_event_balance"] for dt in A.DTS], color=col, lw=2, marker="o",
                 ms=7, label=lab)
     ax.axhline(1, color="#b5b4ad", lw=0.8)

@@ -9,6 +9,10 @@
    same wrapper from Cython). Also built with -finit-real=zero and -finit-real=nan,
    because the source reads an uninitialized local variable (see README).
 
+1b. (2026-10-09) The same f2py build of a corrected copy of the primary kernel
+   (../kernel_fixes/patches/anw2020/), module mc_sseg_stime_anw_corrected, used only by
+   run_corrected.py. The faithful build above is unchanged.
+
 Sources are copied from data/ (hash-verified by fetch_data.py) and re-verified here.
 Writes build/build_info.json (compiler versions, commands, flags).
 """
@@ -79,6 +83,32 @@ def main() -> int:
         "extension": so[0].name,
         "compile_commands": json.loads(cc_json.read_text()) if cc_json.exists() else None,
     }
+
+    # --- 1b. corrected variant of the courant kernel (added 2026-10-09) ---
+    # Same f2py build of a patched copy: ../kernel_fixes/patches/anw2020/ applies the
+    # corrections of the T-Route kernel series (uninitialized Qj_0, intent(out) reads,
+    # false Secant convergence, ...) to this 2020 file. Used only by run_corrected.py; the
+    # faithful reproduction above stays unmodified.
+    patch = HERE.parent / "kernel_fixes" / "patches" / "anw2020" / "anw2020-corrected.patch"
+    dc = BUILD / "courant_corrected"
+    if dc.exists():
+        shutil.rmtree(dc)
+    dc.mkdir(parents=True)
+    for n in ("varPrecision.f90", "MCsingleSegStime_f2py_NOLOOP-anw.f90"):
+        shutil.copy2(BUILD / "courant" / n, dc / n)
+    run(["git", "apply", "-p1", "--whitespace=nowarn", str(patch)], dc)
+    if (dc / "MCsingleSegStime_f2py_NOLOOP-anw.f90").read_text().count("FIX 000") != 17:
+        sys.exit("ERROR: the corrected-kernel patch did not apply")
+    cmdc = [sys.executable, "-m", "numpy.f2py", "-c", "varPrecision.f90",
+            "MCsingleSegStime_f2py_NOLOOP-anw.f90", "-m", "mc_sseg_stime_anw_corrected",
+            "--build-dir", "f2py_build"]
+    print("  $", " ".join(cmdc))
+    r = subprocess.run(cmdc, cwd=dc, capture_output=True, text=True, env=env_fc)
+    if r.returncode:
+        print(r.stdout[-4000:], r.stderr[-4000:], sep="\n")
+        sys.exit("ERROR: f2py build of the corrected kernel failed")
+    info["courant_corrected"] = {"patch": str(patch.relative_to(HERE.parent)),
+                                 "patch_sha256": sha256(patch), "f2py_command": " ".join(cmdc[1:])}
 
     # --- 2. gfortran + ctypes build of the segment-merge kernel ---
     # Three builds of the same unmodified source. "notebook_flags" = the notebook's

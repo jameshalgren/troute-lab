@@ -1,0 +1,46 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Taher Chegini <cheginit@gmail.com>
+Date: Thu, 20 Aug 2026 15:13:49 -0400
+Subject: [PATCH 02/10] fix(kernel): do not treat a solve that met tolerance on
+ the last pass as failed
+
+The retry was gated on iter alone, so a solve that met tolerance on the
+maxiter pass was treated as a failure: the search was "expanded" (h * 1.33),
+and because rerror and aerror already met the loop's tolerance the loop body
+did not run again, so the inflated h was published as the depth.
+
+Ported to CIROH-UA/t-route d29f663 from the first half of NGWPC/t-route
+commit ea62cc90 (PR #123, merged 2026-08-21), "hold the previous depth when
+the Secant search is abandoned". The other half of that commit is a separate
+patch in this series.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+index ff49872..d4af97e 100644
+--- a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
++++ b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+@@ -31,6 +31,7 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+ 
+     integer :: iter
+     integer :: maxiter, tries
++    logical :: converged
+     real(prec) :: mindepth, aerror, rerror
+     real(prec) :: R, twl, h_1, h, h_0, Qj, Qj_0
+ 
+@@ -133,7 +134,11 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+         end do !*do while (rerror .gt. 0.01 .and. ....
+ 111    continue
+ 
+-        if(iter .ge. maxiter) then
++        !* iter alone is not failure: the loop can meet its tolerance on the
++        !* same pass that takes iter to maxiter.
++        converged = (rerror .le. 0.01_prec) .or. (aerror .lt. mindepth)
++
++        if(.not. converged .and. iter .ge. maxiter) then
+             tries = tries + 1
+ 
+             if(tries .le. 4) then  ! expand the search space

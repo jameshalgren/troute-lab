@@ -1,0 +1,44 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: James Halgren <james.halgren@byu.edu>
+Date: Fri, 9 Oct 2026 13:19:10 -0600
+Subject: [PATCH 04/10] fix(kernel): decide whether to route from the inputs,
+ not the intent(out) qdc
+
+The "only solve if there's water to flux" test reads qdc, which is an
+intent(out) dummy and is assigned only later. Its value on entry is undefined.
+Through T-Route's bind(c) wrapper it is the 0.0 that reach.pyx stores before
+the call, so the term never changes a T-Route result. From a Fortran caller
+gfortran 15 at -O2 drops the caller's store (intent(out) clobber), and the test
+then reads the previous call's outflow: a dry channel (all inflows 0) takes the
+flow branch and publishes a non-zero depth and velocity. In a 46,128-case
+kernel sweep with qdc = 1 on entry, 3,290 dry cases took the flow branch
+(see the PR description).
+
+WRF-Hydro's SUBMUSKINGCUNGE tests ql, qup and qdp; the term qdc > 0 came in
+with NOAA-OWP/t-route#111 (2020-09-23). quc stays: T-Route routes current-step
+upstream inflow when assume_short_ts is False.
+
+No change to T-Route results (bitwise, all test cases).
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+index 22af4bd..6299fe7 100644
+--- a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
++++ b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+@@ -71,8 +71,11 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+     h     = (depthc * 1.33_prec) + mindepth !1.50 of  depthc
+     h_0   = (depthc * 0.67_prec)            !0.50 of depthc
+ 
++    !* Decide from the inputs only. qdc is intent(out): its value on entry is
++    !* undefined (the bind(c) caller passes 0.0; a Fortran caller may pass the
++    !* previous call's result, or nothing at all once the compiler drops the store).
+     if(ql .gt. 0.0_prec .or. qup .gt. 0.0_prec .or. quc .gt. 0.0_prec &
+-        .or. qdp .gt. 0.0_prec .or. qdc .gt. 0.0_prec) then  !only solve if there's water to flux
++        .or. qdp .gt. 0.0_prec) then  !only solve if there's water to flux
+ 110 continue
+ 
+         !* Qj_0 = 0 is the reference's (MUSKINGCUNGE.f90 label 110), lost in the

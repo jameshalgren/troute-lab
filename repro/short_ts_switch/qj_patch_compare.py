@@ -67,7 +67,7 @@ def kernel_comparison(patched_lib: Path) -> dict:
             subprocess.run([sys.executable, __file__, "--kernel-batch", str(lib), str(f)], check=True)
             outs[(name, k)] = np.load(f)
     rel = lambda a, b: np.abs(a - b) / np.maximum(np.abs(b), 1e-3)  # noqa: E731
-    port = np.array([M.mc(*[float(x) for x in r[:13]], float(r[14]))[0] for r in kernel_inputs()])
+    port = np.array([M.mc(*[float(x) for x in r[:13]], float(r[14]), corrected=False)[0] for r in kernel_inputs()])
     rp = rel(port, outs[("patched", 1)])
     d = {"n_calls": int(port.size)}
     for name in ("unpatched", "patched"):

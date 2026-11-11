@@ -1,0 +1,44 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Taher Chegini <cheginit@gmail.com>
+Date: Thu, 20 Aug 2026 15:13:49 -0400
+Subject: [PATCH 07/10] fix(kernel): hold the previous depth when the Secant
+ search is abandoned
+
+Publishing the abandoned iterate returned it as the next step's depthp, which
+re-seeded the same failing search.
+
+Ported to CIROH-UA/t-route d29f663 from the second half of NGWPC/t-route
+commit ea62cc90 (PR #123, merged 2026-08-21). NGWPC passes six hoisted
+invariants to secant2_h (perf commit 7c9153ff); d29f663 does not, so the two
+calls here use d29f663's argument list.
+
+Note: this is a policy for a search that fails to converge (WRF-Hydro and
+d29f663 publish the last iterate and, in WRF-Hydro, print a warning), not a
+correction of a coding error. It is kept as its own patch so that it can be
+taken or left separately. It goes with 0006 and 0008.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+index da72485..b51a699 100644
+--- a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
++++ b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+@@ -166,6 +166,15 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+                 aerror = 0.01_prec
+                 goto 110
+             endif
++
++            !* Search abandoned. Publishing h returns it as next step's depthp,
++            !* re-seeding the same failing search, so hold the previous depth.
++            !* Both intervals, in order: interval 2 forms X from interval 1's C1..C4.
++            h = max(depthp, mindepth)
++            call secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, &
++                qdp, ql, qup, quc, h, 1, Qj_0, C1, C2, C3, C4, X)
++            call secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, &
++                qdp, ql, qup, quc, h, 2, Qj, C1, C2, C3, C4, X)
+                     !print*, "Musk Cunge WARNING: Failure to converge"
+                     !print*, 'RouteLink index:', idx + linkls_s(my_id+1) - 1
+                     !print*, "id,err,iters,tries",PC*ncc))/(WP+WPC))) * &

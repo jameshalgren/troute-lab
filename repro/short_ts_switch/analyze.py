@@ -1,7 +1,8 @@
 """Compare assume_short_ts True vs False; write results/results.json and figures.
 
-Metrics per case and dt (True compared with False; False, T-Route's default, is the
-reference unless noted):
+Metrics per case and dt (True compared with False; False is the reference unless noted.
+The setting defaults to False in code, but every distributed configuration enables it
+(True) for NWM parity):
   outlet      peak flow and time (native resolution, parabolic peak refinement),
               volume, NSE, KGE, max |difference|
   network     per-segment peak-time shift (True - False, h) and relative peak
@@ -434,8 +435,8 @@ def fig_outlet(figs: dict, path: Path):
             _, qb = outlet_series(b, seg)
             if dt != REF_DT:
                 ax.plot(tr, qr, color=GRAY, lw=1.2, ls=(0, (3, 2)), label=f"False, dt = {REF_DT} s")
-            ax.plot(t, qb, color=BLUE, lw=2, label="False: current-step inflow (T-Route config default)")
-            ax.plot(t, qa, color=ORANGE, lw=2, label="True: short-time-step assumption on (WRF-Hydro/NWM)")
+            ax.plot(t, qb, color=BLUE, lw=2, label="False (STS off): current-step inflow")
+            ax.plot(t, qa, color=ORANGE, lw=2, label="True (STS on): previous-step inflow (WRF-Hydro/NWM)")
             if i == 0:
                 ax.set_title(f"dt = {dt} s", fontsize=10, color=INK)
             if j == 0:
@@ -492,8 +493,8 @@ def fig_accuracy(res: dict, path: Path):
         style(ax)
         for name, c in (("false", BLUE), ("true", ORANGE)):
             y = [res[case]["by_dt"][str(dt)][key_acc][name][key] for dt in DTS]
-            ax.plot(DTS, y, color=c, lw=2, marker="o", ms=6, label="True: short-time-step assumption on (WRF-Hydro/NWM)" if name == "true"
-                    else "False: current-step inflow (T-Route config default)")
+            ax.plot(DTS, y, color=c, lw=2, marker="o", ms=6, label="True (STS on): previous-step inflow (WRF-Hydro/NWM)" if name == "true"
+                    else "False (STS off): current-step inflow")
         ax.set_xscale("log")
         ax.set_xticks(DTS, [str(d) for d in DTS])
         ax.set_xlabel("routing timestep dt (s)", fontsize=9, color=INK)

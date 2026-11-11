@@ -1,0 +1,72 @@
+{
+  "source": "First reproduction, qj build (patch + Qj fix), macOS 26 arm64, gfortran 15.2.0 (Homebrew), Python 3.12.13, T-Route CIROH-UA/t-route d29f663ac23f435b2e5c176f6e0d22ac4528c6a6 + troute-upstream-inflow.patch; run 2026-10-08 by Claude (AI) for James Halgren. Regression baselines for the hourly-input runs, whose errors come from sampling the boundary hydrograph hourly (not from the patch).",
+  "tolerances": "exact: equal; rel5pct: relative 5%; abs2e-5: absolute 2e-5 (check.py)",
+  "values": [
+    {
+      "path": "lc_nwm/boundary_segments",
+      "value": [
+        5756826,
+        5757818
+      ],
+      "kind": "exact"
+    },
+    {
+      "path": "lc_nwm/n_clipped_domain",
+      "value": 3267,
+      "kind": "exact"
+    },
+    {
+      "path": "lc_nwm/runs/sts0/hourly/max_abs_err_m3s",
+      "value": 22.798,
+      "kind": "rel5pct"
+    },
+    {
+      "path": "lc_nwm/runs/sts0/hourly/outlet/peak_rel_err",
+      "value": 0.0,
+      "kind": "abs2e-5"
+    },
+    {
+      "path": "lc_nwm/runs/sts1/hourly/max_abs_err_m3s",
+      "value": 0.6472,
+      "kind": "rel5pct"
+    },
+    {
+      "path": "lc_nwm/runs/sts1/hourly/outlet/peak_rel_err",
+      "value": 0.0,
+      "kind": "abs2e-5"
+    },
+    {
+      "path": "potomac_storm/boundary_segments",
+      "value": [
+        5894852,
+        8445028
+      ],
+      "kind": "exact"
+    },
+    {
+      "path": "potomac_storm/n_clipped_domain",
+      "value": 7115,
+      "kind": "exact"
+    },
+    {
+      "path": "potomac_storm/runs/sts0/hourly/max_abs_err_m3s",
+      "value": 1.929,
+      "kind": "rel5pct"
+    },
+    {
+      "path": "potomac_storm/runs/sts0/hourly/outlet/peak_rel_err",
+      "value": -3.14e-05,
+      "kind": "abs2e-5"
+    },
+    {
+      "path": "potomac_storm/runs/sts1/hourly/max_abs_err_m3s",
+      "value": 1.4095,
+      "kind": "rel5pct"
+    },
+    {
+      "path": "potomac_storm/runs/sts1/hourly/outlet/peak_rel_err",
+      "value": -0.000108,
+      "kind": "abs2e-5"
+    }
+  ]
+}

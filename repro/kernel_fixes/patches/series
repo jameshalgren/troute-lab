@@ -1,0 +1,8 @@
+0001-fix-kernel-make-the-Muskingum-Cunge-kernel-determini.patch
+0002-fix-kernel-do-not-treat-a-solve-that-met-tolerance-o.patch
+0003-fix-kernel-restart-the-error-measures-when-the-Secan.patch
+0004-fix-kernel-decide-whether-to-route-from-the-inputs-n.patch
+0005-fix-kernel-define-ck-cn-and-X-on-every-path.patch
+0006-fix-kernel-stop-reading-a-failed-Secant-step-as-conv.patch
+0007-fix-kernel-hold-the-previous-depth-when-the-Secant-s.patch
+0008-fix-kernel-restart-the-Muskingum-Cunge-depth-search-.patch

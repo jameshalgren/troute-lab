@@ -1,0 +1,502 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Claude (AI-drafted for James Halgren; not yet reviewed) <noreply@anthropic.com>
+Date: Thu, 8 Oct 2026 12:00:00 -0600
+Subject: [PATCH] MC routing: upstream inflow boundaries from a file (clip the
+ network at named segments)
+
+Base: CIROH-UA/t-route d29f663ac23f435b2e5c176f6e0d22ac4528c6a6 (ngiab,
+2026-09-18). Shared as a proposal, not ready for direct inclusion.
+
+New keys in compute_parameters.forcing_parameters:
+
+  upstream_inflow_file:     CSV or NetCDF with the outflow time series
+                            (m3/s) of each boundary segment
+  upstream_inflow_segments: optional list of boundary segment IDs
+                            (default: every segment in the file)
+
+Each boundary segment, and everything upstream of it, is removed from the
+routed network (connections, reverse connections, independent networks,
+reaches). The boundary stays listed as an upstream of the segment it drains
+to, and its series is handed to compute_network_structured through the
+existing upstream_results argument, the hook T-Route already uses to pass
+results between sub-networks. The downstream segment therefore receives the
+prescribed flow exactly as it would receive the boundary's routed outflow in
+a full-network run. The series is linearly interpolated to the routing step;
+the boundary's initial state is the series value at t0 (else the restart
+value) and is carried across forcing loops in new_q0.
+
+Scope: Muskingum-Cunge, parallel_compute_method serial or by-network,
+V4 entry point (main_v04). Other methods and diffusive routing raise an
+error. Boundaries are not written to the output (they are not routed).
+Waterbody (lake) boundaries, DA gages at or near a boundary, and the BMI
+path were not tested.
+
+Test (repro/upstream_inflow_patch in jameshalgren/troute-lab): clip
+LowerColorado_TX (recorded NWM forcing) and a Potomac synthetic storm at
+two boundaries each, feed the boundaries the full run's routed outflow, and
+compare every remaining segment at every 300 s step, assume_short_ts True
+and False. With the MC kernel's uninitialized secant variable initialized
+(Qj_0, see the test README) the clipped runs reproduce the full runs bitwise.
+With the kernel as shipped, segments below the boundaries differ by what
+that uninitialized read produces when the call sequence changes. Without
+an upstream_inflow_file the patched build reproduces the unpatched build
+bitwise.
+---
+ .../troute/config/compute_parameters.py            |  17 ++
+ src/troute-network/troute/AbstractNetwork.py       | 220 ++++++++++++++++++++-
+ src/troute-nwm/src/nwm_routing/__main__.py         |  16 ++
+ src/troute-routing/troute/routing/compute.py       |  57 +++++-
+ 4 files changed, 303 insertions(+), 7 deletions(-)
+
+diff --git a/src/troute-config/troute/config/compute_parameters.py b/src/troute-config/troute/config/compute_parameters.py
+index 8b5965f..898960e 100644
+--- a/src/troute-config/troute/config/compute_parameters.py
++++ b/src/troute-config/troute/config/compute_parameters.py
+@@ -485,6 +485,23 @@ class ForcingParameters(BaseModel):
+     File containing coastal model output.
+     NOTE: Only used if running diffusive routing.
+     """
++    upstream_inflow_file: Optional[FilePath] = None
++    """
++    CSV or NetCDF file with externally supplied outflow time series (m3/s) for
++    upstream inflow boundary segments. Each boundary segment and everything
++    upstream of it is removed from the routed network; the segment it drains
++    to receives the series as upstream inflow. The series is linearly
++    interpolated to the routing timestep.
++    CSV: one row per segment; first column the segment ID, the other column
++    headers timestamps (UTC). NetCDF: variable flow (or streamflow, q, inflow)
++    on dimensions (time, feature_id).
++    NOTE: Muskingum-Cunge only, with parallel_compute_method serial or by-network.
++    """
++    upstream_inflow_segments: Optional[List[int]] = None
++    """
++    Segment IDs to use as upstream inflow boundaries. Default: every segment in
++    upstream_inflow_file.
++    """
+ 
+ 
+ ComputeParameters.update_forward_refs()
+diff --git a/src/troute-network/troute/AbstractNetwork.py b/src/troute-network/troute/AbstractNetwork.py
+index 562b9a7..9c83817 100644
+--- a/src/troute-network/troute/AbstractNetwork.py
++++ b/src/troute-network/troute/AbstractNetwork.py
+@@ -35,7 +35,8 @@ class AbstractNetwork(ABC):
+                 "supernetwork_parameters", "waterbody_parameters","data_assimilation_parameters",
+                 "restart_parameters", "compute_parameters", "forcing_parameters",
+                 "hybrid_parameters", "preprocessing_parameters", "output_parameters",
+-                "verbose", "showtiming", "break_points", "_routing", "_gl_climatology_df", "_nexus_dict", "_poi_nex_dict"]
++                "verbose", "showtiming", "break_points", "_routing", "_gl_climatology_df", "_nexus_dict", "_poi_nex_dict",
++                "_upstream_boundary_df", "_upstream_boundary_q0"]
+ 
+     
+     def __init__(self, from_files=True, value_dict={}):
+@@ -79,6 +80,12 @@ class AbstractNetwork(ABC):
+ 
+         self.initial_warmstate_preprocess(from_files, value_dict)
+ 
++        # Upstream inflow boundaries: clip the routed network at user-named
++        # segments whose outflow is supplied as a time series.
++        self._upstream_boundary_df = None
++        self._upstream_boundary_q0 = None
++        self.apply_upstream_boundaries()
++
+ 
+     def assemble_forcings(self, run,):
+         """
+@@ -188,6 +195,10 @@ class AbstractNetwork(ABC):
+             ],
+             copy=False,
+         )
++        # Upstream inflow boundaries are not routed, so they are not in
++        # run_results: carry their prescribed end-of-window flow forward.
++        if self._upstream_boundary_q0 is not None:
++            self._q0 = pd.concat([self._q0, self._upstream_boundary_q0], copy=False)
+         return self._q0
+     
+     def update_waterbody_water_elevation(self):           
+@@ -743,6 +754,159 @@ class AbstractNetwork(ABC):
+             % (time.time() - start_time)
+         )
+ 
++
++    # ------------------------------------------------------------------
++    # Upstream inflow boundaries
++    # ------------------------------------------------------------------
++    def apply_upstream_boundaries(self):
++        """
++        Clip the routed network at upstream inflow boundary segments.
++
++        forcing_parameters:
++          upstream_inflow_file     -- CSV or NetCDF file with the outflow time
++                                      series (m3/s) of each boundary segment
++                                      (see read_upstream_inflow_file)
++          upstream_inflow_segments -- optional list of boundary segment IDs;
++                                      default: every segment in the file
++
++        Each boundary segment B and everything upstream of it is removed from
++        the routed network. B is kept as an off-network upstream of the segment
++        it drains to: that segment receives B's prescribed outflow as upstream
++        inflow, exactly as it would receive B's routed outflow in a run of the
++        full network. B's lateral inflow is not added again (it is part of the
++        prescribed outflow). The rows of the removed segments stay in the
++        parameter dataframe but are not routed or written.
++
++        Muskingum-Cunge only ("serial" and "by-network" compute methods).
++        """
++        fp = self.forcing_parameters or {}
++        inflow_file = fp.get("upstream_inflow_file", None)
++        if not inflow_file:
++            return
++        df = read_upstream_inflow_file(inflow_file)
++        segments = fp.get("upstream_inflow_segments", None)
++        if segments:
++            segments = [int(s) for s in segments]
++            missing = sorted(set(segments) - set(df.index))
++            if missing:
++                raise ValueError(
++                    f"upstream_inflow_segments not found in {inflow_file}: {missing[:10]}"
++                )
++            df = df.loc[segments]
++
++        conn = self.connections
++        unknown = [s for s in df.index if s not in conn]
++        if unknown:
++            raise ValueError(
++                f"upstream inflow boundary segments not in the routing network: {unknown[:10]}"
++            )
++        outlets = [s for s in df.index if not conn[s]]
++        if outlets:
++            raise ValueError(
++                f"upstream inflow boundary segments are outlets (nothing downstream to route): {outlets[:10]}"
++            )
++
++        # everything upstream of the boundaries
++        rconn = self.reverse_network
++        upstream = set()
++        stack = [u for b in df.index for u in rconn.get(b, ())]
++        while stack:
++            s = stack.pop()
++            if s not in upstream:
++                upstream.add(s)
++                stack.extend(rconn.get(s, ()))
++        nested = sorted(upstream.intersection(df.index))
++        if nested:
++            LOG.warning(
++                "%d upstream inflow boundaries lie upstream of another boundary and are ignored: %s",
++                len(nested), nested[:10],
++            )
++            df = df.drop(nested)
++        removed = upstream | set(df.index)
++
++        # Clip the topology. The segment below each boundary keeps the boundary
++        # in its list of upstreams (reverse connections), which is how the
++        # compute kernel finds the prescribed inflow.
++        for s in removed:
++            conn.pop(s, None)
++            rconn.pop(s, None)
++        for net in self.independent_networks.values():
++            for s in removed:
++                net.pop(s, None)
++        for tw, reaches in self.reaches_by_tailwater.items():
++            clipped = ([s for s in r if s not in removed] for r in reaches)
++            self._reaches_by_tw[tw] = [r for r in clipped if r]
++
++        self._upstream_boundary_df = df
++
++        # Initial state of the boundaries: the prescribed flow at t0 if the
++        # series covers t0, else the restart value.
++        t0 = np.datetime64(self.t0, "ns")
++        covered = df.columns[0] <= t0
++        q_t0 = _interp_boundary(df, np.array([t0]))[:, 0]
++        q0 = self.q0
++        rows = pd.DataFrame(index=df.index, columns=["qu0", "qd0", "h0"], dtype="float32")
++        rows.loc[:, :] = 0.0
++        known = df.index.intersection(q0.index)
++        rows.loc[known] = q0.loc[known, ["qu0", "qd0", "h0"]].to_numpy()
++        if covered:
++            rows["qu0"] = q_t0
++            rows["qd0"] = q_t0
++        else:
++            unknown_q0 = df.index.difference(q0.index)
++            if len(unknown_q0):
++                LOG.warning(
++                    "upstream inflow series start after t0 and %d boundaries have no "
++                    "restart value; using the first value of their series", len(unknown_q0),
++                )
++                rows.loc[unknown_q0, "qu0"] = df.loc[unknown_q0].iloc[:, 0].to_numpy()
++                rows.loc[unknown_q0, "qd0"] = df.loc[unknown_q0].iloc[:, 0].to_numpy()
++        self._q0 = pd.concat([q0.drop(df.index, errors="ignore"), rows.astype("float32")])
++
++        LOG.info(
++            "upstream inflow boundaries: %d segments from %s; %d upstream segments removed from routing",
++            len(df), inflow_file, len(upstream - set(df.index)),
++        )
++
++    @property
++    def upstream_boundary_segments(self):
++        """IDs of the upstream inflow boundary segments (empty if none)."""
++        if getattr(self, "_upstream_boundary_df", None) is None:
++            return pd.Index([])
++        return self._upstream_boundary_df.index
++
++    def upstream_boundary_flows(self, t0, dt, nts):
++        """
++        Prescribed boundary outflows for one routing window, in the form of
++        compute_nhd_routing_v02's ``flowveldepth_interorder`` argument:
++        {segment: {"results": float32 array [q1, 0, 0, q2, 0, 0, ...]}} for the
++        routing timesteps t0 + k*dt, k = 1..nts. The series is linearly
++        interpolated in time; outside its range the end values are held (with
++        a warning). Also stores the end-of-window flows that new_q0 carries
++        forward as the boundaries' initial state for the next window.
++        """
++        df = self._upstream_boundary_df
++        if df is None or df.empty:
++            return {}
++        t = np.datetime64(t0, "ns") + np.arange(1, nts + 1) * np.timedelta64(int(dt * 1e9), "ns")
++        if t[-1] > df.columns[-1] or t[0] - np.timedelta64(int(dt * 1e9), "ns") < df.columns[0]:
++            LOG.warning(
++                "upstream inflow series (%s to %s) do not cover the routing window "
++                "%s to %s; end values are held",
++                df.columns[0], df.columns[-1], t0, t[-1],
++            )
++        q = _interp_boundary(df, t)
++        out = {}
++        for i, seg in enumerate(df.index):
++            fvd = np.zeros((nts, 3), dtype="float32")
++            fvd[:, 0] = q[i]
++            out[seg] = {"results": fvd.ravel()}
++        last = q[:, -1].astype("float32")
++        self._upstream_boundary_q0 = pd.DataFrame(
++            {"qu0": last, "qd0": last, "h0": np.zeros_like(last)}, index=df.index
++        )
++        return out
++
+     def build_forcing_sets(self,):
+ 
+         forcing_parameters = self.forcing_parameters
+@@ -939,6 +1103,60 @@ class AbstractNetwork(ABC):
+         lat_lon_crs = lat_lon_crs[['lon','lat','crs']]
+         self._nexus_latlon = nexus_latlon[['id']].join(lat_lon_crs)
+ 
++
++def read_upstream_inflow_file(path):
++    """
++    Read upstream inflow boundary series: the outflow (m3/s) of each boundary
++    segment over time.
++
++    CSV: one row per segment. First column: segment ID (any header, e.g.
++         feature_id). Remaining column headers: timestamps (UTC, any format
++         pandas parses, e.g. 2021-08-23 13:00:00).
++    NetCDF: a variable named flow, streamflow, q or inflow on dimensions
++         (time, feature_id) in either order, with coordinate variables time
++         (CF-decodable) and feature_id.
++
++    Returns a DataFrame indexed by int64 segment ID, with a sorted
++    DatetimeIndex as columns.
++    """
++    path = pathlib.Path(path)
++    if path.suffix.lower() in (".nc", ".nc4", ".cdf", ".netcdf"):
++        with xr.open_dataset(path) as ds:
++            names = [v for v in ("flow", "streamflow", "q", "inflow") if v in ds.data_vars]
++            if not names:
++                raise ValueError(
++                    f"{path}: no flow variable (expected one of flow, streamflow, q, inflow)"
++                )
++            da = ds[names[0]].transpose("feature_id", "time")
++            df = pd.DataFrame(
++                np.asarray(da.values, dtype="float64"),
++                index=pd.Index(ds["feature_id"].values.astype("int64")),
++                columns=pd.DatetimeIndex(ds["time"].values),
++            )
++    else:
++        df = pd.read_csv(path, index_col=0)
++        df.index = df.index.astype("int64")
++        df.columns = pd.to_datetime(df.columns)
++        df = df.astype("float64")
++    df = df.sort_index(axis=1)
++    if df.index.has_duplicates:
++        raise ValueError(f"{path}: duplicate segment IDs")
++    if df.columns.has_duplicates:
++        raise ValueError(f"{path}: duplicate timestamps")
++    if df.isna().to_numpy().any():
++        raise ValueError(f"{path}: missing values")
++    return df
++
++
++def _interp_boundary(df, times):
++    """Linear interpolation of each row of df (DatetimeIndex columns) at times."""
++    ref = df.columns.values[0].astype("datetime64[ns]")
++    x = (df.columns.values.astype("datetime64[ns]") - ref) / np.timedelta64(1, "s")
++    xt = (np.asarray(times, dtype="datetime64[ns]") - ref) / np.timedelta64(1, "s")
++    v = df.to_numpy(dtype="float64")
++    return np.vstack([np.interp(xt, x, row) for row in v])
++
++
+ def get_timesteps_from_nex(nexus_files):
+     # Return a list of output files
+     # Open the first nexus file and extract each timestamp
+diff --git a/src/troute-nwm/src/nwm_routing/__main__.py b/src/troute-nwm/src/nwm_routing/__main__.py
+index ecbc27c..077d613 100644
+--- a/src/troute-nwm/src/nwm_routing/__main__.py
++++ b/src/troute-nwm/src/nwm_routing/__main__.py
+@@ -149,6 +149,18 @@ def main_v04(argv):
+     compute_kernel = compute_parameters.get("compute_kernel", "V02-caching")
+     assume_short_ts = compute_parameters.get("assume_short_ts", False)
+     return_courant = compute_parameters.get("return_courant", False)
++
++    # Upstream inflow boundaries (forcing_parameters.upstream_inflow_file)
++    if len(network.upstream_boundary_segments):
++        if parallel_compute_method not in ("serial", "by-network"):
++            raise ValueError(
++                "upstream inflow boundaries need parallel_compute_method 'serial' "
++                f"or 'by-network', not '{parallel_compute_method}'"
++            )
++        if network.diffusive_network_data:
++            raise NotImplementedError(
++                "upstream inflow boundaries are not implemented for diffusive routing"
++            )
+         
+     logFileName = 'NONE'    
+     kernelTalks = log_parameters.get("log_directory", None)
+@@ -221,6 +233,9 @@ def main_v04(argv):
+         
+         route_start_time = time.time()
+ 
++        # prescribed outflow of upstream inflow boundaries for this window
++        flowveldepth_interorder = network.upstream_boundary_flows(network.t0, dt, nts)
++
+         run_results = nwm_route(
+             network.connections, 
+             network.reverse_network, 
+@@ -265,6 +280,7 @@ def main_v04(argv):
+             network.unrefactored_topobathy_df,
+             firstRun,
+             logFileName,
++            flowveldepth_interorder=flowveldepth_interorder,
+             giuh_node=giuh_node
+         )
+       
+diff --git a/src/troute-routing/troute/routing/compute.py b/src/troute-routing/troute/routing/compute.py
+index 8d6a4a5..4bc4455 100644
+--- a/src/troute-routing/troute/routing/compute.py
++++ b/src/troute-routing/troute/routing/compute.py
+@@ -140,6 +140,37 @@ def _prep_da_positions_byreach(reach_list, gage_index):
+ 
+     return reach_key, gage_reach_i
+ 
++
++def _boundary_upstreams(flowveldepth_interorder, upstream_connections, segs):
++    """
++    Upstream inflow boundaries feeding one independent network.
++
++    A boundary is an off-network segment that is not routed: its outflow is
++    prescribed as a time series (AbstractNetwork.apply_upstream_boundaries). It
++    still appears as an upstream in the network's reverse connections, so the
++    segment it drains to picks up the prescribed flow as upstream inflow.
++    """
++    if not flowveldepth_interorder:
++        return set()
++    ups = set(chain.from_iterable(upstream_connections.get(s, ()) for s in segs))
++    return ups.intersection(flowveldepth_interorder)
++
++
++def _boundary_upstream_results(flowveldepth_interorder, offnetwork_upstreams, data_idx):
++    """
++    The ``upstream_results`` argument of compute_network_structured for the
++    boundaries of one network: {segment: {"results": [q, v, d, q, v, d, ...],
++    "position_index": row of the segment in data_idx}}.
++    """
++    return {
++        us: {
++            "results": flowveldepth_interorder[us]["results"],
++            "position_index": data_idx.get_loc(us),
++        }
++        for us in offnetwork_upstreams
++    }
++
++
+ def _prep_reservoir_da_dataframes(reservoir_usgs_df,
+                                   reservoir_usgs_param_df,
+                                   reservoir_usace_df,
+@@ -1195,6 +1226,11 @@ def compute_nhd_routing_v02(
+                 # So we define "common_segs" to identify regular routing segments
+                 # and wbodies_segs for the waterbody reaches/segments
+                 segs = list(chain.from_iterable(reach_list))
++                # Upstream inflow boundaries (prescribed outflow, not routed)
++                offnetwork_upstreams = _boundary_upstreams(
++                    flowveldepth_interorder, independent_networks[tw], segs
++                )
++                segs.extend(offnetwork_upstreams)
+                 common_segs = param_df.index.intersection(segs)
+                 # Assumes everything else is a waterbody...
+                 wbodies_segs = set(segs).symmetric_difference(common_segs)
+@@ -1246,14 +1282,14 @@ def compute_nhd_routing_v02(
+ 
+                 # qlat_sub = qlats.loc[common_segs].sort_index()
+                 # q0_sub = q0.loc[common_segs].sort_index()
+-                qlat_sub = qlats.loc[param_df_sub.index]
++                qlat_sub = qlats.loc[param_df_sub.index.drop(sorted(offnetwork_upstreams))]
+                 q0_sub = q0.loc[param_df_sub.index]
+ 
+                 param_df_sub = param_df_sub.reindex(
+                     param_df_sub.index.tolist() + lake_segs
+                 ).sort_index()
+ 
+-                usgs_df_sub, lastobs_df_sub, da_positions_list_byseg = _prep_da_dataframes(usgs_df, lastobs_df, param_df_sub.index)
++                usgs_df_sub, lastobs_df_sub, da_positions_list_byseg = _prep_da_dataframes(usgs_df, lastobs_df, param_df_sub.index, offnetwork_upstreams)
+                 da_positions_list_byreach, da_positions_list_bygage = _prep_da_positions_byreach(reach_list, lastobs_df_sub.index)
+ 
+                 qlat_sub = qlat_sub.reindex(param_df_sub.index)
+@@ -1363,7 +1399,9 @@ def compute_nhd_routing_v02(
+                         gl_param_time_sub.astype("int32"),
+                         gl_param_update_time_sub.astype("int32"),
+                         gl_climatology_df_sub.values.astype("float32"),
+-                        {},
++                        _boundary_upstream_results(
++                            flowveldepth_interorder, offnetwork_upstreams, param_df_sub.index
++                        ),
+                         assume_short_ts,
+                         return_courant,
+                         from_files=from_files,
+@@ -1381,6 +1419,11 @@ def compute_nhd_routing_v02(
+             # So we define "common_segs" to identify regular routing segments
+             # and wbodies_segs for the waterbody reaches/segments
+             segs = list(chain.from_iterable(reach_list))
++            # Upstream inflow boundaries (prescribed outflow, not routed)
++            offnetwork_upstreams = _boundary_upstreams(
++                flowveldepth_interorder, independent_networks[tw], segs
++            )
++            segs.extend(offnetwork_upstreams)
+             common_segs = param_df.index.intersection(segs)
+             # Assumes everything else is a waterbody...
+             wbodies_segs = set(segs).symmetric_difference(common_segs)
+@@ -1432,14 +1475,14 @@ def compute_nhd_routing_v02(
+ 
+             # qlat_sub = qlats.loc[common_segs].sort_index()
+             # q0_sub = q0.loc[common_segs].sort_index()
+-            qlat_sub = qlats.loc[param_df_sub.index]
++            qlat_sub = qlats.loc[param_df_sub.index.drop(sorted(offnetwork_upstreams))]
+             q0_sub = q0.loc[param_df_sub.index]
+ 
+             param_df_sub = param_df_sub.reindex(
+                 param_df_sub.index.tolist() + lake_segs
+             ).sort_index()
+ 
+-            usgs_df_sub, lastobs_df_sub, da_positions_list_byseg = _prep_da_dataframes(usgs_df, lastobs_df, param_df_sub.index)
++            usgs_df_sub, lastobs_df_sub, da_positions_list_byseg = _prep_da_dataframes(usgs_df, lastobs_df, param_df_sub.index, offnetwork_upstreams)
+             da_positions_list_byreach, da_positions_list_bygage = _prep_da_positions_byreach(reach_list, lastobs_df_sub.index)
+ 
+             qlat_sub = qlat_sub.reindex(param_df_sub.index)
+@@ -1548,7 +1591,9 @@ def compute_nhd_routing_v02(
+                     gl_param_time_sub.astype("int32"),
+                     gl_param_update_time_sub.astype("int32"),
+                     gl_climatology_df_sub.values.astype("float32"),
+-                    {},
++                    _boundary_upstream_results(
++                        flowveldepth_interorder, offnetwork_upstreams, param_df_sub.index
++                    ),
+                     assume_short_ts,
+                     return_courant,
+                     from_files=from_files,
+-- 
+troute-lab repro/upstream_inflow_patch

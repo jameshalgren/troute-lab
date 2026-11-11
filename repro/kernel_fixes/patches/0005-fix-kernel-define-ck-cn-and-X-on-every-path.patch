@@ -1,0 +1,89 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: James Halgren <james.halgren@byu.edu>
+Date: Fri, 9 Oct 2026 13:19:10 -0600
+Subject: [PATCH 05/10] fix(kernel): define ck, cn and X on every path
+
+Three defects in the diagnostic outputs (celerity ck, Courant number cn and
+Muskingum X); none of them changes flow, velocity or depth:
+  - X is intent(out) but never assigned on the no-flow branch, so the caller
+    gets whatever its variable held (0.0 from reach.pyx). Now X = 0.0 there,
+    the value T-Route already returned.
+  - On the no-flow branch ck = cn = 0 were dead stores: courant() was called
+    after the if-block and recomputed them from h, the unused initial guess
+    1.33 * depthp + 0.01. ck and cn described a depth the kernel did not
+    publish (depthc = 0). courant() is now called on the flow branch only.
+  - courant() divides by AREA + AREAC, which is 0 when the Secant lands on
+    h = 0 (it can: with depthp = 0 and qup + ql = 0 the first step goes to
+    exactly 0). The 0/0 raises IEEE invalid and leaves MAX(0, NaN), whose
+    value the standard leaves to the processor (gfortran gives 0). ck = 0
+    for a dry section now.
+
+T-Route returns ck, cn and X only with return_courant (default False), and
+not at all on the V02-structured path.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ .../MCsingleSegStime_f2py_NOLOOP.f90          | 35 ++++++++++++-------
+ 1 file changed, 22 insertions(+), 13 deletions(-)
+
+diff --git a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+index 6299fe7..5253e37 100644
+--- a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
++++ b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+@@ -192,19 +192,22 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+         R = (h*(bw + twl) / 2.0_prec) / (bw + 2.0_prec*(((twl - bw) / 2.0_prec)**2.0_prec + h**2.0_prec)**0.5_prec)
+         velc = (1.0_prec/n) * (R **(2.0_prec/3.0_prec)) * sqrt(s0)  !*average velocity in m/s
+         depthc = h
++
++        ! *************************************************************
++        ! call courant subroutine here
++        ! *************************************************************
++        !* Only on this branch: on the no-flow branch h is the unused initial
++        !* guess, and the courant call overwrote the ck = cn = 0 set there.
++        call courant(h, bfd, bw, twcc, ncc, s0, n, z, dx, dt, ck, cn)
+     else   !*no flow to route
+         qdc = 0.0_prec
+         cn = 0.0_prec
+         ck = 0.0_prec
++        X = 0.0_prec  !* intent(out): was never assigned on this branch
+         !qdc = -444.4
+         velc = 0.0_prec
+         depthc = 0.0_prec
+     end if !*if(ql .gt. 0.0 .or. ...
+-
+-    ! *************************************************************
+-    ! call courant subroutine here
+-    ! *************************************************************
+-    call courant(h, bfd, bw, twcc, ncc, s0, n, z, dx, dt, ck, cn)
+     !print*, "deep down", depthc
+ 
+ end subroutine muskingcungenwm
+@@ -382,14 +385,20 @@ subroutine courant(h, bfd, bw, twcc, ncc, s0, n, z, dx, dt, ck, cn)
+     call hydraulic_geometry(h, bfd, bw, twcc, z, &
+         twl, R, AREA, AREAC, WP, WPC, h_lt_bf, h_gt_bf)
+ 
+-    ck = max(0.0_prec,((sqrt(s0)/n) &
+-        * ((5.0_prec/3.0_prec)*R**(2.0_prec/3.0_prec) &
+-        - ((2.0_prec/3.0_prec)*R**(5.0_prec/3.0_prec) &
+-        * (2.0_prec*sqrt(1.0_prec + z*z)/(bw+2.0_prec*h_lt_bf*z)))) &
+-        * AREA &
+-        + ((sqrt(s0)/(ncc))*(5.0_prec/3.0_prec) &
+-        * (h_gt_bf)**(2.0_prec/3.0_prec))*AREAC) &
+-        / (AREA+AREAC))
++    !* At h = 0 the area-weighted mean below is 0/0; MAX(0, NaN) is
++    !* processor dependent (gfortran returns 0, others may return NaN).
++    if ((AREA + AREAC) .gt. 0.0_prec) then
++        ck = max(0.0_prec,((sqrt(s0)/n) &
++            * ((5.0_prec/3.0_prec)*R**(2.0_prec/3.0_prec) &
++            - ((2.0_prec/3.0_prec)*R**(5.0_prec/3.0_prec) &
++            * (2.0_prec*sqrt(1.0_prec + z*z)/(bw+2.0_prec*h_lt_bf*z)))) &
++            * AREA &
++            + ((sqrt(s0)/(ncc))*(5.0_prec/3.0_prec) &
++            * (h_gt_bf)**(2.0_prec/3.0_prec))*AREAC) &
++            / (AREA+AREAC))
++    else
++        ck = 0.0_prec
++    endif
+ 
+     cn = ck * (dt/dx)
+ 

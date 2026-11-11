@@ -1,0 +1,91 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Taher Chegini <cheginit@gmail.com>
+Date: Thu, 20 Aug 2026 15:13:49 -0400
+Subject: [PATCH 06/10] fix(kernel): stop reading a failed Secant step as
+ convergence
+
+A negative Secant update and a degenerate slope both set h_1 = h, which the
+step-size test accepted as a root: at ncc/n = 2 a segment published its own
+initial guess of 8.3225 m, whose Manning discharge is 951.9 m3/s against a
+target of 1.0. A negative step now halves towards zero instead.
+
+Ported to CIROH-UA/t-route d29f663 from NGWPC/t-route commit af24a7c4
+(PR #123, merged 2026-08-21). Unchanged except for hunk context.
+
+Must not be taken without 0008 (NGWPC 4ecefec1, "restart the depth search
+off its degenerate root"): halving a negative step lets the search fall below
+mindepth, and the "h < mindepth" exit is accepted. Alone, this patch drops
+slope-floor Potomac segments (assume_short_ts False, sharp rises) to about
+5 mm while tens of m3/s pass, for hours, and costs 13-16% of routed volume on
+the LowerColorado test cases in test/ (see the PR description).
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ .../MCsingleSegStime_f2py_NOLOOP.f90          | 22 ++++++++++++++-----
+ 1 file changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+index 5253e37..da72485 100644
+--- a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
++++ b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+@@ -31,7 +31,7 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+ 
+     integer :: iter
+     integer :: maxiter, tries
+-    logical :: converged
++    logical :: converged, stalled
+     real(prec) :: mindepth, aerror, rerror
+     real(prec) :: R, twl, h_1, h, h_0, Qj, Qj_0
+ 
+@@ -81,6 +81,7 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+         !* Qj_0 = 0 is the reference's (MUSKINGCUNGE.f90 label 110), lost in the
+         !* port; interval 1 forms X from it on the first pass. The rest are here
+         !* so every intent(inout) actual is defined before its first use.
++        stalled = .false.
+         Qj_0 = 0.0_prec
+         Qj   = 0.0_prec
+         C1   = 0.0_prec
+@@ -108,14 +109,19 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+             call secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, &
+                 qdp, ql, qup, quc, h, 2, Qj, C1, C2, C3, C4, X)
+ 
++            !* Neither branch may set h_1 = h: a zero step reads as convergence
++            !* below, which publishes the iterate as if it were a root.
+             if(Qj_0-Qj .ne. 0.0_prec) then
+                 h_1 = h - ((Qj * (h_0 - h))/(Qj_0 - Qj)) !update h, 3rd estimate
+ 
++                !* Negative step means the root is below the bracket, so halve
++                !* towards zero; expanding h upwards moved away from it.
+                 if(h_1 .lt. 0.0_prec) then
+-                    h_1 = h
++                    h_1 = 0.5_prec * h
+                 endif
+             else
+-                h_1 = h
++                h_1 = h            !* degenerate slope; repeating it reproduces it
++                stalled = .true.
+             endif
+ 
+             if(h .gt. 0.0_prec) then
+@@ -134,14 +140,18 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+             if( h .lt. mindepth) then  ! exit loop if depth is very small
+                 goto 111
+             endif
++            if( stalled ) then
++                goto 111
++            endif
+         end do !*do while (rerror .gt. 0.01 .and. ....
+ 111    continue
+ 
+         !* iter alone is not failure: the loop can meet its tolerance on the
+-        !* same pass that takes iter to maxiter.
+-        converged = (rerror .le. 0.01_prec) .or. (aerror .lt. mindepth)
++        !* same pass that takes iter to maxiter. A stall is never convergence.
++        converged = (.not. stalled) .and. &
++            ((rerror .le. 0.01_prec) .or. (aerror .lt. mindepth))
+ 
+-        if(.not. converged .and. iter .ge. maxiter) then
++        if(.not. converged .and. (stalled .or. iter .ge. maxiter)) then
+             tries = tries + 1
+ 
+             if(tries .le. 4) then  ! expand the search space

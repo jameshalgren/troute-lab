@@ -1,0 +1,53 @@
+{
+ "source": "repro/short_ts_switch closure recording, Potomac storm, dt=300 s, assume_short_ts False, T-Route d29f663 + kernel_fixes patches 0001-0007 (old order; same code as L7), recorded 2026-10-09",
+ "definition": "stuck = published depth < 0.01 m while published flow > 0.1 m3/s",
+ "segments_with_stuck_steps": 714,
+ "segments_stuck_more_than_1h": 352,
+ "stuck_segment_steps": 25490,
+ "segment_steps": 189550080,
+ "segments_stuck_more_than_1h_at_slope_floor": 252,
+ "examples": {
+  "22339083": {
+   "s0": 9.999999747378752e-06,
+   "span_of_stuck_steps": [
+    422,
+    486
+   ],
+   "stuck_hours": 5.42,
+   "depth_before_m": 1.0377,
+   "flow_range_over_span_m3s": [
+    38.32,
+    68.29
+   ],
+   "depth_after_m": 7.268
+  },
+  "4529635": {
+   "s0": 9.999999747378752e-06,
+   "span_of_stuck_steps": [
+    336,
+    479
+   ],
+   "stuck_hours": 12.0,
+   "depth_before_m": 0.0033,
+   "flow_range_over_span_m3s": [
+    0.02,
+    25.26
+   ],
+   "depth_after_m": 4.461
+  },
+  "22338109": {
+   "s0": 9.999999747378752e-06,
+   "span_of_stuck_steps": [
+    458,
+    530
+   ],
+   "stuck_hours": 6.08,
+   "depth_before_m": 0.9963,
+   "flow_range_over_span_m3s": [
+    0.02,
+    35.09
+   ],
+   "depth_after_m": 7.16
+  }
+ }
+}

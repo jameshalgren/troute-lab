@@ -5,7 +5,7 @@ Tools and reproducible experiments for the National Water Model (NWM) channel ne
 
 - **[`explorer/`](explorer/)**: an interactive basin explorer for the NWM v3.1.6 channel
   network (RouteLink) in all four NWM domains.
-- **[`repro/`](repro/)**: four self-contained, deeply reproducible experiments (pinned
+- **[`repro/`](repro/)**: five self-contained, deeply reproducible experiments (pinned
   environments, SHA-256-checked inputs downloaded by script, machine-checked expected results).
 
 They were built for a forthcoming paper on the origins of T-Route (see [Citation](#citation)),
@@ -54,6 +54,12 @@ reproduced). Conventions and prerequisites: [`repro/README.md`](repro/README.md)
   source at a pinned commit and runs it on a synthetic storm over the Potomac network and on
   the LowerColorado test case, with the switch on and off at four timesteps. Needs `gfortran`,
   `make`, `git` and netCDF-C/Fortran; about 8 minutes.
+- **[`wrfhydro_mc_x_factor/`](repro/wrfhydro_mc_x_factor/)**: the extra factor of 2 in
+  WRF-Hydro's Muskingum-Cunge X formula
+  ([NCAR/wrf_hydro_nwm_public#921](https://github.com/NCAR/wrf_hydro_nwm_public/issues/921)).
+  Extracts `SUBMUSKINGCUNGE` verbatim at a pinned commit, before and after the fix, and routes
+  pulses through a prismatic channel against the exact convection–diffusion solution. Needs
+  `gfortran` and `patch`; about 20 seconds.
 - **[`mc_courant_timestep/`](repro/mc_courant_timestep/)**: reproduces Adam Wlostowski's 2020
   synthetic-channel experiment showing that Muskingum-Cunge routing with a Courant number
   above 1 delays and attenuates waves. Compiles the original Fortran kernels fetched by commit

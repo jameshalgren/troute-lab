@@ -1,0 +1,15 @@
+[project]
+name = "repro-kernel-fixes"
+version = "1.0.0"
+description = "Corrections to T-Route's Muskingum-Cunge kernel: patch series, test harness and network comparison"
+requires-python = "==3.12.*"
+# Exact pins for direct dependencies; uv.lock pins the full tree with hashes.
+# The T-Route network comparison (troute_compare.sh) runs in copies of
+# ../short_ts_switch with that experiment's own locked environment.
+dependencies = [
+    "numpy==1.26.4",
+]
+
+[tool.uv]
+package = false
+environments = ["sys_platform == 'darwin'", "sys_platform == 'linux'"]

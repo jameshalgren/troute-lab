@@ -1,0 +1,59 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Taher Chegini <cheginit@gmail.com>
+Date: Thu, 20 Aug 2026 15:13:49 -0400
+Subject: [PATCH 01/10] fix(kernel): make the Muskingum-Cunge kernel
+ deterministic
+
+secant2_h read Qj and C1..C4 on entry while declaring them intent(out), so the
+compiler dropped the caller's stores and the reads took stack residue. Forward
+and reverse passes over 46,080 cases disagreed on 8,349; now on none.
+
+Ported to CIROH-UA/t-route d29f663 from NGWPC/t-route commit 2bd0c0c2
+(PR #123, merged 2026-08-21). NGWPC's kernel had a performance refactor
+(7c9153ff) before this commit, so the hunk context differs; the change itself
+is the same: Qj_0 = 0 at label 110 as in WRF-Hydro's SUBMUSKINGCUNGE, the
+intent(inout) actuals defined before first use, and Qj, C1..C4 intent(inout).
+Brodie Alexander reported the C1..C4 read and made the same correction in
+CIROH-UA/rs_route#7 (2026-03-30).
+
+Co-authored-by: Brodie Alexander <baalexander2@crimson.ua.edu>
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ .../muskingum/MCsingleSegStime_f2py_NOLOOP.f90  | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90 b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+index 5847448..ff49872 100644
+--- a/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
++++ b/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90
+@@ -74,6 +74,16 @@ subroutine muskingcungenwm(dt, qup, quc, qdp, ql, dx, bw, tw, twcc,&
+         .or. qdp .gt. 0.0_prec .or. qdc .gt. 0.0_prec) then  !only solve if there's water to flux
+ 110 continue
+ 
++        !* Qj_0 = 0 is the reference's (MUSKINGCUNGE.f90 label 110), lost in the
++        !* port; interval 1 forms X from it on the first pass. The rest are here
++        !* so every intent(inout) actual is defined before its first use.
++        Qj_0 = 0.0_prec
++        Qj   = 0.0_prec
++        C1   = 0.0_prec
++        C2   = 0.0_prec
++        C3   = 0.0_prec
++        C4   = 0.0_prec
++
+         !Uncomment next two lines for old initialization
+         !WPC = 0.0_prec
+         !AREAC = 0.0_prec
+@@ -204,7 +214,12 @@ subroutine secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, &
+     real(prec), intent(in) :: dt, dx
+     real(prec), intent(in) :: qdp, ql, qup, quc
+     real(prec), intent(in) :: h
+-    real(prec), intent(out) :: Qj, C1, C2, C3, C4, X
++    !* NOT intent(out): interval 1 reads Qj, and interval 2 reads C1..C4, before
++    !* assigning them. Declaring them intent(out) let the compiler treat the
++    !* caller's stores as dead and delete them, so the reads picked up whatever
++    !* the stack held and the published depth depended on call order.
++    real(prec), intent(inout) :: Qj, C1, C2, C3, C4
++    real(prec), intent(out) :: X
+     integer,    intent(in) :: interval
+ 
+     real(prec) :: twl, AREA, WP, R

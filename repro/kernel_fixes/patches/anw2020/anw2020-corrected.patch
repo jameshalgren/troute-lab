@@ -1,0 +1,190 @@
+Corrected copy of Adam Wlostowski's 2020 MC kernel (awlostowski-noaa/t-route@27e06ee,
+src/fortran_routing/mc_pylink_v00/MC_singleSeg_singleTS/courant_dev/
+MCsingleSegStime_f2py_NOLOOP-anw.f90), used only by repro/mc_courant_timestep's
+"corrected" variant (run_corrected.py). The faithful reproduction compiles the file
+unmodified. The same corrections as the T-Route series (repro/kernel_fixes/patches/
+0001-0008), adapted to this older file; each hunk is labelled FIX 000k with the series
+number. FIX 0005 here also sets velc on the no-flow branch, which this version leaves
+unassigned. Apply in a directory holding the file: git apply -p1 anw2020-corrected.patch
+AI-drafted (Claude), 2026-10-09; not yet reviewed by the author.
+
+--- a/MCsingleSegStime_f2py_NOLOOP-anw.f90	2026-10-09 13:32:50
++++ b/MCsingleSegStime_f2py_NOLOOP-anw.f90	2026-10-09 14:48:56
+@@ -33,6 +33,9 @@
+ 
+     integer :: iter
+     integer :: maxiter, tries
++    logical :: converged, stalled  ! FIX 0002/0006
++    real(prec) :: qref, h_seed, h_low, h_last, qmc  ! FIX 0008
++    logical :: collapsed                            ! FIX 0008
+     real(prec) :: mindepth, aerror, rerror
+     real(prec) :: R, twl, h_1, h, h_0, Qj, Qj_0
+ 
+@@ -73,14 +76,30 @@
+     ! ?? what is the diff between depthc and depthp ??
+     depthc = max(depthp, 0.0_prec)
+     
++    ! FIX 0008: restart depths for a collapsed search (NGWPC 4ecefec1)
++    qref = max(qup, quc, qdp, ql)
++    h_seed = 0.0_prec
++    h_low  = 0.0_prec
++    h_last = 0.0_prec
++
+     ! initialize the value of h and h_0
+     h     = (depthc * 1.33_prec) + mindepth ! depth of flow in channel
+     h_0   = (depthc * 0.67_prec)            ! secant method estimate
+ 
+     ! only solve if there's water to flux
+-    if(ql .gt. 0.0_prec .or. qup .gt. 0.0_prec .or. qdp .gt. 0.0_prec .or. qdc .gt. 0.0_prec) then  
++    ! FIX 0004: decide from the inputs only (qdc is intent(out), undefined on entry)
++    if(ql .gt. 0.0_prec .or. qup .gt. 0.0_prec .or. qdp .gt. 0.0_prec) then  
+ 110 continue
+ 
++        ! FIX 0001: Qj_0 = 0 as in WRF-Hydro (label 110); every intent(inout) actual defined
++        stalled = .false.
++        Qj_0 = 0.0_prec
++        Qj   = 0.0_prec
++        C1   = 0.0_prec
++        C2   = 0.0_prec
++        C3   = 0.0_prec
++        C4   = 0.0_prec
++
+         !Uncomment next two lines for old initialization
+         !WPC = 0.0_prec
+         !AREAC = 0.0_prec
+@@ -108,10 +127,11 @@
+                 h_1 = h - ((Qj * (h_0 - h))/(Qj_0 - Qj)) !update h, 3rd estimate
+ 
+                 if(h_1 .lt. 0.0_prec) then
+-                    h_1 = h
++                    h_1 = 0.5_prec * h   ! FIX 0006: halve instead of a zero step
+                 endif
+             else
+                 h_1 = h
++                stalled = .true.         ! FIX 0006: degenerate slope is not convergence
+             endif
+ 
+             if(h .gt. 0.0_prec) then
+@@ -130,13 +150,51 @@
+             if( h .lt. mindepth) then  ! exit loop if depth is very small
+                 goto 111
+             endif
++            if( stalled ) then           ! FIX 0006
++                goto 111
++            endif
+             
+         end do !*do while (rerror .gt. 0.01 .and. ....
+         
+ 111    continue
+ 
+         ! if maximum iterations are exceeded, then try again
+-        if(iter .ge. maxiter) then
++        ! FIX 0008: restart a search that settled on the degenerate root (NGWPC 4ecefec1)
++        qmc = (C1*qup) + (C2*quc) + (C3*qdp) + C4
++        collapsed = (qref .gt. 0.0_prec) .and. (abs(Qj) .gt. 0.1_prec * abs(qmc)) .and. &
++                    (abs(Qj) .gt. 0.01_prec)
++        if (h_last .gt. 0.0_prec .and. abs(h - h_last) .le. 0.05_prec * max(h, mindepth) &
++            .and. Qj .le. 0.5_prec * abs(qmc)) then
++            collapsed = .false.
++        endif
++        if (collapsed .and. tries .le. 4) then
++            tries = tries + 1
++            h_last = h
++            if (h_seed .eq. 0.0_prec) then
++                h_seed = (qref * n / (bw * sqrt(s0)))**0.6_prec
++                h_low  = (qref * n / (max(twcc, tw, bw) * sqrt(s0)))**0.6_prec
++            endif
++            select case (tries)
++            case (1)
++                h = h_low
++            case (2)
++                h = sqrt(h_low * h_seed)
++            case (3)
++                h = h_seed
++            case default
++                h = 4.0_prec * h_seed
++            end select
++            h_0   = h * 0.67_prec
++            h     = h * 1.33_prec
++            maxiter = maxiter + 25
++            aerror = 0.01_prec
++            rerror = 1.0_prec
++            goto 110
++        endif
++
++        ! FIX 0002/0006: a solve that met tolerance on its last pass is converged; a stall is not
++        converged = (.not. stalled) .and. ((rerror .le. 0.01_prec) .or. (aerror .lt. mindepth))
++        if(.not. converged .and. (stalled .or. iter .ge. maxiter)) then
+             tries = tries + 1
+ 
+             ! expand the search space and increase the number of allowable itterations
+@@ -144,9 +202,18 @@
+                 h     =  h * 1.33_prec
+                 h_0   =  h_0 * 0.67_prec
+                 maxiter = maxiter + 25
++                rerror = 1.0_prec        ! FIX 0003: restart the error measures with the search
++                aerror = 0.01_prec
+                 goto 110
+                 
+             endif
++
++            ! FIX 0007: search abandoned; hold the previous depth
++            h = max(depthp, mindepth)
++            call secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, &
++                qdp, ql, qup, quc, h, 1, Qj_0, C1, C2, C3, C4, X)
++            call secant2_h(z, bw, bfd, twcc, s0, n, ncc, dt, dx, &
++                qdp, ql, qup, quc, h, 2, Qj, C1, C2, C3, C4, X)
+             
+         endif
+ 
+@@ -176,18 +243,20 @@
+         
+         ! depth at  the current timestep (t+1) is equal to the itteratively solved for depth, h
+         depthc = h
++
++        ! FIX 0005: courant only on the flow branch
++        call courant(h, bfd, bw, twcc, ncc, s0, n, z, dx, dt, ck, cn)
+         
+     else   ! no flow to route
+         qdc = 0.0_prec
++        velc = 0.0_prec   ! FIX 0005: intent(out) outputs defined on this branch
++        ck = 0.0_prec
++        cn = 0.0_prec
++        X = 0.0_prec
+ 
+         depthc = 0.0_prec
+         
+     end if !*if(ql .gt. 0.0 .or. ...
+-    
+-    ! *************************************************************
+-    ! call courant subroutine here
+-    ! *************************************************************
+-    call courant(h, bfd, bw, twcc, ncc, s0, n, z, dx, dt, ck, cn)
+ 
+ end subroutine muskingcungenwm
+ 
+@@ -210,7 +279,8 @@
+     real(prec), intent(in) :: dt, dx
+     real(prec), intent(in) :: qdp, ql, qup, quc
+     real(prec), intent(in) :: h
+-    real(prec), intent(out) :: Qj, C1, C2, C3, C4, X
++    real(prec), intent(inout) :: Qj, C1, C2, C3, C4  ! FIX 0001: read before assigned
++    real(prec), intent(out) :: X
+     integer,    intent(in) :: interval
+ 
+     real(prec) :: twl, AREA, WP, R, Ck, Km, D
+@@ -400,10 +470,14 @@
+     
+     R   = (AREA + AREAC)/(WP + WPC)
+     
++    if ((AREA + AREAC) .gt. 0.0_prec) then   ! FIX 0005: 0/0 at h = 0
+     ck = ((sqrt(s0)/n)* &
+             ((5.0_prec/3.0_prec)*R**(2.0_prec/3.0_prec) - ((2.0_prec/3.0_prec)*R**(5.0_prec/3.0_prec)* &
+             (2*sqrt(1.0_prec + z*z)/(bw+2.0_prec*h_lt_bf*z))))*AREA &
+                 + ((sqrt(s0)/(ncc))*(5.0_prec/3.0_prec)*(h_gt_bf)**(2.0_prec/3.0_prec))*AREAC)/(AREA+AREAC)
++    else
++        ck = 0.0_prec
++    endif
+                 
+     
+     cn = ck * (dt/dx)
