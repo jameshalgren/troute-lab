@@ -1,0 +1,229 @@
+day,domain,family,directory,run,product,routing,kind,cycles_seen,cycles,first_stamp,last_stamp,output_interval_min,hours_per_cycle,members,files,expected_files,complete,bytes,files_exact_size,note
+nwm.20261029,CONUS,nwm_hydro,analysis_assim,analysis_assim,channel_rt,yes,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,889042168,72,
+nwm.20261029,CONUS,nwm_hydro,analysis_assim,analysis_assim,land,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,8786327095,72,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,analysis_assim,analysis_assim,reservoir,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,9353279,72,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,analysis_assim,analysis_assim,terrain_rt,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,2874815382,72,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,analysis_assim_alaska,analysis_assim,channel_rt,yes,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,154009722,72,
+nwm.20261029,Alaska,nwm_hydro,analysis_assim_alaska,analysis_assim,land,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,365540452,72,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,analysis_assim_alaska,analysis_assim,reservoir,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,3857629,72,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,analysis_assim_alaska,analysis_assim,terrain_rt,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,70166185,72,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,analysis_assim_alaska_no_da,analysis_assim_no_da,channel_rt,yes,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,96810721,72,
+nwm.20261029,CONUS,coastal_schism,analysis_assim_coastal_atlgulf,analysis_assim_coastal,total_water,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,2279697502,72,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,Hawaii,coastal_schism,analysis_assim_coastal_hawaii,analysis_assim_coastal,total_water,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,144977667,72,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,coastal_schism,analysis_assim_coastal_pacific,analysis_assim_coastal,total_water,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,567026212,72,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,PuertoRico_USVI,coastal_schism,analysis_assim_coastal_puertorico,analysis_assim_coastal,total_water,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,584019430,72,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,nwm_hydro,analysis_assim_extend,analysis_assim_extend,channel_rt,yes,analysis,1,16,tm27,tm00,60,28,1,28,28,yes,345947810,28,
+nwm.20261029,CONUS,nwm_hydro,analysis_assim_extend,analysis_assim_extend,land,no,analysis,1,16,tm27,tm00,60,28,1,28,28,yes,3554227564,28,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,analysis_assim_extend,analysis_assim_extend,reservoir,no,analysis,1,16,tm27,tm00,60,28,1,28,28,yes,3634936,28,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,analysis_assim_extend,analysis_assim_extend,terrain_rt,no,analysis,1,16,tm27,tm00,60,28,1,28,28,yes,1115857702,28,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,analysis_assim_extend_alaska,analysis_assim_extend,channel_rt,yes,analysis,1,20,tm31,tm00,60,32,1,32,32,yes,68472379,32,
+nwm.20261029,Alaska,nwm_hydro,analysis_assim_extend_alaska,analysis_assim_extend,land,no,analysis,1,20,tm31,tm00,60,32,1,32,32,yes,164651906,32,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,analysis_assim_extend_alaska,analysis_assim_extend,reservoir,no,analysis,1,20,tm31,tm00,60,32,1,32,32,yes,1714476,32,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,analysis_assim_extend_alaska,analysis_assim_extend,terrain_rt,no,analysis,1,20,tm31,tm00,60,32,1,32,32,yes,31194489,32,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,analysis_assim_extend_alaska_no_da,analysis_assim_extend_no_da,channel_rt,yes,analysis,1,20,tm31,tm00,60,32,1,32,32,yes,43030294,32,
+nwm.20261029,CONUS,coastal_schism,analysis_assim_extend_coastal_atlgulf,analysis_assim_extend_coastal,total_water,no,analysis,1,16,tm27,tm00,60,28,1,28,28,yes,887218275,28,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,coastal_schism,analysis_assim_extend_coastal_pacific,analysis_assim_extend_coastal,total_water,no,analysis,1,16,tm27,tm00,60,28,1,28,28,yes,220810124,28,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,nwm_hydro,analysis_assim_extend_no_da,analysis_assim_extend_no_da,channel_rt,yes,analysis,1,16,tm27,tm00,60,28,1,28,28,yes,216476084,28,
+nwm.20261029,Hawaii,nwm_hydro,analysis_assim_hawaii,analysis_assim,channel_rt,yes,analysis,24,00-23,tm0245,tm00,15,3,1,288,288,yes,37425333,288,
+nwm.20261029,Hawaii,nwm_hydro,analysis_assim_hawaii,analysis_assim,land,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,41252838,72,same run as channel_rt; not counted separately
+nwm.20261029,Hawaii,nwm_hydro,analysis_assim_hawaii,analysis_assim,reservoir,no,analysis,24,00-23,tm0245,tm00,15,3,1,288,288,yes,14416704,288,same run as channel_rt; not counted separately
+nwm.20261029,Hawaii,nwm_hydro,analysis_assim_hawaii,analysis_assim,terrain_rt,no,analysis,24,00-23,tm0245,tm00,15,3,1,288,288,yes,324425675,288,same run as channel_rt; not counted separately
+nwm.20261029,Hawaii,nwm_hydro,analysis_assim_hawaii_no_da,analysis_assim_no_da,channel_rt,yes,analysis,24,00-23,tm0245,tm00,15,3,1,288,288,yes,28796638,288,
+nwm.20261029,CONUS,nwm_hydro,analysis_assim_long,analysis_assim_long,channel_rt,yes,analysis,4,00/06/12/18,tm11,tm00,60,12,1,48,48,yes,592958759,48,
+nwm.20261029,CONUS,nwm_hydro,analysis_assim_long,analysis_assim_long,land,no,analysis,4,00/06/12/18,tm11,tm00,60,12,1,48,48,yes,5787537215,48,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,analysis_assim_long,analysis_assim_long,reservoir,no,analysis,4,00/06/12/18,tm11,tm00,60,12,1,48,48,yes,6124772,48,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,analysis_assim_long_no_da,analysis_assim_long_no_da,channel_rt,yes,analysis,4,00/06/12/18,tm11,tm00,60,12,1,48,48,yes,369805184,48,
+nwm.20261029,CONUS,nwm_hydro,analysis_assim_no_da,analysis_assim_no_da,channel_rt,yes,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,556174199,72,
+nwm.20261029,PuertoRico_USVI,nwm_hydro,analysis_assim_puertorico,analysis_assim,channel_rt,yes,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,9891990,72,
+nwm.20261029,PuertoRico_USVI,nwm_hydro,analysis_assim_puertorico,analysis_assim,land,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,20895309,72,same run as channel_rt; not counted separately
+nwm.20261029,PuertoRico_USVI,nwm_hydro,analysis_assim_puertorico,analysis_assim,reservoir,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,3604176,72,same run as channel_rt; not counted separately
+nwm.20261029,PuertoRico_USVI,nwm_hydro,analysis_assim_puertorico,analysis_assim,terrain_rt,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,31724236,72,same run as channel_rt; not counted separately
+nwm.20261029,PuertoRico_USVI,nwm_hydro,analysis_assim_puertorico_no_da,analysis_assim_no_da,channel_rt,yes,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,7525775,72,
+nwm.20261029,CONUS,forcing,forcing_analysis_assim,analysis_assim,forcing,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,11051239276,72,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,Alaska,forcing,forcing_analysis_assim_alaska,analysis_assim,forcing,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,324677822,72,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,CONUS,forcing,forcing_analysis_assim_extend,analysis_assim_extend,forcing,no,analysis,1,16,tm27,tm00,60,28,1,28,28,yes,4354654006,28,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,Alaska,forcing,forcing_analysis_assim_extend_alaska,analysis_assim_extend,forcing,no,analysis,1,20,tm31,tm00,60,32,1,32,32,yes,142610904,32,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,Hawaii,forcing,forcing_analysis_assim_hawaii,analysis_assim,forcing,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,156972200,72,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,PuertoRico_USVI,forcing,forcing_analysis_assim_puertorico,analysis_assim,forcing,no,analysis,24,00-23,tm02,tm00,60,3,1,72,72,yes,29407334,72,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,CONUS,forcing,forcing_medium_range,medium_range,forcing,no,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,152102320688,960,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,Alaska,forcing,forcing_medium_range_alaska,medium_range,forcing,no,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,4508868756,960,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,CONUS,forcing,forcing_medium_range_blend,medium_range_blend,forcing,no,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,7447115372,960,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,Alaska,forcing,forcing_medium_range_blend_alaska,medium_range_blend,forcing,no,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,514810200,960,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,CONUS,forcing,forcing_short_range,short_range,forcing,no,forecast,24,00-23,f001,f018,60,18,1,432,432,yes,70204540405,432,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,Alaska,forcing,forcing_short_range_alaska,short_range,forcing,no,forecast,4,00/06/12/18,f001,f015,60,15,1,60,60,yes,280022025,60,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,Alaska,forcing,forcing_short_range_alaska,short_range,forcing,no,forecast,4,03/09/15/21,f001,f045,60,45,1,180,180,yes,870103534,180,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,Hawaii,forcing,forcing_short_range_hawaii,short_range,forcing,no,forecast,2,00/12,f001,f048,60,48,1,96,96,yes,194012689,96,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,PuertoRico_USVI,forcing,forcing_short_range_puertorico,short_range,forcing,no,forecast,4,00/06/12/18,f001,f048,60,48,1,192,192,yes,81964153,192,"excluded: meteorological forcing (input), not routing"
+nwm.20261029,CONUS,nwm_hydro,long_range_mem1,long_range,channel_rt,yes,forecast,4,00/06/12/18,f006,f720,360,720,1,480,480,yes,2140910039,480,
+nwm.20261029,CONUS,nwm_hydro,long_range_mem1,long_range,land,no,forecast,4,00/06/12/18,f024,f720,1440,720,1,120,120,yes,9684908074,120,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,long_range_mem1,long_range,reservoir,no,forecast,4,00/06/12/18,f006,f720,360,720,1,480,480,yes,61629742,480,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,long_range_mem2,long_range,channel_rt,yes,forecast,4,00/06/12/18,f006,f720,360,720,2,480,480,yes,2134273521,480,
+nwm.20261029,CONUS,nwm_hydro,long_range_mem2,long_range,land,no,forecast,4,00/06/12/18,f024,f720,1440,720,2,120,120,yes,9719302632,120,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,long_range_mem2,long_range,reservoir,no,forecast,4,00/06/12/18,f006,f720,360,720,2,480,480,yes,61631581,480,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,long_range_mem3,long_range,channel_rt,yes,forecast,4,00/06/12/18,f006,f720,360,720,3,480,480,yes,2141804908,480,
+nwm.20261029,CONUS,nwm_hydro,long_range_mem3,long_range,land,no,forecast,4,00/06/12/18,f024,f720,1440,720,3,120,120,yes,9701427294,120,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,long_range_mem3,long_range,reservoir,no,forecast,4,00/06/12/18,f006,f720,360,720,3,480,480,yes,61611815,480,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,long_range_mem4,long_range,channel_rt,yes,forecast,4,00/06/12/18,f006,f720,360,720,4,480,480,yes,2155492382,480,
+nwm.20261029,CONUS,nwm_hydro,long_range_mem4,long_range,land,no,forecast,4,00/06/12/18,f024,f720,1440,720,4,120,120,yes,9799179772,120,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,long_range_mem4,long_range,reservoir,no,forecast,4,00/06/12/18,f006,f720,360,720,4,480,480,yes,61661919,480,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem1,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,2073365083,960,
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem1,medium_range,land,no,forecast,4,00/06/12/18,f003,f240,180,240,1,320,320,yes,2835759852,320,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem1,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,51434700,960,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem1,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f240,180,240,1,320,320,yes,329481288,320,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem2,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f204,60,204,2,816,816,yes,1760160837,816,
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem2,medium_range,land,no,forecast,4,00/06/12/18,f003,f204,180,204,2,272,272,yes,2404504000,272,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem2,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f204,60,204,2,816,816,yes,43719330,816,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem2,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f204,180,204,2,272,272,yes,279387460,272,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem3,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f204,60,204,3,816,816,yes,1763558893,816,
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem3,medium_range,land,no,forecast,4,00/06/12/18,f003,f204,180,204,3,272,272,yes,2406023707,272,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem3,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f204,60,204,3,816,816,yes,43720041,816,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem3,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f204,180,204,3,272,272,yes,280543081,272,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem4,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f204,60,204,4,816,816,yes,1765549768,816,
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem4,medium_range,land,no,forecast,4,00/06/12/18,f003,f204,180,204,4,272,272,yes,2409044654,272,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem4,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f204,60,204,4,816,816,yes,43720502,816,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem4,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f204,180,204,4,272,272,yes,281574001,272,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem5,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f204,60,204,5,816,816,yes,1767213634,816,
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem5,medium_range,land,no,forecast,4,00/06/12/18,f003,f204,180,204,5,272,272,yes,2410126234,272,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem5,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f204,60,204,5,816,816,yes,43720921,816,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem5,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f204,180,204,5,272,272,yes,282270946,272,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem6,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f204,60,204,6,816,816,yes,1767511950,816,
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem6,medium_range,land,no,forecast,4,00/06/12/18,f003,f204,180,204,6,272,272,yes,2409747272,272,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem6,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f204,60,204,6,816,816,yes,43721172,816,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_mem6,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f204,180,204,6,272,272,yes,282464600,272,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_alaska_no_da,medium_range_no_da,channel_rt,yes,forecast,4,00/06/12/18,f003,f240,180,240,1,320,320,yes,234012403,320,
+nwm.20261029,CONUS,nwm_hydro,medium_range_blend,medium_range_blend,channel_rt,yes,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,12005182828,960,
+nwm.20261029,CONUS,nwm_hydro,medium_range_blend,medium_range_blend,land,no,forecast,4,00/06/12/18,f003,f240,180,240,1,320,320,yes,78964041031,320,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_blend,medium_range_blend,reservoir,no,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,124440153,960,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_blend,medium_range_blend,terrain_rt,no,forecast,4,00/06/12/18,f003,f240,180,240,1,320,320,yes,13046831968,320,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_blend_alaska,medium_range_blend,channel_rt,yes,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,2062785540,960,
+nwm.20261029,Alaska,nwm_hydro,medium_range_blend_alaska,medium_range_blend,land,no,forecast,4,00/06/12/18,f003,f240,180,240,1,320,320,yes,2811320739,320,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_blend_alaska,medium_range_blend,reservoir,no,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,51432797,960,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,medium_range_blend_alaska,medium_range_blend,terrain_rt,no,forecast,4,00/06/12/18,f003,f240,180,240,1,320,320,yes,327169983,320,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,coastal_schism,medium_range_blend_coastal_atlgulf,medium_range_blend_coastal,total_water,no,forecast,4,00/06/12/18,f001,f120,60,120,1,480,480,yes,15192430703,480,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,coastal_schism,medium_range_blend_coastal_pacific,medium_range_blend_coastal,total_water,no,forecast,4,00/06/12/18,f001,f120,60,120,1,480,480,yes,3777658627,480,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,coastal_schism,medium_range_coastal_atlgulf_mem1,medium_range_coastal,total_water,no,forecast,4,00/06/12/18,f001,f120,60,120,1,480,480,yes,15191063479,480,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,coastal_schism,medium_range_coastal_pacific_mem1,medium_range_coastal,total_water,no,forecast,4,00/06/12/18,f001,f120,60,120,1,480,480,yes,3777184550,480,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem1,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,12049848418,960,
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem1,medium_range,land,no,forecast,4,00/06/12/18,f003,f240,180,240,1,320,320,yes,78863241769,320,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem1,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f240,60,240,1,960,960,yes,124486549,960,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem1,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f240,180,240,1,320,320,yes,13180885370,320,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem2,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f204,60,204,2,816,816,yes,10221327027,816,
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem2,medium_range,land,no,forecast,4,00/06/12/18,f003,f204,180,204,2,272,272,yes,66590478348,272,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem2,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f204,60,204,2,816,816,yes,105793268,816,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem2,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f204,180,204,2,272,272,yes,11130632808,272,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem3,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f204,60,204,3,816,816,yes,10242432223,816,
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem3,medium_range,land,no,forecast,4,00/06/12/18,f003,f204,180,204,3,272,272,yes,66547362229,272,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem3,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f204,60,204,3,816,816,yes,105794096,816,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem3,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f204,180,204,3,272,272,yes,11137884225,272,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem4,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f204,60,204,4,816,816,yes,10259003187,816,
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem4,medium_range,land,no,forecast,4,00/06/12/18,f003,f204,180,204,4,272,272,yes,66513853594,272,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem4,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f204,60,204,4,816,816,yes,105793015,816,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem4,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f204,180,204,4,272,272,yes,11145644463,272,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem5,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f204,60,204,5,816,816,yes,10274016811,816,
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem5,medium_range,land,no,forecast,4,00/06/12/18,f003,f204,180,204,5,272,272,yes,66435411971,272,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem5,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f204,60,204,5,816,816,yes,105790665,816,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem5,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f204,180,204,5,272,272,yes,11158260414,272,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem6,medium_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f204,60,204,6,816,816,yes,10282433745,816,
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem6,medium_range,land,no,forecast,4,00/06/12/18,f003,f204,180,204,6,272,272,yes,66386670970,272,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem6,medium_range,reservoir,no,forecast,4,00/06/12/18,f001,f204,60,204,6,816,816,yes,105790394,816,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_mem6,medium_range,terrain_rt,no,forecast,4,00/06/12/18,f003,f204,180,204,6,272,272,yes,11166743136,272,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,medium_range_no_da,medium_range_no_da,channel_rt,yes,forecast,4,00/06/12/18,f003,f240,180,240,1,320,320,yes,1403089937,320,
+nwm.20261029,CONUS,nwm_hydro,short_range,short_range,channel_rt,yes,forecast,24,00-23,f001,f018,60,18,1,432,432,yes,5323847461,432,
+nwm.20261029,CONUS,nwm_hydro,short_range,short_range,land,no,forecast,24,00-23,f001,f018,60,18,1,432,432,yes,15773969131,432,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,short_range,short_range,reservoir,no,forecast,24,00-23,f001,f018,60,18,1,432,432,yes,56113202,432,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,nwm_hydro,short_range,short_range,terrain_rt,no,forecast,24,00-23,f001,f018,60,18,1,432,432,yes,17323697073,432,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,short_range_alaska,short_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f015,60,15,1,60,60,yes,128479432,60,
+nwm.20261029,Alaska,nwm_hydro,short_range_alaska,short_range,channel_rt,yes,forecast,4,03/09/15/21,f001,f045,60,45,1,180,180,yes,390473680,180,
+nwm.20261029,Alaska,nwm_hydro,short_range_alaska,short_range,land,no,forecast,4,00/06/12/18,f001,f015,60,15,1,60,60,yes,136618821,60,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,short_range_alaska,short_range,land,no,forecast,4,03/09/15/21,f001,f045,60,45,1,180,180,yes,420141286,180,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,short_range_alaska,short_range,reservoir,no,forecast,4,00/06/12/18,f001,f015,60,15,1,60,60,yes,3214672,60,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,short_range_alaska,short_range,reservoir,no,forecast,4,03/09/15/21,f001,f045,60,45,1,180,180,yes,9644274,180,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,short_range_alaska,short_range,terrain_rt,no,forecast,4,00/06/12/18,f001,f015,60,15,1,60,60,yes,58785717,60,same run as channel_rt; not counted separately
+nwm.20261029,Alaska,nwm_hydro,short_range_alaska,short_range,terrain_rt,no,forecast,4,03/09/15/21,f001,f045,60,45,1,180,180,yes,187300376,180,same run as channel_rt; not counted separately
+nwm.20261029,CONUS,coastal_schism,short_range_coastal_atlgulf,short_range_coastal,total_water,no,forecast,24,00-23,f001,f018,60,18,1,432,432,yes,13671779892,432,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,Hawaii,coastal_schism,short_range_coastal_hawaii,short_range_coastal,total_water,no,forecast,2,00/12,f001,f048,60,48,1,96,96,yes,194083665,96,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,coastal_schism,short_range_coastal_pacific,short_range_coastal,total_water,no,forecast,24,00-23,f001,f018,60,18,1,432,432,yes,3404299130,432,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,PuertoRico_USVI,coastal_schism,short_range_coastal_puertorico,short_range_coastal,total_water,no,forecast,4,00/06/12/18,f001,f048,60,48,1,192,192,yes,1566978917,192,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,Hawaii,nwm_hydro,short_range_hawaii,short_range,channel_rt,yes,forecast,2,00/12,f00015,f048,15,48,1,384,384,yes,53059007,384,
+nwm.20261029,Hawaii,nwm_hydro,short_range_hawaii,short_range,land,no,forecast,2,00/12,f001,f048,60,48,1,96,96,yes,17505023,96,same run as channel_rt; not counted separately
+nwm.20261029,Hawaii,nwm_hydro,short_range_hawaii,short_range,reservoir,no,forecast,2,00/12,f00015,f048,15,48,1,384,384,yes,19222272,384,same run as channel_rt; not counted separately
+nwm.20261029,Hawaii,nwm_hydro,short_range_hawaii,short_range,terrain_rt,no,forecast,2,00/12,f00015,f048,15,48,1,384,384,yes,455349803,384,same run as channel_rt; not counted separately
+nwm.20261029,Hawaii,nwm_hydro,short_range_hawaii_no_da,short_range_no_da,channel_rt,yes,forecast,2,00/12,f00015,f048,15,48,1,384,384,yes,41596418,384,
+nwm.20261029,PuertoRico_USVI,nwm_hydro,short_range_puertorico,short_range,channel_rt,yes,forecast,4,00/06/12/18,f001,f048,60,48,1,192,192,yes,26790895,192,
+nwm.20261029,PuertoRico_USVI,nwm_hydro,short_range_puertorico,short_range,land,no,forecast,4,00/06/12/18,f001,f048,60,48,1,192,192,yes,22640216,192,same run as channel_rt; not counted separately
+nwm.20261029,PuertoRico_USVI,nwm_hydro,short_range_puertorico,short_range,reservoir,no,forecast,4,00/06/12/18,f001,f048,60,48,1,192,192,yes,9611136,192,same run as channel_rt; not counted separately
+nwm.20261029,PuertoRico_USVI,nwm_hydro,short_range_puertorico,short_range,terrain_rt,no,forecast,4,00/06/12/18,f001,f048,60,48,1,192,192,yes,87273181,192,same run as channel_rt; not counted separately
+nwm.20261029,PuertoRico_USVI,nwm_hydro,short_range_puertorico_no_da,short_range_no_da,channel_rt,yes,forecast,4,00/06/12/18,f001,f048,60,48,1,192,192,yes,20433057,192,
+nwm.20261029,CONUS,coastal_schism,medium_range_blend_coastal_atlgulf,,total_water_shef,no,,4,00/06/12/18,,,,,,4,,,2995855,4,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,coastal_schism,medium_range_blend_coastal_pacific,,total_water_shef,no,,4,00/06/12/18,,,,,,4,,,587797,4,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,coastal_schism,medium_range_coastal_atlgulf_mem1,,total_water_shef,no,,4,00/06/12/18,,,,,,4,,,2996299,4,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,coastal_schism,medium_range_coastal_pacific_mem1,,total_water_shef,no,,4,00/06/12/18,,,,,,4,,,587736,4,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,post_processed,post_processed,post_processed/RFC/AB/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,12139722,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/AB/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,10446886,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/AB/forcing,,forcing,no,,24,00-23,,,,,,2452,,,3163304101,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/AB/land,,land,no,,24,00-23,,,,,,3060,,,4244460877,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/AP/channel_rt,,channel_rt,no,,24,00-23,,,,,,784,,,29698312,784,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/AP/channel_rt,,channel_rt_nc,no,,8,00/03/06/09/12/15/18/21,,,,,,44,,,2643487,44,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/AP/forcing,,forcing,no,,24,00-23,,,,,,2432,,,1654096933,2432,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/AP/land,,land,no,,24,00-23,,,,,,2512,,,2281186815,2512,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/CB/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,12301842,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/CB/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,11092713,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/CB/forcing,,forcing,no,,24,00-23,,,,,,2452,,,4093823020,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/CB/land,,land,no,,24,00-23,,,,,,3060,,,5362197803,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/CN/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,12597008,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/CN/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,8936432,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/CN/forcing,,forcing,no,,24,00-23,,,,,,2452,,,3329258014,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/CN/land,,land,no,,24,00-23,,,,,,3060,,,4660203486,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/LM/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,13652606,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/LM/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,14778431,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/LM/forcing,,forcing,no,,24,00-23,,,,,,2452,,,3302295704,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/LM/land,,land,no,,24,00-23,,,,,,3060,,,4633633549,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/MA/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,12162090,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/MA/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,12954124,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/MA/forcing,,forcing,no,,24,00-23,,,,,,2452,,,2104181019,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/MA/land,,land,no,,24,00-23,,,,,,3060,,,3124541060,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/MB/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,14248671,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/MB/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,19790995,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/MB/forcing,,forcing,no,,24,00-23,,,,,,2452,,,5168901937,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/MB/land,,land,no,,24,00-23,,,,,,3060,,,7281575347,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NC/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,14735756,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NC/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,27513030,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NC/forcing,,forcing,no,,24,00-23,,,,,,2452,,,4222865215,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NC/land,,land,no,,24,00-23,,,,,,3060,,,5924627506,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NE/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,12358490,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NE/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,14131972,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NE/forcing,,forcing,no,,24,00-23,,,,,,2452,,,2392622533,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NE/land,,land,no,,24,00-23,,,,,,3060,,,3411901083,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NW/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,13402893,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NW/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,15376265,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NW/forcing,,forcing,no,,24,00-23,,,,,,2452,,,4183864957,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/NW/land,,land,no,,24,00-23,,,,,,3060,,,6132898963,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/OH/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,13346055,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/OH/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,18846050,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/OH/forcing,,forcing,no,,24,00-23,,,,,,2452,,,2872094416,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/OH/land,,land,no,,24,00-23,,,,,,3060,,,3936697319,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/SE/channel_rt,,channel_rt,no,,24,00-23,,,,,,440,,,17828693,440,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/SE/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,80,,,14873987,80,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/SE/forcing,,forcing,no,,24,00-23,,,,,,2716,,,3680220634,2716,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/SE/land,,land,no,,24,00-23,,,,,,3324,,,5129527195,3324,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/WG/channel_rt,,channel_rt,no,,24,00-23,,,,,,296,,,13888647,296,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/WG/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,72,,,16509332,72,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/WG/forcing,,forcing,no,,24,00-23,,,,,,2452,,,5153311921,2452,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/RFC/WG/land,,land,no,,24,00-23,,,,,,3060,,,6281909226,3060,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/analysis_assim/channel_rt,,channel_rt,no,,24,00-23,,,,,,216,,,104901277,216,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/analysis_assim/forcing,,forcing,no,,24,00-23,,,,,,144,,,222390872,144,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/analysis_assim/land,,land,no,,24,00-23,,,,,,96,,,619384918,96,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/analysis_assim_extend/forcing,,forcing,no,,1,20,,,,,,32,,,9162211,32,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/analysis_assim_extend/land,,land,no,,1,20,,,,,,1,,,2524945,1,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/long_range/channel_rt,,channel_rt_nc,no,,4,00/06/12/18,,,,,,20,,,2432360345,20,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/medium_range/channel_rt,,channel_rt_nc,no,,4,00/06/12/18,,,,,,56,,,4538824539,56,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/medium_range/forcing,,other,no,,,,,,,,,80,,,2355008053,80,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/medium_range_blend/channel_rt,,channel_rt_nc,no,,4,00/06/12/18,,,,,,8,,,649081874,8,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/medium_range_blend/forcing,,other,no,,,,,,,,,80,,,1227735735,80,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/short_range/channel_rt,,channel_rt_nc,no,,24,00-23,,,,,,38,,,540810109,38,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,post_processed,post_processed,post_processed/WMS/short_range/forcing,,other,no,,,,,,,,,54,,,1249712221,54,excluded: post-processed subsets/derivatives of model output
+nwm.20261029,CONUS,coastal_schism,short_range_coastal_atlgulf,,total_water_shef,no,,24,00-23,,,,,,24,,,3660216,24,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,Hawaii,coastal_schism,short_range_coastal_hawaii,,total_water_shef,no,,2,00/12,,,,,,2,,,8588,2,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,CONUS,coastal_schism,short_range_coastal_pacific,,total_water_shef,no,,24,00-23,,,,,,24,,,726733,24,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,PuertoRico_USVI,coastal_schism,short_range_coastal_puertorico,,total_water_shef,no,,4,00/06/12/18,,,,,,4,,,49941,4,"excluded: SCHISM coastal total water, not NWM channel routing"
+nwm.20261029,observations,usgs_timeslices,usgs_timeslices,,other,no,,,,,,,,,96,,,117911155,96,excluded: observation timeslices for assimilation

@@ -1,0 +1,757 @@
+case,granularity,P,scheduler,policy,estimate,n_units,unit_cost_cv,work,lb,makespan,excess_pct,idle_core_time,idle_pct,tail,tail_pct,equal_model_error_pct
+"calm, 24-h window",segment,8,2020-style rounds,opp_rounds,equal,16454,0.2779,11026851.0,1378356.375,1764048.0,27.982,3085533.0,21.864,280944.0,15.9261,7.5713
+"calm, 24-h window",segment,8,naive first-ready,opp_fifo,equal,16454,0.2779,11026851.0,1378356.375,1715328.0,24.4474,2695773.0,19.6447,290736.0,16.9493,6.1622
+"calm, 24-h window",segment,8,JIT strides,jit,equal,16454,0.2779,11026851.0,1378356.375,1632528.0,18.4402,2033373.0,15.5692,1440.0,0.0882,6.3764
+"calm, 24-h window",segment,8,work stealing (cost-blind),work_steal,equal,16454,0.2779,11026851.0,1378356.375,1666368.0,20.8953,2304093.0,17.2838,276480.0,16.5918,5.0492
+"calm, 24-h window",segment,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2779,11026851.0,1378356.375,1383120.0,0.3456,38109.0,0.3444,2016.0,0.1458,0.1387
+"calm, 24-h window",segment,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2779,11026851.0,1378356.375,1381536.0,0.2307,25437.0,0.2302,864.0,0.0625,0.024
+"calm, 24-h window",segment,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2779,11026851.0,1378356.375,1383264.0,0.356,39261.0,0.3548,2448.0,0.177,0.1491
+"calm, 24-h window",segment,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2779,11026851.0,1378356.375,1381536.0,0.2307,25437.0,0.2302,864.0,0.0625,0.024
+"calm, 24-h window",segment,8,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2779,11026851.0,1378356.375,1381536.0,0.2307,25437.0,0.2302,864.0,0.0625,0.024
+"calm, 24-h window",segment,36,2020-style rounds,opp_rounds,equal,16454,0.2779,11026851.0,487584.0,784368.0,60.8683,17210397.0,60.9493,280944.0,35.8179,26.3947
+"calm, 24-h window",segment,36,naive first-ready,opp_fifo,equal,16454,0.2779,11026851.0,487584.0,732384.0,50.2067,15338973.0,58.1775,289296.0,39.5006,20.225
+"calm, 24-h window",segment,36,JIT strides,jit,equal,16454,0.2779,11026851.0,487584.0,729936.0,49.7047,15250845.0,58.0372,1440.0,0.1973,51.9097
+"calm, 24-h window",segment,36,work stealing (cost-blind),work_steal,equal,16454,0.2779,11026851.0,487584.0,731664.0,50.0591,15313053.0,58.1363,290736.0,39.7363,23.6434
+"calm, 24-h window",segment,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2779,11026851.0,487584.0,487584.0,0.0,6526173.0,37.1798,176112.0,36.1193,37.5352
+"calm, 24-h window",segment,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2779,11026851.0,487584.0,487584.0,0.0,6526173.0,37.1798,177984.0,36.5032,37.5352
+"calm, 24-h window",segment,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2779,11026851.0,487584.0,487584.0,0.0,6526173.0,37.1798,175968.0,36.0898,37.5352
+"calm, 24-h window",segment,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2779,11026851.0,487584.0,487584.0,0.0,6526173.0,37.1798,177984.0,36.5032,37.5352
+"calm, 24-h window",segment,36,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2779,11026851.0,487584.0,487584.0,0.0,6526173.0,37.1798,177984.0,36.5032,37.5352
+"calm, 24-h window",segment,128,2020-style rounds,opp_rounds,equal,16454,0.2779,11026851.0,487584.0,602208.0,23.5086,66055773.0,85.6948,280944.0,46.6523,43.0892
+"calm, 24-h window",segment,128,naive first-ready,opp_fifo,equal,16454,0.2779,11026851.0,487584.0,546768.0,12.1382,58959453.0,84.2443,285984.0,52.3045,31.1694
+"calm, 24-h window",segment,128,JIT strides,jit,equal,16454,0.2779,11026851.0,487584.0,647712.0,32.8411,71880285.0,86.6998,1440.0,0.2223,83.3966
+"calm, 24-h window",segment,128,work stealing (cost-blind),work_steal,equal,16454,0.2779,11026851.0,487584.0,548928.0,12.5812,59235933.0,84.3063,287424.0,52.361,32.7548
+"calm, 24-h window",segment,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2779,11026851.0,487584.0,487584.0,0.0,51383901.0,82.3318,280368.0,57.5015,38.0571
+"calm, 24-h window",segment,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2779,11026851.0,487584.0,487584.0,0.0,51383901.0,82.3318,279792.0,57.3833,38.0571
+"calm, 24-h window",segment,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2779,11026851.0,487584.0,487584.0,0.0,51383901.0,82.3318,280368.0,57.5015,38.0571
+"calm, 24-h window",segment,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2779,11026851.0,487584.0,487584.0,0.0,51383901.0,82.3318,279792.0,57.3833,38.0571
+"calm, 24-h window",segment,128,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2779,11026851.0,487584.0,487584.0,0.0,51383901.0,82.3318,279792.0,57.3833,38.0571
+"calm, 24-h window",reach,8,2020-style rounds,opp_rounds,equal,12111,0.708,11026851.0,1378356.375,1845216.0,33.8707,3734877.0,25.3011,360144.0,19.5177,7.8491
+"calm, 24-h window",reach,8,naive first-ready,opp_fifo,equal,12111,0.708,11026851.0,1378356.375,1720128.0,24.7956,2734173.0,19.869,296400.0,17.2313,6.4151
+"calm, 24-h window",reach,8,JIT strides,jit,equal,12111,0.708,11026851.0,1378356.375,1715184.0,24.4369,2694621.0,19.638,6624.0,0.3862,8.2638
+"calm, 24-h window",reach,8,work stealing (cost-blind),work_steal,equal,12111,0.708,11026851.0,1378356.375,1666368.0,20.8953,2304093.0,17.2838,276480.0,16.5918,5.0492
+"calm, 24-h window",reach,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.708,11026851.0,1378356.375,1383696.0,0.3874,42717.0,0.3859,2448.0,0.1769,0.1804
+"calm, 24-h window",reach,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.708,11026851.0,1378356.375,1382112.0,0.2725,30045.0,0.2717,1437.0,0.104,0.0657
+"calm, 24-h window",reach,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.708,11026851.0,1378356.375,1383555.0,0.3772,41589.0,0.3757,2739.0,0.198,0.1702
+"calm, 24-h window",reach,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.708,11026851.0,1378356.375,1382112.0,0.2725,30045.0,0.2717,1437.0,0.104,0.0657
+"calm, 24-h window",reach,8,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.708,11026851.0,1378356.375,1382112.0,0.2725,30045.0,0.2717,1437.0,0.104,0.0657
+"calm, 24-h window",reach,36,2020-style rounds,opp_rounds,equal,12111,0.708,11026851.0,487584.0,909075.0,86.4448,21699849.0,66.3063,360144.0,39.6165,24.1079
+"calm, 24-h window",reach,36,naive first-ready,opp_fifo,equal,12111,0.708,11026851.0,487584.0,733536.0,50.443,15380445.0,58.2432,289296.0,39.4386,20.2818
+"calm, 24-h window",reach,36,JIT strides,jit,equal,12111,0.708,11026851.0,487584.0,1221552.0,150.5316,32949021.0,74.9252,6624.0,0.5423,18.3617
+"calm, 24-h window",reach,36,work stealing (cost-blind),work_steal,equal,12111,0.708,11026851.0,487584.0,731664.0,50.0591,15313053.0,58.1363,290736.0,39.7363,23.7836
+"calm, 24-h window",reach,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.708,11026851.0,487584.0,487584.0,0.0,6526173.0,37.1798,176400.0,36.1784,37.5352
+"calm, 24-h window",reach,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.708,11026851.0,487584.0,487584.0,0.0,6526173.0,37.1798,177984.0,36.5032,37.5352
+"calm, 24-h window",reach,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.708,11026851.0,487584.0,487584.0,0.0,6526173.0,37.1798,177120.0,36.326,37.5352
+"calm, 24-h window",reach,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.708,11026851.0,487584.0,487584.0,0.0,6526173.0,37.1798,177984.0,36.5032,37.5352
+"calm, 24-h window",reach,36,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.708,11026851.0,487584.0,487584.0,0.0,6526173.0,37.1798,177984.0,36.5032,37.5352
+"calm, 24-h window",reach,128,2020-style rounds,opp_rounds,equal,12111,0.708,11026851.0,487584.0,751392.0,54.1051,85151325.0,88.535,360144.0,47.9302,34.9229
+"calm, 24-h window",reach,128,naive first-ready,opp_fifo,equal,12111,0.708,11026851.0,487584.0,547200.0,12.2268,59014749.0,84.2567,286848.0,52.4211,31.2731
+"calm, 24-h window",reach,128,JIT strides,jit,equal,12111,0.708,11026851.0,487584.0,1220976.0,150.4135,145258077.0,92.9444,6624.0,0.5425,18.3059
+"calm, 24-h window",reach,128,work stealing (cost-blind),work_steal,equal,12111,0.708,11026851.0,487584.0,549216.0,12.6403,59272797.0,84.3145,287712.0,52.3859,33.0401
+"calm, 24-h window",reach,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.708,11026851.0,487584.0,487584.0,0.0,51383901.0,82.3318,280368.0,57.5015,38.0571
+"calm, 24-h window",reach,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.708,11026851.0,487584.0,487584.0,0.0,51383901.0,82.3318,279792.0,57.3833,38.0571
+"calm, 24-h window",reach,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.708,11026851.0,487584.0,487584.0,0.0,51383901.0,82.3318,280368.0,57.5015,38.0571
+"calm, 24-h window",reach,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.708,11026851.0,487584.0,487584.0,0.0,51383901.0,82.3318,279792.0,57.3833,38.0571
+"calm, 24-h window",reach,128,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.708,11026851.0,487584.0,487584.0,0.0,51383901.0,82.3318,279792.0,57.3833,38.0571
+"calm, 24-h window",clustered T=100,8,2020-style rounds,opp_rounds,equal,169,0.2729,11026851.0,2636400.0,3534960.0,34.0828,17252829.0,61.0079,2107920.0,59.6307,8.334
+"calm, 24-h window",clustered T=100,8,naive first-ready,opp_fifo,equal,169,0.2729,11026851.0,2636400.0,3407235.0,29.2382,16231029.0,59.5462,2116707.0,62.1239,7.4655
+"calm, 24-h window",clustered T=100,8,JIT strides,jit,equal,169,0.2729,11026851.0,2636400.0,2846064.0,7.9527,11741661.0,51.5697,184512.0,6.4831,8.6145
+"calm, 24-h window",clustered T=100,8,work stealing (cost-blind),work_steal,equal,169,0.2729,11026851.0,2636400.0,3048384.0,15.6268,13360221.0,54.784,1819056.0,59.6728,7.8408
+"calm, 24-h window",clustered T=100,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,10064349.0,47.7182,1412688.0,53.584,12.3992
+"calm, 24-h window",clustered T=100,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,10064349.0,47.7182,1418016.0,53.7861,12.3992
+"calm, 24-h window",clustered T=100,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,10064349.0,47.7182,1417296.0,53.7588,12.3992
+"calm, 24-h window",clustered T=100,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,10064349.0,47.7182,1418016.0,53.7861,12.3992
+"calm, 24-h window",clustered T=100,8,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,10064349.0,47.7182,1418016.0,53.7861,12.3992
+"calm, 24-h window",clustered T=100,36,2020-style rounds,opp_rounds,equal,169,0.2729,11026851.0,2636400.0,2787168.0,5.7187,89311197.0,89.0103,2107920.0,75.6295,12.7696
+"calm, 24-h window",clustered T=100,36,naive first-ready,opp_fifo,equal,169,0.2729,11026851.0,2636400.0,2709552.0,2.7747,86517021.0,88.6955,2042832.0,75.3937,11.7195
+"calm, 24-h window",clustered T=100,36,JIT strides,jit,equal,169,0.2729,11026851.0,2636400.0,2664336.0,1.0596,84889245.0,88.5036,184512.0,6.9253,11.2695
+"calm, 24-h window",clustered T=100,36,work stealing (cost-blind),work_steal,equal,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,83883549.0,88.3818,2003088.0,75.9782,12.3992
+"calm, 24-h window",clustered T=100,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,83883549.0,88.3818,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,83883549.0,88.3818,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,83883549.0,88.3818,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,83883549.0,88.3818,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,36,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,83883549.0,88.3818,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,128,2020-style rounds,opp_rounds,equal,169,0.2729,11026851.0,2636400.0,2730864.0,3.5831,338523741.0,96.8454,2107920.0,77.1888,12.8789
+"calm, 24-h window",clustered T=100,128,naive first-ready,opp_fifo,equal,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,326432349.0,96.7324,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,128,JIT strides,jit,equal,169,0.2729,11026851.0,2636400.0,2664336.0,1.0596,330008157.0,96.7667,184512.0,6.9253,11.2695
+"calm, 24-h window",clustered T=100,128,work stealing (cost-blind),work_steal,equal,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,326432349.0,96.7324,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,326432349.0,96.7324,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,326432349.0,96.7324,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,326432349.0,96.7324,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,326432349.0,96.7324,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=100,128,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2729,11026851.0,2636400.0,2636400.0,0.0,326432349.0,96.7324,2024400.0,76.7865,12.3992
+"calm, 24-h window",clustered T=1000,8,2020-style rounds,opp_rounds,equal,19,0.3291,11026851.0,5706051.0,5845587.0,2.4454,35737845.0,76.4206,4461603.0,76.3243,3.94
+"calm, 24-h window",clustered T=1000,8,naive first-ready,opp_fifo,equal,19,0.3291,11026851.0,5706051.0,5801955.0,1.6807,35388789.0,76.2432,4461891.0,76.9032,3.4848
+"calm, 24-h window",clustered T=1000,8,JIT strides,jit,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,34621557.0,75.844,1249539.0,21.8985,3.1177
+"calm, 24-h window",clustered T=1000,8,work stealing (cost-blind),work_steal,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,34621557.0,75.844,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,34621557.0,75.844,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,34621557.0,75.844,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,34621557.0,75.844,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,34621557.0,75.844,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,8,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,34621557.0,75.844,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,36,2020-style rounds,opp_rounds,equal,19,0.3291,11026851.0,5706051.0,5845587.0,2.4454,199414281.0,94.7601,4461603.0,76.3243,3.94
+"calm, 24-h window",clustered T=1000,36,naive first-ready,opp_fifo,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,194390985.0,94.632,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,36,JIT strides,jit,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,194390985.0,94.632,1249539.0,21.8985,3.1177
+"calm, 24-h window",clustered T=1000,36,work stealing (cost-blind),work_steal,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,194390985.0,94.632,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,194390985.0,94.632,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,194390985.0,94.632,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,194390985.0,94.632,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,194390985.0,94.632,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,36,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,194390985.0,94.632,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,128,2020-style rounds,opp_rounds,equal,19,0.3291,11026851.0,5706051.0,5845587.0,2.4454,737208285.0,98.5263,4461603.0,76.3243,3.94
+"calm, 24-h window",clustered T=1000,128,naive first-ready,opp_fifo,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,719347677.0,98.4902,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,128,JIT strides,jit,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,719347677.0,98.4902,1249539.0,21.8985,3.1177
+"calm, 24-h window",clustered T=1000,128,work stealing (cost-blind),work_steal,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,719347677.0,98.4902,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,719347677.0,98.4902,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,719347677.0,98.4902,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,719347677.0,98.4902,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,719347677.0,98.4902,4461891.0,78.1958,3.6323
+"calm, 24-h window",clustered T=1000,128,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3291,11026851.0,5706051.0,5706051.0,0.0,719347677.0,98.4902,4461891.0,78.1958,3.6323
+"storm 25 mm, peak 24-h window",segment,8,2020-style rounds,opp_rounds,equal,16454,0.1172,14381180.0,1797647.5,2163816.0,20.3693,2929348.0,16.9223,273477.0,12.6386,1.1727
+"storm 25 mm, peak 24-h window",segment,8,naive first-ready,opp_fifo,equal,16454,0.1172,14381180.0,1797647.5,2119860.0,17.9241,2577700.0,15.1997,266626.0,12.5775,0.5974
+"storm 25 mm, peak 24-h window",segment,8,JIT strides,jit,equal,16454,0.1172,14381180.0,1797647.5,2020079.0,12.3735,1779452.0,11.011,932.0,0.0461,0.9276
+"storm 25 mm, peak 24-h window",segment,8,work stealing (cost-blind),work_steal,equal,16454,0.1172,14381180.0,1797647.5,2070250.0,15.1644,2180820.0,13.1676,292017.0,14.1054,0.0694
+"storm 25 mm, peak 24-h window",segment,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.1172,14381180.0,1797647.5,1801020.0,0.1876,26980.0,0.1873,1252.0,0.0695,-0.019
+"storm 25 mm, peak 24-h window",segment,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.1172,14381180.0,1797647.5,1801487.0,0.2136,30716.0,0.2131,2307.0,0.1281,0.0069
+"storm 25 mm, peak 24-h window",segment,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.1172,14381180.0,1797647.5,1800981.0,0.1854,26668.0,0.1851,961.0,0.0534,-0.0212
+"storm 25 mm, peak 24-h window",segment,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.1172,14381180.0,1797647.5,1801319.0,0.2042,29372.0,0.2038,1958.0,0.1087,-0.0024
+"storm 25 mm, peak 24-h window",segment,8,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.1172,14381180.0,1797647.5,1800765.0,0.1734,24940.0,0.1731,1255.0,0.0697,-0.0331
+"storm 25 mm, peak 24-h window",segment,36,2020-style rounds,opp_rounds,equal,16454,0.1172,14381180.0,481049.0,842484.0,75.1348,15948244.0,52.5834,273477.0,32.4608,4.0945
+"storm 25 mm, peak 24-h window",segment,36,naive first-ready,opp_fifo,equal,16454,0.1172,14381180.0,481049.0,811615.0,68.7177,14836960.0,50.78,266791.0,32.8716,2.1558
+"storm 25 mm, peak 24-h window",segment,36,JIT strides,jit,equal,16454,0.1172,14381180.0,481049.0,674171.0,40.146,9888976.0,40.7454,932.0,0.1382,7.5791
+"storm 25 mm, peak 24-h window",segment,36,work stealing (cost-blind),work_steal,equal,16454,0.1172,14381180.0,481049.0,810438.0,68.4731,14794588.0,50.7085,268370.0,33.1142,5.0113
+"storm 25 mm, peak 24-h window",segment,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.1172,14381180.0,481049.0,481049.0,0.0,2936584.0,16.9571,75845.0,15.7666,4.0425
+"storm 25 mm, peak 24-h window",segment,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.1172,14381180.0,481049.0,481049.0,0.0,2936584.0,16.9571,75931.0,15.7845,4.0425
+"storm 25 mm, peak 24-h window",segment,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.1172,14381180.0,481049.0,481049.0,0.0,2936584.0,16.9571,75930.0,15.7843,4.0425
+"storm 25 mm, peak 24-h window",segment,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.1172,14381180.0,481049.0,481049.0,0.0,2936584.0,16.9571,75935.0,15.7853,4.0425
+"storm 25 mm, peak 24-h window",segment,36,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.1172,14381180.0,481049.0,481049.0,0.0,2936584.0,16.9571,76068.0,15.8129,4.0425
+"storm 25 mm, peak 24-h window",segment,128,2020-style rounds,opp_rounds,equal,16454,0.1172,14381180.0,481049.0,586177.0,21.8539,60649476.0,80.8329,273477.0,46.6543,6.7938
+"storm 25 mm, peak 24-h window",segment,128,naive first-ready,opp_fifo,equal,16454,0.1172,14381180.0,481049.0,561738.0,16.7736,57521284.0,79.999,267326.0,47.5891,3.3286
+"storm 25 mm, peak 24-h window",segment,128,JIT strides,jit,equal,16454,0.1172,14381180.0,481049.0,555340.0,15.4435,56702340.0,79.7686,932.0,0.1678,20.5661
+"storm 25 mm, peak 24-h window",segment,128,work stealing (cost-blind),work_steal,equal,16454,0.1172,14381180.0,481049.0,553010.0,14.9592,56404100.0,79.6834,252844.0,45.7214,2.5474
+"storm 25 mm, peak 24-h window",segment,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.1172,14381180.0,481049.0,481049.0,0.0,47193092.0,76.6442,261536.0,54.3679,4.4373
+"storm 25 mm, peak 24-h window",segment,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.1172,14381180.0,481049.0,481049.0,0.0,47193092.0,76.6442,260566.0,54.1662,4.4373
+"storm 25 mm, peak 24-h window",segment,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.1172,14381180.0,481049.0,481049.0,0.0,47193092.0,76.6442,261466.0,54.3533,4.4373
+"storm 25 mm, peak 24-h window",segment,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.1172,14381180.0,481049.0,481049.0,0.0,47193092.0,76.6442,260549.0,54.1627,4.4373
+"storm 25 mm, peak 24-h window",segment,128,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.1172,14381180.0,481049.0,481049.0,0.0,47193092.0,76.6442,263091.0,54.6911,4.4373
+"storm 25 mm, peak 24-h window",reach,8,2020-style rounds,opp_rounds,equal,12111,0.57,14381180.0,1797647.5,2253166.0,25.3397,3644148.0,20.2168,350398.0,15.5514,0.9763
+"storm 25 mm, peak 24-h window",reach,8,naive first-ready,opp_fifo,equal,12111,0.57,14381180.0,1797647.5,2125747.0,18.2516,2624796.0,15.4346,275137.0,12.9431,0.835
+"storm 25 mm, peak 24-h window",reach,8,JIT strides,jit,equal,12111,0.57,14381180.0,1797647.5,2081417.0,15.7856,2270156.0,13.6335,4551.0,0.2186,0.7369
+"storm 25 mm, peak 24-h window",reach,8,work stealing (cost-blind),work_steal,equal,12111,0.57,14381180.0,1797647.5,2070250.0,15.1644,2180820.0,13.1676,292017.0,14.1054,0.0694
+"storm 25 mm, peak 24-h window",reach,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.57,14381180.0,1797647.5,1801098.0,0.1919,27604.0,0.1916,1156.0,0.0642,-0.0147
+"storm 25 mm, peak 24-h window",reach,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.57,14381180.0,1797647.5,1802069.0,0.246,35372.0,0.2454,2981.0,0.1654,0.0392
+"storm 25 mm, peak 24-h window",reach,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.57,14381180.0,1797647.5,1801322.0,0.2044,29396.0,0.204,1136.0,0.0631,-0.0022
+"storm 25 mm, peak 24-h window",reach,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.57,14381180.0,1797647.5,1801373.0,0.2072,29804.0,0.2068,2255.0,0.1252,0.0006
+"storm 25 mm, peak 24-h window",reach,8,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.57,14381180.0,1797647.5,1800846.0,0.1779,25588.0,0.1776,906.0,0.0503,-0.0287
+"storm 25 mm, peak 24-h window",reach,36,2020-style rounds,opp_rounds,equal,12111,0.57,14381180.0,481049.0,985155.0,104.7931,21084400.0,59.4503,350398.0,35.5678,3.1244
+"storm 25 mm, peak 24-h window",reach,36,naive first-ready,opp_fifo,equal,12111,0.57,14381180.0,481049.0,813886.0,69.1898,14918716.0,50.9173,268661.0,33.0097,2.3291
+"storm 25 mm, peak 24-h window",reach,36,JIT strides,jit,equal,12111,0.57,14381180.0,481049.0,1365818.0,183.9249,34788268.0,70.7518,4551.0,0.3332,1.4727
+"storm 25 mm, peak 24-h window",reach,36,work stealing (cost-blind),work_steal,equal,12111,0.57,14381180.0,481049.0,810438.0,68.4731,14794588.0,50.7085,268370.0,33.1142,5.1304
+"storm 25 mm, peak 24-h window",reach,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.57,14381180.0,481049.0,481049.0,0.0,2936584.0,16.9571,76077.0,15.8148,4.0425
+"storm 25 mm, peak 24-h window",reach,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.57,14381180.0,481049.0,481049.0,0.0,2936584.0,16.9571,75908.0,15.7797,4.0425
+"storm 25 mm, peak 24-h window",reach,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.57,14381180.0,481049.0,481049.0,0.0,2936584.0,16.9571,76022.0,15.8034,4.0425
+"storm 25 mm, peak 24-h window",reach,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.57,14381180.0,481049.0,481049.0,0.0,2936584.0,16.9571,75824.0,15.7622,4.0425
+"storm 25 mm, peak 24-h window",reach,36,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.57,14381180.0,481049.0,481049.0,0.0,2936584.0,16.9571,76100.0,15.8196,4.0425
+"storm 25 mm, peak 24-h window",reach,128,2020-style rounds,opp_rounds,equal,12111,0.57,14381180.0,481049.0,758422.0,57.66,82696836.0,85.186,350398.0,46.2009,4.4208
+"storm 25 mm, peak 24-h window",reach,128,naive first-ready,opp_fifo,equal,12111,0.57,14381180.0,481049.0,562423.0,16.9159,57608964.0,80.0234,268647.0,47.766,3.4546
+"storm 25 mm, peak 24-h window",reach,128,JIT strides,jit,equal,12111,0.57,14381180.0,481049.0,1365719.0,183.9043,160430852.0,91.7733,4551.0,0.3332,1.4653
+"storm 25 mm, peak 24-h window",reach,128,work stealing (cost-blind),work_steal,equal,12111,0.57,14381180.0,481049.0,553010.0,14.9592,56404100.0,79.6834,252844.0,45.7214,2.7139
+"storm 25 mm, peak 24-h window",reach,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.57,14381180.0,481049.0,481049.0,0.0,47193092.0,76.6442,261539.0,54.3685,4.4373
+"storm 25 mm, peak 24-h window",reach,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.57,14381180.0,481049.0,481049.0,0.0,47193092.0,76.6442,260566.0,54.1662,4.4373
+"storm 25 mm, peak 24-h window",reach,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.57,14381180.0,481049.0,481049.0,0.0,47193092.0,76.6442,261449.0,54.3498,4.4373
+"storm 25 mm, peak 24-h window",reach,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.57,14381180.0,481049.0,481049.0,0.0,47193092.0,76.6442,260528.0,54.1583,4.4373
+"storm 25 mm, peak 24-h window",reach,128,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.57,14381180.0,481049.0,481049.0,0.0,47193092.0,76.6442,263081.0,54.689,4.4373
+"storm 25 mm, peak 24-h window",clustered T=100,8,2020-style rounds,opp_rounds,equal,169,0.2281,14381180.0,3038416.0,4257974.0,40.138,19682612.0,57.7816,2386498.0,56.0477,0.0553
+"storm 25 mm, peak 24-h window",clustered T=100,8,naive first-ready,opp_fifo,equal,169,0.2281,14381180.0,3038416.0,4117910.0,35.5282,18562100.0,56.3456,2384073.0,57.8952,-0.4134
+"storm 25 mm, peak 24-h window",clustered T=100,8,JIT strides,jit,equal,169,0.2281,14381180.0,3038416.0,3421507.0,12.6082,12990876.0,47.4604,160986.0,4.7051,0.1193
+"storm 25 mm, peak 24-h window",clustered T=100,8,work stealing (cost-blind),work_steal,equal,169,0.2281,14381180.0,3038416.0,3695764.0,21.6346,15184932.0,51.3592,1966257.0,53.203,0.2477
+"storm 25 mm, peak 24-h window",clustered T=100,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,9926148.0,40.836,1368648.0,45.0448,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,9926148.0,40.836,1379170.0,45.3911,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,9926148.0,40.836,1377962.0,45.3513,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,9926148.0,40.836,1379074.0,45.3879,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,8,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,9926148.0,40.836,1380716.0,45.442,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,36,2020-style rounds,opp_rounds,equal,169,0.2281,14381180.0,3038416.0,3255653.0,7.1497,102822328.0,87.7297,2386498.0,73.3032,1.0006
+"storm 25 mm, peak 24-h window",clustered T=100,36,naive first-ready,opp_fifo,equal,169,0.2281,14381180.0,3038416.0,3144361.0,3.4868,98815816.0,87.2954,2279206.0,72.4855,-0.5921
+"storm 25 mm, peak 24-h window",clustered T=100,36,JIT strides,jit,equal,169,0.2281,14381180.0,3038416.0,3123541.0,2.8016,98066296.0,87.2108,160986.0,5.154,0.021
+"storm 25 mm, peak 24-h window",clustered T=100,36,work stealing (cost-blind),work_steal,equal,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,95001796.0,86.8525,2198833.0,72.3677,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,95001796.0,86.8525,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,95001796.0,86.8525,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,95001796.0,86.8525,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,95001796.0,86.8525,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,36,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,95001796.0,86.8525,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,128,2020-style rounds,opp_rounds,equal,169,0.2281,14381180.0,3038416.0,3185929.0,4.8549,393417732.0,96.4735,2386498.0,74.9074,0.9731
+"storm 25 mm, peak 24-h window",clustered T=100,128,naive first-ready,opp_fifo,equal,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,374536068.0,96.3023,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,128,JIT strides,jit,equal,169,0.2281,14381180.0,3038416.0,3123541.0,2.8016,385432068.0,96.403,160986.0,5.154,0.021
+"storm 25 mm, peak 24-h window",clustered T=100,128,work stealing (cost-blind),work_steal,equal,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,374536068.0,96.3023,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,374536068.0,96.3023,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,374536068.0,96.3023,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,374536068.0,96.3023,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,374536068.0,96.3023,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=100,128,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2281,14381180.0,3038416.0,3038416.0,0.0,374536068.0,96.3023,2250329.0,74.0626,-0.6756
+"storm 25 mm, peak 24-h window",clustered T=1000,8,2020-style rounds,opp_rounds,equal,19,0.3079,14381180.0,7174270.0,7386226.0,2.9544,44708628.0,75.6622,5529993.0,74.869,0.7011
+"storm 25 mm, peak 24-h window",clustered T=1000,8,naive first-ready,opp_fifo,equal,19,0.3079,14381180.0,7174270.0,7307815.0,1.8614,44081340.0,75.401,5556896.0,76.0405,-0.0583
+"storm 25 mm, peak 24-h window",clustered T=1000,8,JIT strides,jit,equal,19,0.3079,14381180.0,7174270.0,7215828.0,0.5793,43345444.0,75.0874,1363250.0,18.8925,-0.0136
+"storm 25 mm, peak 24-h window",clustered T=1000,8,work stealing (cost-blind),work_steal,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,43012980.0,74.9431,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,43012980.0,74.9431,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,43012980.0,74.9431,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,43012980.0,74.9431,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,43012980.0,74.9431,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,8,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,43012980.0,74.9431,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,36,2020-style rounds,opp_rounds,equal,19,0.3079,14381180.0,7174270.0,7386226.0,2.9544,251522956.0,94.5916,5529993.0,74.869,0.7011
+"storm 25 mm, peak 24-h window",clustered T=1000,36,naive first-ready,opp_fifo,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,243892540.0,94.4318,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,36,JIT strides,jit,equal,19,0.3079,14381180.0,7174270.0,7215828.0,0.5793,245388628.0,94.4639,1363250.0,18.8925,-0.0136
+"storm 25 mm, peak 24-h window",clustered T=1000,36,work stealing (cost-blind),work_steal,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,243892540.0,94.4318,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,243892540.0,94.4318,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,243892540.0,94.4318,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,243892540.0,94.4318,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,243892540.0,94.4318,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,36,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,243892540.0,94.4318,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,128,2020-style rounds,opp_rounds,equal,19,0.3079,14381180.0,7174270.0,7386226.0,2.9544,931055748.0,98.4789,5529993.0,74.869,0.7011
+"storm 25 mm, peak 24-h window",clustered T=1000,128,naive first-ready,opp_fifo,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,903925380.0,98.4339,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,128,JIT strides,jit,equal,19,0.3079,14381180.0,7174270.0,7215828.0,0.5793,909244804.0,98.443,1363250.0,18.8925,-0.0136
+"storm 25 mm, peak 24-h window",clustered T=1000,128,work stealing (cost-blind),work_steal,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,903925380.0,98.4339,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,903925380.0,98.4339,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,903925380.0,98.4339,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,903925380.0,98.4339,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,903925380.0,98.4339,5528207.0,77.056,-0.0934
+"storm 25 mm, peak 24-h window",clustered T=1000,128,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3079,14381180.0,7174270.0,7174270.0,0.0,903925380.0,98.4339,5528207.0,77.056,-0.0934
+"storm 100 mm, peak 24-h window",segment,8,2020-style rounds,opp_rounds,equal,16454,0.0686,14216219.0,1777027.375,2128798.0,19.7955,2814165.0,16.5244,267364.0,12.5594,0.6904
+"storm 100 mm, peak 24-h window",segment,8,naive first-ready,opp_fifo,equal,16454,0.0686,14216219.0,1777027.375,2092502.0,17.7529,2523797.0,15.0764,263633.0,12.5989,0.4514
+"storm 100 mm, peak 24-h window",segment,8,JIT strides,jit,equal,16454,0.0686,14216219.0,1777027.375,1993550.0,12.1845,1732181.0,10.8612,900.0,0.0451,0.7579
+"storm 100 mm, peak 24-h window",segment,8,work stealing (cost-blind),work_steal,equal,16454,0.0686,14216219.0,1777027.375,2061170.0,15.9898,2273141.0,13.7855,309110.0,14.9968,0.7866
+"storm 100 mm, peak 24-h window",segment,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.0686,14216219.0,1777027.375,1780327.0,0.1857,26397.0,0.1853,1327.0,0.0745,-0.0209
+"storm 100 mm, peak 24-h window",segment,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.0686,14216219.0,1777027.375,1781219.0,0.2359,33533.0,0.2353,2692.0,0.1511,0.0292
+"storm 100 mm, peak 24-h window",segment,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.0686,14216219.0,1777027.375,1780169.0,0.1768,25133.0,0.1765,1156.0,0.0649,-0.0298
+"storm 100 mm, peak 24-h window",segment,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.0686,14216219.0,1777027.375,1780847.0,0.2149,30557.0,0.2145,2424.0,0.1361,0.0083
+"storm 100 mm, peak 24-h window",segment,8,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.0686,14216219.0,1777027.375,1780164.0,0.1765,25093.0,0.1762,905.0,0.0508,-0.0301
+"storm 100 mm, peak 24-h window",segment,36,2020-style rounds,opp_rounds,equal,16454,0.0686,14216219.0,464380.0,818790.0,76.319,15260221.0,51.7709,267364.0,32.6535,2.3408
+"storm 100 mm, peak 24-h window",segment,36,naive first-ready,opp_fifo,equal,16454,0.0686,14216219.0,464380.0,795349.0,71.2712,14416345.0,50.3495,264066.0,33.2013,1.2701
+"storm 100 mm, peak 24-h window",segment,36,JIT strides,jit,equal,16454,0.0686,14216219.0,464380.0,646662.0,39.2528,9063613.0,38.9333,900.0,0.1392,4.3868
+"storm 100 mm, peak 24-h window",segment,36,work stealing (cost-blind),work_steal,equal,16454,0.0686,14216219.0,464380.0,805122.0,73.3757,14768173.0,50.9522,266624.0,33.116,5.533
+"storm 100 mm, peak 24-h window",segment,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.0686,14216219.0,464380.0,465585.0,0.2595,2544841.0,15.1831,64645.0,13.8847,1.8663
+"storm 100 mm, peak 24-h window",segment,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.0686,14216219.0,464380.0,469789.0,1.1648,2696185.0,15.9421,68877.0,14.6613,2.7861
+"storm 100 mm, peak 24-h window",segment,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.0686,14216219.0,464380.0,465279.0,0.1936,2533825.0,15.1273,64465.0,13.8551,1.7994
+"storm 100 mm, peak 24-h window",segment,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.0686,14216219.0,464380.0,469842.0,1.1762,2698093.0,15.9515,69033.0,14.6928,2.7977
+"storm 100 mm, peak 24-h window",segment,36,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.0686,14216219.0,464380.0,464380.0,0.0,2501461.0,14.963,63552.0,13.6853,1.6027
+"storm 100 mm, peak 24-h window",segment,128,2020-style rounds,opp_rounds,equal,16454,0.0686,14216219.0,464380.0,562824.0,21.199,57825253.0,80.2666,267364.0,47.504,3.729
+"storm 100 mm, peak 24-h window",segment,128,naive first-ready,opp_fifo,equal,16454,0.0686,14216219.0,464380.0,546231.0,17.6259,55701349.0,79.6672,264067.0,48.3435,1.642
+"storm 100 mm, peak 24-h window",segment,128,JIT strides,jit,equal,16454,0.0686,14216219.0,464380.0,499274.0,7.5141,49690853.0,77.7549,900.0,0.1803,9.6518
+"storm 100 mm, peak 24-h window",segment,128,work stealing (cost-blind),work_steal,equal,16454,0.0686,14216219.0,464380.0,541884.0,16.6898,55144933.0,79.5041,252279.0,46.5559,1.6503
+"storm 100 mm, peak 24-h window",segment,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.0686,14216219.0,464380.0,464380.0,0.0,45224421.0,76.0833,256828.0,55.3056,1.9883
+"storm 100 mm, peak 24-h window",segment,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.0686,14216219.0,464380.0,464380.0,0.0,45224421.0,76.0833,255282.0,54.9727,1.9883
+"storm 100 mm, peak 24-h window",segment,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.0686,14216219.0,464380.0,464380.0,0.0,45224421.0,76.0833,256800.0,55.2995,1.9883
+"storm 100 mm, peak 24-h window",segment,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.0686,14216219.0,464380.0,464380.0,0.0,45224421.0,76.0833,255151.0,54.9444,1.9883
+"storm 100 mm, peak 24-h window",segment,128,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.0686,14216219.0,464380.0,464380.0,0.0,45224421.0,76.0833,257647.0,55.4819,1.9883
+"storm 100 mm, peak 24-h window",reach,8,2020-style rounds,opp_rounds,equal,12111,0.5566,14216219.0,1777027.375,2216099.0,24.7082,3512573.0,19.8128,341409.0,15.4059,0.4675
+"storm 100 mm, peak 24-h window",reach,8,naive first-ready,opp_fifo,equal,12111,0.5566,14216219.0,1777027.375,2098239.0,18.0758,2569693.0,15.3086,272418.0,12.9832,0.6851
+"storm 100 mm, peak 24-h window",reach,8,JIT strides,jit,equal,12111,0.5566,14216219.0,1777027.375,2049618.0,15.3397,2180725.0,13.2996,4180.0,0.2039,0.349
+"storm 100 mm, peak 24-h window",reach,8,work stealing (cost-blind),work_steal,equal,12111,0.5566,14216219.0,1777027.375,2061170.0,15.9898,2273141.0,13.7855,309110.0,14.9968,0.7866
+"storm 100 mm, peak 24-h window",reach,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.5566,14216219.0,1777027.375,1780805.0,0.2126,30221.0,0.2121,1701.0,0.0955,0.0059
+"storm 100 mm, peak 24-h window",reach,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.5566,14216219.0,1777027.375,1781695.0,0.2627,37341.0,0.262,3235.0,0.1816,0.0559
+"storm 100 mm, peak 24-h window",reach,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.5566,14216219.0,1777027.375,1780193.0,0.1781,25325.0,0.1778,931.0,0.0523,-0.0284
+"storm 100 mm, peak 24-h window",reach,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.5566,14216219.0,1777027.375,1780769.0,0.2106,29933.0,0.2101,2375.0,0.1334,0.0039
+"storm 100 mm, peak 24-h window",reach,8,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.5566,14216219.0,1777027.375,1780084.0,0.172,24453.0,0.1717,1130.0,0.0635,-0.0346
+"storm 100 mm, peak 24-h window",reach,36,2020-style rounds,opp_rounds,equal,12111,0.5566,14216219.0,464380.0,953900.0,105.4137,20124181.0,58.6021,341409.0,35.7909,1.0113
+"storm 100 mm, peak 24-h window",reach,36,naive first-ready,opp_fifo,equal,12111,0.5566,14216219.0,464380.0,797072.0,71.6422,14478373.0,50.4568,265568.0,33.3179,1.378
+"storm 100 mm, peak 24-h window",reach,36,JIT strides,jit,equal,12111,0.5566,14216219.0,464380.0,1318980.0,184.0303,33267061.0,70.0606,4180.0,0.3169,-0.8701
+"storm 100 mm, peak 24-h window",reach,36,work stealing (cost-blind),work_steal,equal,12111,0.5566,14216219.0,464380.0,805122.0,73.3757,14768173.0,50.9522,266624.0,33.116,5.6527
+"storm 100 mm, peak 24-h window",reach,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.5566,14216219.0,464380.0,465454.0,0.2313,2540125.0,15.1592,64550.0,13.8682,1.8377
+"storm 100 mm, peak 24-h window",reach,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.5566,14216219.0,464380.0,469942.0,1.1977,2701693.0,15.9694,69043.0,14.6918,2.8196
+"storm 100 mm, peak 24-h window",reach,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.5566,14216219.0,464380.0,465376.0,0.2145,2537317.0,15.145,64557.0,13.872,1.8206
+"storm 100 mm, peak 24-h window",reach,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.5566,14216219.0,464380.0,469551.0,1.1135,2687617.0,15.8995,68660.0,14.6225,2.7341
+"storm 100 mm, peak 24-h window",reach,36,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.5566,14216219.0,464380.0,464380.0,0.0,2501461.0,14.963,63574.0,13.6901,1.6027
+"storm 100 mm, peak 24-h window",reach,128,2020-style rounds,opp_rounds,equal,12111,0.5566,14216219.0,464380.0,727028.0,56.5589,78843365.0,84.7235,341409.0,46.9595,1.2599
+"storm 100 mm, peak 24-h window",reach,128,naive first-ready,opp_fifo,equal,12111,0.5566,14216219.0,464380.0,546848.0,17.7587,55780325.0,79.6901,265361.0,48.5256,1.7568
+"storm 100 mm, peak 24-h window",reach,128,JIT strides,jit,equal,12111,0.5566,14216219.0,464380.0,1318898.0,184.0127,154602725.0,91.579,4180.0,0.3169,-0.8762
+"storm 100 mm, peak 24-h window",reach,128,work stealing (cost-blind),work_steal,equal,12111,0.5566,14216219.0,464380.0,541884.0,16.6898,55144933.0,79.5041,252279.0,46.5559,1.8153
+"storm 100 mm, peak 24-h window",reach,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.5566,14216219.0,464380.0,464380.0,0.0,45224421.0,76.0833,256834.0,55.3069,1.9883
+"storm 100 mm, peak 24-h window",reach,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.5566,14216219.0,464380.0,464380.0,0.0,45224421.0,76.0833,255282.0,54.9727,1.9883
+"storm 100 mm, peak 24-h window",reach,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.5566,14216219.0,464380.0,464380.0,0.0,45224421.0,76.0833,256763.0,55.2916,1.9883
+"storm 100 mm, peak 24-h window",reach,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.5566,14216219.0,464380.0,464380.0,0.0,45224421.0,76.0833,255775.0,55.0788,1.9883
+"storm 100 mm, peak 24-h window",reach,128,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.5566,14216219.0,464380.0,464380.0,0.0,45224421.0,76.0833,257647.0,55.4819,1.9883
+"storm 100 mm, peak 24-h window",clustered T=100,8,2020-style rounds,opp_rounds,equal,169,0.2256,14216219.0,2967527.0,4159864.0,40.1795,19062693.0,57.2816,2280624.0,54.8245,-1.1158
+"storm 100 mm, peak 24-h window",clustered T=100,8,naive first-ready,opp_fifo,equal,169,0.2256,14216219.0,2967527.0,4003942.0,34.9252,17815317.0,55.6181,2306957.0,57.6171,-2.046
+"storm 100 mm, peak 24-h window",clustered T=100,8,JIT strides,jit,equal,169,0.2256,14216219.0,2967527.0,3331747.0,12.2735,12437757.0,46.6638,149106.0,4.4753,-1.376
+"storm 100 mm, peak 24-h window",clustered T=100,8,work stealing (cost-blind),work_steal,equal,169,0.2256,14216219.0,2967527.0,3620797.0,22.014,14750157.0,50.9217,1933145.0,53.39,-0.6461
+"storm 100 mm, peak 24-h window",clustered T=100,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,9523997.0,40.1176,1331583.0,44.8718,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,9523997.0,40.1176,1331896.0,44.8824,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,9523997.0,40.1176,1333334.0,44.9308,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,9523997.0,40.1176,1328161.0,44.7565,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,8,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,9523997.0,40.1176,1331853.0,44.8809,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,36,2020-style rounds,opp_rounds,equal,169,0.2256,14216219.0,2967527.0,3138703.0,5.7683,98777089.0,87.4185,2280624.0,72.6614,-1.4976
+"storm 100 mm, peak 24-h window",clustered T=100,36,naive first-ready,opp_fifo,equal,169,0.2256,14216219.0,2967527.0,3071002.0,3.4869,96339853.0,87.1412,2219096.0,72.2597,-1.7848
+"storm 100 mm, peak 24-h window",clustered T=100,36,JIT strides,jit,equal,169,0.2256,14216219.0,2967527.0,3045173.0,2.6165,95410009.0,87.0321,149106.0,4.8965,-1.357
+"storm 100 mm, peak 24-h window",clustered T=100,36,work stealing (cost-blind),work_steal,equal,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,92614753.0,86.6928,2144574.0,72.2681,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,92614753.0,86.6928,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,92614753.0,86.6928,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,92614753.0,86.6928,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,92614753.0,86.6928,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,36,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,92614753.0,86.6928,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,128,2020-style rounds,opp_rounds,equal,169,0.2256,14216219.0,2967527.0,3069780.0,3.4457,378715621.0,96.382,2280624.0,74.2928,-1.5791
+"storm 100 mm, peak 24-h window",clustered T=100,128,naive first-ready,opp_fifo,equal,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,365627237.0,96.2573,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,128,JIT strides,jit,equal,169,0.2256,14216219.0,2967527.0,3045173.0,2.6165,375565925.0,96.3528,149106.0,4.8965,-1.357
+"storm 100 mm, peak 24-h window",clustered T=100,128,work stealing (cost-blind),work_steal,equal,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,365627237.0,96.2573,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,365627237.0,96.2573,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,365627237.0,96.2573,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,365627237.0,96.2573,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,365627237.0,96.2573,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=100,128,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2256,14216219.0,2967527.0,2967527.0,0.0,365627237.0,96.2573,2190015.0,73.7993,-1.8672
+"storm 100 mm, peak 24-h window",clustered T=1000,8,2020-style rounds,opp_rounds,equal,19,0.3034,14216219.0,7043908.0,7177345.0,1.8944,43202541.0,75.2412,5341019.0,74.415,-1.0113
+"storm 100 mm, peak 24-h window",clustered T=1000,8,naive first-ready,opp_fifo,equal,19,0.3034,14216219.0,7043908.0,7172976.0,1.8323,43167589.0,75.2261,5341019.0,74.4603,-0.7641
+"storm 100 mm, peak 24-h window",clustered T=1000,8,JIT strides,jit,equal,19,0.3034,14216219.0,7043908.0,7106573.0,0.8896,42636365.0,74.9946,1294958.0,18.222,-0.3849
+"storm 100 mm, peak 24-h window",clustered T=1000,8,work stealing (cost-blind),work_steal,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,42135045.0,74.7721,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,42135045.0,74.7721,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,42135045.0,74.7721,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,42135045.0,74.7721,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,42135045.0,74.7721,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,8,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,42135045.0,74.7721,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,36,2020-style rounds,opp_rounds,equal,19,0.3034,14216219.0,7043908.0,7177345.0,1.8944,244168201.0,94.498,5341019.0,74.415,-1.0113
+"storm 100 mm, peak 24-h window",clustered T=1000,36,naive first-ready,opp_fifo,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,239364469.0,94.3938,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,36,JIT strides,jit,equal,19,0.3034,14216219.0,7043908.0,7106573.0,0.8896,241620409.0,94.4432,1294958.0,18.222,-0.3849
+"storm 100 mm, peak 24-h window",clustered T=1000,36,work stealing (cost-blind),work_steal,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,239364469.0,94.3938,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,239364469.0,94.3938,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,239364469.0,94.3938,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,239364469.0,94.3938,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,239364469.0,94.3938,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,36,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,239364469.0,94.3938,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,128,2020-style rounds,opp_rounds,equal,19,0.3034,14216219.0,7043908.0,7177345.0,1.8944,904483941.0,98.4526,5341019.0,74.415,-1.0113
+"storm 100 mm, peak 24-h window",clustered T=1000,128,naive first-ready,opp_fifo,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,887404005.0,98.4233,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,128,JIT strides,jit,equal,19,0.3034,14216219.0,7043908.0,7106573.0,0.8896,895425125.0,98.4372,1294958.0,18.222,-0.3849
+"storm 100 mm, peak 24-h window",clustered T=1000,128,work stealing (cost-blind),work_steal,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,887404005.0,98.4233,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,887404005.0,98.4233,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,887404005.0,98.4233,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,887404005.0,98.4233,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,887404005.0,98.4233,5341019.0,75.8247,-0.7705
+"storm 100 mm, peak 24-h window",clustered T=1000,128,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3034,14216219.0,7043908.0,7043908.0,0.0,887404005.0,98.4233,5341019.0,75.8247,-0.7705
+"storm 250 mm, peak 24-h window",segment,8,2020-style rounds,opp_rounds,equal,16454,0.0919,13818315.0,1727289.375,2072374.0,19.9784,2760677.0,16.6517,262593.0,12.6711,0.8441
+"storm 250 mm, peak 24-h window",segment,8,naive first-ready,opp_fifo,equal,16454,0.0919,13818315.0,1727289.375,2033960.0,17.7544,2453365.0,15.0775,257935.0,12.6814,0.4527
+"storm 250 mm, peak 24-h window",segment,8,JIT strides,jit,equal,16454,0.0919,13818315.0,1727289.375,1940658.0,12.3528,1706949.0,10.9947,1021.0,0.0526,0.909
+"storm 250 mm, peak 24-h window",segment,8,work stealing (cost-blind),work_steal,equal,16454,0.0919,13818315.0,1727289.375,2003251.0,15.9766,2207693.0,13.7757,300210.0,14.9861,0.7752
+"storm 250 mm, peak 24-h window",segment,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.0919,13818315.0,1727289.375,1730973.0,0.2133,29469.0,0.2128,2276.0,0.1315,0.0066
+"storm 250 mm, peak 24-h window",segment,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.0919,13818315.0,1727289.375,1731793.0,0.2607,36029.0,0.2601,3417.0,0.1973,0.054
+"storm 250 mm, peak 24-h window",segment,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.0919,13818315.0,1727289.375,1730368.0,0.1782,24629.0,0.1779,1584.0,0.0915,-0.0283
+"storm 250 mm, peak 24-h window",segment,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.0919,13818315.0,1727289.375,1731643.0,0.252,34829.0,0.2514,3313.0,0.1913,0.0453
+"storm 250 mm, peak 24-h window",segment,8,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.0919,13818315.0,1727289.375,1730125.0,0.1642,22685.0,0.1639,1160.0,0.067,-0.0424
+"storm 250 mm, peak 24-h window",segment,36,2020-style rounds,opp_rounds,equal,16454,0.0919,13818315.0,451031.0,798435.0,77.0244,14925345.0,51.9257,262593.0,32.8885,2.6703
+"storm 250 mm, peak 24-h window",segment,36,naive first-ready,opp_fifo,equal,16454,0.0919,13818315.0,451031.0,772840.0,71.3496,14003925.0,50.3336,258112.0,33.3979,1.2377
+"storm 250 mm, peak 24-h window",segment,36,JIT strides,jit,equal,16454,0.0919,13818315.0,451031.0,626561.0,38.9175,8737881.0,38.7383,1021.0,0.163,4.0544
+"storm 250 mm, peak 24-h window",segment,36,work stealing (cost-blind),work_steal,equal,16454,0.0919,13818315.0,451031.0,782850.0,73.569,14364285.0,50.9686,260931.0,33.3309,5.5685
+"storm 250 mm, peak 24-h window",segment,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.0919,13818315.0,451031.0,457061.0,1.3369,2635881.0,16.0195,68356.0,14.9556,2.8809
+"storm 250 mm, peak 24-h window",segment,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.0919,13818315.0,451031.0,461196.0,2.2537,2784741.0,16.7725,72426.0,15.704,3.8117
+"storm 250 mm, peak 24-h window",segment,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.0919,13818315.0,451031.0,456821.0,1.2837,2627241.0,15.9754,68145.0,14.9172,2.8269
+"storm 250 mm, peak 24-h window",segment,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.0919,13818315.0,451031.0,461080.0,2.228,2780565.0,16.7515,72400.0,15.7023,3.7856
+"storm 250 mm, peak 24-h window",segment,36,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.0919,13818315.0,451031.0,453838.0,0.6224,2519853.0,15.4231,64606.0,14.2355,2.1555
+"storm 250 mm, peak 24-h window",segment,128,2020-style rounds,opp_rounds,equal,16454,0.0919,13818315.0,451031.0,549703.0,21.877,56543669.0,80.3611,262593.0,47.77,4.2281
+"storm 250 mm, peak 24-h window",segment,128,naive first-ready,opp_fifo,equal,16454,0.0919,13818315.0,451031.0,530831.0,17.6928,54128053.0,79.6629,258533.0,48.7034,1.6207
+"storm 250 mm, peak 24-h window",segment,128,JIT strides,jit,equal,16454,0.0919,13818315.0,451031.0,479134.0,6.2308,47510837.0,77.4686,1021.0,0.2131,8.2587
+"storm 250 mm, peak 24-h window",segment,128,work stealing (cost-blind),work_steal,equal,16454,0.0919,13818315.0,451031.0,526764.0,16.7911,53607477.0,79.5059,247232.0,46.9341,1.6593
+"storm 250 mm, peak 24-h window",segment,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.0919,13818315.0,451031.0,451031.0,0.0,43913653.0,76.0647,251537.0,55.7693,1.9089
+"storm 250 mm, peak 24-h window",segment,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.0919,13818315.0,451031.0,451031.0,0.0,43913653.0,76.0647,250022.0,55.4334,1.9089
+"storm 250 mm, peak 24-h window",segment,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.0919,13818315.0,451031.0,451031.0,0.0,43913653.0,76.0647,251540.0,55.77,1.9089
+"storm 250 mm, peak 24-h window",segment,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.0919,13818315.0,451031.0,451031.0,0.0,43913653.0,76.0647,250033.0,55.4359,1.9089
+"storm 250 mm, peak 24-h window",segment,128,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.0919,13818315.0,451031.0,451031.0,0.0,43913653.0,76.0647,253226.0,56.1438,1.9089
+"storm 250 mm, peak 24-h window",reach,8,2020-style rounds,opp_rounds,equal,12111,0.5451,13818315.0,1727289.375,2152011.0,24.5889,3397773.0,19.736,331695.0,15.4133,0.3714
+"storm 250 mm, peak 24-h window",reach,8,naive first-ready,opp_fifo,equal,12111,0.5451,13818315.0,1727289.375,2038582.0,18.022,2490341.0,15.2701,264780.0,12.9884,0.6392
+"storm 250 mm, peak 24-h window",reach,8,JIT strides,jit,equal,12111,0.5451,13818315.0,1727289.375,1987168.0,15.0455,2079029.0,13.0778,3372.0,0.1697,0.093
+"storm 250 mm, peak 24-h window",reach,8,work stealing (cost-blind),work_steal,equal,12111,0.5451,13818315.0,1727289.375,2003251.0,15.9766,2207693.0,13.7757,300210.0,14.9861,0.7752
+"storm 250 mm, peak 24-h window",reach,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.5451,13818315.0,1727289.375,1731617.0,0.2505,34621.0,0.2499,3019.0,0.1743,0.0438
+"storm 250 mm, peak 24-h window",reach,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.5451,13818315.0,1727289.375,1732515.0,0.3025,41805.0,0.3016,4351.0,0.2511,0.0957
+"storm 250 mm, peak 24-h window",reach,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.5451,13818315.0,1727289.375,1730661.0,0.1952,26973.0,0.1948,1662.0,0.096,-0.0114
+"storm 250 mm, peak 24-h window",reach,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.5451,13818315.0,1727289.375,1731535.0,0.2458,33965.0,0.2452,3469.0,0.2003,0.0391
+"storm 250 mm, peak 24-h window",reach,8,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.5451,13818315.0,1727289.375,1730207.0,0.1689,23341.0,0.1686,995.0,0.0575,-0.0376
+"storm 250 mm, peak 24-h window",reach,36,2020-style rounds,opp_rounds,equal,12111,0.5451,13818315.0,451031.0,923194.0,104.6853,19416669.0,58.4224,331695.0,35.9291,0.5748
+"storm 250 mm, peak 24-h window",reach,36,naive first-ready,opp_fifo,equal,12111,0.5451,13818315.0,451031.0,774880.0,71.8019,14077365.0,50.4643,260278.0,33.5895,1.3933
+"storm 250 mm, peak 24-h window",reach,36,JIT strides,jit,equal,12111,0.5451,13818315.0,451031.0,1258252.0,178.9724,31478757.0,69.494,3372.0,0.268,-2.7111
+"storm 250 mm, peak 24-h window",reach,36,work stealing (cost-blind),work_steal,equal,12111,0.5451,13818315.0,451031.0,782850.0,73.569,14364285.0,50.9686,260931.0,33.3309,5.6882
+"storm 250 mm, peak 24-h window",reach,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.5451,13818315.0,451031.0,456807.0,1.2806,2626737.0,15.9728,68068.0,14.9008,2.8238
+"storm 250 mm, peak 24-h window",reach,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.5451,13818315.0,451031.0,461188.0,2.252,2784453.0,16.771,72463.0,15.7122,3.8099
+"storm 250 mm, peak 24-h window",reach,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.5451,13818315.0,451031.0,456808.0,1.2808,2626773.0,15.973,68056.0,14.8982,2.824
+"storm 250 mm, peak 24-h window",reach,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.5451,13818315.0,451031.0,460974.0,2.2045,2776749.0,16.7324,72291.0,15.6822,3.7617
+"storm 250 mm, peak 24-h window",reach,36,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.5451,13818315.0,451031.0,453908.0,0.6379,2522373.0,15.4361,64658.0,14.2447,2.1712
+"storm 250 mm, peak 24-h window",reach,128,2020-style rounds,opp_rounds,equal,12111,0.5451,13818315.0,451031.0,700714.0,55.3583,75873077.0,84.5935,331695.0,47.3367,0.4052
+"storm 250 mm, peak 24-h window",reach,128,naive first-ready,opp_fifo,equal,12111,0.5451,13818315.0,451031.0,531343.0,17.8063,54193589.0,79.6825,260084.0,48.9484,1.7187
+"storm 250 mm, peak 24-h window",reach,128,JIT strides,jit,equal,12111,0.5451,13818315.0,451031.0,1258235.0,178.9686,147235765.0,91.4201,3372.0,0.268,-2.7124
+"storm 250 mm, peak 24-h window",reach,128,work stealing (cost-blind),work_steal,equal,12111,0.5451,13818315.0,451031.0,526764.0,16.7911,53607477.0,79.5059,247232.0,46.9341,1.8244
+"storm 250 mm, peak 24-h window",reach,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.5451,13818315.0,451031.0,451031.0,0.0,43913653.0,76.0647,251537.0,55.7693,1.9089
+"storm 250 mm, peak 24-h window",reach,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.5451,13818315.0,451031.0,451031.0,0.0,43913653.0,76.0647,250022.0,55.4334,1.9089
+"storm 250 mm, peak 24-h window",reach,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.5451,13818315.0,451031.0,451031.0,0.0,43913653.0,76.0647,251558.0,55.774,1.9089
+"storm 250 mm, peak 24-h window",reach,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.5451,13818315.0,451031.0,451031.0,0.0,43913653.0,76.0647,250575.0,55.556,1.9089
+"storm 250 mm, peak 24-h window",reach,128,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.5451,13818315.0,451031.0,451031.0,0.0,43913653.0,76.0647,253226.0,56.1438,1.9089
+"storm 250 mm, peak 24-h window",clustered T=100,8,2020-style rounds,opp_rounds,equal,169,0.2249,13818315.0,2832759.0,3997079.0,41.102,18158317.0,56.7862,2160701.0,54.057,-2.2494
+"storm 250 mm, peak 24-h window",clustered T=100,8,naive first-ready,opp_fifo,equal,169,0.2249,13818315.0,2832759.0,3844673.0,35.7219,16939069.0,55.0732,2194835.0,57.0877,-3.234
+"storm 250 mm, peak 24-h window",clustered T=100,8,JIT strides,jit,equal,169,0.2249,13818315.0,2832759.0,3204110.0,13.1092,11814565.0,46.0914,130172.0,4.0627,-2.4231
+"storm 250 mm, peak 24-h window",clustered T=100,8,work stealing (cost-blind),work_steal,equal,169,0.2249,13818315.0,2832759.0,3476574.0,22.7275,13994277.0,50.3163,1823577.0,52.4533,-1.8566
+"storm 250 mm, peak 24-h window",clustered T=100,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,8843757.0,39.0245,1234246.0,43.5705,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,8843757.0,39.0245,1235553.0,43.6166,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,8843757.0,39.0245,1234526.0,43.5803,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,8843757.0,39.0245,1219904.0,43.0642,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,8,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,8843757.0,39.0245,1234176.0,43.568,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,36,2020-style rounds,opp_rounds,equal,169,0.2249,13818315.0,2832759.0,2992430.0,5.6366,93909165.0,87.1729,2160701.0,72.2056,-3.3839
+"storm 250 mm, peak 24-h window",clustered T=100,36,naive first-ready,opp_fifo,equal,169,0.2249,13818315.0,2832759.0,2933643.0,3.5613,91792833.0,86.9159,2111407.0,71.9722,-3.4761
+"storm 250 mm, peak 24-h window",clustered T=100,36,JIT strides,jit,equal,169,0.2249,13818315.0,2832759.0,2923280.0,3.1955,91419765.0,86.8695,130172.0,4.4529,-2.5787
+"storm 250 mm, peak 24-h window",clustered T=100,36,work stealing (cost-blind),work_steal,equal,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,88161009.0,86.4499,2037322.0,71.9201,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,88161009.0,86.4499,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,88161009.0,86.4499,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,88161009.0,86.4499,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,88161009.0,86.4499,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,36,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,88161009.0,86.4499,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,128,2020-style rounds,opp_rounds,equal,169,0.2249,13818315.0,2832759.0,2925152.0,3.2616,360601141.0,96.3094,2160701.0,73.8663,-3.5155
+"storm 250 mm, peak 24-h window",clustered T=100,128,naive first-ready,opp_fifo,equal,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,348774837.0,96.189,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,128,JIT strides,jit,equal,169,0.2249,13818315.0,2832759.0,2923280.0,3.1955,360361525.0,96.307,130172.0,4.4529,-2.5787
+"storm 250 mm, peak 24-h window",clustered T=100,128,work stealing (cost-blind),work_steal,equal,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,348774837.0,96.189,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,348774837.0,96.189,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,348774837.0,96.189,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,348774837.0,96.189,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,348774837.0,96.189,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=100,128,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2249,13818315.0,2832759.0,2832759.0,0.0,348774837.0,96.189,2082937.0,73.5303,-3.6264
+"storm 250 mm, peak 24-h window",clustered T=1000,8,2020-style rounds,opp_rounds,equal,19,0.3028,13818315.0,6807829.0,6939153.0,1.929,41694909.0,75.1081,5143682.0,74.1255,-1.5406
+"storm 250 mm, peak 24-h window",clustered T=1000,8,naive first-ready,opp_fifo,equal,19,0.3028,13818315.0,6807829.0,6935141.0,1.8701,41662813.0,75.0937,5143682.0,74.1684,-1.2917
+"storm 250 mm, peak 24-h window",clustered T=1000,8,JIT strides,jit,equal,19,0.3028,13818315.0,6807829.0,6882730.0,1.1002,41243525.0,74.904,1211495.0,17.602,-0.7444
+"storm 250 mm, peak 24-h window",clustered T=1000,8,work stealing (cost-blind),work_steal,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,40644317.0,74.6279,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,40644317.0,74.6279,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,40644317.0,74.6279,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,40644317.0,74.6279,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,40644317.0,74.6279,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,8,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,40644317.0,74.6279,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,36,2020-style rounds,opp_rounds,equal,19,0.3028,13818315.0,6807829.0,6939153.0,1.929,235991193.0,94.4685,5143682.0,74.1255,-1.5406
+"storm 250 mm, peak 24-h window",clustered T=1000,36,naive first-ready,opp_fifo,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,231263529.0,94.3618,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,36,JIT strides,jit,equal,19,0.3028,13818315.0,6807829.0,6882730.0,1.1002,233959965.0,94.4231,1211495.0,17.602,-0.7444
+"storm 250 mm, peak 24-h window",clustered T=1000,36,work stealing (cost-blind),work_steal,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,231263529.0,94.3618,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,231263529.0,94.3618,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,231263529.0,94.3618,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,231263529.0,94.3618,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,231263529.0,94.3618,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,36,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,231263529.0,94.3618,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,128,2020-style rounds,opp_rounds,equal,19,0.3028,13818315.0,6807829.0,6939153.0,1.929,874393269.0,98.4443,5143682.0,74.1255,-1.5406
+"storm 250 mm, peak 24-h window",clustered T=1000,128,naive first-ready,opp_fifo,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,857583797.0,98.4142,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,128,JIT strides,jit,equal,19,0.3028,13818315.0,6807829.0,6882730.0,1.1002,867171125.0,98.4315,1211495.0,17.602,-0.7444
+"storm 250 mm, peak 24-h window",clustered T=1000,128,work stealing (cost-blind),work_steal,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,857583797.0,98.4142,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,857583797.0,98.4142,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,857583797.0,98.4142,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,857583797.0,98.4142,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,857583797.0,98.4142,5143682.0,75.5554,-1.3347
+"storm 250 mm, peak 24-h window",clustered T=1000,128,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3028,13818315.0,6807829.0,6807829.0,0.0,857583797.0,98.4142,5143682.0,75.5554,-1.3347
+"calm, run total (40 d)",segment,8,2020-style rounds,opp_rounds,equal,16454,0.2779,441142756.0,55142844.5,70573719.0,27.9835,123446996.0,21.8649,11240337.0,15.9271,7.5725
+"calm, run total (40 d)",segment,8,naive first-ready,opp_fifo,equal,16454,0.2779,441142756.0,55142844.5,68613132.0,24.428,107762300.0,19.6322,11597697.0,16.903,6.1457
+"calm, run total (40 d)",segment,8,JIT strides,jit,equal,16454,0.2779,441142756.0,55142844.5,65312038.0,18.4415,81353548.0,15.5702,57613.0,0.0882,6.3776
+"calm, run total (40 d)",segment,8,work stealing (cost-blind),work_steal,equal,16454,0.2779,441142756.0,55142844.5,66665203.0,20.8955,92178868.0,17.2839,11061218.0,16.5922,5.0493
+"calm, run total (40 d)",segment,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2779,441142756.0,55142844.5,55333175.0,0.3452,1522644.0,0.344,80377.0,0.1453,0.1382
+"calm, run total (40 d)",segment,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2779,441142756.0,55142844.5,55281508.0,0.2515,1109308.0,0.2508,51738.0,0.0936,0.0447
+"calm, run total (40 d)",segment,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2779,441142756.0,55142844.5,55339272.0,0.3562,1571420.0,0.355,97832.0,0.1768,0.1493
+"calm, run total (40 d)",segment,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2779,441142756.0,55142844.5,55281508.0,0.2515,1109308.0,0.2508,51738.0,0.0936,0.0447
+"calm, run total (40 d)",segment,8,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2779,441142756.0,55142844.5,55281508.0,0.2515,1109308.0,0.2508,51738.0,0.0936,0.0447
+"calm, run total (40 d)",segment,36,2020-style rounds,opp_rounds,equal,16454,0.2779,441142756.0,19507543.0,31380721.0,60.8645,688563200.0,60.9507,11240337.0,35.8192,26.3992
+"calm, run total (40 d)",segment,36,naive first-ready,opp_fifo,equal,16454,0.2779,441142756.0,19507543.0,29283904.0,50.1158,613077788.0,58.1546,11511514.0,39.31,20.1593
+"calm, run total (40 d)",segment,36,JIT strides,jit,equal,16454,0.2779,441142756.0,19507543.0,29203345.0,49.7028,610177664.0,58.0392,57613.0,0.1973,51.9168
+"calm, run total (40 d)",segment,36,work stealing (cost-blind),work_steal,equal,16454,0.2779,441142756.0,19507543.0,29272099.0,50.0553,612652808.0,58.1377,11632318.0,39.7386,23.6475
+"calm, run total (40 d)",segment,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2779,441142756.0,19507543.0,19507543.0,0.0,261128792.0,37.1835,7046380.0,36.1213,37.5432
+"calm, run total (40 d)",segment,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2779,441142756.0,19507543.0,19507543.0,0.0,261128792.0,37.1835,7115956.0,36.478,37.5432
+"calm, run total (40 d)",segment,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2779,441142756.0,19507543.0,19507543.0,0.0,261128792.0,37.1835,7041036.0,36.0939,37.5432
+"calm, run total (40 d)",segment,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2779,441142756.0,19507543.0,19507543.0,0.0,261128792.0,37.1835,7115956.0,36.478,37.5432
+"calm, run total (40 d)",segment,36,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2779,441142756.0,19507543.0,19507543.0,0.0,261128792.0,37.1835,7115956.0,36.478,37.5432
+"calm, run total (40 d)",segment,128,2020-style rounds,opp_rounds,equal,16454,0.2779,441142756.0,19507543.0,24093337.0,23.5078,2642804380.0,85.6955,11240337.0,46.6533,43.0967
+"calm, run total (40 d)",segment,128,naive first-ready,opp_fifo,equal,16454,0.2779,441142756.0,19507543.0,21875196.0,12.1371,2358882332.0,84.245,11442043.0,52.306,31.1759
+"calm, run total (40 d)",segment,128,JIT strides,jit,equal,16454,0.2779,441142756.0,19507543.0,25914651.0,32.8443,2875932572.0,86.7009,57613.0,0.2223,83.4117
+"calm, run total (40 d)",segment,128,work stealing (cost-blind),work_steal,equal,16454,0.2779,441142756.0,19507543.0,21616003.0,10.8084,2325705628.0,84.0561,11038919.0,51.0683,30.672
+"calm, run total (40 d)",segment,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2779,441142756.0,19507543.0,19507543.0,0.0,2055822748.0,82.3328,11217458.0,57.5032,38.0652
+"calm, run total (40 d)",segment,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2779,441142756.0,19507543.0,19507543.0,0.0,2055822748.0,82.3328,11194410.0,57.385,38.0652
+"calm, run total (40 d)",segment,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2779,441142756.0,19507543.0,19507543.0,0.0,2055822748.0,82.3328,11217457.0,57.5032,38.0652
+"calm, run total (40 d)",segment,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2779,441142756.0,19507543.0,19507543.0,0.0,2055822748.0,82.3328,11194410.0,57.385,38.0652
+"calm, run total (40 d)",segment,128,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2779,441142756.0,19507543.0,19507543.0,0.0,2055822748.0,82.3328,11194410.0,57.385,38.0652
+"calm, run total (40 d)",reach,8,2020-style rounds,opp_rounds,equal,12111,0.7081,441142756.0,55142844.5,73821238.0,33.8727,149427148.0,25.3022,14408999.0,19.5188,7.8507
+"calm, run total (40 d)",reach,8,naive first-ready,opp_fifo,equal,12111,0.7081,441142756.0,55142844.5,68849334.0,24.8563,109651916.0,19.9079,11931277.0,17.3295,6.4669
+"calm, run total (40 d)",reach,8,JIT strides,jit,equal,12111,0.7081,441142756.0,55142844.5,68619125.0,24.4389,107810244.0,19.6392,265023.0,0.3862,8.2655
+"calm, run total (40 d)",reach,8,work stealing (cost-blind),work_steal,equal,12111,0.7081,441142756.0,55142844.5,66665203.0,20.8955,92178868.0,17.2839,11061218.0,16.5922,5.0493
+"calm, run total (40 d)",reach,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.7081,441142756.0,55142844.5,55356256.0,0.387,1707292.0,0.3855,97600.0,0.1763,0.18
+"calm, run total (40 d)",reach,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.7081,441142756.0,55142844.5,55292914.0,0.2721,1200556.0,0.2714,39684.0,0.0718,0.0654
+"calm, run total (40 d)",reach,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.7081,441142756.0,55142844.5,55356517.0,0.3875,1709380.0,0.386,114976.0,0.2077,0.1805
+"calm, run total (40 d)",reach,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.7081,441142756.0,55142844.5,55292914.0,0.2721,1200556.0,0.2714,39684.0,0.0718,0.0654
+"calm, run total (40 d)",reach,8,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.7081,441142756.0,55142844.5,55292914.0,0.2721,1200556.0,0.2714,39684.0,0.0718,0.0654
+"calm, run total (40 d)",reach,36,2020-style rounds,opp_rounds,equal,12111,0.7081,441142756.0,19507543.0,36370026.0,86.4408,868178180.0,66.3075,14408999.0,39.6178,24.1126
+"calm, run total (40 d)",reach,36,naive first-ready,opp_fifo,equal,12111,0.7081,441142756.0,19507543.0,29370055.0,50.5574,616179224.0,58.2773,11591845.0,39.4682,20.3804
+"calm, run total (40 d)",reach,36,JIT strides,jit,equal,12111,0.7081,441142756.0,19507543.0,48870990.0,150.5236,1318212884.0,74.9259,265023.0,0.5423,18.3649
+"calm, run total (40 d)",reach,36,work stealing (cost-blind),work_steal,equal,12111,0.7081,441142756.0,19507543.0,29272099.0,50.0553,612652808.0,58.1377,11632318.0,39.7386,23.7877
+"calm, run total (40 d)",reach,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.7081,441142756.0,19507543.0,19507543.0,0.0,261128792.0,37.1835,7058395.0,36.1829,37.5432
+"calm, run total (40 d)",reach,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.7081,441142756.0,19507543.0,19507543.0,0.0,261128792.0,37.1835,7121579.0,36.5068,37.5432
+"calm, run total (40 d)",reach,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.7081,441142756.0,19507543.0,19507543.0,0.0,261128792.0,37.1835,7087066.0,36.3299,37.5432
+"calm, run total (40 d)",reach,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.7081,441142756.0,19507543.0,19507543.0,0.0,261128792.0,37.1835,7121579.0,36.5068,37.5432
+"calm, run total (40 d)",reach,36,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.7081,441142756.0,19507543.0,19507543.0,0.0,261128792.0,37.1835,7121579.0,36.5068,37.5432
+"calm, run total (40 d)",reach,128,2020-style rounds,opp_rounds,equal,12111,0.7081,441142756.0,19507543.0,30061719.0,54.1031,3406757276.0,88.5355,14408999.0,47.9314,34.9289
+"calm, run total (40 d)",reach,128,naive first-ready,opp_fifo,equal,12111,0.7081,441142756.0,19507543.0,21892510.0,12.2259,2361098524.0,84.2575,11476664.0,52.4228,31.2797
+"calm, run total (40 d)",reach,128,JIT strides,jit,equal,12111,0.7081,441142756.0,19507543.0,48847965.0,150.4055,5811396764.0,92.9446,265023.0,0.5425,18.3091
+"calm, run total (40 d)",reach,128,work stealing (cost-blind),work_steal,equal,12111,0.7081,441142756.0,19507543.0,21616003.0,10.8084,2325705628.0,84.0561,11038919.0,51.0683,30.8841
+"calm, run total (40 d)",reach,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.7081,441142756.0,19507543.0,19507543.0,0.0,2055822748.0,82.3328,11217458.0,57.5032,38.0652
+"calm, run total (40 d)",reach,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.7081,441142756.0,19507543.0,19507543.0,0.0,2055822748.0,82.3328,11194410.0,57.385,38.0652
+"calm, run total (40 d)",reach,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.7081,441142756.0,19507543.0,19507543.0,0.0,2055822748.0,82.3328,11217458.0,57.5032,38.0652
+"calm, run total (40 d)",reach,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.7081,441142756.0,19507543.0,19507543.0,0.0,2055822748.0,82.3328,11194410.0,57.385,38.0652
+"calm, run total (40 d)",reach,128,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.7081,441142756.0,19507543.0,19507543.0,0.0,2055822748.0,82.3328,11194410.0,57.385,38.0652
+"calm, run total (40 d)",clustered T=100,8,2020-style rounds,opp_rounds,equal,169,0.2729,441142756.0,105474565.0,141422674.0,34.0823,690238636.0,61.0085,84332279.0,59.6314,8.3357
+"calm, run total (40 d)",clustered T=100,8,naive first-ready,opp_fifo,equal,169,0.2729,441142756.0,105474565.0,136312421.0,29.2372,649356612.0,59.5467,84683739.0,62.1247,7.4669
+"calm, run total (40 d)",clustered T=100,8,JIT strides,jit,equal,169,0.2729,441142756.0,105474565.0,113862434.0,7.9525,469756716.0,51.5706,7382160.0,6.4834,8.6166
+"calm, run total (40 d)",clustered T=100,8,work stealing (cost-blind),work_steal,equal,169,0.2729,441142756.0,105474565.0,121955979.0,15.626,534505076.0,54.7846,72775096.0,59.6732,7.8422
+"calm, run total (40 d)",clustered T=100,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,402653764.0,47.7193,56518415.0,53.5849,12.4015
+"calm, run total (40 d)",clustered T=100,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,402653764.0,47.7193,56732018.0,53.7874,12.4015
+"calm, run total (40 d)",clustered T=100,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,402653764.0,47.7193,56702808.0,53.7597,12.4015
+"calm, run total (40 d)",clustered T=100,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,402653764.0,47.7193,56732018.0,53.7874,12.4015
+"calm, run total (40 d)",clustered T=100,8,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,402653764.0,47.7193,56732018.0,53.7874,12.4015
+"calm, run total (40 d)",clustered T=100,36,2020-style rounds,opp_rounds,equal,169,0.2729,441142756.0,105474565.0,111506897.0,5.7192,3573105536.0,89.0106,84332279.0,75.6297,12.7725
+"calm, run total (40 d)",clustered T=100,36,naive first-ready,opp_fifo,equal,169,0.2729,441142756.0,105474565.0,108401079.0,2.7746,3461296088.0,88.6957,81728059.0,75.3941,11.7217
+"calm, run total (40 d)",clustered T=100,36,JIT strides,jit,equal,169,0.2729,441142756.0,105474565.0,106592407.0,1.0598,3396183896.0,88.5039,7382160.0,6.9256,11.2719
+"calm, run total (40 d)",clustered T=100,36,work stealing (cost-blind),work_steal,equal,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,3355941584.0,88.3821,80138084.0,75.9786,12.4015
+"calm, run total (40 d)",clustered T=100,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,3355941584.0,88.3821,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,3355941584.0,88.3821,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,3355941584.0,88.3821,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,3355941584.0,88.3821,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,36,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,3355941584.0,88.3821,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,128,2020-style rounds,opp_rounds,equal,169,0.2729,441142756.0,105474565.0,109254439.0,3.5837,13543425436.0,96.8455,84332279.0,77.1889,12.8819
+"calm, run total (40 d)",clustered T=100,128,naive first-ready,opp_fifo,equal,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,13059601564.0,96.7325,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,128,JIT strides,jit,equal,169,0.2729,441142756.0,105474565.0,106592407.0,1.0598,13202685340.0,96.7667,7382160.0,6.9256,11.2719
+"calm, run total (40 d)",clustered T=100,128,work stealing (cost-blind),work_steal,equal,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,13059601564.0,96.7325,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,13059601564.0,96.7325,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,13059601564.0,96.7325,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,13059601564.0,96.7325,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,13059601564.0,96.7325,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=100,128,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2729,441142756.0,105474565.0,105474565.0,0.0,13059601564.0,96.7325,80990655.0,76.7869,12.4015
+"calm, run total (40 d)",clustered T=1000,8,2020-style rounds,opp_rounds,equal,19,0.3291,441142756.0,228279399.0,233861933.0,2.4455,1429752708.0,76.4208,178494179.0,76.3246,3.9409
+"calm, run total (40 d)",clustered T=1000,8,naive first-ready,opp_fifo,equal,19,0.3291,441142756.0,228279399.0,232116116.0,1.6807,1415786172.0,76.2434,178505958.0,76.9037,3.4856
+"calm, run total (40 d)",clustered T=1000,8,JIT strides,jit,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,1385092436.0,75.8441,49990994.0,21.899,3.1185
+"calm, run total (40 d)",clustered T=1000,8,work stealing (cost-blind),work_steal,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,1385092436.0,75.8441,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,1385092436.0,75.8441,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,1385092436.0,75.8441,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,1385092436.0,75.8441,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,1385092436.0,75.8441,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,8,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,1385092436.0,75.8441,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,36,2020-style rounds,opp_rounds,equal,19,0.3291,441142756.0,228279399.0,233861933.0,2.4455,7977886832.0,94.7602,178494179.0,76.3246,3.9409
+"calm, run total (40 d)",clustered T=1000,36,naive first-ready,opp_fifo,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,7776915608.0,94.632,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,36,JIT strides,jit,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,7776915608.0,94.632,49990994.0,21.899,3.1185
+"calm, run total (40 d)",clustered T=1000,36,work stealing (cost-blind),work_steal,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,7776915608.0,94.632,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,7776915608.0,94.632,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,7776915608.0,94.632,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,7776915608.0,94.632,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,7776915608.0,94.632,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,36,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,7776915608.0,94.632,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,128,2020-style rounds,opp_rounds,equal,19,0.3291,441142756.0,228279399.0,233861933.0,2.4455,29493184668.0,98.5263,178494179.0,76.3246,3.9409
+"calm, run total (40 d)",clustered T=1000,128,naive first-ready,opp_fifo,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,28778620316.0,98.4903,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,128,JIT strides,jit,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,28778620316.0,98.4903,49990994.0,21.899,3.1185
+"calm, run total (40 d)",clustered T=1000,128,work stealing (cost-blind),work_steal,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,28778620316.0,98.4903,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,28778620316.0,98.4903,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,28778620316.0,98.4903,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,28778620316.0,98.4903,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,28778620316.0,98.4903,178505958.0,78.1963,3.6331
+"calm, run total (40 d)",clustered T=1000,128,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3291,441142756.0,228279399.0,228279399.0,0.0,28778620316.0,98.4903,178505958.0,78.1963,3.6331
+"storm 25 mm, run total",segment,8,2020-style rounds,opp_rounds,equal,16454,0.2623,444833690.0,55604211.25,70807584.0,27.3421,121626982.0,21.4714,11082915.0,15.6522,7.0335
+"storm 25 mm, run total",segment,8,naive first-ready,opp_fifo,equal,16454,0.2623,444833690.0,55604211.25,68892421.0,23.8978,106305678.0,19.2883,11375025.0,16.5113,5.6934
+"storm 25 mm, run total",segment,8,JIT strides,jit,equal,16454,0.2623,444833690.0,55604211.25,65408312.0,17.6319,78432806.0,14.9891,53740.0,0.0822,5.6504
+"storm 25 mm, run total",segment,8,work stealing (cost-blind),work_steal,equal,16454,0.2623,444833690.0,55604211.25,66926432.0,20.3622,90577766.0,16.9174,10816940.0,16.1624,4.5859
+"storm 25 mm, run total",segment,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2623,444833690.0,55604211.25,55780364.0,0.3168,1409222.0,0.3158,64723.0,0.116,0.1099
+"storm 25 mm, run total",segment,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2623,444833690.0,55604211.25,55744650.0,0.2526,1123510.0,0.2519,58472.0,0.1049,0.0458
+"storm 25 mm, run total",segment,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2623,444833690.0,55604211.25,55790056.0,0.3342,1486758.0,0.3331,86815.0,0.1556,0.1273
+"storm 25 mm, run total",segment,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2623,444833690.0,55604211.25,55734676.0,0.2346,1043718.0,0.2341,51195.0,0.0919,0.0279
+"storm 25 mm, run total",segment,8,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2623,444833690.0,55604211.25,55742313.0,0.2484,1104814.0,0.2478,55980.0,0.1004,0.0416
+"storm 25 mm, run total",segment,36,2020-style rounds,opp_rounds,equal,16454,0.2623,444833690.0,19325170.0,31172499.0,61.3052,677376274.0,60.3609,11082915.0,35.5535,24.5187
+"storm 25 mm, run total",segment,36,naive first-ready,opp_fifo,equal,16454,0.2623,444833690.0,19325170.0,29200112.0,51.0989,606370342.0,57.6834,11294960.0,38.6812,18.8213
+"storm 25 mm, run total",segment,36,JIT strides,jit,equal,16454,0.2623,444833690.0,19325170.0,28686486.0,48.4411,587879806.0,56.9257,53740.0,0.1873,47.9899
+"storm 25 mm, run total",segment,36,work stealing (cost-blind),work_steal,equal,16454,0.2623,444833690.0,19325170.0,29179065.0,50.99,605612650.0,57.6529,11511460.0,39.4511,22.2319
+"storm 25 mm, run total",segment,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2623,444833690.0,19325170.0,19325170.0,0.0,250872430.0,36.0601,6763219.0,34.9969,35.1268
+"storm 25 mm, run total",segment,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2623,444833690.0,19325170.0,19325170.0,0.0,250872430.0,36.0601,6838813.0,35.3881,35.1268
+"storm 25 mm, run total",segment,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2623,444833690.0,19325170.0,19325170.0,0.0,250872430.0,36.0601,6768412.0,35.0238,35.1268
+"storm 25 mm, run total",segment,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2623,444833690.0,19325170.0,19325170.0,0.0,250872430.0,36.0601,6832837.0,35.3572,35.1268
+"storm 25 mm, run total",segment,36,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2623,444833690.0,19325170.0,19325170.0,0.0,250872430.0,36.0601,6838962.0,35.3889,35.1268
+"storm 25 mm, run total",segment,128,2020-style rounds,opp_rounds,equal,16454,0.2623,444833690.0,19325170.0,23791550.0,23.1117,2600484710.0,85.3929,11082915.0,46.5834,40.1319
+"storm 25 mm, run total",segment,128,naive first-ready,opp_fifo,equal,16454,0.2623,444833690.0,19325170.0,21714121.0,12.3619,2334573798.0,83.9954,11219331.0,51.6684,29.1296
+"storm 25 mm, run total",segment,128,JIT strides,jit,equal,16454,0.2623,444833690.0,19325170.0,25321521.0,31.0287,2796320998.0,86.2755,53740.0,0.2122,77.7268
+"storm 25 mm, run total",segment,128,work stealing (cost-blind),work_steal,equal,16454,0.2623,444833690.0,19325170.0,21459821.0,11.046,2302023398.0,83.8057,10809284.0,50.3699,28.6515
+"storm 25 mm, run total",segment,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2623,444833690.0,19325170.0,19325170.0,0.0,2028788070.0,82.0169,10998902.0,56.9149,35.6396
+"storm 25 mm, run total",segment,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2623,444833690.0,19325170.0,19325170.0,0.0,2028788070.0,82.0169,10974935.0,56.7909,35.6396
+"storm 25 mm, run total",segment,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2623,444833690.0,19325170.0,19325170.0,0.0,2028788070.0,82.0169,10998717.0,56.9139,35.6396
+"storm 25 mm, run total",segment,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2623,444833690.0,19325170.0,19325170.0,0.0,2028788070.0,82.0169,10974943.0,56.7909,35.6396
+"storm 25 mm, run total",segment,128,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2623,444833690.0,19325170.0,19325170.0,0.0,2028788070.0,82.0169,10975816.0,56.7954,35.6396
+"storm 25 mm, run total",reach,8,2020-style rounds,opp_rounds,equal,12111,0.6979,444833690.0,55604211.25,74098531.0,33.2606,147954558.0,24.9591,14230968.0,19.2055,7.3576
+"storm 25 mm, run total",reach,8,naive first-ready,opp_fifo,equal,12111,0.6979,444833690.0,55604211.25,69090236.0,24.2536,107888198.0,19.5194,11615936.0,16.8127,5.953
+"storm 25 mm, run total",reach,8,JIT strides,jit,equal,12111,0.6979,444833690.0,55604211.25,68726459.0,23.5994,104977982.0,19.0934,252427.0,0.3673,7.5351
+"storm 25 mm, run total",reach,8,work stealing (cost-blind),work_steal,equal,12111,0.6979,444833690.0,55604211.25,66926432.0,20.3622,90577766.0,16.9174,10816940.0,16.1624,4.5859
+"storm 25 mm, run total",reach,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.6979,444833690.0,55604211.25,55800949.0,0.3538,1573902.0,0.3526,87257.0,0.1564,0.1469
+"storm 25 mm, run total",reach,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.6979,444833690.0,55604211.25,55757539.0,0.2757,1226622.0,0.275,50465.0,0.0905,0.069
+"storm 25 mm, run total",reach,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.6979,444833690.0,55604211.25,55794352.0,0.342,1521126.0,0.3408,93994.0,0.1685,0.135
+"storm 25 mm, run total",reach,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.6979,444833690.0,55604211.25,55754504.0,0.2703,1202342.0,0.2696,48274.0,0.0866,0.0635
+"storm 25 mm, run total",reach,8,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.6979,444833690.0,55604211.25,55750838.0,0.2637,1173014.0,0.263,36084.0,0.0647,0.0569
+"storm 25 mm, run total",reach,36,2020-style rounds,opp_rounds,equal,12111,0.6979,444833690.0,19325170.0,36261510.0,87.6388,860580670.0,65.9239,14230968.0,39.2454,22.7155
+"storm 25 mm, run total",reach,36,naive first-ready,opp_fifo,equal,12111,0.6979,444833690.0,19325170.0,29282391.0,51.5246,609332386.0,57.8023,11369144.0,38.8259,19.0252
+"storm 25 mm, run total",reach,36,JIT strides,jit,equal,12111,0.6979,444833690.0,19325170.0,48841280.0,152.734,1313452390.0,74.7007,252427.0,0.5168,17.3114
+"storm 25 mm, run total",reach,36,work stealing (cost-blind),work_steal,equal,12111,0.6979,444833690.0,19325170.0,29179065.0,50.99,605612650.0,57.6529,11511460.0,39.4511,22.3705
+"storm 25 mm, run total",reach,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.6979,444833690.0,19325170.0,19325170.0,0.0,250872430.0,36.0601,6777856.0,35.0727,35.1268
+"storm 25 mm, run total",reach,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.6979,444833690.0,19325170.0,19325170.0,0.0,250872430.0,36.0601,6838747.0,35.3878,35.1268
+"storm 25 mm, run total",reach,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.6979,444833690.0,19325170.0,19325170.0,0.0,250872430.0,36.0601,6804011.0,35.208,35.1268
+"storm 25 mm, run total",reach,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.6979,444833690.0,19325170.0,19325170.0,0.0,250872430.0,36.0601,6841806.0,35.4036,35.1268
+"storm 25 mm, run total",reach,36,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.6979,444833690.0,19325170.0,19325170.0,0.0,250872430.0,36.0601,6844503.0,35.4176,35.1268
+"storm 25 mm, run total",reach,128,2020-style rounds,opp_rounds,equal,12111,0.6979,444833690.0,19325170.0,29865566.0,54.5423,3377958758.0,88.3636,14230968.0,47.6501,32.9363
+"storm 25 mm, run total",reach,128,naive first-ready,opp_fifo,equal,12111,0.6979,444833690.0,19325170.0,21732709.0,12.458,2336953062.0,84.0091,11255074.0,51.7886,29.2401
+"storm 25 mm, run total",reach,128,JIT strides,jit,equal,12111,0.6979,444833690.0,19325170.0,48819336.0,152.6205,5804041318.0,92.8814,252427.0,0.5171,17.2587
+"storm 25 mm, run total",reach,128,work stealing (cost-blind),work_steal,equal,12111,0.6979,444833690.0,19325170.0,21459821.0,11.046,2302023398.0,83.8057,10809284.0,50.3699,28.8603
+"storm 25 mm, run total",reach,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.6979,444833690.0,19325170.0,19325170.0,0.0,2028788070.0,82.0169,10998900.0,56.9149,35.6396
+"storm 25 mm, run total",reach,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.6979,444833690.0,19325170.0,19325170.0,0.0,2028788070.0,82.0169,10974935.0,56.7909,35.6396
+"storm 25 mm, run total",reach,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.6979,444833690.0,19325170.0,19325170.0,0.0,2028788070.0,82.0169,10998766.0,56.9142,35.6396
+"storm 25 mm, run total",reach,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.6979,444833690.0,19325170.0,19325170.0,0.0,2028788070.0,82.0169,10974940.0,56.7909,35.6396
+"storm 25 mm, run total",reach,128,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.6979,444833690.0,19325170.0,19325170.0,0.0,2028788070.0,82.0169,10975816.0,56.7954,35.6396
+"storm 25 mm, run total",clustered T=100,8,2020-style rounds,opp_rounds,equal,169,0.2697,444833690.0,105625632.0,141937354.0,34.3778,690665142.0,60.8248,84316893.0,59.4043,7.8278
+"storm 25 mm, run total",clustered T=100,8,naive first-ready,opp_fifo,equal,169,0.2697,444833690.0,105625632.0,136823671.0,29.5364,649755678.0,59.3607,84701008.0,61.9052,6.975
+"storm 25 mm, run total",clustered T=100,8,JIT strides,jit,equal,169,0.2697,444833690.0,105625632.0,114222331.0,8.1388,468944958.0,51.3193,7288201.0,6.3807,8.0558
+"storm 25 mm, run total",clustered T=100,8,work stealing (cost-blind),work_steal,equal,169,0.2697,444833690.0,105625632.0,122501746.0,15.9773,535180278.0,54.6095,72795060.0,59.4237,7.426
+"storm 25 mm, run total",clustered T=100,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,400171366.0,47.3573,56180239.0,53.1881,11.6285
+"storm 25 mm, run total",clustered T=100,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,400171366.0,47.3573,56339734.0,53.3391,11.6285
+"storm 25 mm, run total",clustered T=100,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,400171366.0,47.3573,56324926.0,53.3251,11.6285
+"storm 25 mm, run total",clustered T=100,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,400171366.0,47.3573,56339734.0,53.3391,11.6285
+"storm 25 mm, run total",clustered T=100,8,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,400171366.0,47.3573,56323858.0,53.324,11.6285
+"storm 25 mm, run total",clustered T=100,36,2020-style rounds,opp_rounds,equal,169,0.2697,444833690.0,105625632.0,111700143.0,5.751,3576371458.0,88.9378,84316893.0,75.485,12.0306
+"storm 25 mm, run total",clustered T=100,36,naive first-ready,opp_fifo,equal,169,0.2697,444833690.0,105625632.0,108598563.0,2.8146,3464714578.0,88.6219,81714123.0,75.2442,10.9965
+"storm 25 mm, run total",clustered T=100,36,JIT strides,jit,equal,169,0.2697,444833690.0,105625632.0,106778695.0,1.0917,3399199330.0,88.4279,7288201.0,6.8255,10.5415
+"storm 25 mm, run total",clustered T=100,36,work stealing (cost-blind),work_steal,equal,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,3357689062.0,88.3016,80070230.0,75.8057,11.6285
+"storm 25 mm, run total",clustered T=100,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,3357689062.0,88.3016,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,3357689062.0,88.3016,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,3357689062.0,88.3016,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,3357689062.0,88.3016,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,36,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,3357689062.0,88.3016,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,128,2020-style rounds,opp_rounds,equal,169,0.2697,444833690.0,105625632.0,109436408.0,3.6078,13563026534.0,96.8244,84316893.0,77.0465,12.1317
+"storm 25 mm, run total",clustered T=100,128,naive first-ready,opp_fifo,equal,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,13075247206.0,96.7098,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,128,JIT strides,jit,equal,169,0.2697,444833690.0,105625632.0,106778695.0,1.0917,13222839270.0,96.7454,7288201.0,6.8255,10.5415
+"storm 25 mm, run total",clustered T=100,128,work stealing (cost-blind),work_steal,equal,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,13075247206.0,96.7098,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,13075247206.0,96.7098,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,13075247206.0,96.7098,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,13075247206.0,96.7098,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,13075247206.0,96.7098,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=100,128,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2697,444833690.0,105625632.0,105625632.0,0.0,13075247206.0,96.7098,80940292.0,76.6294,11.6285
+"storm 25 mm, run total",clustered T=1000,8,2020-style rounds,opp_rounds,equal,19,0.3276,444833690.0,229688172.0,235392687.0,2.4836,1438307806.0,76.3781,179430676.0,76.2261,3.7532
+"storm 25 mm, run total",clustered T=1000,8,naive first-ready,opp_fifo,equal,19,0.3276,444833690.0,229688172.0,233572478.0,1.6911,1423746134.0,76.194,179491864.0,76.8463,3.2708
+"storm 25 mm, run total",clustered T=1000,8,JIT strides,jit,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,1392671686.0,75.7914,49959098.0,21.7508,2.894
+"storm 25 mm, run total",clustered T=1000,8,work stealing (cost-blind),work_steal,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,1392671686.0,75.7914,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,1392671686.0,75.7914,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,1392671686.0,75.7914,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,1392671686.0,75.7914,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,1392671686.0,75.7914,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,8,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,1392671686.0,75.7914,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,36,2020-style rounds,opp_rounds,equal,19,0.3276,444833690.0,229688172.0,235392687.0,2.4836,8029303042.0,94.7507,179430676.0,76.2261,3.7532
+"storm 25 mm, run total",clustered T=1000,36,naive first-ready,opp_fifo,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,7823940502.0,94.6203,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,36,JIT strides,jit,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,7823940502.0,94.6203,49959098.0,21.7508,2.894
+"storm 25 mm, run total",clustered T=1000,36,work stealing (cost-blind),work_steal,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,7823940502.0,94.6203,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,7823940502.0,94.6203,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,7823940502.0,94.6203,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,7823940502.0,94.6203,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,7823940502.0,94.6203,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,36,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,7823940502.0,94.6203,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,128,2020-style rounds,opp_rounds,equal,19,0.3276,444833690.0,229688172.0,235392687.0,2.4836,29685430246.0,98.5236,179430676.0,76.2261,3.7532
+"storm 25 mm, run total",clustered T=1000,128,naive first-ready,opp_fifo,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,28955252326.0,98.487,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,128,JIT strides,jit,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,28955252326.0,98.487,49959098.0,21.7508,2.894
+"storm 25 mm, run total",clustered T=1000,128,work stealing (cost-blind),work_steal,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,28955252326.0,98.487,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,28955252326.0,98.487,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,28955252326.0,98.487,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,28955252326.0,98.487,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,28955252326.0,98.487,179491864.0,78.1459,3.4075
+"storm 25 mm, run total",clustered T=1000,128,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3276,444833690.0,229688172.0,229688172.0,0.0,28955252326.0,98.487,179491864.0,78.1459,3.4075
+"storm 250 mm, run total",segment,8,2020-style rounds,opp_rounds,equal,16454,0.2558,445793593.0,55724199.125,70806599.0,27.0662,120659199.0,21.3008,10986041.0,15.5156,6.8015
+"storm 250 mm, run total",segment,8,naive first-ready,opp_fifo,equal,16454,0.2558,445793593.0,55724199.125,68928165.0,23.6952,105631727.0,19.1561,11313287.0,16.4132,5.5206
+"storm 250 mm, run total",segment,8,JIT strides,jit,equal,16454,0.2558,445793593.0,55724199.125,65451667.0,17.4565,77819743.0,14.8621,53136.0,0.0812,5.4928
+"storm 250 mm, run total",segment,8,work stealing (cost-blind),work_steal,equal,16454,0.2558,445793593.0,55724199.125,66960669.0,20.1644,89891759.0,16.7807,10830977.0,16.1751,4.4141
+"storm 250 mm, run total",segment,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2558,445793593.0,55724199.125,55898289.0,0.3124,1392719.0,0.3114,63142.0,0.113,0.1056
+"storm 250 mm, run total",segment,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2558,445793593.0,55724199.125,55863985.0,0.2509,1118287.0,0.2502,59296.0,0.1061,0.0441
+"storm 250 mm, run total",segment,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2558,445793593.0,55724199.125,55906475.0,0.3271,1458207.0,0.326,80135.0,0.1433,0.1202
+"storm 250 mm, run total",segment,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2558,445793593.0,55724199.125,55856414.0,0.2373,1057719.0,0.2367,54911.0,0.0983,0.0306
+"storm 250 mm, run total",segment,8,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2558,445793593.0,55724199.125,55862630.0,0.2484,1107447.0,0.2478,58191.0,0.1042,0.0417
+"storm 250 mm, run total",segment,36,2020-style rounds,opp_rounds,equal,16454,0.2558,445793593.0,19192032.0,31045233.0,61.7611,671834795.0,60.1125,10986041.0,35.3872,23.7433
+"storm 250 mm, run total",segment,36,naive first-ready,opp_fifo,equal,16454,0.2558,445793593.0,19192032.0,29106514.0,51.6594,602040911.0,57.4557,11220986.0,38.5515,18.1854
+"storm 250 mm, run total",segment,36,JIT strides,jit,equal,16454,0.2558,445793593.0,19192032.0,28556429.0,48.7932,582237851.0,56.6362,53136.0,0.1861,47.0017
+"storm 250 mm, run total",segment,36,work stealing (cost-blind),work_steal,equal,16454,0.2558,445793593.0,19192032.0,29149782.0,51.8848,603598559.0,57.5189,11185235.0,38.3716,21.8463
+"storm 250 mm, run total",segment,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2558,445793593.0,19192032.0,19192032.0,0.0,245119559.0,35.4776,6601279.0,34.3959,33.9069
+"storm 250 mm, run total",segment,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2558,445793593.0,19192032.0,19192032.0,0.0,245119559.0,35.4776,6676298.0,34.7868,33.9069
+"storm 250 mm, run total",segment,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2558,445793593.0,19192032.0,19192032.0,0.0,245119559.0,35.4776,6598419.0,34.381,33.9069
+"storm 250 mm, run total",segment,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2558,445793593.0,19192032.0,19192032.0,0.0,245119559.0,35.4776,6676324.0,34.787,33.9069
+"storm 250 mm, run total",segment,36,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2558,445793593.0,19192032.0,19192032.0,0.0,245119559.0,35.4776,6675804.0,34.7842,33.9069
+"storm 250 mm, run total",segment,128,2020-style rounds,opp_rounds,equal,16454,0.2558,445793593.0,19192032.0,23636944.0,23.1602,2579735239.0,85.2656,10986041.0,46.4783,38.9215
+"storm 250 mm, run total",segment,128,naive first-ready,opp_fifo,equal,16454,0.2558,445793593.0,19192032.0,21590831.0,12.4989,2317832775.0,83.8693,11139741.0,51.5948,28.1199
+"storm 250 mm, run total",segment,128,JIT strides,jit,equal,16454,0.2558,445793593.0,19192032.0,25136394.0,30.9731,2771664839.0,86.1445,53136.0,0.2114,76.0476
+"storm 250 mm, run total",segment,128,work stealing (cost-blind),work_steal,equal,16454,0.2558,445793593.0,19192032.0,21358097.0,11.2863,2288042823.0,83.6935,10756503.0,50.3626,27.7659
+"storm 250 mm, run total",segment,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,16454,0.2558,445793593.0,19192032.0,19192032.0,0.0,2010786503.0,81.8531,10917831.0,56.8873,34.4151
+"storm 250 mm, run total",segment,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,16454,0.2558,445793593.0,19192032.0,19192032.0,0.0,2010786503.0,81.8531,10894032.0,56.7633,34.4151
+"storm 250 mm, run total",segment,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,16454,0.2558,445793593.0,19192032.0,19192032.0,0.0,2010786503.0,81.8531,10917754.0,56.8869,34.4151
+"storm 250 mm, run total",segment,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,16454,0.2558,445793593.0,19192032.0,19192032.0,0.0,2010786503.0,81.8531,10894054.0,56.7634,34.4151
+"storm 250 mm, run total",segment,128,"Hu, exact costs (oracle)",opp_lrp,true,16454,0.2558,445793593.0,19192032.0,19192032.0,0.0,2010786503.0,81.8531,10894494.0,56.7657,34.4151
+"storm 250 mm, run total",reach,8,2020-style rounds,opp_rounds,equal,12111,0.6931,445793593.0,55724199.125,74066796.0,32.9168,146740775.0,24.7649,14109683.0,19.0499,7.0805
+"storm 250 mm, run total",reach,8,naive first-ready,opp_fifo,equal,12111,0.6931,445793593.0,55724199.125,69128039.0,24.0539,107230719.0,19.3899,11553232.0,16.7128,5.7827
+"storm 250 mm, run total",reach,8,JIT strides,jit,equal,12111,0.6931,445793593.0,55724199.125,68730448.0,23.3404,104049991.0,18.9236,249831.0,0.3635,7.3098
+"storm 250 mm, run total",reach,8,work stealing (cost-blind),work_steal,equal,12111,0.6931,445793593.0,55724199.125,66960669.0,20.1644,89891759.0,16.7807,10830977.0,16.1751,4.4141
+"storm 250 mm, run total",reach,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.6931,445793593.0,55724199.125,55919737.0,0.3509,1564303.0,0.3497,87807.0,0.157,0.144
+"storm 250 mm, run total",reach,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.6931,445793593.0,55724199.125,55876611.0,0.2735,1219295.0,0.2728,51255.0,0.0917,0.0667
+"storm 250 mm, run total",reach,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.6931,445793593.0,55724199.125,55911796.0,0.3367,1500775.0,0.3355,89835.0,0.1607,0.1297
+"storm 250 mm, run total",reach,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.6931,445793593.0,55724199.125,55878016.0,0.276,1230535.0,0.2753,52604.0,0.0941,0.0693
+"storm 250 mm, run total",reach,8,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.6931,445793593.0,55724199.125,55869674.0,0.2611,1163799.0,0.2604,36762.0,0.0658,0.0543
+"storm 250 mm, run total",reach,36,2020-style rounds,opp_rounds,equal,12111,0.6931,445793593.0,19192032.0,36102201.0,88.1104,853885643.0,65.6997,14109683.0,39.0826,21.9133
+"storm 250 mm, run total",reach,36,naive first-ready,opp_fifo,equal,12111,0.6931,445793593.0,19192032.0,29185684.0,52.0719,604891031.0,57.5711,11292509.0,38.6919,18.3767
+"storm 250 mm, run total",reach,36,JIT strides,jit,equal,12111,0.6931,445793593.0,19192032.0,48710752.0,153.8072,1307793479.0,74.5782,249831.0,0.5129,16.7459
+"storm 250 mm, run total",reach,36,work stealing (cost-blind),work_steal,equal,12111,0.6931,445793593.0,19192032.0,29149782.0,51.8848,603598559.0,57.5189,11185235.0,38.3716,21.9844
+"storm 250 mm, run total",reach,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.6931,445793593.0,19192032.0,19192032.0,0.0,245119559.0,35.4776,6614940.0,34.4671,33.9069
+"storm 250 mm, run total",reach,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.6931,445793593.0,19192032.0,19192032.0,0.0,245119559.0,35.4776,6676204.0,34.7863,33.9069
+"storm 250 mm, run total",reach,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.6931,445793593.0,19192032.0,19192032.0,0.0,245119559.0,35.4776,6641516.0,34.6056,33.9069
+"storm 250 mm, run total",reach,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.6931,445793593.0,19192032.0,19192032.0,0.0,245119559.0,35.4776,6677884.0,34.7951,33.9069
+"storm 250 mm, run total",reach,36,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.6931,445793593.0,19192032.0,19192032.0,0.0,245119559.0,35.4776,6677784.0,34.7946,33.9069
+"storm 250 mm, run total",reach,128,2020-style rounds,opp_rounds,equal,12111,0.6931,445793593.0,19192032.0,29673464.0,54.6135,3352409799.0,88.263,14109683.0,47.5498,31.7968
+"storm 250 mm, run total",reach,128,naive first-ready,opp_fifo,equal,12111,0.6931,445793593.0,19192032.0,21610437.0,12.6011,2320342343.0,83.8839,11175886.0,51.7152,28.2363
+"storm 250 mm, run total",reach,128,JIT strides,jit,equal,12111,0.6931,445793593.0,19192032.0,48688413.0,153.6908,5786323271.0,92.8468,249831.0,0.5131,16.6924
+"storm 250 mm, run total",reach,128,work stealing (cost-blind),work_steal,equal,12111,0.6931,445793593.0,19192032.0,21358097.0,11.2863,2288042823.0,83.6935,10756503.0,50.3626,27.9733
+"storm 250 mm, run total",reach,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,12111,0.6931,445793593.0,19192032.0,19192032.0,0.0,2010786503.0,81.8531,10917831.0,56.8873,34.4151
+"storm 250 mm, run total",reach,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,12111,0.6931,445793593.0,19192032.0,19192032.0,0.0,2010786503.0,81.8531,10894032.0,56.7633,34.4151
+"storm 250 mm, run total",reach,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,12111,0.6931,445793593.0,19192032.0,19192032.0,0.0,2010786503.0,81.8531,10917827.0,56.8873,34.4151
+"storm 250 mm, run total",reach,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,12111,0.6931,445793593.0,19192032.0,19192032.0,0.0,2010786503.0,81.8531,10894052.0,56.7634,34.4151
+"storm 250 mm, run total",reach,128,"Hu, exact costs (oracle)",opp_lrp,true,12111,0.6931,445793593.0,19192032.0,19192032.0,0.0,2010786503.0,81.8531,10894496.0,56.7657,34.4151
+"storm 250 mm, run total",clustered T=100,8,2020-style rounds,opp_rounds,equal,169,0.2679,445793593.0,105504743.0,141895253.0,34.4918,689368431.0,60.7286,84128352.0,59.2891,7.5637
+"storm 250 mm, run total",clustered T=100,8,naive first-ready,opp_fifo,equal,169,0.2679,445793593.0,105504743.0,136803621.0,29.6658,648635375.0,59.267,84545741.0,61.8008,6.729
+"storm 250 mm, run total",clustered T=100,8,JIT strides,jit,equal,169,0.2679,445793593.0,105504743.0,114184496.0,8.2269,467682375.0,51.1981,7236397.0,6.3375,7.7874
+"storm 250 mm, run total",clustered T=100,8,work stealing (cost-blind),work_steal,equal,169,0.2679,445793593.0,105504743.0,122494351.0,16.1032,534161215.0,54.5088,72634254.0,59.296,7.1882
+"storm 250 mm, run total",clustered T=100,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,398244351.0,47.1832,55931257.0,53.013,11.2607
+"storm 250 mm, run total",clustered T=100,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,398244351.0,47.1832,56046018.0,53.1218,11.2607
+"storm 250 mm, run total",clustered T=100,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,398244351.0,47.1832,56046170.0,53.1219,11.2607
+"storm 250 mm, run total",clustered T=100,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,398244351.0,47.1832,56046018.0,53.1218,11.2607
+"storm 250 mm, run total",clustered T=100,8,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,398244351.0,47.1832,56038253.0,53.1144,11.2607
+"storm 250 mm, run total",clustered T=100,36,2020-style rounds,opp_rounds,equal,169,0.2679,445793593.0,105504743.0,111513994.0,5.6957,3568710191.0,88.8954,84128352.0,75.442,11.6031
+"storm 250 mm, run total",clustered T=100,36,naive first-ready,opp_fifo,equal,169,0.2679,445793593.0,105504743.0,108489884.0,2.8294,3459842231.0,88.5859,81585933.0,75.2014,10.6467
+"storm 250 mm, run total",clustered T=100,36,JIT strides,jit,equal,169,0.2679,445793593.0,105504743.0,106656385.0,1.0916,3393836267.0,88.3897,7236397.0,6.7848,10.1771
+"storm 250 mm, run total",clustered T=100,36,work stealing (cost-blind),work_steal,equal,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,3352377155.0,88.2629,79920783.0,75.7509,11.2607
+"storm 250 mm, run total",clustered T=100,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,3352377155.0,88.2629,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,3352377155.0,88.2629,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,3352377155.0,88.2629,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,3352377155.0,88.2629,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,36,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,3352377155.0,88.2629,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,128,2020-style rounds,opp_rounds,equal,169,0.2679,445793593.0,105504743.0,109248465.0,3.5484,13538009927.0,96.8121,84128352.0,77.0064,11.6981
+"storm 250 mm, run total",clustered T=100,128,naive first-ready,opp_fifo,equal,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,13058813511.0,96.699,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,128,JIT strides,jit,equal,169,0.2679,445793593.0,105504743.0,106656385.0,1.0916,13206223687.0,96.7346,7236397.0,6.7848,10.1771
+"storm 250 mm, run total",clustered T=100,128,work stealing (cost-blind),work_steal,equal,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,13058813511.0,96.699,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,13058813511.0,96.699,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,13058813511.0,96.699,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,13058813511.0,96.699,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,13058813511.0,96.699,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=100,128,"Hu, exact costs (oracle)",opp_lrp,true,169,0.2679,445793593.0,105504743.0,105504743.0,0.0,13058813511.0,96.699,80793818.0,76.5784,11.2607
+"storm 250 mm, run total",clustered T=1000,8,2020-style rounds,opp_rounds,equal,19,0.3266,445793593.0,229930186.0,235582280.0,2.4582,1438864647.0,76.3462,179484376.0,76.1876,3.6131
+"storm 250 mm, run total",clustered T=1000,8,naive first-ready,opp_fifo,equal,19,0.3266,445793593.0,229930186.0,233826955.0,1.6948,1424822047.0,76.1686,179497823.0,76.7652,3.1607
+"storm 250 mm, run total",clustered T=1000,8,JIT strides,jit,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,1393647895.0,75.7647,49821623.0,21.6682,2.7807
+"storm 250 mm, run total",clustered T=1000,8,work stealing (cost-blind),work_steal,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,1393647895.0,75.7647,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,8,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,1393647895.0,75.7647,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,8,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,1393647895.0,75.7647,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,8,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,1393647895.0,75.7647,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,8,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,1393647895.0,75.7647,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,8,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,1393647895.0,75.7647,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,36,2020-style rounds,opp_rounds,equal,19,0.3266,445793593.0,229930186.0,235582280.0,2.4582,8035168487.0,94.7436,179484376.0,76.1876,3.6131
+"storm 250 mm, run total",clustered T=1000,36,naive first-ready,opp_fifo,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,7831693103.0,94.6144,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,36,JIT strides,jit,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,7831693103.0,94.6144,49821623.0,21.6682,2.7807
+"storm 250 mm, run total",clustered T=1000,36,work stealing (cost-blind),work_steal,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,7831693103.0,94.6144,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,36,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,7831693103.0,94.6144,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,36,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,7831693103.0,94.6144,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,36,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,7831693103.0,94.6144,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,36,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,7831693103.0,94.6144,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,36,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,7831693103.0,94.6144,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,128,2020-style rounds,opp_rounds,equal,19,0.3266,445793593.0,229930186.0,235582280.0,2.4582,29708738247.0,98.5216,179484376.0,76.1876,3.6131
+"storm 250 mm, run total",clustered T=1000,128,naive first-ready,opp_fifo,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,28985270215.0,98.4853,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,128,JIT strides,jit,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,28985270215.0,98.4853,49821623.0,21.6682,2.7807
+"storm 250 mm, run total",clustered T=1000,128,work stealing (cost-blind),work_steal,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,28985270215.0,98.4853,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,128,"Hu, equal-cost priorities (costs unknown)",opp_lrp,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,28985270215.0,98.4853,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,128,"Hu, calm costs as estimates (stale)",opp_lrp,stale,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,28985270215.0,98.4853,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,128,"cost-aware dynamic, equal estimates downstream",opp_lrp_dyn,equal,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,28985270215.0,98.4853,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,128,"cost-aware dynamic, calm estimates downstream",opp_lrp_dyn,stale,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,28985270215.0,98.4853,179497823.0,78.0662,3.2936
+"storm 250 mm, run total",clustered T=1000,128,"Hu, exact costs (oracle)",opp_lrp,true,19,0.3266,445793593.0,229930186.0,229930186.0,0.0,28985270215.0,98.4853,179497823.0,78.0662,3.2936

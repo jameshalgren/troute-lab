@@ -1,0 +1,165 @@
+{
+ "source": "first reproduction, macOS arm64, numba 0.61.2, 2026-10-30 (Claude, AI, for James Halgren)",
+ "values": [
+  {
+   "path": "per_call/calm/all/mean",
+   "value": 2.327,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "per_call/s25/all/mean",
+   "value": 2.3464,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "per_call/s250/all/mean",
+   "value": 2.3515,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "per_call/s25/flood_all/mean",
+   "value": 2.9073,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "per_call/s250/flood_all/mean",
+   "value": 2.8753,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "per_call/s25/all/max",
+   "value": 155,
+   "tol": [
+    "r",
+    0.1
+   ]
+  },
+  {
+   "path": "segment_totals/calm/cv_across_segments",
+   "value": 0.2779,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "segment_totals/s25/cv_across_segments",
+   "value": 0.2623,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "segment_totals/calm/max_over_mean",
+   "value": 2.578,
+   "tol": [
+    "a",
+    0.01
+   ]
+  },
+  {
+   "path": "segment_totals/s25/network_total_over_calm",
+   "value": 1.00837,
+   "tol": [
+    "a",
+    0.0001
+   ]
+  },
+  {
+   "path": "windows/s25/24h/network_cost_peak_window_over_calm",
+   "value": 1.3042,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "windows/s25/24h/cv_across_segments_peak_window",
+   "value": 0.1172,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "windows/s25/1h/network_cost_peak_window_over_calm",
+   "value": 1.4129,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "windows/s250/24h/network_cost_peak_window_over_calm",
+   "value": 1.2532,
+   "tol": [
+    "a",
+    0.001
+   ]
+  },
+  {
+   "path": "windows/s25/24h/spearman_vs_calm_peak_window",
+   "value": -0.0001,
+   "tol": [
+    "a",
+    0.02
+   ]
+  },
+  {
+   "path": "clustering_peak_24h_window/calm/eta2_slope_class_unit_cost",
+   "value": 0.4594,
+   "tol": [
+    "a",
+    0.01
+   ]
+  },
+  {
+   "path": "clustering_peak_24h_window/calm/top_decile_adjacency_lift_unit_cost",
+   "value": 3.558,
+   "tol": [
+    "a",
+    0.05
+   ]
+  },
+  {
+   "path": "outlet/s25/peak_m3s",
+   "value": 2195.56005859375,
+   "tol": [
+    "r",
+    0.0001
+   ]
+  },
+  {
+   "path": "outlet/s100/peak_m3s",
+   "value": 13223.5751953125,
+   "tol": [
+    "r",
+    0.0001
+   ]
+  },
+  {
+   "path": "outlet/s250/peak_m3s",
+   "value": 46506.52734375,
+   "tol": [
+    "r",
+    0.0001
+   ]
+  }
+ ]
+}

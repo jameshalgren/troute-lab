@@ -1,0 +1,24 @@
+[project]
+name = "repro-mc-cost-variability"
+version = "1.0.0"
+description = "Per-call cost of T-Route's Muskingum-Cunge kernel (secant iterations) on the Potomac network, calm vs flood, for the scheduling model in ../jit_scheduling"
+requires-python = "==3.12.*"
+# Exact pins for direct dependencies; uv.lock pins the full tree with hashes.
+# numpy / pandas / scipy / xarray / netcdf4 / pyarrow match ../short_ts_switch (whose
+# make_inputs.py and closure_port.py are imported read-only); numba matches the pin
+# that ../short_ts_switch/closure.sh uses for the closure replay (numba==0.61.2).
+dependencies = [
+    "numpy==1.26.4",
+    "numba==0.61.2",
+    "pandas==2.2.0",
+    "scipy==1.17.1",
+    "xarray==2026.9.0",
+    "netcdf4==1.7.4",
+    "pyarrow==25.0.1",
+    "matplotlib==3.11.2",
+    "tabulate==0.9.0",
+]
+
+[tool.uv]
+package = false
+environments = ["sys_platform == 'darwin'", "sys_platform == 'linux'"]

@@ -1,0 +1,19 @@
+# Python dependencies for CIROH-UA/t-route d29f663 (branch ngiab), the same exact pins as
+# ../short_ts_switch/pyproject.toml (minus matplotlib/scipy, which only that experiment's
+# analysis uses). Ceilings come from t-route's requirements.txt at d29f663.
+numpy==1.26.4
+cython==3.0.12
+setuptools==68.2.2
+wheel==0.48.0
+pandas==2.2.0
+xarray==2026.9.0
+netcdf4==1.7.4
+pyyaml==6.0.3
+toolz==1.2.0
+joblib==1.6.0
+deprecated==3.0.0
+pyarrow==25.0.1
+geopandas==1.1.4
+typing-extensions==4.16.0
+pydantic==1.10.26
+hydrotools-nwis-client==4.1.1

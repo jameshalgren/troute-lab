@@ -1,0 +1,14 @@
+# Era (February 2022) Python dependencies of NOAA-OWP/t-route a6efbf4e, unpinned as in
+# its requirements.txt / src/troute-nwm/setup.cfg; resolved "as of" 2022-02-17 with
+#   uv pip compile --exclude-newer 2022-02-17T00:00:00Z (see README.md, "Environments").
+numpy
+Cython
+pandas>=1.1.5
+geopandas
+xarray
+netcdf4
+pyyaml
+toolz
+joblib
+setuptools
+wheel

@@ -1,0 +1,4 @@
+scenario,units,window_steps,reps_min_of,wall_s,ns_per_call_fixed_a,ns_per_iteration_b,r2_time_vs_model,pearson_time_iters,spearman_time_iters,mean_ns_per_call,cv_units_time,cv_units_iterations,cv_units_model_time,ns_per_iteration_proportional,r2_time_proportional_to_iterations
+calm,641706,288,3,55.1,-21.68,50.12,0.9634,0.9815,0.7797,94.94,0.3478,0.2779,0.3414,41.47,0.9324
+s25,641706,288,3,56.3,-23.78,51.49,0.8769,0.9364,0.7968,97.06,0.3641,0.2738,0.3409,42.06,0.8453
+s250,641706,288,3,56.1,-21.25,50.24,0.9558,0.9777,0.8098,96.91,0.3378,0.2708,0.3302,41.82,0.927

@@ -1,0 +1,29 @@
+{
+ "_note": "Reference timings from the t-route record, used by summarize.py. Values are as written in the sources (checked 2026-11-04 with the GitHub REST API). Hardware, core counts and parallel method are not stated in any of them; see README.md. AI-assembled 2026-11-04, not reviewed.",
+ "troute_1yr_conus_2022": {
+  "wall_h": 22.0,
+  "text": "A 1-year CONUS channel-only t-route simulation takes 22 hours.",
+  "source": "https://github.com/NOAA-OWP/t-route/issues/526#issuecomment-1049031284",
+  "who": "awlostowski-noaa (Adam Wlostowski)",
+  "when": "comment created 2022-02-23T17:31:19Z, last edited 2022-02-23T17:44:47Z (the figures are in its '# EDIT' section)"
+ },
+ "wrfhydro_1yr_conus_channel_only_2022": {
+  "wall_h": 4.5,
+  "text": "A 1-year CONUS channel-only WRF run takes 4.5 hours.",
+  "source": "https://github.com/NOAA-OWP/t-route/issues/526#issuecomment-1049031284",
+  "who": "awlostowski-noaa (Adam Wlostowski), probably relaying NCAR (same comment: 'I'll need to check with NCAR on how long it takes to run WRF channel only')"
+ },
+ "troute_conus_28h_2021_11": {
+  "hours": 28, "nts": 336, "loops": 1,
+  "network_s": 40.69, "initial_condition_s": 0.94, "forcing_s": 5.27, "routing_s": 184.17, "output_s": 13.49, "total_s": 244.56,
+  "setup": "28 hour simulation (336 5-minute timesteps), single loop, strictly open loop, reading from and writing to 28 CHRTOUT files, no HYDRO_RST writing; development branch of #501 (loky process parallel)",
+  "source": "https://github.com/NOAA-OWP/t-route/pull/501#issuecomment-976502214",
+  "segments_assumed": 2776738,
+  "segments_note": "segment count not stated in #501; 2,776,738 is the NWM v2.1 RouteLink (assumption)"
+ },
+ "troute_mc_11141seg_1000ts_2022_02": {
+  "segments": 11141, "nts": 1000, "triple_loop_s": 32.0, "prototype_s": 29.0,
+  "source": "https://github.com/NOAA-OWP/t-route/issues/526",
+  "note": "domain, hardware and parallel mode not stated; read here as a serial run (assumption)"
+ }
+}

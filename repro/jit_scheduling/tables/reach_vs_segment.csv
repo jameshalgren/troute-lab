@@ -1,0 +1,97 @@
+scope,P,variant,makespan,lb,idle_core_time
+Mississippi,36.0,"segments, JIT strides (distance in segments)",32607.0,31036.444444444445,56540.0
+Mississippi,36.0,"segments, Hu's rule",31118.0,31036.444444444445,2936.0
+Mississippi,36.0,"segments, JIT timetable",31234.0,31036.444444444445,7112.0
+Mississippi,36.0,"reaches, JIT strides by reach hops",33709.0,31036.444444444445,96212.0
+Mississippi,36.0,"reaches, JIT timetable by segment distance",31234.0,31036.444444444445,7112.0
+Mississippi,36.0,"reaches, Hu's rule by segment distance",31118.0,31036.444444444445,2936.0
+Mississippi,128.0,"segments, JIT strides (distance in segments)",10374.0,8729.0,210560.0
+Mississippi,128.0,"segments, Hu's rule",8864.0,8729.0,17280.0
+Mississippi,128.0,"segments, JIT timetable",9183.0,8729.0,58112.0
+Mississippi,128.0,"reaches, JIT strides by reach hops",16833.0,8729.0,1037312.0
+Mississippi,128.0,"reaches, JIT timetable by segment distance",9183.0,8729.0,58112.0
+Mississippi,128.0,"reaches, Hu's rule by segment distance",8864.0,8729.0,17280.0
+Mississippi,1024.0,"segments, JIT strides (distance in segments)",3174.0,3174.0,2132864.0
+Mississippi,1024.0,"segments, Hu's rule",3174.0,3174.0,2132864.0
+Mississippi,1024.0,"segments, JIT timetable",3174.0,3174.0,2132864.0
+Mississippi,1024.0,"reaches, JIT strides by reach hops",16086.0,3174.0,15354752.0
+Mississippi,1024.0,"reaches, JIT timetable by segment distance",3174.0,3174.0,2132864.0
+Mississippi,1024.0,"reaches, Hu's rule by segment distance",3174.0,3174.0,2132864.0
+Mississippi,inf,"segments, JIT strides (distance in segments)",3174.0,3174.0,
+Mississippi,inf,"segments, Hu's rule",3174.0,3174.0,
+Mississippi,inf,"segments, JIT timetable",3174.0,3174.0,
+Mississippi,inf,"reaches, JIT strides by reach hops",16086.0,3174.0,
+Mississippi,inf,"reaches, JIT timetable by segment distance",3174.0,3174.0,
+Mississippi,inf,"reaches, Hu's rule by segment distance",3174.0,3174.0,
+CONUS,36.0,"segments, JIT strides (distance in segments)",78728.0,77131.5,57474.0
+CONUS,36.0,"segments, Hu's rule",77132.0,77131.5,18.0
+CONUS,36.0,"segments, JIT timetable",77248.0,77131.5,4194.0
+CONUS,36.0,"reaches, JIT strides by reach hops",79367.0,77131.5,80478.0
+CONUS,36.0,"reaches, JIT timetable by segment distance",77248.0,77131.5,4194.0
+CONUS,36.0,"reaches, Hu's rule by segment distance",77132.0,77131.5,18.0
+CONUS,128.0,"segments, JIT strides (distance in segments)",23325.0,21693.234375,208866.0
+CONUS,128.0,"segments, Hu's rule",21694.0,21693.234375,98.0
+CONUS,128.0,"segments, JIT timetable",22012.0,21693.234375,40802.0
+CONUS,128.0,"reaches, JIT strides by reach hops",28502.0,21693.234375,871522.0
+CONUS,128.0,"reaches, JIT timetable by segment distance",22012.0,21693.234375,40802.0
+CONUS,128.0,"reaches, Hu's rule by segment distance",21694.0,21693.234375,98.0
+CONUS,1024.0,"segments, JIT strides (distance in segments)",4854.0,3174.0,2193762.0
+CONUS,1024.0,"segments, Hu's rule",3174.0,3174.0,473442.0
+CONUS,1024.0,"segments, JIT timetable",4144.0,3174.0,1466722.0
+CONUS,1024.0,"reaches, JIT strides by reach hops",19945.0,3174.0,17646946.0
+CONUS,1024.0,"reaches, JIT timetable by segment distance",4144.0,3174.0,1466722.0
+CONUS,1024.0,"reaches, Hu's rule by segment distance",3174.0,3174.0,473442.0
+CONUS,inf,"segments, JIT strides (distance in segments)",3174.0,3174.0,
+CONUS,inf,"segments, Hu's rule",3174.0,3174.0,
+CONUS,inf,"segments, JIT timetable",3174.0,3174.0,
+CONUS,inf,"reaches, JIT strides by reach hops",19945.0,3174.0,
+CONUS,inf,"reaches, JIT timetable by segment distance",3174.0,3174.0,
+CONUS,inf,"reaches, Hu's rule by segment distance",3174.0,3174.0,
+LowerColorado_TX,36.0,"segments, JIT strides (distance in segments)",752.0,649.0,15824.0
+LowerColorado_TX,36.0,"segments, Hu's rule",649.0,649.0,12116.0
+LowerColorado_TX,36.0,"segments, JIT timetable",681.0,649.0,13268.0
+LowerColorado_TX,36.0,"reaches, JIT strides by reach hops",1599.0,649.0,46316.0
+LowerColorado_TX,36.0,"reaches, JIT timetable by segment distance",681.0,649.0,13268.0
+LowerColorado_TX,36.0,"reaches, Hu's rule by segment distance",649.0,649.0,12116.0
+LowerColorado_TX,128.0,"segments, JIT strides (distance in segments)",649.0,649.0,71824.0
+LowerColorado_TX,128.0,"segments, Hu's rule",649.0,649.0,71824.0
+LowerColorado_TX,128.0,"segments, JIT timetable",649.0,649.0,71824.0
+LowerColorado_TX,128.0,"reaches, JIT strides by reach hops",1599.0,649.0,193424.0
+LowerColorado_TX,128.0,"reaches, JIT timetable by segment distance",649.0,649.0,71824.0
+LowerColorado_TX,128.0,"reaches, Hu's rule by segment distance",649.0,649.0,71824.0
+LowerColorado_TX,1024.0,"segments, JIT strides (distance in segments)",649.0,649.0,653328.0
+LowerColorado_TX,1024.0,"segments, Hu's rule",649.0,649.0,653328.0
+LowerColorado_TX,1024.0,"segments, JIT timetable",649.0,649.0,653328.0
+LowerColorado_TX,1024.0,"reaches, JIT strides by reach hops",1599.0,649.0,1626128.0
+LowerColorado_TX,1024.0,"reaches, JIT timetable by segment distance",649.0,649.0,653328.0
+LowerColorado_TX,1024.0,"reaches, Hu's rule by segment distance",649.0,649.0,653328.0
+LowerColorado_TX,inf,"segments, JIT strides (distance in segments)",649.0,649.0,
+LowerColorado_TX,inf,"segments, Hu's rule",649.0,649.0,
+LowerColorado_TX,inf,"segments, JIT timetable",649.0,649.0,
+LowerColorado_TX,inf,"reaches, JIT strides by reach hops",1599.0,649.0,
+LowerColorado_TX,inf,"reaches, JIT timetable by segment distance",649.0,649.0,
+LowerColorado_TX,inf,"reaches, Hu's rule by segment distance",649.0,649.0,
+Potomac,36.0,"segments, JIT strides (distance in segments)",717.0,527.0,9358.0
+Potomac,36.0,"segments, Hu's rule",529.0,527.0,2590.0
+Potomac,36.0,"segments, JIT timetable",557.0,527.0,3598.0
+Potomac,36.0,"reaches, JIT strides by reach hops",1540.0,527.0,38986.0
+Potomac,36.0,"reaches, JIT timetable by segment distance",557.0,527.0,3598.0
+Potomac,36.0,"reaches, Hu's rule by segment distance",529.0,527.0,2590.0
+Potomac,128.0,"segments, JIT strides (distance in segments)",527.0,527.0,51002.0
+Potomac,128.0,"segments, Hu's rule",527.0,527.0,51002.0
+Potomac,128.0,"segments, JIT timetable",527.0,527.0,51002.0
+Potomac,128.0,"reaches, JIT strides by reach hops",1540.0,527.0,180666.0
+Potomac,128.0,"reaches, JIT timetable by segment distance",527.0,527.0,51002.0
+Potomac,128.0,"reaches, Hu's rule by segment distance",527.0,527.0,51002.0
+Potomac,1024.0,"segments, JIT strides (distance in segments)",527.0,527.0,523194.0
+Potomac,1024.0,"segments, Hu's rule",527.0,527.0,523194.0
+Potomac,1024.0,"segments, JIT timetable",527.0,527.0,523194.0
+Potomac,1024.0,"reaches, JIT strides by reach hops",1540.0,527.0,1560506.0
+Potomac,1024.0,"reaches, JIT timetable by segment distance",527.0,527.0,523194.0
+Potomac,1024.0,"reaches, Hu's rule by segment distance",527.0,527.0,523194.0
+Potomac,inf,"segments, JIT strides (distance in segments)",527.0,527.0,
+Potomac,inf,"segments, Hu's rule",527.0,527.0,
+Potomac,inf,"segments, JIT timetable",527.0,527.0,
+Potomac,inf,"reaches, JIT strides by reach hops",1540.0,527.0,
+Potomac,inf,"reaches, JIT timetable by segment distance",527.0,527.0,
+Potomac,inf,"reaches, Hu's rule by segment distance",527.0,527.0,

@@ -9,7 +9,7 @@ Tools and reproducible experiments for the National Water Model (NWM) channel ne
   environments, SHA-256-checked inputs downloaded by script, machine-checked expected results).
 
 They were built for a forthcoming paper on the origins of T-Route (see [Citation](#citation)),
-and are useful beyond it.
+and are (hopefully) useful beyond it.
 
 > **AI assistance.** Most of the code and text here was drafted with an AI assistant
 > (Anthropic's Claude) working for James Halgren. He and his students are working on reviewing everything.
@@ -70,10 +70,11 @@ reproduced). Conventions and prerequisites: [`repro/README.md`](repro/README.md)
   (Mississippi, 40.2% of CONUS) and what it means for by-network parallelism, cuts at the
   international boundary, a comparison with NWM v2.1 and 2020 counts, and statistics for about
   160 named sub-rivers. A few minutes after the downloads (`REQUIRED_ONLY=1` skips the
-  optional 269 MB NWM v2.1 file). Also produces the tables the explorer build reads.
-- **[`routelink_topwidth/`](repro/routelink_topwidth/)**: how the compound-channel top width
-  `TopWdthCC` is derived from `TopWdth` and the other channel parameters in the NWM v3.1.6
-  RouteLink files. Under a minute after the 320 MB download.
+  optional 269 MB NWM v2.1 file). Produces the tables the Basin Explorer build reads.
+- **[`routelink_topwidth/`](repro/routelink_topwidth/)**: A simple check of the relationship 
+  between the compound-channel top width
+  `TopWdthCC` and channel top width `TopWdth`. Also correlations to the other channel parameters 
+  in the NWM RouteLink files. Under a minute after the 320 MB download.
 
 ## Data
 
@@ -118,7 +119,7 @@ everything the scripts download) follow the terms of their sources:
 A paper on the origins of T-Route is in preparation; this section will give its citation.
 Until then, cite this repository by URL and commit SHA (e.g.
 `https://github.com/jameshalgren/troute-lab/tree/<sha>/repro/short_ts_switch`). An archived,
-DOI-bearing release (Zenodo) is planned.
+DOI-bearing release (Hydroshare) is planned.
 
 ## License
 

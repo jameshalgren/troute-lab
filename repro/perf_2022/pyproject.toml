@@ -1,0 +1,22 @@
+[project]
+name = "repro-perf-2022"
+version = "0.1.0"
+description = "Tooling for repeating the February 2022 one-year CONUS t-route timing (NOAA-OWP/t-route#526): input fetch, configs, measurement, summary"
+requires-python = "==3.12.*"
+# Exact pins for direct dependencies; uv.lock pins the full tree with hashes.
+# This environment runs the helper scripts only. The two t-route builds get their own
+# environments from envs/*.txt (see build_troute.sh).
+dependencies = [
+    "numpy==2.5.4",
+    "netcdf4==1.7.5.1.post1",
+    "h5py==3.16.0",
+    "fsspec==2026.9.0",
+    "aiohttp==3.14.5",
+    "pyyaml==6.0.3",
+    "pandas==3.1.1",
+    "psutil==7.2.2",
+]
+
+[tool.uv]
+package = false
+environments = ["sys_platform == 'darwin'", "sys_platform == 'linux'"]

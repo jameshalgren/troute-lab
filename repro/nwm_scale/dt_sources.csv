@@ -1,0 +1,26 @@
+namelist_dir,nomads_dirs,DTRT_CH_s,channel_option,out_dt_min,KHOUR_h,NOAH_TIMESTEP_s,RESTART_FREQUENCY_HOURS,retrieved,source_url
+short_range,short_range,300,2,60,18,3600,600,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/short_range/
+medium_range,medium_range_mem1..mem6; medium_range_blend (assumed: no blend parm dir),300,2,60,240,3600,6000,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/medium_range/
+medium_range_no_da,medium_range_no_da,300,2,180,240,3600,6000,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/medium_range_no_da/
+long_range,long_range_mem1..mem4,300,2,360,720,3600,6000,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/long_range/
+analysis_assim,analysis_assim,300,2,60,3,3600,1,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/analysis_assim/
+analysis_assim_no_da,analysis_assim_no_da,300,2,60,3,3600,1,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/analysis_assim_no_da/
+analysis_assim_extended,analysis_assim_extend,300,2,60,28,3600,4,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/analysis_assim_extended/
+analysis_assim_extend_no_da,analysis_assim_extend_no_da,300,2,60,28,3600,4,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/analysis_assim_extend_no_da/
+analysis_assim_longrange,analysis_assim_long,300,2,60,12,3600,1,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/analysis_assim_longrange/
+analysis_assim_long_no_da,analysis_assim_long_no_da,300,2,60,12,3600,1,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/analysis_assim_long_no_da/
+ak_analysis_assim,analysis_assim_alaska,300,2,60,3,3600,1,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/ak_analysis_assim/
+analysis_assim_alaska_no_da,analysis_assim_alaska_no_da,300,2,60,3,3600,1,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/analysis_assim_alaska_no_da/
+ak_analysis_assim_extended,analysis_assim_extend_alaska,300,2,60,32,3600,4,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/ak_analysis_assim_extended/
+analysis_assim_extend_alaska_no_da,analysis_assim_extend_alaska_no_da,300,2,60,32,3600,4,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/analysis_assim_extend_alaska_no_da/
+ak_short_range,short_range_alaska (KHOUR 15; the t03/09/15/21z cycles run 45 h per the files),300,2,60,15,3600,600,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/ak_short_range/
+ak_medium_range,medium_range_alaska_mem1..mem6; medium_range_blend_alaska (assumed: no blend parm dir),300,2,60,240,3600,6000,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/ak_medium_range/
+medium_range_alaska_no_da,medium_range_alaska_no_da,300,2,180,240,3600,6000,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/medium_range_alaska_no_da/
+hi_analysis_assim,analysis_assim_hawaii,300,2,15,3,900,1,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/hi_analysis_assim/
+analysis_assim_hawaii_no_da,analysis_assim_hawaii_no_da,300,2,15,3,900,1,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/analysis_assim_hawaii_no_da/
+hi_short_range,short_range_hawaii,300,2,15,48,900,600,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/hi_short_range/
+short_range_hawaii_no_da,short_range_hawaii_no_da,300,2,15,48,900,600,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/short_range_hawaii_no_da/
+pr_analysis_assim,analysis_assim_puertorico,300,2,60,3,3600,1,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/pr_analysis_assim/
+analysis_assim_puertorico_no_da,analysis_assim_puertorico_no_da,300,2,60,3,3600,1,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/analysis_assim_puertorico_no_da/
+pr_short_range,short_range_puertorico,300,2,60,48,3600,600,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/pr_short_range/
+short_range_puertorico_no_da,short_range_puertorico_no_da,300,2,60,48,3600,600,2026-10-29,https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/short_range_puertorico_no_da/

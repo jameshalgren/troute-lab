@@ -1,0 +1,52 @@
+{
+ "CONUS": {
+  "segments": 2776734,
+  "networks": 12820
+ },
+ "Mississippi": {
+  "segments": 1117312,
+  "networks": 1
+ },
+ "RioGrande": {
+  "segments": 54182,
+  "networks": 1
+ },
+ "LowerColorado_TX": {
+  "segments": 11248,
+  "networks": 1
+ },
+ "Brazos": {
+  "segments": 14293,
+  "networks": 1
+ },
+ "LowerColorado_TX+Brazos": {
+  "segments": 25541,
+  "networks": 2
+ },
+ "Trinity": {
+  "segments": 9616,
+  "networks": 1
+ },
+ "Potomac": {
+  "segments": 16454,
+  "networks": 1
+ },
+ "subnetworks": {
+  "100": {
+   "n": 82256,
+   "max_order": 183
+  },
+  "1000": {
+   "n": 30653,
+   "max_order": 49
+  },
+  "10000": {
+   "n": 17428,
+   "max_order": 14
+  },
+  "100000": {
+   "n": 14018,
+   "max_order": 4
+  }
+ }
+}
