@@ -57,10 +57,11 @@ def main() -> None:
     diff_lines = [i + 1 for i, (a, b) in enumerate(zip(so.splitlines(), sp.splitlines())) if a != b]
     (BUILD / "mc_orig.F90").write_text(wrap("mc_orig", extract_sub(so)))
     (BUILD / "mc_patched.F90").write_text(wrap("mc_patched", extract_sub(sp)))
-    exe = BUILD / "driver"
-    srcs = [HERE / "fortran" / "stubs.F90", BUILD / "mc_orig.F90", BUILD / "mc_patched.F90",
-            HERE / "fortran" / "driver.F90"]
-    subprocess.run([FC, *FFLAGS, "-J", str(BUILD), "-o", str(exe), *map(str, srcs)], check=True)
+    mods = [HERE / "fortran" / "stubs.F90", BUILD / "mc_orig.F90", BUILD / "mc_patched.F90"]
+    for prog in ("driver", "network_driver"):      # prismatic channel; Potomac network
+        srcs = [*mods, HERE / "fortran" / f"{prog}.F90"]
+        subprocess.run([FC, *FFLAGS, "-J", str(BUILD), "-o", str(BUILD / prog), *map(str, srcs)],
+                       check=True)
     ver = subprocess.run([FC, "--version"], capture_output=True, text=True).stdout.splitlines()[0]
     info = {"wrf_hydro_repo": WRF_REPO, "wrf_hydro_sha": WRF_SHA, "file": REL, "url": URL,
             "sha256_original": sha256(o), "sha256_patched": sha256(p),

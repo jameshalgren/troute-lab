@@ -6,13 +6,487 @@
   },
   "harness_unclamped_cases": {
     "_which": "small pulse, D_cell < 0.5 (neither X on the 0.25 floor)",
-    "orig_D_eff_over_D_phys_range": [0.45, 0.6],
-    "patched_D_eff_over_D_phys_range": [0.95, 1.1]
+    "orig_D_eff_over_D_phys_range": [
+      0.45,
+      0.6
+    ],
+    "patched_D_eff_over_D_phys_range": [
+      0.95,
+      1.1
+    ]
   },
   "harness_floor_cases": {
     "_which": "small pulse, D_cell > 1 (both X on the 0.25 floor): the patch changes nothing",
     "max_abs_diff_orig_vs_patched_D_eff": 0.005
   },
   "reference_check_max_rel_diff_peak": 0.01,
-  "build_changed_lines": [291, 294, 374, 377]
+  "build_changed_lines": [
+    291,
+    294,
+    374,
+    377
+  ],
+  "potomac": {
+    "_source": "First run of part 2 (WRF-Hydro routine on the Potomac), macOS arm64 (Apple M4 Max), gfortran 15.2.0, 2026-10-28; T-Route agreement limits set 2026-10-31 from the part-3 run of 2026-10-28.",
+    "tolerances": {
+      "peak_rel": 0.0001,
+      "change_pct_abs": 0.02,
+      "shift_h_abs": 0.09,
+      "floor_share_abs": 0.002
+    },
+    "physics": {
+      "steady_max_dev_m3s": 0.001,
+      "nonconvergence": 0,
+      "outlet_volume_ratio_abs_dev": 0.001,
+      "outlet_volume_over_lateral_range": [
+        0.99,
+        1.01
+      ],
+      "small_stream_area_km2": 100,
+      "small_stream_max_abs_change_pct": 0.5
+    },
+    "network_floor_share": {
+      "current": {
+        "segment_steps_share": 0.1839,
+        "flow_weighted_share": 0.8604,
+        "k_clamp_share": 0.0531
+      },
+      "patched": {
+        "segment_steps_share": 0.1996,
+        "flow_weighted_share": 0.9069,
+        "k_clamp_share": 0.0531
+      }
+    },
+    "records": {
+      "outlet": {
+        "link": 4539621,
+        "peak_current_m3s": 2194.836,
+        "peak_patched_m3s": 2157.553,
+        "peak_excess_change_pct": -2.02,
+        "t_peak_shift_h": 2.5,
+        "floor_share_current": 1.0,
+        "floor_share_patched": 1.0
+      },
+      "01650800": {
+        "link": 22338427,
+        "peak_current_m3s": 5.401,
+        "peak_patched_m3s": 5.4,
+        "peak_excess_change_pct": -0.01,
+        "t_peak_shift_h": 0.083,
+        "floor_share_current": 0.0,
+        "floor_share_patched": 0.0
+      },
+      "01617800": {
+        "link": 5891846,
+        "peak_current_m3s": 14.258,
+        "peak_patched_m3s": 14.248,
+        "peak_excess_change_pct": -0.07,
+        "t_peak_shift_h": 0.0,
+        "floor_share_current": 0.0,
+        "floor_share_patched": 0.0
+      },
+      "01636464": {
+        "link": 8444776,
+        "peak_current_m3s": 16.444,
+        "peak_patched_m3s": 16.423,
+        "peak_excess_change_pct": -0.13,
+        "t_peak_shift_h": 0.0,
+        "floor_share_current": 0.0,
+        "floor_share_patched": 0.0
+      },
+      "01615000": {
+        "link": 5895964,
+        "peak_current_m3s": 56.049,
+        "peak_patched_m3s": 55.587,
+        "peak_excess_change_pct": -0.85,
+        "t_peak_shift_h": 0.167,
+        "floor_share_current": 0.0,
+        "floor_share_patched": 0.0
+      },
+      "01648010": {
+        "link": 22338431,
+        "peak_current_m3s": 53.927,
+        "peak_patched_m3s": 53.19,
+        "peak_excess_change_pct": -1.4,
+        "t_peak_shift_h": 0.417,
+        "floor_share_current": 0.0,
+        "floor_share_patched": 0.0
+      },
+      "01639000": {
+        "link": 8448416,
+        "peak_current_m3s": 208.252,
+        "peak_patched_m3s": 205.13,
+        "peak_excess_change_pct": -1.54,
+        "t_peak_shift_h": 0.5,
+        "floor_share_current": 0.0,
+        "floor_share_patched": 0.0
+      },
+      "01619500": {
+        "link": 5894726,
+        "peak_current_m3s": 200.556,
+        "peak_patched_m3s": 194.488,
+        "peak_excess_change_pct": -3.13,
+        "t_peak_shift_h": 0.833,
+        "floor_share_current": 0.0,
+        "floor_share_patched": 0.0
+      },
+      "01614500": {
+        "link": 5891232,
+        "peak_current_m3s": 359.919,
+        "peak_patched_m3s": 348.515,
+        "peak_excess_change_pct": -3.28,
+        "t_peak_shift_h": 0.917,
+        "floor_share_current": 0.0289,
+        "floor_share_patched": 0.054
+      },
+      "01611500": {
+        "link": 8431736,
+        "peak_current_m3s": 434.328,
+        "peak_patched_m3s": 418.076,
+        "peak_excess_change_pct": -3.9,
+        "t_peak_shift_h": 1.25,
+        "floor_share_current": 0.0344,
+        "floor_share_patched": 0.076
+      },
+      "01629500": {
+        "link": 5907167,
+        "peak_current_m3s": 548.58,
+        "peak_patched_m3s": 528.348,
+        "peak_excess_change_pct": -3.85,
+        "t_peak_shift_h": 1.5,
+        "floor_share_current": 0.0,
+        "floor_share_patched": 0.0
+      },
+      "01636500": {
+        "link": 8445070,
+        "peak_current_m3s": 551.764,
+        "peak_patched_m3s": 532.891,
+        "peak_excess_change_pct": -3.77,
+        "t_peak_shift_h": 3.167,
+        "floor_share_current": 1.0,
+        "floor_share_patched": 1.0
+      },
+      "01610000": {
+        "link": 8431820,
+        "peak_current_m3s": 1648.703,
+        "peak_patched_m3s": 1603.823,
+        "peak_excess_change_pct": -2.87,
+        "t_peak_shift_h": 1.167,
+        "floor_share_current": 1.0,
+        "floor_share_patched": 1.0
+      },
+      "01613000": {
+        "link": 5893338,
+        "peak_current_m3s": 1792.133,
+        "peak_patched_m3s": 1753.383,
+        "peak_excess_change_pct": -2.3,
+        "t_peak_shift_h": 1.25,
+        "floor_share_current": 1.0,
+        "floor_share_patched": 1.0
+      },
+      "01618000": {
+        "link": 5894792,
+        "peak_current_m3s": 1775.635,
+        "peak_patched_m3s": 1749.734,
+        "peak_excess_change_pct": -1.6,
+        "t_peak_shift_h": 1.333,
+        "floor_share_current": 1.0,
+        "floor_share_patched": 1.0
+      },
+      "01638500": {
+        "link": 4507348,
+        "peak_current_m3s": 2294.392,
+        "peak_patched_m3s": 2234.347,
+        "peak_excess_change_pct": -2.9,
+        "t_peak_shift_h": 1.917,
+        "floor_share_current": 0.9953,
+        "floor_share_patched": 1.0
+      },
+      "01646500": {
+        "link": 4512772,
+        "peak_current_m3s": 2334.18,
+        "peak_patched_m3s": 2280.545,
+        "peak_excess_change_pct": -2.61,
+        "t_peak_shift_h": 1.917,
+        "floor_share_current": 0.0,
+        "floor_share_patched": 0.16
+      }
+    },
+    "troute": {
+      "max_abs_diff_peak_change_pct_points": 0.1,
+      "max_abs_diff_shift_h": 0.25,
+      "max_abs_diff_current_peak_pct": 0.5,
+      "outlet_change_pct_kernel_fixes": -1.7,
+      "outlet_change_tol": 0.05,
+      "outlet_shift_h_kernel_fixes": 2.5,
+      "outlet_shift_tol_h": 0.1,
+      "_kernel_fixes_source": "../kernel_fixes/README.md, 'Optional Cunge-X patch': Potomac True, -1.7% (2196 -> 2158 m3/s), +2.5 h"
+    }
+  },
+  "short_ts": {
+    "_source": "AI-assembled (Claude, 2026-11-02) from the first runs with both upstream-inflow modes, macOS arm64 (Apple M4 Max), gfortran 15.2.0; T-Route limits from the same day's part-3 runs (assume_short_ts False)",
+    "part1_lagged": {
+      "_which": "prismatic channel, lagged upstream inflow (qup = quc = previous step)",
+      "theory_max_courant": 1.02,
+      "celerity_theory_abs_tol": 0.01,
+      "x_effect_peak_excess_change_pct_range": [
+        -20.0,
+        -3.0
+      ],
+      "x_effect_t_peak_shift_h_range": [
+        0.15,
+        1.3
+      ],
+      "small_volume_abs_dev": 0.01,
+      "large_min_flow_m3s": 49.9,
+      "large_volume_ratio_range": [
+        0.85,
+        1.1
+      ]
+    },
+    "potomac_sequential": {
+      "_which": "Potomac, sequential upstream inflow (STS OFF, real qdc). Compiler-sensitive: near-dry links at the 1e-5 slope floor make the depth solver's result depend on rounding (README, Appendix C). Tolerances are about 2x the spread between -O2 and -O2 -ffp-contract=off builds measured 2026-11-02 (peak 0.91 %, change 1.32 points, shift 0.33 h; warning counts 3/2 vs 0/3).",
+      "max_nonconvergence": 5,
+      "outlet_volume_over_lateral_range": [
+        0.96,
+        0.975
+      ],
+      "tolerances": {
+        "peak_rel": 0.02,
+        "change_pct_abs": 2.5,
+        "shift_h_abs": 0.75
+      },
+      "records": {
+        "outlet": {
+          "link": 4539621,
+          "peak_current_m3s": 1589.393,
+          "peak_patched_m3s": 1606.511,
+          "peak_excess_change_pct": 1.38,
+          "t_peak_shift_h": -0.417
+        },
+        "01650800": {
+          "link": 22338427,
+          "peak_current_m3s": 5.398,
+          "peak_patched_m3s": 5.397,
+          "peak_excess_change_pct": -0.01,
+          "t_peak_shift_h": 0.0
+        },
+        "01617800": {
+          "link": 5891846,
+          "peak_current_m3s": 14.17,
+          "peak_patched_m3s": 14.161,
+          "peak_excess_change_pct": -0.06,
+          "t_peak_shift_h": 0.0
+        },
+        "01636464": {
+          "link": 8444776,
+          "peak_current_m3s": 16.371,
+          "peak_patched_m3s": 16.359,
+          "peak_excess_change_pct": -0.08,
+          "t_peak_shift_h": 0.0
+        },
+        "01615000": {
+          "link": 5895964,
+          "peak_current_m3s": 50.339,
+          "peak_patched_m3s": 50.089,
+          "peak_excess_change_pct": -0.51,
+          "t_peak_shift_h": 0.0
+        },
+        "01648010": {
+          "link": 22338431,
+          "peak_current_m3s": 49.409,
+          "peak_patched_m3s": 48.966,
+          "peak_excess_change_pct": -0.92,
+          "t_peak_shift_h": 0.083
+        },
+        "01639000": {
+          "link": 8448416,
+          "peak_current_m3s": 191.579,
+          "peak_patched_m3s": 189.891,
+          "peak_excess_change_pct": -0.9,
+          "t_peak_shift_h": 0.0
+        },
+        "01619500": {
+          "link": 5894726,
+          "peak_current_m3s": 150.772,
+          "peak_patched_m3s": 143.968,
+          "peak_excess_change_pct": -4.72,
+          "t_peak_shift_h": 0.917
+        },
+        "01614500": {
+          "link": 5891232,
+          "peak_current_m3s": 282.782,
+          "peak_patched_m3s": 283.744,
+          "peak_excess_change_pct": 0.36,
+          "t_peak_shift_h": -0.25
+        },
+        "01611500": {
+          "link": 8431736,
+          "peak_current_m3s": 306.392,
+          "peak_patched_m3s": 304.466,
+          "peak_excess_change_pct": -0.67,
+          "t_peak_shift_h": -0.083
+        },
+        "01629500": {
+          "link": 5907167,
+          "peak_current_m3s": 384.122,
+          "peak_patched_m3s": 377.434,
+          "peak_excess_change_pct": -1.86,
+          "t_peak_shift_h": -0.167
+        },
+        "01636500": {
+          "link": 8445070,
+          "peak_current_m3s": 365.414,
+          "peak_patched_m3s": 381.429,
+          "peak_excess_change_pct": 5.09,
+          "t_peak_shift_h": -2.75
+        },
+        "01610000": {
+          "link": 8431820,
+          "peak_current_m3s": 1260.46,
+          "peak_patched_m3s": 1245.784,
+          "peak_excess_change_pct": -1.25,
+          "t_peak_shift_h": -0.333
+        },
+        "01613000": {
+          "link": 5893338,
+          "peak_current_m3s": 1385.684,
+          "peak_patched_m3s": 1374.047,
+          "peak_excess_change_pct": -0.91,
+          "t_peak_shift_h": -0.333
+        },
+        "01618000": {
+          "link": 5894792,
+          "peak_current_m3s": 1381.801,
+          "peak_patched_m3s": 1374.62,
+          "peak_excess_change_pct": -0.59,
+          "t_peak_shift_h": -0.083
+        },
+        "01638500": {
+          "link": 4507348,
+          "peak_current_m3s": 1608.569,
+          "peak_patched_m3s": 1601.614,
+          "peak_excess_change_pct": -0.5,
+          "t_peak_shift_h": -0.083
+        },
+        "01646500": {
+          "link": 4512772,
+          "peak_current_m3s": 1648.17,
+          "peak_patched_m3s": 1646.476,
+          "peak_excess_change_pct": -0.12,
+          "t_peak_shift_h": 0.417
+        }
+      }
+    },
+    "mode_effect_outlet_short_ts_switch": {
+      "_source": "../short_ts_switch/README.md, corrected kernel, Potomac outlet True vs False at dt = 300 s: +38.4%, -77.6 h",
+      "peak_change_pct": 38.4,
+      "peak_change_tol_pct": 1.0,
+      "shift_h": -77.6,
+      "shift_tol_h": 0.5
+    },
+    "troute_sts0": {
+      "_note": "looser than the lagged limits: the gap is at a few gauges (S F Shenandoah at Luray, Antietam), not diagnosed",
+      "max_abs_diff_peak_change_pct_points": 3.0,
+      "max_abs_diff_shift_h": 1.0,
+      "max_abs_diff_current_peak_pct": 5.5,
+      "outlet_current_peak_pct": 0.5,
+      "outlet_change_pct_points": 0.3
+    }
+  },
+  "reaches": {
+    "_source": "reaches.py, 2026-11-02 run (Apple M4 Max, gfortran); regression values plus physics bounds",
+    "tolerances": {
+      "peak_rel": 0.0001,
+      "change_pct_abs": 0.02,
+      "shift_h_abs": 0.09,
+      "reference_peak_rel": 0.001
+    },
+    "physics": {
+      "sts_on_min_flow_over_base": 0.999,
+      "sts_on_volume_ratio_range": [
+        0.99,
+        1.01
+      ],
+      "main_floor_share_min": 0.99
+    },
+    "cases": {
+      "mid_1km": {
+        "reference_peak_m3s": 405.708,
+        "n_analog_links": 38,
+        "sts_on": {
+          "peak_current_m3s": 431.557,
+          "peak_change_pct": -0.0,
+          "t_peak_shift_h": -0.0
+        },
+        "sts_off": {
+          "peak_current_m3s": 431.541,
+          "peak_change_pct": 0.002,
+          "t_peak_shift_h": -0.012
+        }
+      },
+      "mid_2p5km": {
+        "reference_peak_m3s": 405.708,
+        "n_analog_links": 32,
+        "sts_on": {
+          "peak_current_m3s": 427.309,
+          "peak_change_pct": -0.004,
+          "t_peak_shift_h": 0.007
+        },
+        "sts_off": {
+          "peak_current_m3s": 426.369,
+          "peak_change_pct": 0.172,
+          "t_peak_shift_h": -0.209
+        }
+      },
+      "main_2p5km": {
+        "reference_peak_m3s": 978.187,
+        "n_analog_links": 30,
+        "sts_on": {
+          "peak_current_m3s": 1658.201,
+          "peak_change_pct": 0.0,
+          "t_peak_shift_h": 0.0
+        },
+        "sts_off": {
+          "peak_current_m3s": 1661.209,
+          "peak_change_pct": 0.0,
+          "t_peak_shift_h": 0.0
+        }
+      },
+      "mid_8km": {
+        "reference_peak_m3s": 405.708,
+        "n_analog_links": 15,
+        "sts_on": {
+          "peak_current_m3s": 418.481,
+          "peak_change_pct": -1.457,
+          "t_peak_shift_h": 1.589
+        },
+        "sts_off": {
+          "peak_current_m3s": 417.081,
+          "peak_change_pct": -3.988,
+          "t_peak_shift_h": 1.172
+        }
+      },
+      "cacapon": {
+        "reference_peak_m3s": 404.554,
+        "n_analog_links": 56,
+        "sts_on": {
+          "peak_current_m3s": 426.588,
+          "peak_change_pct": -0.334,
+          "t_peak_shift_h": 0.551
+        },
+        "sts_off": {
+          "peak_current_m3s": 426.766,
+          "peak_change_pct": -0.463,
+          "t_peak_shift_h": 0.114
+        }
+      }
+    },
+    "sts_off_tolerances": {
+      "_why": "STS OFF single reaches are compiler-sensitive like the Potomac STS OFF run; about 2x the -O2 vs -ffp-contract=off spread measured 2026-11-02 (peak 0.07 %, change 0.68 points, shift 0.33 h)",
+      "peak_rel": 0.005,
+      "change_pct_abs": 1.5,
+      "shift_h_abs": 0.75
+    }
+  }
 }

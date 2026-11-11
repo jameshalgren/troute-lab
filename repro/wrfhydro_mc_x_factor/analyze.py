@@ -14,6 +14,15 @@ D_cell = Q/(B S0 c dx) spans 0.15 to 2.4):
      (isolates the X question from everything else);
   3. the verbatim WRF-Hydro SUBMUSKINGCUNGE, original and patched, through the
      Fortran harness (build/driver, built by build_harness.py).
+Items 2 and 3 are run twice (added 2026-11-02): with sequential upstream inflow (this
+step's upstream outflow; the short-time-step assumption disabled, T-Route's
+assume_short_ts False; the series without a suffix) and with lagged upstream inflow
+(qup = quc = last step's; the assumption enabled, as in WRF-Hydro's channel driver and
+the operational NWM; suffix "_lagged"). Lagged, the scheme is no longer Muskingum: per
+reach it is O[n+1] = (C1 + C2) I[n] + C3 O[n], whose mean delay is K(1 - X) + dt/2
+instead of K, so waves travel 1/(1 - X + C/2) times too fast and X sets the speed as
+well as the spread. Each series therefore also reports its celerity (from the first
+moment) and its diffusivity measured at that celerity.
 
 Writes results/summary.json, results/hydrographs_*.csv and results/fig_*.png.
 """
@@ -130,7 +139,8 @@ def zero_inertia(t_out: np.ndarray, amp: float, dxf: float = 100.0) -> np.ndarra
 
 
 # ---- 2. linear constant-parameter Muskingum-Cunge ------------------------------------
-def linear_mc(amp: float, dx: float, X: float, c: float, dt: float) -> np.ndarray:
+def linear_mc(amp: float, dx: float, X: float, c: float, dt: float, lagged: bool = False) -> np.ndarray:
+    """lagged: the upstream inflow of the current step is replaced by the previous step's."""
     K = dx / c  # (no K clamp needed: every case here has C <= 1)
     Dn = K * (1.0 - X) + dt / 2.0
     C1, C2, C3 = (K * X + dt / 2.0) / Dn, (dt / 2.0 - K * X) / Dn, (K * (1.0 - X) - dt / 2.0) / Dn
@@ -144,7 +154,7 @@ def linear_mc(amp: float, dx: float, X: float, c: float, dt: float) -> np.ndarra
         qn = np.empty_like(q)
         qn[0] = I[n]
         for j in range(1, nseg + 1):
-            qn[j] = C1 * q[j - 1] + C2 * qn[j - 1] + C3 * q[j]
+            qn[j] = C1 * q[j - 1] + C2 * (q[j - 1] if lagged else qn[j - 1]) + C3 * q[j]
         q = qn
         out[n] = q[-1]
     return out
@@ -159,7 +169,7 @@ def x_kernel(dcell: float) -> float:
 
 
 # ---- 3. the Fortran harness -----------------------------------------------------------
-def fortran(variant: str, amp: float, dx: float, dt: float, tag: str) -> np.ndarray:
+def fortran(variant: str, amp: float, dx: float, dt: float, tag: str, mode: str = "sequential") -> np.ndarray:
     nseg = int(round(L / dx))
     work = BUILD / "runs"
     work.mkdir(parents=True, exist_ok=True)
@@ -168,8 +178,8 @@ def fortran(variant: str, amp: float, dx: float, dt: float, tag: str) -> np.ndar
     np.savetxt(inf, inflow(t, amp), fmt="%.8e")
     cfg = work / f"cfg_{tag}.txt"
     cfg.write_text(f"{nseg} {dx} {dt} {S0} {MANN} {CS} {BW} {TW_BANKFULL} 0.0 0.0 400 1\n{nseg}\n")
-    out = work / f"out_{variant}_{tag}.txt"
-    subprocess.run([str(BUILD / "driver"), variant, str(cfg), str(inf), str(out)], check=True)
+    out = work / (f"out_{variant}_{tag}.txt" if mode == "sequential" else f"out_{variant}_{mode}_{tag}.txt")
+    subprocess.run([str(BUILD / "driver"), variant, str(cfg), str(inf), str(out), mode], check=True)
     d = np.loadtxt(out)
     return np.concatenate(([Q0], d[:, 2]))
 
@@ -201,8 +211,7 @@ def small_pulse_case(dx, dt, c0, B0, Dphys, ref_fn, rows) -> dict:
     t = tgrid(dt)
     ref = ref_fn(t)
     pk_ref, tp_ref = peak(t, ref)
-    _, _, var_in = moments(t, inflow(t, SMALL))
-    m0_in = moments(t, inflow(t, SMALL))[0]
+    m0_in, m1_in, var_in = moments(t, inflow(t, SMALL))
     dcell = Q0 / (B0 * S0 * c0 * dx)
     tag = f"dx{int(dx)}_dt{int(dt)}"
     case = {"dx_m": dx, "dt_s": dt, "nseg": int(round(L / dx)), "courant": c0 * dt / dx,
@@ -210,6 +219,9 @@ def small_pulse_case(dx, dt, c0, B0, Dphys, ref_fn, rows) -> dict:
             "X_cunge_final": min(0.5, max(0.25, x_cunge(dcell))),
             "X_kernel_final": min(0.5, max(0.25, x_kernel(dcell))),
             "exact_peak_excess": pk_ref - Q0, "exact_t_peak_h": tp_ref / 3600}
+    # lagged linear scheme: celerity / c = 1 / (1 - X + C/2) (mean delay per reach K(1-X) + dt/2)
+    for k in ("cunge", "kernel"):
+        case[f"lagged_theory_celerity_ratio_X_{k}"] = 1.0 / (1.0 - case[f"X_{k}_final"] + case["courant"] / 2)
     series = {
         # linear MC with X exactly as each formula gives it (no floor): isolates the factor 2
         "linear_mc_cunge": linear_mc(SMALL, dx, x_cunge(dcell), c0, dt) if x_cunge(dcell) >= 0 else None,
@@ -217,17 +229,26 @@ def small_pulse_case(dx, dt, c0, B0, Dphys, ref_fn, rows) -> dict:
         # the verbatim WRF-Hydro routine (includes its 0.25 floor, secant, etc.)
         "wrfhydro_orig": fortran("orig", SMALL, dx, dt, tag + "_small"),
         "wrfhydro_patched": fortran("patched", SMALL, dx, dt, tag + "_small"),
+        # the same with the short-time-step assumption (lagged upstream inflow, the NWM's way)
+        "linear_mc_cunge_lagged": linear_mc(SMALL, dx, x_cunge(dcell), c0, dt, True) if x_cunge(dcell) >= 0 else None,
+        "linear_mc_kernel_lagged": linear_mc(SMALL, dx, x_kernel(dcell), c0, dt, True) if x_kernel(dcell) >= 0 else None,
+        "wrfhydro_orig_lagged": fortran("orig", SMALL, dx, dt, tag + "_small", "lagged"),
+        "wrfhydro_patched_lagged": fortran("patched", SMALL, dx, dt, tag + "_small", "lagged"),
     }
     for name, q in series.items():
         if q is None:
             case[name] = None
             continue
-        m0, _, var = moments(t, q)
+        m0, m1, var = moments(t, q)
         pk, tp = peak(t, q)
+        c_eff = L / (m1 - m1_in)                     # celerity from the travel time of the centroid
         case[name] = {
             "peak_excess_over_exact": (pk - Q0) / (pk_ref - Q0),
             "t_peak_minus_exact_h": (tp - tp_ref) / 3600,
+            # D_eff at the physical celerity c0 = hydrograph variance growth / exact's
             "D_eff_over_D_phys": (var - var_in) * c0 ** 3 / (2.0 * L) / Dphys,
+            "celerity_ratio": c_eff / c0,
+            "D_eff_own_celerity_over_D_phys": (var - var_in) * c_eff ** 3 / (2.0 * L) / Dphys,
             "volume_ratio": m0 / m0_in,
             "rmse_vs_exact_over_amp": float(np.sqrt(np.mean((q - ref) ** 2)) / SMALL),
         }
@@ -244,10 +265,11 @@ def large_pulse_case(dx, dt, c0, rows) -> dict:
     tag = f"dx{int(dx)}_dt{int(dt)}"
     case = {"dx_m": dx, "dt_s": dt, "courant_at_base": c0 * dt / dx,
             "zero_inertia_peak": zp, "zero_inertia_t_peak_h": ztp / 3600}
-    for variant in ("orig", "patched"):
-        q = fortran(variant, LARGE, dx, dt, tag + "_large")
+    for variant, mode in (("orig", "sequential"), ("patched", "sequential"), ("orig", "lagged"), ("patched", "lagged")):
+        name = f"wrfhydro_{variant}" + ("_lagged" if mode == "lagged" else "")
+        q = fortran(variant, LARGE, dx, dt, tag + "_large", mode)
         pk, tp = peak(t, q)
-        case[f"wrfhydro_{variant}"] = {
+        case[name] = {
             "peak": pk, "peak_error_rel_to_ref_excess": (pk - zp) / (zp - Q0),
             "t_peak_minus_ref_h": (tp - ztp) / 3600,
             "min_flow": float(q.min()),
@@ -255,7 +277,7 @@ def large_pulse_case(dx, dt, c0, rows) -> dict:
             "rmse_vs_ref_over_amp": float(np.sqrt(np.mean((q - zi) ** 2)) / LARGE),
         }
         if dt == DT:
-            rows[f"wrfhydro_{variant}_{tag}"] = q
+            rows[f"{name}_{tag}"] = q
     if dt == DT:
         rows["zero_inertia_large"] = zi
     return case
@@ -300,6 +322,7 @@ def main() -> None:
         for dt in sorted({DT, dt_for_courant(dx, c0, 0.5), dt_for_courant(dx, c0, 1.0)}):
             large.append(large_pulse_case(dx, dt, c0, rows_large))
     summary["large_pulse"] = large
+    summary["x_effect_by_mode"] = x_effect_by_mode(small, large)
 
     for fname, rows in (("hydrographs_small_dt300.csv", rows_small),
                         ("hydrographs_large_dt300.csv", rows_large)):
@@ -309,6 +332,41 @@ def main() -> None:
     (RES / "summary.json").write_text(json.dumps(summary, indent=2))
     make_figures(summary, rows_small, rows_large)
     print_table(summary)
+
+
+MODES = {"sequential": "", "lagged": "_lagged"}   # series-name suffix per upstream-inflow mode
+
+
+def x_effect_by_mode(small, large) -> dict:
+    """Patched vs current routine, per case, with sequential and with lagged upstream inflow."""
+    out = {"small_pulse": [], "large_pulse": []}
+    for c in small:
+        e = {"dx_m": c["dx_m"], "dt_s": c["dt_s"], "D_cell": c["D_cell"]}
+        for mode, sfx in MODES.items():
+            o, p = c["wrfhydro_orig" + sfx], c["wrfhydro_patched" + sfx]
+            e[mode] = {
+                "D_eff_over_D_phys": [o["D_eff_over_D_phys"], p["D_eff_over_D_phys"]],
+                "D_eff_own_celerity_over_D_phys": [o["D_eff_own_celerity_over_D_phys"],
+                                                   p["D_eff_own_celerity_over_D_phys"]],
+                "celerity_ratio": [o["celerity_ratio"], p["celerity_ratio"]],
+                "peak_excess_over_exact": [o["peak_excess_over_exact"], p["peak_excess_over_exact"]],
+                "peak_excess_change_pct": 100 * (p["peak_excess_over_exact"] / o["peak_excess_over_exact"] - 1),
+                "t_peak_shift_h": p["t_peak_minus_exact_h"] - o["t_peak_minus_exact_h"],
+                "rmse_vs_exact_over_amp": [o["rmse_vs_exact_over_amp"], p["rmse_vs_exact_over_amp"]],
+            }
+        out["small_pulse"].append(e)
+    for c in large:
+        e = {"dx_m": c["dx_m"], "dt_s": c["dt_s"]}
+        for mode, sfx in MODES.items():
+            o, p = c["wrfhydro_orig" + sfx], c["wrfhydro_patched" + sfx]
+            e[mode] = {
+                "peak_change_pct": 100 * (p["peak"] - o["peak"]) / o["peak"],
+                "t_peak_shift_h": p["t_peak_minus_ref_h"] - o["t_peak_minus_ref_h"],
+                "rmse_vs_ref_over_amp": [o["rmse_vs_ref_over_amp"], p["rmse_vs_ref_over_amp"]],
+                "volume_ratio": [o["volume_ratio"], p["volume_ratio"]],
+            }
+        out["large_pulse"].append(e)
+    return out
 
 
 def print_table(summary) -> None:
@@ -330,6 +388,44 @@ def print_table(summary) -> None:
               f"peak err {o['peak_error_rel_to_ref_excess']:+.3f}->{p['peak_error_rel_to_ref_excess']:+.3f} | "
               f"tpk {o['t_peak_minus_ref_h']:+.2f}->{p['t_peak_minus_ref_h']:+.2f} h | "
               f"vol {o['volume_ratio']:.3f}->{p['volume_ratio']:.3f} | min {o['min_flow']:.1f}->{p['min_flow']:.1f}")
+    print("SMALL PULSE, LAGGED upstream inflow (short-time-step assumption, as in WRF-Hydro / the NWM)")
+    print("  spread = variance growth / exact (D_eff/D at c0); cel = celerity / c0 (theory 1/(1-X+C/2));")
+    print("  D@cel = D_eff/D at the model's own celerity; current -> patched")
+    print(f"{'dx':>6} {'dt':>6} {'C':>5} {'Dcell':>6} | {'linK':>6} {'linC':>6} | {'spread o':>8} {'p':>6} | "
+          f"{'cel o':>6} {'p':>6} {'theo o':>6} {'p':>6} | {'D@cel o':>7} {'p':>6} | {'pk o':>6} {'p':>6} | "
+          f"{'tpk err o':>9} {'p':>6}")
+    for c in summary["small_pulse"]:
+        o, p = c["wrfhydro_orig_lagged"], c["wrfhydro_patched_lagged"]
+        g = lambda k: (f"{c[k]['D_eff_own_celerity_over_D_phys']:6.3f}" if c[k] else "   n/a")
+        print(f"{c['dx_m']:6.0f} {c['dt_s']:6.0f} {c['courant']:5.2f} {c['D_cell']:6.2f} | "
+              f"{g('linear_mc_kernel_lagged')} {g('linear_mc_cunge_lagged')} | "
+              f"{o['D_eff_over_D_phys']:8.3f} {p['D_eff_over_D_phys']:6.3f} | "
+              f"{o['celerity_ratio']:6.3f} {p['celerity_ratio']:6.3f} "
+              f"{c['lagged_theory_celerity_ratio_X_kernel']:6.3f} {c['lagged_theory_celerity_ratio_X_cunge']:6.3f} | "
+              f"{o['D_eff_own_celerity_over_D_phys']:7.3f} {p['D_eff_own_celerity_over_D_phys']:6.3f} | "
+              f"{o['peak_excess_over_exact']:6.3f} {p['peak_excess_over_exact']:6.3f} | "
+              f"{o['t_peak_minus_exact_h']:+9.2f} {p['t_peak_minus_exact_h']:+6.2f}")
+    print("LARGE PULSE, LAGGED upstream inflow, vs zero-inertia reference")
+    for c in summary["large_pulse"]:
+        o, p = c["wrfhydro_orig_lagged"], c["wrfhydro_patched_lagged"]
+        print(f"dx={c['dx_m']:5.0f} dt={c['dt_s']:5.0f} C0={c['courant_at_base']:.2f} | "
+              f"rmse {o['rmse_vs_ref_over_amp']:.3f}->{p['rmse_vs_ref_over_amp']:.3f} | "
+              f"peak err {o['peak_error_rel_to_ref_excess']:+.3f}->{p['peak_error_rel_to_ref_excess']:+.3f} | "
+              f"tpk {o['t_peak_minus_ref_h']:+.2f}->{p['t_peak_minus_ref_h']:+.2f} h | "
+              f"vol {o['volume_ratio']:.3f}->{p['volume_ratio']:.3f} | min {o['min_flow']:.1f}->{p['min_flow']:.1f}")
+    print("X EFFECT (patched vs current) BY MODE: small pulse D_eff/D at own celerity, peak excess change %, "
+          "peak shift h; large pulse peak change %, shift h")
+    for e in summary["x_effect_by_mode"]["small_pulse"]:
+        sq, lg = e["sequential"], e["lagged"]
+        print(f"small dx={e['dx_m']:5.0f} dt={e['dt_s']:5.0f} Dcell={e['D_cell']:4.2f} | sequential "
+              f"{sq['D_eff_own_celerity_over_D_phys'][0]:.3f}->{sq['D_eff_own_celerity_over_D_phys'][1]:.3f} "
+              f"{sq['peak_excess_change_pct']:+6.1f}% {sq['t_peak_shift_h']:+5.2f} h | lagged "
+              f"{lg['D_eff_own_celerity_over_D_phys'][0]:.3f}->{lg['D_eff_own_celerity_over_D_phys'][1]:.3f} "
+              f"{lg['peak_excess_change_pct']:+6.1f}% {lg['t_peak_shift_h']:+5.2f} h")
+    for e in summary["x_effect_by_mode"]["large_pulse"]:
+        sq, lg = e["sequential"], e["lagged"]
+        print(f"large dx={e['dx_m']:5.0f} dt={e['dt_s']:5.0f} | sequential {sq['peak_change_pct']:+6.2f}% "
+              f"{sq['t_peak_shift_h']:+5.2f} h | lagged {lg['peak_change_pct']:+6.2f}% {lg['t_peak_shift_h']:+5.2f} h")
 
 
 def make_figures(summary, rows_small, rows_large) -> None:
@@ -399,6 +495,51 @@ def make_figures(summary, rows_small, rows_large) -> None:
         ax.legend(frameon=False, fontsize=8)
         fig.savefig(RES / "fig_large_pulse.png", dpi=150)
         plt.close(fig)
+
+    # lagged upstream inflow (short-time-step assumption): hydrographs and celerity (added 2026-11-02)
+    th = rows_small["t_h"]
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.2), constrained_layout=True)
+    ax = axes[0]
+    ax.plot(th, rows_small["inflow_small"] - Q0, color="0.6", lw=1, label="inflow")
+    ax.plot(th, rows_small["exact"] - Q0, color="black", lw=2.2, label="convection-diffusion (exact)")
+    ax.plot(th, rows_small[f"wrfhydro_orig_{tag}"] - Q0, color="#eb6834", lw=1.0, alpha=0.5,
+            label="current, sequential inflow")
+    ax.plot(th, rows_small[f"wrfhydro_patched_{tag}"] - Q0, color="#2a78d6", lw=1.0, ls="--", alpha=0.5,
+            label="patched, sequential inflow")
+    ax.plot(th, rows_small[f"wrfhydro_orig_lagged_{tag}"] - Q0, color="#eb6834", lw=1.8,
+            label="current, lagged inflow (NWM)")
+    ax.plot(th, rows_small[f"wrfhydro_patched_lagged_{tag}"] - Q0, color="#2a78d6", lw=1.8, ls="--",
+            label="patched, lagged inflow (NWM)")
+    ax.set_xlim(0, 30)
+    ax.set_xlabel("time (h)")
+    ax.set_ylabel("flow above base (m³/s)")
+    ax.set_title(f"Small pulse, 64 km, dx = 4 km, dt = {int(DT)} s (D_cell = {dc4:.2f})")
+    ax.legend(frameon=False, fontsize=7)
+    ax = axes[1]
+    for dtsel, mk in ((DT, "o"), (None, "s")):
+        cs = [c for c in summary["small_pulse"] if (c["dt_s"] == DT) == (dtsel == DT) and c["courant"] <= 1.02]
+        dc = [c["D_cell"] for c in cs]
+        lab = f"dt = {int(DT)} s" if dtsel == DT else "C = 1"
+        al = 0.9 if dtsel == DT else 0.5
+        ax.plot(dc, [c["wrfhydro_orig_lagged"]["celerity_ratio"] for c in cs], mk + "-", color="#eb6834",
+                label=f"current, {lab}", alpha=al)
+        ax.plot(dc, [c["wrfhydro_patched_lagged"]["celerity_ratio"] for c in cs], mk + "--", color="#2a78d6",
+                label=f"patched, {lab}", alpha=al)
+        ax.plot(dc, [c["lagged_theory_celerity_ratio_X_kernel"] for c in cs], "x", color="black", ms=5,
+                label="1/(1 - X + C/2)" if dtsel == DT else None)
+        ax.plot(dc, [c["lagged_theory_celerity_ratio_X_cunge"] for c in cs], "x", color="black", ms=5)
+    ax.axhline(1.0, color="black", lw=1)
+    ax.set_xscale("log")
+    ax.set_xticks([0.15, 0.3, 0.6, 1.2, 2.4])
+    ax.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter("%g"))
+    ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+    ax.grid(axis="y", color="0.9", lw=0.6)
+    ax.set_xlabel("cell Reynolds number D_cell = Q/(B S0 c dx)")
+    ax.set_ylabel("wave celerity / physical celerity")
+    ax.set_title("Lagged upstream inflow: celerity (centroid travel time)")
+    ax.legend(frameon=False, fontsize=7)
+    fig.savefig(RES / "fig_small_pulse_lagged.png", dpi=150)
+    plt.close(fig)
 
 
 if __name__ == "__main__":
