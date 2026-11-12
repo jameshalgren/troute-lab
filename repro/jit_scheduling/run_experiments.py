@@ -2,7 +2,7 @@
 # requires-python = "==3.12.*"
 # dependencies = ["numpy==2.5.4", "numba==0.68.1", "netCDF4==1.7.5.1.post1", "pandas==3.0.6"]
 # ///
-"""Run the scheduling experiment on the NWM v3.1.6 CONUS RouteLink.
+"""Run the scheduling experiment on the NWM v3.1.7 CONUS RouteLink.
 
     uv run run_experiments.py            # main grid + sensitivities (see README for run time)
     uv run run_experiments.py --quick    # Rio Grande only, few core counts
@@ -39,7 +39,7 @@ SCOPE_OUTLETS = {
     "LowerColorado_TX+Brazos": [3766342, 3125212],   # two independent networks routed together
     "Trinity": [1523997],                     # "Trinity River"
     # Potomac: all 16,454 segments upstream of NWM feature 4539621 (the river's mouth at
-    # Chesapeake Bay; a network outlet in v3.1.6). Same network as ../short_ts_switch
+    # Chesapeake Bay; a network outlet in v3.1.7). Same network as ../short_ts_switch
     # (potomac_storm) and the planned per-segment cost measurements.
     "Potomac": [4539621],
 }

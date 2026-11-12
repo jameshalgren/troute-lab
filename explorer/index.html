@@ -43,7 +43,6 @@ a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: un
 nav.top { position: sticky; top: 0; z-index: 20; display: flex; gap: 16px; align-items: center;
   padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--grid); }
 nav.top .title { font-weight: 650; }
-nav.top .badge { font-size: 11px; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--grid); color: var(--ink2); }
 nav.top .links { display: flex; gap: 14px; margin-left: auto; }
 main { max-width: 1500px; margin: 0 auto; padding: 12px 16px 40px; }
 .intro { color: var(--ink2); max-width: 980px; margin: 4px 0 12px; }
@@ -55,9 +54,11 @@ main { max-width: 1500px; margin: 0 auto; padding: 12px 16px 40px; }
 .panel h3 { margin: 0; font-size: 14px; font-weight: 650; }
 .panel .head { padding: 10px 12px 4px; }
 .panel .head p { margin: 2px 0 0; color: var(--ink2); font-size: 12.5px; }
+#hsub { min-height: 2.9em; }   /* two lines in every mode, so the chart below never moves */
 .seg { display: inline-flex; border: 1px solid var(--grid); border-radius: 6px; overflow: hidden; margin: 6px 12px 0; }
 .seg button { border: 0; background: transparent; color: var(--ink2); padding: 4px 10px; font: inherit; font-size: 12.5px; cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--accent-wash); color: var(--ink); }
+.seg[hidden] { display: none; }
 .seg.domsw { margin: 6px 0 2px; flex-wrap: wrap; }
 .seg.domsw button { padding: 6px 12px; font-size: 13.5px; }
 .tbx { color: var(--warn); }
@@ -78,6 +79,12 @@ input[type=search] { flex: 1 1 240px; min-width: 0; padding: 7px 10px; border-ra
 button.btn { padding: 7px 12px; border-radius: 6px; border: 1px solid var(--grid); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; }
 button.btn:hover { border-color: var(--accent); }
 label.chk { color: var(--ink2); display: inline-flex; gap: 6px; align-items: center; }
+.smoothrow { display: flex; align-items: center; gap: 14px; height: 26px; margin: 6px 12px 0; white-space: nowrap; }
+.smoothrow:not([hidden]) { display: flex; } .smoothrow[hidden] { display: none; }
+.smoothrow .chk { color: var(--ink2); display: inline-flex; gap: 6px; align-items: center; }
+.smoothrow input[type=range] { width: 140px; margin: 0; }
+.smoothrow button.fold { background: none; border: 1px solid var(--grid); border-radius: 4px; color: var(--ink2);
+  font-size: 11px; line-height: 1; padding: 2px 5px; cursor: pointer; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--grid); background: var(--surface); color: var(--ink2); cursor: pointer; font-size: 12.5px; }
 .chip[aria-pressed="true"] { border-color: var(--accent); color: var(--ink); background: var(--accent-wash); }
@@ -113,7 +120,6 @@ footer { color: var(--muted); font-size: 12px; margin-top: 28px; }
 <body>
 <nav class="top">
   <span class="title">NWM basin explorer</span>
-  <span class="badge">AI-generated view · not approved</span>
   <span class="links"><a href="#rivers">Rivers</a><a href="#places">Places</a><a href="#about">About</a></span>
 </nav>
 <main>
@@ -123,18 +129,19 @@ footer { color: var(--muted); font-size: 12px; margin-top: 28px; }
   <button data-dom="HI" aria-pressed="false">Hawaii</button>
   <button data-dom="PRVI" aria-pressed="false">Puerto Rico &amp; USVI</button>
 </div>
-<p class="intro">Independent drainage networks of the NWM v3.1.6 channel network (RouteLink) in each
+<p class="intro">Independent drainage networks of the NWM v3.1.7 channel network (RouteLink) in each
 NWM domain, with named tributaries nested beneath them. Click a row (or a river on the map) to highlight it.
 The histogram shows the selected river's <em>width function</em>: how many segments lie at each
-topological distance (in reaches) above its mouth, which is the work available at each level of
-just-in-time (JIT) scheduling. Hover a bar to light up that band on the map.</p>
+topological distance above its mouth, counted in segments (or how many reaches at each distance counted in
+reaches), one mark per level, which is the work available at each level of just-in-time (JIT) scheduling.
+Hover a level to light it up on the map.</p>
 
 <div class="viz">
   <div class="panel"><div id="map" role="region" aria-label="Map of NWM rivers"></div>
     <div class="legend" aria-label="Map legend">
       <span><span class="sw" style="background:var(--accent)"></span>selected river or network</span>
       <span id="lg-up"><span class="sw" style="background:var(--place)"></span>upstream of selected point</span>
-      <span id="lg-band" hidden><span class="sw" style="background:var(--ink)"></span>hovered histogram band</span>
+      <span id="lg-band" hidden><span class="sw" style="background:var(--ink)"></span>hovered width-function level</span>
       <span id="lg-border" hidden><span class="ln"></span>outside the U.S. · <span class="ln" style="border-top-style:dotted"></span>along the boundary</span>
       <label class="chk"><input id="bshow" type="checkbox"> Show border channels</label>
     </div></div>
@@ -143,7 +150,15 @@ just-in-time (JIT) scheduling. Hover a bar to light up that band on the map.</p>
     <div class="seg" role="group" aria-label="Histogram mode">
       <button id="m-width" aria-pressed="false">Width function</button>
       <button id="m-sizes" aria-pressed="true">Network sizes</button>
+    </div><div class="seg" role="group" aria-label="Width function count" id="wsw" hidden>
+      <button id="w-seg" aria-pressed="true">Segments per level</button>
+      <button id="w-reach" aria-pressed="false">Reaches per level</button>
     </div>
+    <div id="smoothctl" class="smoothrow" hidden>
+      <label class="chk"><input id="sline" type="checkbox" checked> Moving-average line</label>
+      <span id="swin" class="chk"><button id="sfold" class="fold" aria-expanded="false" aria-controls="smooth" title="Change the window">▸</button>
+        <input id="smooth" type="range" min="1" max="100" value="10" hidden aria-label="Moving-average window (levels)">
+        <span><span id="smoothv">10</span> levels</span></span></div>
     <svg id="hist" role="img" aria-label="Histogram"></svg>
     <div id="histnote"></div>
     <div class="tip" id="tip"></div>
@@ -200,7 +215,7 @@ just-in-time (JIT) scheduling. Hover a bar to light up that band on the map.</p>
 
 <footer id="about">
   <p><strong>About.</strong> Generated from the reproducible experiment <code>repro/network_stats/</code>
-  (NWM v3.1.6 RouteLink) and the NWM v3 hydrofabric geodatabase; see <code>explorer/DATA_CONTRACT.md</code>.
+  (NWM v3.1.7 RouteLink) and the NWM v3 hydrofabric geodatabase; see <code>explorer/DATA_CONTRACT.md</code>.
   A segment starts a new reach unless it has exactly one upstream segment. CONUS feature IDs link to the USGS NLDI
   record (NHDPlus V2 COMID); Hawaii and Puerto Rico IDs are NHDPlus V2.1 COMIDs and Alaska IDs NHDPlus HR
   NHDPlusIDs (or Arc-Hydro segments on the Copper River), which NLDI does not serve. The NWM Alaska domain covers
@@ -228,7 +243,7 @@ const DOM_NAME = {CONUS: "CONUS", AK: "Alaska", HI: "Hawaii", PRVI: "Puerto Rico
 
 const S = { nodes: [], by: new Map(), kids: new Map(), widths: {}, bboxes: {}, places: [],
   selected: null, open: new Set(), sortKey: "n_segments", asc: false, q: "", onlyKids: false,
-  mode: "sizes", band: null, map: null, mapReady: false,
+  mode: "sizes", wcount: "segments", smooth: 10, sline: true, band: null, map: null, mapReady: false,
   ptype: null, pq: "", pflag: false, pinsel: false, psort: "nflags", pasc: false, plimit: 300, psel: null,
   pshow: true, up: null, hasIntervals: false, torder: "up", dom: "CONUS" };
 
@@ -392,9 +407,81 @@ function niceTicks(max, n = 4) { if (max <= 0) return [0]; const raw = max / n, 
 function setMode(m) { S.mode = m; $("#m-width").setAttribute("aria-pressed", m === "width"); $("#m-sizes").setAttribute("aria-pressed", m === "sizes"); S.band = null; renderHist(); updateMap(false); }
 $("#m-width").addEventListener("click", () => setMode("width"));
 $("#m-sizes").addEventListener("click", () => setMode("sizes"));
+function setWCount(c) { S.wcount = c; S.band = null; renderHist(); updateBand(); }
+$("#w-seg").addEventListener("click", () => setWCount("segments"));
+$("#w-reach").addEventListener("click", () => setWCount("reaches"));
+// Moving-average line toggle and window slider (folded under the toggle). Redrawing the whole chart
+// for the Mississippi (2,219 levels) took ~1 ms per update in Chromium (2026-11-11).
+$("#smooth").addEventListener("input", e => { S.smooth = +e.target.value; $("#smoothv").textContent = S.smooth; renderHist(); });
+// (#swin's visibility "" inherits, so the window control also hides with its row)
+$("#sline").addEventListener("change", e => { S.sline = e.target.checked; $("#swin").style.visibility = S.sline ? "" : "hidden"; renderHist(); });
+// the window slider folds out in the same row, so neither control moves the chart
+$("#sfold").addEventListener("click", e => { const open = $("#smooth").hidden; $("#smooth").hidden = !open;
+  e.currentTarget.textContent = open ? "◂" : "▸"; e.currentTarget.setAttribute("aria-expanded", open); });
+
+// Centred moving average over w levels (i - floor(w/2) .. i + ceil(w/2) - 1, truncated at
+// the ends). Returns [centre, mean] per level; the line is drawn at each window's centre.
+function movingAvg(v, w) {
+  const n = v.length, cs = new Float64Array(n + 1), out = new Array(n);
+  for (let i = 0; i < n; i++) cs[i + 1] = cs[i] + v[i];
+  for (let i = 0; i < n; i++) {
+    const lo = Math.max(0, i - Math.floor(w / 2)), hi = Math.min(n - 1, i + Math.ceil(w / 2) - 1);
+    out[i] = [(lo + hi) / 2, (cs[hi + 1] - cs[lo]) / (hi - lo + 1)];
+  }
+  return out;
+}
+// Width function: one mark per level (a short tick at the count, which shrinks to a dot when
+// levels are packed; thin stems when levels are at least 3 px apart), the moving average as
+// one line, and a single hit area that maps the pointer to a level. A few SVG elements in
+// all, however many levels.
+function drawLevels(vals, opt) {
+  const svg = $("#hist"), W = svg.clientWidth || 500, H = svg.clientHeight || 330;
+  const m = {l: 56, r: 12, t: 10, b: 38}, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const n = vals.length, slot = iw / Math.max(n, 1), X = i => (i + 0.5) * slot;
+  const ticks = niceTicks(Math.max(1, ...vals)), ymax = ticks[ticks.length - 1], Y = v => ih - v / ymax * ih;
+  let g = `<g transform="translate(${m.l},${m.t})">`;
+  for (const t of ticks) { const y = Y(t); g += `<line x1="0" x2="${iw}" y1="${y}" y2="${y}" stroke="${css('--grid')}" stroke-width="1"/><text x="-8" y="${y + 4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${fmt(t)}</text>`; }
+  const tw = Math.max(1.5, Math.min(8, slot - 1));
+  let marks = "", stems = "";
+  for (let i = 0; i < n; i++) {
+    const x = X(i), y = Y(vals[i]);
+    marks += `M${(x - tw / 2).toFixed(1)},${y.toFixed(1)}h${tw.toFixed(1)}`;
+    if (slot >= 3 && vals[i] > 0) stems += `M${x.toFixed(1)},${ih}V${y.toFixed(1)}`;
+  }
+  if (stems) g += `<path d="${stems}" stroke="${css('--axis')}" stroke-width="1" fill="none"/>`;
+  g += `<path d="${marks}" stroke="${css('--muted')}" stroke-width="1.5" fill="none"/>`;
+  g += `<line x1="0" x2="${iw}" y1="${ih}" y2="${ih}" stroke="${css('--axis')}" stroke-width="1"/>`;
+  const ma = movingAvg(vals, S.smooth), showMA = S.sline && n > S.smooth;
+  if (showMA) {
+    g += `<path id="hma" d="${ma.map(([c, a], k) => (k ? "L" : "M") + X(c).toFixed(1) + "," + Y(a).toFixed(1)).join("")}" stroke="${css('--bar-hi')}" stroke-width="1.75" fill="none" stroke-linejoin="round"/>`;
+    g += `<line x1="${iw - 18}" x2="${iw}" y1="6" y2="6" stroke="${css('--bar-hi')}" stroke-width="1.75"/>`
+       + `<text x="${iw - 22}" y="10" text-anchor="end" font-size="11" fill="${css('--ink2')}">${S.smooth}-level moving average</text>`;
+  }
+  for (const t of niceTicks(Math.max(1, n - 1), 5)) if (t <= n - 1)
+    g += `<text x="${X(t)}" y="${ih + 14}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${fmt(t)}</text>`;
+  g += `<text x="${iw / 2}" y="${ih + 32}" text-anchor="middle" font-size="11.5" fill="${css('--ink2')}">${esc(opt.xlabel)}</text>`;
+  g += `<text transform="translate(${-44},${ih / 2}) rotate(-90)" text-anchor="middle" font-size="11.5" fill="${css('--ink2')}">${esc(opt.ylabel)}</text>`;
+  g += `<g id="hcur" visibility="hidden"><line y1="0" y2="${ih}" stroke="${css('--axis')}" stroke-width="1"/>`
+     + `<circle r="3.5" fill="${css('--bar-hi')}" stroke="${css('--surface')}" stroke-width="1.5"/></g>`;
+  g += `<rect id="hhit" x="0" y="0" width="${iw}" height="${ih}" fill="transparent"/></g>`;
+  svg.innerHTML = g;
+  const hit = svg.querySelector("#hhit"), cur = svg.querySelector("#hcur");
+  let last = -1;
+  hit.addEventListener("mousemove", e => {
+    const i = Math.max(0, Math.min(n - 1, Math.floor((e.clientX - hit.getBoundingClientRect().left) / slot)));
+    const x = X(i);
+    cur.setAttribute("visibility", "visible");
+    cur.firstChild.setAttribute("x1", x); cur.firstChild.setAttribute("x2", x);
+    cur.lastChild.setAttribute("cx", x); cur.lastChild.setAttribute("cy", Y(vals[i]));
+    showTip(opt.label(i, showMA ? ma[i][1] : null), e.clientX, e.clientY);
+    if (i !== last && opt.onHover) opt.onHover(i);
+    last = i;
+  });
+  hit.addEventListener("mouseleave", () => { cur.setAttribute("visibility", "hidden"); hideTip(); last = -1; if (opt.onHover) opt.onHover(null); });
+}
 
 function drawBars(bins, opt) {
-  // bins: [{x0,x1,v,label,hi}] ; linear x across bin index, linear y
+  // bins: [{v,label,tick,hi}] ; linear x across bin index, linear y (network sizes)
   const svg = $("#hist"), W = svg.clientWidth || 500, H = svg.clientHeight || 330;
   const m = {l: 56, r: 12, t: 10, b: 38}, iw = W - m.l - m.r, ih = H - m.t - m.b;
   const vmax = Math.max(1, ...bins.map(b => b.v)); const ticks = niceTicks(vmax); const ymax = ticks[ticks.length - 1] || vmax;
@@ -429,16 +516,38 @@ function drawBars(bins, opt) {
 function renderHist() {
   $("#m-width").setAttribute("aria-pressed", S.mode === "width"); $("#m-sizes").setAttribute("aria-pressed", S.mode === "sizes");
   const n = S.selected;
+  // the width-function controls keep their space in every mode (visibility, not display),
+  // so switching between the histograms never moves the chart
+  const wctl = S.mode === "width" && n && S.widths[n.code];
+  for (const el of [$("#wsw"), $("#smoothctl")]) { el.hidden = false; el.style.visibility = wctl ? "visible" : "hidden"; }
   if (S.mode === "width" && n && S.widths[n.code]) {
-    const w = S.widths[n.code], b = w.bin;
+    const w = S.widths[n.code], segs = S.wcount === "segments";
+    $("#w-seg").setAttribute("aria-pressed", segs); $("#w-reach").setAttribute("aria-pressed", !segs);
+    const nm = (v, seg) => `${fmt(v)} ${seg ? (v === 1 ? "segment" : "segments") : (v === 1 ? "reach" : "reaches")}`;
     $("#htitle").textContent = `Width function: ${n.name}`;
-    $("#hsub").textContent = `Segments by distance above the mouth (bins of ${b} reach${b > 1 ? "es" : ""}). Each bar is the work available at one JIT level.`;
-    const bins = w.counts.map((v, i) => ({ v, x0: i * b, x1: (i + 1) * b, tick: fmt(i * b),
-      label: `<strong>${fmt(v)}</strong> segments<br>${fmt(i * b)}–${fmt((i + 1) * b - 1)} reaches above the mouth` }));
-    drawBars(bins, { xlabel: "Distance above mouth (reaches)", ylabel: "Segments",
-      onHover: bin => { S.band = bin ? [w.d0 + bin.x0, w.d0 + bin.x1] : null; updateBand(); } });
-    const peak = w.counts.indexOf(Math.max(...w.counts));
-    $("#histnote").textContent = `Peak ${fmt(w.counts[peak])} segments at ${fmt(peak * b)}–${fmt((peak + 1) * b - 1)} reaches; deepest headwater ${fmt(w.max_d)} reaches above the mouth. Hover a bar to light that band on the map.`;
+    // Segments mode is on the segment axis (distance in segment hops, tile property ds,
+    // levels from ds0); reaches mode on the reach axis (distance in reaches, d, from d0).
+    // A widths.json without segments_ds (before explorer-data-v3) falls back to the reach axis.
+    const hops = segs && Array.isArray(w.segments_ds);
+    if (hops) {
+      const vals = w.segments_ds, above = i => `${nm(i, true)} above the mouth`;
+      $("#hsub").textContent = "Segments at each distance above the mouth, one mark per level (distance in segments).";
+      drawLevels(vals, { xlabel: "Distance above mouth (segments)", ylabel: "Segments per level",
+        label: (i, avg) => `<strong>${nm(vals[i], true)}</strong><br>${above(i)}`
+          + (avg != null ? `<br>${S.smooth}-level average: ${fmt(Math.round(avg))} segments` : ""),
+        onHover: i => { S.band = i != null ? {prop: "ds", lo: w.ds0 + i, hi: w.ds0 + i + 1} : null; updateBand(); } });
+      const pk = vals.indexOf(Math.max(...vals));
+      $("#histnote").textContent = `Widest level: ${nm(vals[pk], true)} at ${above(pk)}. Deepest headwater ${above(w.max_ds)}. Hover a level to light it on the map.`;
+      return;
+    }
+    const vals = segs ? w.segments : w.reaches, alt = segs ? w.reaches : w.segments;
+    $("#hsub").textContent = `${segs ? "Segments" : "Reaches"} at each distance above the mouth, one mark per level (distance in reaches).`;   // the line is named by its key in the chart
+    drawLevels(vals, { xlabel: "Distance above mouth (reaches)", ylabel: segs ? "Segments per level" : "Reaches per level",
+      label: (i, avg) => `<strong>${nm(vals[i], segs)}</strong> (${nm(alt[i], !segs)})<br>${fmt(i)} reaches above the mouth`
+        + (avg != null ? `<br>${S.smooth}-level average: ${fmt(Math.round(avg))} ${segs ? "segments" : "reaches"}` : ""),
+      onHover: i => { S.band = i != null ? {prop: "d", lo: w.d0 + i, hi: w.d0 + i + 1} : null; updateBand(); } });
+    const pk = vals.indexOf(Math.max(...vals));
+    $("#histnote").textContent = `Widest level: ${nm(vals[pk], segs)} (${nm(alt[pk], !segs)}) at ${fmt(pk)} reaches above the mouth. Deepest headwater ${fmt(w.max_d)} reaches above the mouth. Hover a level to light it on the map.`;
     return;
   }
   // network sizes: log2 bins of all network sizes of the current domain
@@ -547,7 +656,7 @@ async function initMap() {
         const f = fs.reduce((a, b) => (b.properties.o > a.properties.o ? b : a)), p = f.properties;
         const code = p.r > 0 ? p.r : (p.n > 0 ? p.n : null);
         const fdom = DOMS[p.dm ?? 0] || "CONUS";
-        new maplibregl.Popup({closeButton: false}).setLngLat(e.lngLat).setHTML(`Feature ${fidLink(p.id, fdom)} <span style="color:var(--muted)">(${esc(DOM_NAME[fdom])})</span><br>order ${p.o} · ${p.d} reaches from outlet${p.z != null ? `<br>${fmt(p.z)} segments upstream (inclusive)` : ""}${p.x === 1 ? "<br>outside the U.S. (transboundary channel)" : p.x === 2 ? "<br>along the international boundary" : ""}${p.h ? "<br>hydrography source: not NHDPlus" : ""}${code ? `<br>in ${esc(S.by.get(code)?.name ?? "")}` : "<br>(network not listed)"}`).addTo(map);
+        new maplibregl.Popup({closeButton: false}).setLngLat(e.lngLat).setHTML(`Feature ${fidLink(p.id, fdom)} <span style="color:var(--muted)">(${esc(DOM_NAME[fdom])})</span><br>order ${p.o} · ${p.d} reaches${p.ds != null ? ` (${fmt(p.ds)} segments)` : ""} from outlet${p.z != null ? `<br>${fmt(p.z)} segments upstream (inclusive)` : ""}${p.x === 1 ? "<br>outside the U.S. (transboundary channel)" : p.x === 2 ? "<br>along the international boundary" : ""}${p.h ? "<br>hydrography source: not NHDPlus" : ""}${code ? `<br>in ${esc(S.by.get(code)?.name ?? "")}` : "<br>(network not listed)"}`).addTo(map);
         clearPoint();   // a new click replaces any earlier point or place
         setF("flow-seg", ["all", ["==", ["get", "id"], p.id], ["==", ["coalesce", ["get", "dm"], 0], p.dm ?? 0]]);
         setUpstream(p, `feature ${p.id}`);
@@ -592,28 +701,34 @@ function updateMap(fly) {
     S.map.fitBounds([[w, s], [e, n]], {padding: 30, maxZoom: 9, duration: 700});
   }
 }
-// Histogram hover. The band layer's filter is the selected river (set once per selection);
-// hovering only flips the feature state of the segments entering or leaving the band, which
-// repaints without re-parsing tiles. The segments of the selected river in the loaded tiles
-// are indexed by distance d on first hover, and re-indexed after new tiles load.
+// Histogram hover. S.band = {prop, lo, hi}: light the selected river's segments whose tile
+// property prop ("d" = distance in reaches, "ds" = distance in segment hops) is in [lo, hi).
+// The band layer's filter is the selected river (set once per selection); hovering only
+// flips the feature state of the segments entering or leaving the band, which repaints
+// without re-parsing tiles. The segments of the selected river in the loaded tiles are
+// indexed by the band's property on first hover, and re-indexed after new tiles load or
+// when the property changes.
 let bandKey = null, bandFrame = 0, bandIdx = null, bandOn = [];
-function buildBandIndex() {
-  bandIdx = new Map();
+function buildBandIndex(prop) {
+  const idx = new Map();
   (S.srcs || []).forEach((_, k) => { const source = "flow" + (k || "");
     for (const f of S.map.querySourceFeatures(source, {sourceLayer: "flow", filter: riverFilter()})) {
-      const d = f.properties.d; if (!bandIdx.has(d)) bandIdx.set(d, []); bandIdx.get(d).push([source, f.id]); } });
+      const d = f.properties[prop]; if (d == null) continue;   // tiles without ds (before explorer-data-v3)
+      if (!idx.has(d)) idx.set(d, []); idx.get(d).push([source, f.id]); } });
+  bandIdx = {prop, idx};
 }
 function applyBand() {
   for (const [source, id] of bandOn) S.map.setFeatureState({source, sourceLayer: "flow", id}, {band: false});
   bandOn = [];
   if (!bandKey) return;
-  if (!bandIdx) buildBandIndex();
-  for (let d = S.band[0]; d < S.band[1]; d++) for (const x of bandIdx.get(d) || []) {
+  const {prop, lo, hi} = S.band;
+  if (!bandIdx || bandIdx.prop !== prop) buildBandIndex(prop);
+  for (let d = lo; d < hi; d++) for (const x of bandIdx.idx.get(d) || []) {
     S.map.setFeatureState({source: x[0], sourceLayer: "flow", id: x[1]}, {band: true}); bandOn.push(x); }
 }
 function updateBand() {
   if (!S.mapReady || !S.map.getLayer("flow-band")) return;
-  const key = S.band && S.selected ? `${S.selected.code}:${S.band[0]}:${S.band[1]}` : null;
+  const key = S.band && S.selected ? `${S.selected.code}:${S.band.prop}:${S.band.lo}:${S.band.hi}` : null;
   if (key === bandKey) return;
   bandKey = key;
   $("#lg-band").hidden = !key;

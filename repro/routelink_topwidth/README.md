@@ -1,18 +1,19 @@
-# RouteLink compound-channel top width (NWM v3.1.6)
+# RouteLink compound-channel top width (NWM v3.1.7)
 
 *AI-assembled (Claude, 2026-10-05); not yet reviewed by the author.*
 
 ## Question
 How is `TopWdthCC` (the compound-channel/floodplain top width used by Muskingum-Cunge
 in the NWM and T-Route) derived from `TopWdth` and the other channel parameters in the
-operational NWM v3.1.6 RouteLink files? Discussion and interpretation will be in the forthcoming paper (see the top-level
+operational NWM v3.1.7 RouteLink files? Discussion and interpretation will be in the forthcoming paper (see the top-level
 README).
 
 ## Provenance
 - **Inputs:** `RouteLink_{CONUS,AK,HI,PRVI}.nc` from NCEP's operational parameter tree,
-  <https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/> (`domain/`,
-  `domain_alaska/`, `domain_hawaii/`, `domain_puertorico/`). Downloaded 2026-09-30; server
-  `Last-Modified` Thu, 09 Jul 2026. SHA-256 and sizes are recorded in `fetch_data.py`.
+  <https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/> (`domain/`,
+  `domain_alaska/`, `domain_hawaii/`, `domain_puertorico/`). Downloaded 2026-09-30 from v3.1.6 (server
+  `Last-Modified` Thu, 09 Jul 2026); v3.1.7 serves the same files byte for byte (re-checked
+  2026-11-12). SHA-256 and sizes are recorded in `fetch_data.py`.
   The CONUS file's `processing_notes` say it was "produced on Tue Aug 5 2025 by Lynker".
 - **Method:** `analyze.py` (first run 2026-10-01/02 as a standalone script).
   The analysis logic is unchanged; it now also writes machine-readable results.
@@ -47,6 +48,6 @@ BtmWdth/TopWdth within 1e-6 of 0.6 for every reach.
   two "most common values" listings (pandas 3 vs. the earlier pandas); no number differs.
 - The `n_*_CONUS_floors` fields are computed for every domain but are meaningful (and
   checked) only for CONUS; AK, HI, and PRVI have no floors.
-- NCEP's `nwprod` tree holds only current operational versions. If v3.1.6 is retired or
+- NCEP's `nwprod` tree holds only current operational versions. If v3.1.7 is retired or
   the files are replaced, `fetch_data.py` stops with an explanation rather than using
   different data.

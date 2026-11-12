@@ -1,7 +1,7 @@
 [project]
 name = "repro-network-stats"
 version = "1.0.0"
-description = "Characterize the NWM v3.1.6 RouteLink channel network as independent drainage networks"
+description = "Characterize the NWM v3.1.7 RouteLink channel network as independent drainage networks"
 requires-python = "==3.12.*"
 # Exact pins for direct dependencies; uv.lock pins the full tree with hashes.
 dependencies = [

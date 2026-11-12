@@ -1,4 +1,4 @@
-"""Download the NWM v3.1.6 RouteLink files into data/ and verify their SHA-256.
+"""Download the NWM v3.1.7 RouteLink files into data/ and verify their SHA-256.
 
 Idempotent: a file already present with the expected hash is not downloaded again.
 Fails (exit 1) with an explanation if a URL is gone or the content has changed.
@@ -17,11 +17,12 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 DATA = HERE / "data"
-BASE = "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm"
+BASE = "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm"
 
 # name: (url, sha256, size in bytes). Hashes observed on copies downloaded 2026-09-30;
 # re-confirmed against the server's Content-Length and Last-Modified
-# (Thu, 09 Jul 2026) on 2026-10-05.
+# (Thu, 09 Jul 2026) on 2026-10-05, then on v3.1.6. v3.1.7 serves byte-identical files
+# (same SHA-256; re-checked 2026-11-12, server Last-Modified Mon, 02 Nov 2026).
 FILES = {
     "RouteLink_CONUS.nc": (f"{BASE}/domain/RouteLink_CONUS.nc",
                            "4957655896f4f27854f893d02fa084f9f79c1cf8e80ce77565a7356dadb6fc0e", 269369766),
@@ -34,10 +35,10 @@ FILES = {
 }
 
 MOVED_HELP = """\
-NCEP keeps only the operational NWM versions under /pmb/codes/nwprod/. If nwm.v3.1.6 has
+NCEP keeps only the operational NWM versions under /pmb/codes/nwprod/. If nwm.v3.1.7 has
 been retired, the same files may be under a newer nwm.v3.x.y directory, but they must
 then match the SHA-256 above to reproduce these results. Otherwise, obtain the exact
-files from an archive of NWM v3.1.6 parameter files and place them in data/."""
+files from an archive of NWM v3.1.7 parameter files and place them in data/."""
 
 
 def sha256(path: Path) -> str:

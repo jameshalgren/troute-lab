@@ -162,7 +162,7 @@ extra.
   (reaches, clusters, overhead).
 
 ## Input and the networks
-Input: NWM v3.1.6 `RouteLink_CONUS.nc` (2,776,734 segments, 12,820 networks), downloaded
+Input: NWM v3.1.7 `RouteLink_CONUS.nc` (2,776,734 segments, 12,820 networks), downloaded
 by `../network_stats/fetch_data.py` (URL and SHA-256
 `4957655896f4f27854f893d02fa084f9f79c1cf8e80ce77565a7356dadb6fc0e` pinned there). The
 graph agrees with `../network_stats/expected/expected.json` (`check.py` test 4): 2,114,380
@@ -178,7 +178,7 @@ reaches; Mississippi 1,117,312 segments, 868,651 reaches, longest path 3,174 seg
 | Brazos River | 3125212 | 14,293 | 9,871 | 742 | `gnis_name` "Brazos River" |
 | Colorado TX + Brazos | 3766342 + 3125212 | 25,541 | 17,605 | 742 | the two independent networks pooled |
 | Trinity River | 1523997 | 9,616 | 6,533 | 336 | `gnis_name` "Trinity River" |
-| Potomac River | 4539621 | 16,454 | 12,111 | 527 | All segments upstream of NWM feature 4539621 (a network outlet in v3.1.6, the mouth at Chesapeake Bay), as in `../short_ts_switch/README.md` (`potomac_storm`). The scope of the measured per-segment costs (RERUN_PLAN item 2; see "Unequal costs") |
+| Potomac River | 4539621 | 16,454 | 12,111 | 527 | All segments upstream of NWM feature 4539621 (a network outlet in v3.1.7, the mouth at Chesapeake Bay), as in `../short_ts_switch/README.md` (`potomac_storm`). The scope of the measured per-segment costs (RERUN_PLAN item 2; see "Unequal costs") |
 
 **The t-route test case.** The author asked (2026-10-29): *please use
 the "Little Colorado" river in Texas as the small network. Do it alone and together with
@@ -187,7 +187,7 @@ What the repository shows (`NOAA-OWP/t-route` at `12a8eae0`, checked 2026-10-29)
 - `test/LowerColorado_TX/domain/RouteLink.nc` (1,117,660 bytes, SHA-256
   `e7ab06e5a93c664a91b10650063e0994279ef5ecc355024a780594d44e1aab47`) holds **one**
   network, outlet 3766342, 11,248 segments, at 28.60 N, 95.98 W (Matagorda Bay). It is
-  exactly the v3.1.6 CONUS network of that outlet (`check.py` test 7 compares all segment
+  exactly the v3.1.7 CONUS network of that outlet (`check.py` test 7 compares all segment
   ids). NHDPlus names it "Colorado River" (the lower Colorado of Texas). I took this to be
   the network meant by "Little Colorado".
 - `test/LowerColorado_TX/test_AnA.yaml` runs it with `parallel_compute_method:
@@ -520,4 +520,4 @@ factors outside this model:
 - Dispatch overhead is a free parameter. Memory and cache effects are not modelled.
 - The 2020 spreadsheet is unavailable. `opp_rounds` reconstructs its opportunistic method
   from `nhd_reach_parallel_test.py`; its numbers are not replicated.
-- Only the NWM v3.1.6 CONUS RouteLink was used.
+- Only the NWM v3.1.7 CONUS RouteLink was used.

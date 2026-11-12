@@ -6,18 +6,18 @@
   "bundles": {
     "explorer": {
       "about": "Basin explorer web data (JSON + web tiles: web_low z3-8 and regional z9-10 files, each < 95 MB); optional full-resolution tiles",
-      "tag": "explorer-data-v2",
+      "tag": "explorer-data-v3",
       "dest": "explorer/data",
       "hydroshare": null,
       "files": {
         "rivers.json": {
-          "sha256": "fff392c0fe191370319480ed0555a3dc5e4e8c1087216f82c647a4ce77275d9f",
+          "sha256": "c3eec6629ce047311091d7a4635ec8f78bc126a0d7ea0b081f726b5dd1586853",
           "size": 575001,
           "required": true
         },
         "widths.json": {
-          "sha256": "1d7e2b53123a4213623a359e5890cfd7a5336f432e3c620c52e16cc6e8fb8188",
-          "size": 353270,
+          "sha256": "eee959375dadcdc179bf01729afb2dfacfb1c838d7f6320ee0438f17a1ad1c3c",
+          "size": 1208559,
           "required": true
         },
         "bboxes.json": {
@@ -31,48 +31,48 @@
           "required": true
         },
         "places.json": {
-          "sha256": "0bb577ea6a32f159e0e617f17a26fe7898b18d36364f5ab04ffae9247818af7c",
+          "sha256": "2dec5d2dab4f856e2c45fb3d423d7a0ca23cd82ead843ccb668ade9357d6b048",
           "size": 12847583,
           "required": true
         },
         "tiles.json": {
-          "sha256": "19d1009912c1b2b1a61290a69234cbe662cc8b1f78f4226f99778efc3269f1d8",
-          "size": 3456,
+          "sha256": "14eac01f86295af028fa90d317c2e684c81d37d25a334b7f25d763aab73ff2c4",
+          "size": 3466,
           "required": true
         },
         "web_low.pmtiles": {
-          "sha256": "6994c15fc883865331890c4cfdccee93d3b1de967ecaeb03831ae0247bf31054",
-          "size": 63270588,
+          "sha256": "200832c6ec377032a1ada200921c8f16fa676c803cc8c22b256f777d79eb200f",
+          "size": 66553802,
           "required": true
         },
         "web_akhi.pmtiles": {
-          "sha256": "ad0b9e58924b1bc27fe3512ed1afb23a62467c8739bb630a2fd269b996adaead",
-          "size": 33886408,
+          "sha256": "eba6af3af2760264e803fe740628805192d3fbb871a717526c3bb997c5006182",
+          "size": 34575338,
           "required": true
         },
         "web_west.pmtiles": {
-          "sha256": "7fa953279204609f8fba8c2574436a167ca394df54bb967e9a843a33be7d43cc",
-          "size": 76427308,
+          "sha256": "4236321748d815c48c18d2d8ca8bab6aea3650fd13f281fcbf2c33e9092cba77",
+          "size": 78565748,
           "required": true
         },
         "web_plains.pmtiles": {
-          "sha256": "758d5852538b7d97f19ea3c3b70f99539935c62002379a49197f10508bf11b45",
-          "size": 79907991,
+          "sha256": "2a94447ae58898fc5b72dabf7ed9637a4ce52d3d68aaabf097fbd71412997c98",
+          "size": 82207960,
           "required": true
         },
         "web_central.pmtiles": {
-          "sha256": "d359cece9211627d07fefdbe1ff453239410672c44d64c2a35bf48f843c1ca7b",
-          "size": 79005128,
+          "sha256": "1d2e800441854ae8c341b8195564c914792c2e8e4365e423c0c0b4b26347b83c",
+          "size": 81399716,
           "required": true
         },
         "web_east.pmtiles": {
-          "sha256": "ea1dfbb94b8e60aff73b5f8094d9417183841d86397b4695a225eedb06e45b19",
-          "size": 86777750,
+          "sha256": "51b8056ea1e912dac4717ce416e51d7003168b2f8da29f77e01e36b6cb009658",
+          "size": 89394593,
           "required": true
         },
         "flowlines.pmtiles": {
-          "sha256": "c09d30b2857b6dd2c69d9b8c32c96d133bcd6b8138329ce64ca942063ffe9c4d",
-          "size": 983101128,
+          "sha256": "8c2f551601b9f4e858aee7001efd29df2a5ffeb568bea55ef6e9f8d96b1b5288",
+          "size": 1014588376,
           "required": false
         }
       }

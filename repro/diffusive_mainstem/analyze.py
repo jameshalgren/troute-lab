@@ -1,4 +1,4 @@
-"""Screen the NWM v3.1.6 channel network for known Muskingum-Cunge (MC) error regimes and
+"""Screen the NWM v3.1.7 channel network for known Muskingum-Cunge (MC) error regimes and
 MC parameter-limit effects, and size candidate diffusive-routing "mainstem" selections.
 
 ASSUMPTION (not demonstrated here): switching a segment from MC to diffusive routing

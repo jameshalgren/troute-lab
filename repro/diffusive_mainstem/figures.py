@@ -73,7 +73,7 @@ def fig_maps(seg, res):
         ax.set_yticks([])
         for s in ax.spines.values():
             s.set_visible(False)
-    fig.suptitle("Candidate diffusive-routing configurations on the NWM v3.1.6 CONUS network "
+    fig.suptitle("Candidate diffusive-routing configurations on the NWM v3.1.7 CONUS network "
                  "(blue = in configuration; gray = Strahler order ≥ 3 context)", fontsize=11.5, color=INK, x=0.02,
                  ha="left")
     fig.tight_layout(rect=(0, 0, 1, 0.97))

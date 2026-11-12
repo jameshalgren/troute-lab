@@ -8,7 +8,7 @@ the live USACE eHydro service (see below).
     uv run python fetch_data.py --verify   # verify only, never download
 
 Inputs (sources, versions, licences: README.md "Sources"):
-  RouteLink_{CONUS,AK,HI,PRVI}.nc  NWM v3.1.6 (NCEP), same URLs/hashes as ../network_stats;
+  RouteLink_{CONUS,AK,HI,PRVI}.nc  NWM v3.1.7 (NCEP), same URLs/hashes as ../network_stats;
                                    a verified sibling copy is hard-linked if present
   nhdplusVAA.parquet               NHDPlusV2 value-added attributes as packaged for
                                    nhdplusTools (HydroShare 6092c8a62fac45be97a09bfd0b0bf726)
@@ -37,13 +37,13 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 DATA = HERE / "data"
-NCEP = "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm"
+NCEP = "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm"
 EPA = "https://dmap-data-commons-ow.s3.amazonaws.com/NHDPlusV21/Data"
 UA = {"User-Agent": "troute-paper-repro/1.0"}
 
 # relative path: (url, sha256, size); hashes observed on the dates noted
 FILES = {
-    # NWM v3.1.6, observed 2026-09-30 (identical to ../network_stats/fetch_data.py)
+    # NWM v3.1.7 (first observed 2026-09-30 on the byte-identical v3.1.6; identical to ../network_stats/fetch_data.py)
     "RouteLink_CONUS.nc": (f"{NCEP}/domain/RouteLink_CONUS.nc",
                            "4957655896f4f27854f893d02fa084f9f79c1cf8e80ce77565a7356dadb6fc0e", 269369766),
     "RouteLink_AK.nc": (f"{NCEP}/domain_alaska/RouteLink_AK.nc",

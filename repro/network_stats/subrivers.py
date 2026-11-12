@@ -1,4 +1,4 @@
-"""Named sub-river (tributary) statistics for the NWM v3.1.6 CONUS RouteLink.
+"""Named sub-river (tributary) statistics for the NWM v3.1.7 CONUS RouteLink.
 
 For every candidate river in the candidate list (encoded
 below in CANDIDATES), find its MOUTH segment from NHDPlus V2 GNIS names and compute the

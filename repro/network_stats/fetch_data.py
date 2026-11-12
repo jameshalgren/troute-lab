@@ -7,7 +7,7 @@ Fails (exit 1) with an explanation if a URL is gone or the content has changed.
     uv run python fetch_data.py --required-only  # skip the optional NWM v2.1 RouteLink
     uv run python fetch_data.py --verify         # verify only, never download
 
-Required: the four NWM v3.1.6 RouteLink files (same files, URLs, and hashes as
+Required: the four NWM v3.1.7 RouteLink files (same files, URLs, and hashes as
 repro/routelink_topwidth/), and Natural Earth 1:10m land boundary lines (border
 distance of each outlet) and 1:50m country polygons (segments in Canada or Mexico),
 pinned by git commit.
@@ -25,12 +25,13 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 DATA = HERE / "data"
-BASE = "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm"
+BASE = "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm"
 NE_SHA = "117488dc884bad03366ff727eca013e434615127"  # natural-earth-vector, "v5.1.0 packaging", 2022-05-05
 
 # relative path: (url, sha256, size in bytes)
 REQUIRED = {
-    # NWM v3.1.6; hashes observed 2026-09-30 (server Last-Modified Thu, 09 Jul 2026),
+    # NWM v3.1.7; hashes first observed 2026-09-30 on the then-current v3.1.6 (server
+    # Last-Modified Thu, 09 Jul 2026); v3.1.7 serves byte-identical files (re-checked 2026-11-12),
     # identical to repro/routelink_topwidth/fetch_data.py.
     "RouteLink_CONUS.nc": (f"{BASE}/domain/RouteLink_CONUS.nc",
                            "4957655896f4f27854f893d02fa084f9f79c1cf8e80ce77565a7356dadb6fc0e", 269369766),
@@ -65,10 +66,10 @@ OPTIONAL = {
 }
 
 MOVED_HELP = """\
-NCEP keeps only the operational NWM versions under /pmb/codes/nwprod/. If nwm.v3.1.6 has
+NCEP keeps only the operational NWM versions under /pmb/codes/nwprod/. If nwm.v3.1.7 has
 been retired, the same files may be under a newer nwm.v3.x.y directory, but they must
 then match the SHA-256 above to reproduce these results. Otherwise, obtain the exact
-files from an archive of NWM v3.1.6 parameter files and place them in data/.
+files from an archive of NWM v3.1.7 parameter files and place them in data/.
 The optional v2.1 file can be skipped with --required-only."""
 
 

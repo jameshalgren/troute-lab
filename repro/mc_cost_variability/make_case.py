@@ -3,7 +3,7 @@
     uv run --locked python make_case.py
 
 Uses ../short_ts_switch/make_inputs.py read-only: `extract_potomac` (all segments upstream
-of NWM feature 4539621 from NWM v3.1.6 RouteLink_CONUS.nc), `topology` (distance to
+of NWM feature 4539621 from NWM v3.1.7 RouteLink_CONUS.nc), `topology` (distance to
 outlet, longest upstream path, mainstem) and `storm_series` / `steady_state` (synthetic
 lateral inflow, exact steady state of the baseflow). What T-Route itself adds, replicated
 here:
@@ -98,7 +98,7 @@ def main() -> int:
               "mouth_lat": round(float(lat[m]), 3), "mouth_lon": round(float(lon[m]), 3),
               "mouth_dist_to_outlet_km": round(float(seg["dist_to_outlet_km"].iloc[m]), 1)}
              for k, m in enumerate(big)]
-    info = {"case": "potomac", "routelink": "NWM v3.1.6 RouteLink_CONUS.nc (sha256 pinned in common.py)",
+    info = {"case": "potomac", "routelink": "NWM v3.1.7 RouteLink_CONUS.nc (sha256 pinned in common.py)",
             "outlet_feature_id": int(MI.POTOMAC_OUTLET), "n_segments": int(n), "hours": HOURS,
             "longest_path_segments": int(seg["up_path_segs"].max()),
             "longest_path_km": round(float(seg["up_path_km"].max()), 1),

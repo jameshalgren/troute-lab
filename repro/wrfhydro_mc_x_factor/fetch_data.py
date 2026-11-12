@@ -1,4 +1,4 @@
-"""Fetch the NWM v3.1.6 RouteLink_CONUS.nc for the Potomac example, SHA-256 verified.
+"""Fetch the NWM v3.1.7 RouteLink_CONUS.nc for the Potomac example, SHA-256 verified.
 
 AI-written (Claude, 2026-10-16). Idempotent: skips a verified file. Reuses a verified
 copy from a sibling experiment (repro/*/data/) instead of downloading 269 MB again.
@@ -14,17 +14,18 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 DATA = HERE / "data"
 
-# NWM v3.1.6 (hash observed 2026-09-30, server Last-Modified Thu, 09 Jul 2026; the same
+# NWM v3.1.7 (hash first observed 2026-09-30 on v3.1.6; v3.1.7 is byte-identical, re-checked
+# 2026-11-12; the same
 # file and hash as repro/network_stats, repro/routelink_topwidth, repro/short_ts_switch).
-ROUTELINK = ("https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/domain/RouteLink_CONUS.nc",
+ROUTELINK = ("https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain/RouteLink_CONUS.nc",
              "4957655896f4f27854f893d02fa084f9f79c1cf8e80ce77565a7356dadb6fc0e", 269369766)
 ROUTELINK_DEST = DATA / "RouteLink_CONUS.nc"
 SIBLINGS = sorted(HERE.parent.glob("*/data/RouteLink_CONUS.nc"))
 
 MOVED_HELP = """\
-NCEP keeps only operational NWM versions under /pmb/codes/nwprod/. If nwm.v3.1.6 has been
+NCEP keeps only operational NWM versions under /pmb/codes/nwprod/. If nwm.v3.1.7 has been
 retired, obtain the exact RouteLink_CONUS.nc (matching the SHA-256 above) from an archive
-of NWM v3.1.6 parameter files and place it in data/."""
+of NWM v3.1.7 parameter files and place it in data/."""
 
 
 def sha256(path: Path) -> str:

@@ -134,7 +134,7 @@ V02-structured kernel shared with NOAA-OWP `master`.
 | Case | Network | Forcing | Initial state | Length |
 |---|---|---|---|---|
 | `lc_nwm` | `test/LowerColorado_TX` shipped with t-route: the Colorado River (TX) network, 11,248 NWM segments, longest path 1654 km / 649 segments | Recorded NWM AnA lateral inflow, 28 hourly CHRTOUT files from 2021-08-23 13:00 UTC (T-Route reads `qBucket + qSfcLatRunoff`) | NWM routed `streamflow` at t0, by feature_id (341 missing values set to 0) | 28 h |
-| `potomac_storm` | Potomac River: all 16,454 segments upstream of NWM feature 4539621, extracted from NWM v3.1.6 `RouteLink_CONUS.nc`; longest path 688 km / 527 segments. The outlet is the river's mouth at Chesapeake Bay (38.00 N, 76.31 W), 193 km below the Little Falls gage (USGS 01646500) | Synthetic storm: lateral inflow proportional to segment length (nominal 1.25 km² per km of channel), 0.01 m³ s⁻¹ km⁻² baseflow, plus 25 mm runoff released as a gamma pulse (shape 3, scale 4 h) starting at 24 h | Exact steady state of the baseflow | 40 days |
+| `potomac_storm` | Potomac River: all 16,454 segments upstream of NWM feature 4539621, extracted from NWM v3.1.7 `RouteLink_CONUS.nc`; longest path 688 km / 527 segments. The outlet is the river's mouth at Chesapeake Bay (38.00 N, 76.31 W), 193 km below the Little Falls gage (USGS 01646500) | Synthetic storm: lateral inflow proportional to segment length (nominal 1.25 km² per km of channel), 0.01 m³ s⁻¹ km⁻² baseflow, plus 25 mm runoff released as a gamma pulse (shape 3, scale 4 h) starting at 24 h | Exact steady state of the baseflow | 40 days |
 
 The shipped HYDRO_RST restart was not used. It has 11,141 links against 11,248 RouteLink
 rows, and T-Route's reader maps restart values by position. The 40-day Potomac run lets
@@ -394,7 +394,7 @@ Our test patch covers only `Qj`; NGWPC's also covers C1..C4.
   item 2), which this first-moment argument does not include.
 
 **G. Why the Potomac outlet responds so slowly (peak 263 h after the storm centroid,
-False, dt = 300 s).** The behaviour follows from the NWM v3.1.6 channel parameters; it is
+False, dt = 300 s).** The behaviour follows from the NWM v3.1.7 channel parameters; it is
 not a T-Route bug or an artifact of the storm design.
 - The network outlet is the **river mouth**. The 194 km below Little Falls is the tidal
   estuary, and RouteLink represents it as a 264-m-wide compound channel. 97% of that
@@ -679,7 +679,7 @@ Steps: `uv sync --locked --inexact` → `fetch_data.py` → `build_troute.py` �
 into `results/rerun/` → `provenance.json` → `check.py`.
 - `fetch_data.py` fetches t-route by commit SHA (`git fetch --depth 1 <sha>`) into
   `data/t-route` and verifies the SHA-256 of the 29 LowerColorado files used. It fetches
-  `RouteLink_CONUS.nc` (NWM v3.1.6, NCEP; same URL and SHA-256 as `network_stats/`),
+  `RouteLink_CONUS.nc` (NWM v3.1.7, NCEP; same URL and SHA-256 as `network_stats/`),
   reusing a verified sibling copy if one exists.
 - `build_troute.py` builds from a `git archive` copy in `build/t-route` (the fetched source
   stays pristine). It installs the four t-route packages with `uv pip install --no-deps

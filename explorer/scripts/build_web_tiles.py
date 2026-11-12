@@ -23,7 +23,7 @@ under 95 MB:
 Method: one tippecanoe run (z3-10, the same command as the full tiles but -z 10) into
 data/explorer/web/_z3_10.pmtiles, then its tiles are copied unchanged into the files
 above (by zoom, and for z9-10 by the z9 column x >> (z - 9)). Every attribute is kept
-(id n r o d p z x h dm, integers), so upstream-of-point works on the hosted site.
+(id n r o d ds p z x h dm, integers), so upstream-of-point works on the hosted site.
 
 Inputs:  data/explorer/flow.fgb, waterbodies.fgb (build_map_data.py)
 Outputs: data/explorer/web/{tiles.json, web_*.pmtiles}   (gitignored; published as the
@@ -202,7 +202,7 @@ def validate(entries):
                             others.append(e["file"])
             feats = read_tile(WEB / name, z, x, y).get("flow", {}).get("features", [])
             keys = set().union(*(ft["properties"] for ft in feats)) if feats else set()
-            good = want is not None and got == want and not others and {"p", "z"} <= keys
+            good = want is not None and got == want and not others and {"p", "z", "ds"} <= keys
             print(f"  z{z}/{x}/{y} ({lon}, {lat}) in {name}: identical to source {got == want}; "
                   f"{len(feats)} flow features, fields {sorted(keys)}; also in {others or 'no other file'}")
             ok &= good

@@ -1,5 +1,5 @@
 """Check how TopWdthCC (compound-channel top width) relates to TopWdth and
-other channel parameters in the NWM v3.1.6 RouteLink files.
+other channel parameters in the NWM v3.1.7 RouteLink files.
 
 First run 2026-10-01/02 as a standalone script, moved here 2026-10-05 with the printed
 report unchanged; in addition the key numbers are
@@ -180,7 +180,7 @@ def main(argv):
          "domains": results}, indent=2) + "\n")
     provenance.write(HERE, out,
                      inputs={Path(f).name: HERE / f if not Path(f).is_absolute() else Path(f) for f in files},
-                     sources={"routelink_base_url": "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/"})
+                     sources={"routelink_base_url": "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/"})
     print(f"\nwrote {out / 'results.json'}, report.txt, provenance.json")
 
 

@@ -2,14 +2,14 @@
 # One command, three parts (AI-written, Claude, 2026-10-09; parts 2-3 added 2026-10-31; not reviewed):
 #   1. prismatic channel: modified-equation derivation, then WRF-Hydro's SUBMUSKINGCUNGE (fetched at
 #      a pinned SHA, original and patched) against the analytical convection-diffusion solution
-#   2. Potomac network: the same routine, driven like WRF-Hydro's channel driver, on the NWM v3.1.6
+#   2. Potomac network: the same routine, driven like WRF-Hydro's channel driver, on the NWM v3.1.7
 #      Potomac network (RouteLink fetched and SHA-256 checked) with a synthetic storm; run with the
 #      short-time-step assumption (lagged upstream inflow, WRF-Hydro's own way) and without it
 #      (sequential, current-step upstream inflow; added 2026-11-02)
 #   3. T-Route on the same storm, current vs patched kernel, assume_short_ts True and False
 #      (troute_part3.sh); needs
 #      ../short_ts_switch/run.sh to have been run first (its inputs are reused), else skipped
-#   1b. (after part 2) part 1 under NWM conditions: reaches.py, single reaches with NWM v3.1.6 link
+#   1b. (after part 2) part 1 under NWM conditions: reaches.py, single reaches with NWM v3.1.7 link
 #      lengths, slopes and channel geometry, inflow = part 2's storm hydrograph at a gauge (added 2026-11-02)
 # QUICK=1 runs part 1 only; SKIP_TROUTE=1 skips part 3. Wall-clock times go to the timing files.
 set -euo pipefail

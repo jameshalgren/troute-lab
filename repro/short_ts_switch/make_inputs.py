@@ -6,7 +6,7 @@ Cases (see README "Design"):
                  (the shipped CHRTOUT files), warm-started from the NWM's own routed
                  `streamflow` in the first CHRTOUT file.
   potomac_storm  Potomac River network (all segments upstream of NWM feature 4539621)
-                 extracted from NWM v3.1.6 RouteLink_CONUS.nc, synthetic storm, 40 days.
+                 extracted from NWM v3.1.7 RouteLink_CONUS.nc, synthetic storm, 40 days.
 
 Synthetic storm: lateral inflow to segment i is
 proportional to its channel length L_i (RouteLink `Length`; RouteLink carries no
@@ -44,7 +44,7 @@ from fetch_data import ROUTELINK_DEST, TROUTE_DIR  # noqa: E402
 INPUTS = HERE / "build" / "inputs"
 LC_DIR = TROUTE_DIR / "test" / "LowerColorado_TX"
 
-POTOMAC_OUTLET = 4539621          # NWM v3.1.6 feature_id of the Potomac's network outlet
+POTOMAC_OUTLET = 4539621          # NWM v3.1.7 feature_id of the Potomac's network outlet
 AREA_PER_KM = 1.25                # km^2 of contributing area per km of channel (nominal)
 BASEFLOW = 0.01                   # m^3/s per km^2
 STORM_MM = 25.0                   # storm runoff depth (mm)
@@ -53,7 +53,7 @@ STORM_SHAPE, STORM_SCALE_H, STORM_START_H = 3.0, 4.0, 24.0
 CASES = {
     "lc_nwm": {"label": "LowerColorado_TX, recorded NWM forcing", "hours": 28,
                "t0": "2021-08-23 13:00"},
-    "potomac_storm": {"label": "Potomac (NWM v3.1.6), synthetic storm", "hours": 40 * 24,
+    "potomac_storm": {"label": "Potomac (NWM v3.1.7), synthetic storm", "hours": 40 * 24,
                       "t0": "2000-01-01 00:00"},
 }
 
@@ -184,7 +184,7 @@ def extract_potomac(dest: Path) -> None:
     if int(sub["to"].values[sub["link"].values == POTOMAC_OUTLET][0]) != 0:
         raise RuntimeError("Potomac outlet is not a network outlet")
     sub.attrs["subset_note"] = (f"All {len(keep)} segments upstream of feature {POTOMAC_OUTLET} "
-                                "(Potomac River outlet), from NWM v3.1.6 RouteLink_CONUS.nc; "
+                                "(Potomac River outlet), from NWM v3.1.7 RouteLink_CONUS.nc; "
                                 "repro/short_ts_switch/make_inputs.py")
     sub.to_netcdf(dest)
 

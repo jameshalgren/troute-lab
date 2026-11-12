@@ -207,7 +207,7 @@ How the screen models cost:
   Improving that is out of scope here.
 
 ## Methods
-**Network and geometry.** NWM v3.1.6 RouteLink (`link`/`to` topology; `Length`, `So`, `n`,
+**Network and geometry.** NWM v3.1.7 RouteLink (`link`/`to` topology; `Length`, `So`, `n`,
 `BtmWdth`, `TopWdth`, `ChSlp`, `TopWdthCC`, `nCC`). `ChSlp` is rise over run: the kernel sets
 z = 1/ChSlp, and bankfull depth bfd = (TopWdth − BtmWdth)/(2z) = (TopWdth − BtmWdth)·ChSlp/2.
 - Sources: [MCsingleSegStime_f2py_NOLOOP.f90 L48–L61 @d29f663](https://github.com/CIROH-UA/t-route/blob/d29f663ac23f435b2e5c176f6e0d22ac4528c6a6/src/kernel/muskingum/MCsingleSegStime_f2py_NOLOOP.f90#L48-L61);
@@ -302,7 +302,7 @@ run `repro/network_stats` first.
 ## Sources
 | input | version / date | licence | SHA-256 / record |
 |---|---|---|---|
-| NWM v3.1.6 RouteLink_{CONUS,AK,HI,PRVI}.nc, [NCEP](https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/) | file history 2025-08-05 (Lynker) | NOAA, public domain | in `fetch_data.py` (same as `network_stats`) |
+| NWM v3.1.7 RouteLink_{CONUS,AK,HI,PRVI}.nc, [NCEP](https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/) | file history 2025-08-05 (Lynker) | NOAA, public domain | in `fetch_data.py` (same as `network_stats`) |
 | NHDPlusV2 VAA parquet (nhdplusTools), [HydroShare 6092c8a6…](https://www.hydroshare.org/resource/6092c8a62fac45be97a09bfd0b0bf726/) | file 2021-02-26 | from EPA/USGS NHDPlusV2 (public domain); HydroShare resource terms | `33f2bfdd…` |
 | NHDPlusV2.1 EROMExtension, 21 CONUS VPUs, [EPA S3](https://dmap-data-commons-ow.s3.amazonaws.com/NHDPlusV21/Data/) | per-VPU versions in file names (e.g. `MS_10U_EROMExtension_07`); S3 2022-12-16 | US EPA/USGS, public domain | 21 hashes in `fetch_data.py`. Field meanings: NHDPlusV2 User Guide (McKay et al. 2012), EROM section |
 | Physiographic divisions (Fenneman & Johnson 1946), [physio_shp.zip](https://water.usgs.gov/GIS/dsdl/physio_shp.zip), doi:10.5066/P9B1S3K8 | Last-Modified 2015-02-27; 1:7,000,000 | USGS, public domain | `3fd98856…` |

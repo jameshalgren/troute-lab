@@ -170,11 +170,26 @@ at a6efbf4e; 24 h current default), `subnetwork_target_size` (10,000), output (n
 CHRTOUT append / lite restart), start 2018-01-01 00 UTC.
 
 **Deviation: no reservoirs.** WRF-Hydro "channel-only" still routes lakes, and the 2022
-t-route run may have too. The NWM v2.1 `LAKEPARM` file was not found in a public archive
-(HydroShare resource above holds only the RouteLink; NCEP now serves only
-`nwm.v3.1.7`, whose domain directory listing has no LAKEPARM; checked 2026-11-04). With
-`break_network_at_waterbodies: False` lake segments are routed as channels. If the author
-has the v2.1 LAKEPARM, add a waterbody arm.
+t-route run may have too. With `break_network_at_waterbodies: False` lake segments are
+routed as channels. The first January queue keeps that baseline; a waterbody arm comes
+next.
+
+**Where the v2.1 LAKEPARM is**:
+NOHRSC's
+[`NWM_parameter_files_v2.1.tar.gz`](https://www.nohrsc.noaa.gov/owp_files/nwm/nwm_parameters/NWM_parameter_files_v2.1.tar.gz)
+(4,485,467,589 bytes, Last-Modified 2023-09-20, SHA-256 `911fe35d…`; linked from
+[water.noaa.gov/about/nwm](https://water.noaa.gov/about/nwm); a v3.0 tarball sits beside
+it). It holds `NWM_parameters_v2.1/` with RouteLink, LAKEPARM, nudgingParams, Fulldom and
+spatial weights for CONUS, HI and PRVI, plus `md5sum.txt` (files dated 2021-03-08). Checked
+on the lab Mac 2026-11-10:
+- its `RouteLink_CONUS.nc` is byte-identical to the HydroShare copy (SHA-256 `1b95f69a…`);
+- `LAKEPARM_CONUS.nc` (SHA-256 `fc74940d…`, MD5 as in `md5sum.txt`) has 5,783 `lake_id`s,
+  exactly the RouteLink's 5,783 nonzero `NHDWaterbodyComID`s;
+- the four Great Lakes link IDs (4800002/4/6/7) are also lake IDs, which is why
+  `synthetic_wb_segments` exists (rename the links when waterbodies are on).
+
+Not in the tarball: geo_em, wrfinput, GWBUCKPARM, the hydro tables, needed for the
+WRF-Hydro reference below.
 
 ## Stages, cost estimates
 
@@ -288,7 +303,8 @@ The 4.5 h figure was probably NCAR's (the same comment says "I'll need to check 
 Reproducing it needs: WRF-Hydro v5.2.0 (the retrospective files say "OUTPUT FROM WRF-Hydro
 v5.2.0-beta2") built with MPI, CMake and netCDF-Fortran; the **NWM v2.1 CONUS domain and
 parameter files** (Fulldom_hires, geo_em, wrfinput, RouteLink, LAKEPARM, GWBUCKPARM,
-spatial weights, tables; no public v2.1 copy found); `namelist.hrldas` with `FORC_TYP = 9`
+spatial weights, tables; RouteLink, LAKEPARM, Fulldom and spatial weights are in the NOHRSC
+v2.1 tarball above, the others were not found); `namelist.hrldas` with `FORC_TYP = 9`
 ("Channel-only forcing", v5.2.0 template) and a `hydro.namelist` for reach-based MC
 (`channel_option = 2`, `UDMP_OPT = 1`, `DTRT_CH = 300`). WRF-Hydro reads
 `YYYYMMDDHHMM.CHRTOUT_DOMAIN1` from the forcing directory and checks the global attributes
@@ -385,12 +401,12 @@ Generated, gitignored: `data/`, `build/`, `results/`, `.venv/`.
   file is the one `../network_stats` already verifies). Slim and subset files checked with
   a6efbf4e's own `nhd_io.get_ql_from_chrtout` and `get_attribute` (era Python environment):
   identical values to the original files; all 16,454 Potomac ids present.
-- `make_mask.py` on the local NWM v3.1.6 RouteLink: Potomac 16,454 and Ohio 230,729
+- `make_mask.py` on the local NWM v3.1.7 RouteLink: Potomac 16,454 and Ohio 230,729
   segments, matching `../short_ts_switch` and `../network_stats`.
 - `make_configs.py`: era YAML read by a6efbf4e's `read_config_file`, `build_forcing_sets`,
   `build_connections` (mask applied) and `build_qlateral_array` (no missing segments);
   current YAML accepted by d29f663's `troute.config.Config.with_strict_mode`.
-- a6efbf4e pure-Python setup at CONUS scale (v3.1.6 RouteLink) on the M5: build_connections
+- a6efbf4e pure-Python setup at CONUS scale (v3.1.7 RouteLink) on the M5: build_connections
   1.4 s, organize_independent_networks 3.0 s, by-subnetwork-jit-clustered preamble
   (build_subnetworks + reach decomposition, target 10,000: 17,428 subnetworks in 15
   orders) 3.3 s, which a6efbf4e repeats on every loop (#557 removed that in April 2022);

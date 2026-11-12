@@ -3,7 +3,7 @@
 *AI-assembled (Claude, 2026-10-06/07); not yet reviewed by the author.* File schemas:
 [`DATA_CONTRACT.md`](DATA_CONTRACT.md).
 
-The explorer shows the independent drainage networks of the NWM v3.1.6 channel network
+The explorer shows the independent drainage networks of the NWM v3.1.7 channel network
 (RouteLink) in all four NWM domains — **CONUS**, **Alaska** (Cook Inlet and the Copper
 River only: that is all the NWM Alaska domain contains), **Hawaii**, **Puerto Rico and the
 U.S. Virgin Islands** — with named tributaries, width functions, transboundary channel,
@@ -13,7 +13,7 @@ and places (gages, forecast points, reservoirs, dams, bridges).
 
 **Just look at it**: the hosted copy is at <https://jameshalgren.github.io/troute-lab/> (GitHub Pages; every river
 and waterbody, from the web tileset). Locally, download the web data bundle (about
-433 MB, SHA-256 checked; release assets, not in git) and serve:
+448 MB, SHA-256 checked; release assets, not in git) and serve:
 
 ```sh
 uv run explorer/fetch_data.py       # -> explorer/data/
@@ -39,7 +39,7 @@ versions, URLs and checksums are in `data_bundles.json`; `--source hydroshare` o
    ```sh
    uv run explorer/scripts/fetch_inputs.py
    ```
-   - NWM v3.1.6 RouteLink files (CONUS, AK, HI, PRVI; 320 MB) from NCEP, via
+   - NWM v3.1.7 RouteLink files (CONUS, AK, HI, PRVI; 320 MB) from NCEP, via
      `repro/network_stats/fetch_data.py` (SHA-256 pinned there), linked into `data/`.
    - NWM v3 channel hydrofabric (`NWM_v3_hydrofabric.gdb`), the "file gdb" linked on
      <https://water.noaa.gov/about/nwm> (accessed 2026-10-07):
@@ -69,9 +69,9 @@ versions, URLs and checksums are in `data_bundles.json`; `--source hydroshare` o
 
 Disk after a full build: `data/` ≈ 9 GB (hydrofabric tarball 3.25 GB, which can be deleted
 after unpacking; geodatabase 4.7 GB; RouteLink 0.3 GB; scratch FlatGeobuf files and
-caches 2.3 GB), plus `explorer/data/flowlines.pmtiles` (983 MB, gitignored).
-Web data bundle (`explorer/fetch_data.py`, not in git) ≈ 433 MB (web tileset 419.3,
-places 12.8, JSON 1.2).
+caches 2.3 GB), plus `explorer/data/flowlines.pmtiles` (1,015 MB, gitignored).
+Web data bundle (`explorer/fetch_data.py`, not in git) ≈ 448 MB (web tileset 432.7,
+places 12.8, JSON 2.0).
 
 Known service problem: the USGS NHDPlus HR map service returned HTTP 502/504 or took
 > 100 s per query on 2026-10-07. On 2026-10-08 its queries by `nhdplusid` answered (12–98 s
@@ -83,7 +83,7 @@ Alaska network names still come from USGS GNIS (see "Names").
 
 ## Methods
 
-**Domains and sources.** NWM v3.1.6 RouteLink files (NCEP `nwm.v3.1.6/parm`, SHA-256
+**Domains and sources.** NWM v3.1.7 RouteLink files (NCEP `nwm.v3.1.7/parm`, SHA-256
 pinned in `repro/network_stats/fetch_data.py`): CONUS 2,776,734 segments / 12,820
 networks; AK 391,528 / 4,102; HI 13,637 / 1,273; PRVI 14,017 / 747. Geometry: NWM v3
 hydrofabric layers `nwm_reaches_{conus,alaska,hawaii,puertorico}` (field `ID` =
@@ -213,14 +213,20 @@ uv run explorer/scripts/build_map_data.py --skip-tiles     # JSON products only
 ```
 
 The script ends with validation checks and exits non-zero if any fails: width-function
-totals equal `n_segments` for all 1,168 rivers; Mississippi longest path 2,219 reaches; per
+totals equal `n_segments` and `n_reaches` for all 1,168 rivers; Mississippi longest path
+2,219 reaches; Mississippi widest level 1,265 segments at level 562 and 1,014 reaches at
+level 560, and 9,869 segments in levels 560–567; on the segment axis (distance in segment
+hops), 3,174 levels and the widest level 990 segments at hop 737 (numbers computed
+independently from RouteLink, 2026-11-11); segment-axis totals equal `n_segments` for all
+1,168 rivers, each mouth level holds one segment, and `ds0 ≥ d0`; per
 domain, the network sizes sum to the domain's segment count and the top-N sizes match
 `rivers.json`; `p` is unique across all 3,195,916 segments; no reach spans the
 antimeridian; tile features decoded from every PMTiles file (Missouri, Mississippi and the
 largest AK, HI and PRVI networks) match `segment_attrs.parquet`.
 
-**Tiles.** Layer `flow`, integer properties (see the contract). Small stream orders are
-left out at low zooms:
+**Tiles.** Layer `flow`, integer properties (see the contract), among them both distances
+from the network outlet: `d` in reaches and `ds` in segment hops (`ds` since
+explorer-data-v3). Small stream orders are left out at low zooms:
 
 | zoom | 3–4 | 5 | 6 | 7 | 8 | 9–12 |
 |---|---|---|---|---|---|---|
@@ -234,10 +240,12 @@ left out at low zooms:
 size or feature limit is applied, and features are never coalesced, so every feature keeps
 its own properties. Thresholds are constants at the top of the script.
 
-**Outputs** (2026-10-07): `flowlines.pmtiles` 983 MB (gitignored);
-`flowlines_overview.pmtiles` 14.35 MB; `flowlines_overview_other.pmtiles` 2.74 MB;
-`widths.json` 0.35 MB; `bboxes.json` 0.05 MB; `outlets.geojson` 0.19 MB; `rivers.json`
-0.58 MB. Scratch FlatGeobuf files in `data/explorer/` ≈ 2.1 GB (gitignored).
+**Outputs** (2026-11-11, with `ds`): `flowlines.pmtiles` 1,014.6 MB (gitignored; 983 MB
+before `ds`); `flowlines_overview.pmtiles` 16.00 MB (was 14.35); `flowlines_overview_other.pmtiles`
+2.92 MB (was 2.74); `widths.json` 1.21 MB (per-level reach and segment axes since 2026-11-11;
+0.75 MB with the reach axis only, 0.35 MB binned); `bboxes.json` 0.05 MB; `outlets.geojson`
+0.19 MB; `rivers.json` 0.58 MB. Build time (Apple M4 Max, 2026-11-11): 2.5 min for
+everything, 7 s with `--skip-extract --skip-tiles`. Scratch FlatGeobuf files in `data/explorer/` ≈ 2.1 GB (gitignored).
 
 **Web tileset (hosted site).** GitHub Pages serves at most 100 MB per file and about 1 GB
 per site, so the hosted explorer cannot use `flowlines.pmtiles`. `build_web_tiles.py`
@@ -259,22 +267,22 @@ size and SHA-256; the page shows `web_low` below zoom 9 and the regional files f
 on, overzooming the z10 tiles at higher zooms. The script checks the size limit, that the
 files hold every tile of the z3–10 build exactly once, and that probe tiles (St. Louis,
 both sides of each seam, Anchorage, Honolulu, San Juan) are identical to the source and
-carry `p` and `z`. Two runs on 2026-10-09 gave identical files (SHA-256 in `tiles.json`).
+carry `p`, `z` and `ds`. Two runs on 2026-10-09 gave identical files (SHA-256 in `tiles.json`).
 
-| file | zooms | z9 tile columns (west edge) | MB (2026-10-09) |
-|---|---|---|---|
-| `web_low.pmtiles` | 3–8 | all | 63.3 |
-| `web_akhi.pmtiles` (Alaska, Hawaii) | 9–10 | 0–77 | 33.9 |
-| `web_west.pmtiles` | 9–10 | 78–99 (−125.16°) | 76.4 |
-| `web_plains.pmtiles` | 9–10 | 100–117 (−109.69°) | 79.9 |
-| `web_central.pmtiles` | 9–10 | 118–130 (−97.03°) | 79.0 |
-| `web_east.pmtiles` (incl. PRVI) | 9–10 | 131–511 (−87.89°) | 86.8 |
-| total | | | 419.3 |
+| file | zooms | z9 tile columns (west edge) | MB (2026-11-11, with `ds`; explorer-data-v3) | MB (2026-10-09; v2) |
+|---|---|---|---|---|
+| `web_low.pmtiles` | 3–8 | all | 66.6 | 63.3 |
+| `web_akhi.pmtiles` (Alaska, Hawaii) | 9–10 | 0–77 | 34.6 | 33.9 |
+| `web_west.pmtiles` | 9–10 | 78–99 (−125.16°) | 78.6 | 76.4 |
+| `web_plains.pmtiles` | 9–10 | 100–117 (−109.69°) | 82.2 | 79.9 |
+| `web_central.pmtiles` | 9–10 | 118–130 (−97.03°) | 81.4 | 79.0 |
+| `web_east.pmtiles` (incl. PRVI) | 9–10 | 131–511 (−87.89°) | 89.4 | 86.8 |
+| total | | | 432.7 | 419.3 |
 
 <!-- places:start (generated by explorer/scripts/build_places.py; edits here are overwritten) -->
 ## Places of interest
 
-`data/places.json` (built 2026-10-08; 12.85 MB) lists locations keyed to NWM v3.1.6 RouteLink feature_ids. A CSV copy is at `data/explorer/T_places.csv`. Flags mark places whose link to the network may be wrong; they are not corrections.
+`data/places.json` (built 2026-10-08; 12.85 MB) lists locations keyed to NWM v3.1.7 RouteLink feature_ids. A CSV copy is at `data/explorer/T_places.csv`. Flags mark places whose link to the network may be wrong; they are not corrections.
 
 | type | places | flagged | flags (count) |
 |---|---:|---:|---|
@@ -295,7 +303,7 @@ Places per domain:
 
 Sources, filters and flag definitions:
 
-- **domains**: All four NWM v3.1.6 domains (CONUS, AK, HI, PRVI); each place carries `dom`. Distances and snapping in a projected CRS per domain: {'CONUS': 'EPSG:5070', 'AK': 'EPSG:3338', 'HI': 'ESRI:102007', 'PRVI': 'EPSG:32161'}.
+- **domains**: All four NWM v3.1.7 domains (CONUS, AK, HI, PRVI); each place carries `dom`. Distances and snapping in a projected CRS per domain: {'CONUS': 'EPSG:5070', 'AK': 'EPSG:3338', 'HI': 'ESRI:102007', 'PRVI': 'EPSG:32161'}.
 - **gage**: RouteLink_{CONUS,AK,HI,PRVI}.nc `gages` (stripped). USGS ids: name, location, drainage_area from USGS Water Data API monitoring-locations; activity from time-series-metadata (00060, 00065). WSC ids: ECCC hydrometric-stations (DRAINAGE_AREA_GROSS). Model drainage area: NHDPlusV2 TotDASqKm of COMID = feature_id from the EPA WATERS NHDPlus service (CONUS, HI, PRVI; NHDPlus V2.1), or NHDPlus HR TotalDrainageAreaSqKm of NHDPlusID = feature_id from the USGS NHDPlus HR service (AK); missing where the feature_id has no NHDPlus record (e.g. AK Arc-Hydro segments), then no DA check.
 - **forecast_point**: NWPS /gauges entries inside lon -126..-61, lat 23..51 with a forecast PEDTS, excluding AK, HI, PR, VI, GU, AS, MP (CONUS); AK, HI, PR+VI: NWPS gauges with a forecast PEDTS in the domain's state(s) {'AK': {'AK'}, 'HI': {'HI'}, 'PRVI': {'PR', 'VI'}} and inside the domain box {'CONUS': (-126.0, 23.0, -61.0, 54.0), 'AK': (-155.5, 58.3, -139.5, 64.0), 'HI': (-160.6, 18.7, -154.6, 22.5), 'PRVI': (-67.5, 17.5, -64.4, 18.7)} (the NWM Alaska domain covers Cook Inlet and the Copper River only); reachId and usgsId from /gauges/{lid}.
 - **reservoir**: One place per RouteLink NHDWaterbodyComID; feature_id = outlet member (its `to` leaves the waterbody); lat/lon = polygon centroid (nwm_waterbodies_{conus,alaska,hawaii}; PRVI has no waterbody layer, so its places sit on the outlet segment), area from the polygon in an equal-area/projected CRS; name = NHDPlusV2 waterbody GNIS_NAME (EPA WATERS layer 4; CONUS, HI, PRVI) or NHDPlus HR NHDWaterbody GNIS_Name (layer 9; AK); res_type from reservoir_index_AnA.nc (CONUS) or reservoir_index_GDL_AK.nc (AK; HI and PRVI have no reservoir index) (codes per https://github.com/NCAR/wrf_hydro_nwm_public/blob/main/src/Routing/module_RT.F90 (reservoir_type dispatch: 1 level pool, 2 USGS persistence, 3 USACE persistence, 4/5 RFC forecast); Persistence_Level_Pool_Hybrid_Module_README.md, RFC_Forecasts_Module_README.md in the same directory).
@@ -340,11 +348,11 @@ Inputs (access date; SHA-256 of the cached copy is in `meta.sources` of `places.
 - `nhdplushr/flowline_totdasqkm_AK.json`: https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer/3/query?where=nhdplusid IN (...)&outFields=nhdplusid,totdasqkm (accessed 2026-10-08)
 - `nhdplushr/waterbody_gnis_AK.json`: https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer/9/query?where=nhdplusid IN (...)&outFields=nhdplusid,gnis_name,gnis_id,ftype (accessed 2026-10-08)
 - `nid/nation.csv`: https://nid.sec.usace.army.mil/api/nation/csv (accessed 2026-10-06)
-- `nwm_parm/reservoir_index_AnA.nc`: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/domain/reservoir_index_AnA.nc (accessed 2026-10-06)
-- `nwm_parm/reservoir_index_Extended_AnA.nc`: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/domain/reservoir_index_Extended_AnA.nc (accessed 2026-10-06)
-- `nwm_parm/reservoir_index_GDL_AK.nc`: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/domain_alaska/reservoir_index_GDL_AK.nc (accessed 2026-10-07)
-- `nwm_parm/reservoir_index_Medium_Range.nc`: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/domain/reservoir_index_Medium_Range.nc (accessed 2026-10-06)
-- `nwm_parm/reservoir_index_Short_Range.nc`: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/domain/reservoir_index_Short_Range.nc (accessed 2026-10-06)
+- `nwm_parm/reservoir_index_AnA.nc`: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain/reservoir_index_AnA.nc (accessed 2026-10-06)
+- `nwm_parm/reservoir_index_Extended_AnA.nc`: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain/reservoir_index_Extended_AnA.nc (accessed 2026-10-06)
+- `nwm_parm/reservoir_index_GDL_AK.nc`: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain_alaska/reservoir_index_GDL_AK.nc (accessed 2026-10-07)
+- `nwm_parm/reservoir_index_Medium_Range.nc`: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain/reservoir_index_Medium_Range.nc (accessed 2026-10-06)
+- `nwm_parm/reservoir_index_Short_Range.nc`: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain/reservoir_index_Short_Range.nc (accessed 2026-10-06)
 - `nwps/gauge_details.json`: https://api.water.noaa.gov/nwps/v1/gauges/{lid} (one GET per forecast gauge; fields lid, usgsId, reachId, name, county, latitude, longitude) (accessed 2026-10-06)
 - `nwps/gauge_details_AK.json`: https://api.water.noaa.gov/nwps/v1/gauges/{lid} (one GET per forecast gauge; fields lid, usgsId, reachId, name, county, latitude, longitude) (accessed 2026-10-07)
 - `nwps/gauge_details_HI.json`: https://api.water.noaa.gov/nwps/v1/gauges/{lid} (one GET per forecast gauge; fields lid, usgsId, reachId, name, county, latitude, longitude) (accessed 2026-10-07)

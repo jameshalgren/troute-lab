@@ -50,7 +50,14 @@ ROUTELINK = {d: ROOT / "data" / f"RouteLink_{d}.nc" for d in DOMAINS}
 REACH_LAYER = {"CONUS": "nwm_reaches_conus", "AK": "nwm_reaches_alaska", "HI": "nwm_reaches_hawaii",
                "PRVI": "nwm_reaches_puertorico"}
 WB_LAYERS = ["nwm_waterbodies_conus", "nwm_waterbodies_alaska", "nwm_waterbodies_hawaii"]
-MAX_BINS = 300
+# Mississippi width function (outlet link 22811611), computed independently from RouteLink
+# (2026-11-11): (level, count) of the widest level in segments and in reaches, and the
+# segments in levels 560-567 (the old 8-level bin the page used to show as its peak)
+MS_SEG_PEAK, MS_REACH_PEAK, MS_SEG_560_567 = (562, 1265), (560, 1014), 9869
+# Mississippi on the segment axis (distance in segment hops, d_seg; outlet = 0), computed
+# independently from RouteLink (2026-11-11): number of levels (max d_seg 3,173, inclusive)
+# and (level, count) of the widest level
+MS_DS_LEVELS, MS_DS_PEAK = 3174, (737, 990)
 
 # Minimum Strahler order shown from each zoom on (zoom >= key -> order >= value).
 FULL_ZOOMS = (3, 12)
@@ -105,6 +112,26 @@ def node_masks(nodes, attrs):
 
 
 # ---------------------------------------------------------------- JSON products
+def reach_starts(attrs):
+    """Boolean per attrs row: the segment is the downstream end of its reach (from RouteLink).
+
+    A reach starts (going upstream) at the outlet and above every junction, so a segment
+    starts a reach iff it has no downstream segment or its d_reach differs from its
+    downstream segment's (build_codes.py: d_reach steps by 1 above a segment that does not
+    have exactly one upstream segment)."""
+    import xarray as xr
+    link, to = [], []
+    for dom in DOMAINS:
+        ds = xr.open_dataset(ROUTELINK[dom])
+        link.append(ds["link"].values.astype(np.int64))
+        to.append(ds["to"].values.astype(np.int64))
+    fid = attrs["feature_id"].to_numpy()
+    down = pd.Series(np.concatenate(to), index=np.concatenate(link)).reindex(fid).to_numpy()
+    assert not np.isnan(down.astype(float)).any(), "segments without a RouteLink row"
+    d_down = pd.Series(attrs["d_reach"].to_numpy(), index=fid).reindex(down).to_numpy()
+    return np.isnan(d_down) | (d_down != attrs["d_reach"].to_numpy())
+
+
 def network_sizes(dom):
     """Segment counts of every independent network of a domain, largest first (from RouteLink)."""
     import xarray as xr
@@ -126,6 +153,11 @@ def network_sizes(dom):
 def build_json(nodes, attrs, bounds):
     d_reach = attrs["d_reach"].to_numpy()
     d_of_fid = pd.Series(d_reach, index=attrs["feature_id"].to_numpy())
+    # segment axis: d_seg (build_codes.py) = distance from the network outlet in segment hops
+    d_seg = attrs["d_seg"].to_numpy()
+    ds_of_fid = pd.Series(d_seg, index=attrs["feature_id"].to_numpy())
+    starts = reach_starts(attrs)
+    start_of_fid = pd.Series(starts, index=attrs["feature_id"].to_numpy())
     widths, bboxes = {}, {}
     for nd, m in node_masks(nodes, attrs):
         c = str(nd["code"])
@@ -135,9 +167,19 @@ def build_json(nodes, attrs, bounds):
             continue
         assert rel.min() >= 0, (c, rel.min())
         max_d = int(rel.max())
-        b = max(1, math.ceil((max_d + 1) / MAX_BINS))
-        counts = np.bincount(rel // b)
-        widths[c] = {"bin": b, "d0": d0, "max_d": max_d, "counts": [int(x) for x in counts]}
+        # one entry per level 0..max_d: segments, and reaches (counted at their downstream end)
+        seg = np.bincount(rel, minlength=max_d + 1)
+        reach = np.bincount(rel[starts[m]], minlength=max_d + 1)
+        if nd["kind"] == "sub" and not start_of_fid[nd["feature_id"]]:
+            reach[0] += 1   # a mouth in mid-reach: the part of that reach above it is the river's
+        # segment axis, measured from the river's own mouth like d0: level j = ds0 + j hops
+        ds0 = int(ds_of_fid[nd["feature_id"]]) if nd["kind"] == "sub" else 0
+        rel_s = d_seg[m] - ds0
+        assert rel_s.min() == 0, (c, rel_s.min())
+        max_ds = int(rel_s.max())
+        seg_ds = np.bincount(rel_s, minlength=max_ds + 1)
+        widths[c] = {"d0": d0, "max_d": max_d, "segments": [int(x) for x in seg], "reaches": [int(x) for x in reach],
+                     "ds0": ds0, "max_ds": max_ds, "segments_ds": [int(x) for x in seg_ds]}
         bb = bounds[m]
         bboxes[c] = [round(float(bb[:, 0].min()), 4), round(float(bb[:, 1].min()), 4),
                      round(float(bb[:, 2].max()), 4), round(float(bb[:, 3].max()), 4)]
@@ -186,6 +228,7 @@ def extract(gdb, attrs):
     g["r"] = a["river"].fillna(0).astype(np.int32).to_numpy()
     g["o"] = a["order"].fillna(0).astype(np.int32).to_numpy()
     g["d"] = a["d_reach"].fillna(-1).astype(np.int32).to_numpy()
+    g["ds"] = a["d_seg"].fillna(-1).astype(np.int32).to_numpy()   # distance in segment hops
     dmv = a["dom"].fillna(0).astype(np.int32).to_numpy()
     g["dm"] = pd.array(dmv, dtype="Int32")           # absent for CONUS (keeps the tiles small)
     g.loc[dmv == 0, "dm"] = pd.NA
@@ -200,7 +243,7 @@ def extract(gdb, attrs):
     xb = a["xb"].fillna(0).astype(np.int32).to_numpy()
     g["h"] = pd.array(xb, dtype="Int32")
     g.loc[xb == 0, "h"] = pd.NA
-    g = g[["id", "n", "r", "o", "d", "dm", "p", "z", "x", "h", "geometry"]]
+    g = g[["id", "n", "r", "o", "d", "ds", "dm", "p", "z", "x", "h", "geometry"]]
     g = g[~g.geometry.is_empty & g.geometry.notna()]
     # no reach may span the antimeridian (Alaska): a lon span > 180 degrees would mean it does
     b = shapely.bounds(g.geometry.values)
@@ -220,7 +263,7 @@ def extract(gdb, attrs):
     # for CONUS and one for AK + HI + PRVI, so each stays under ~15 MB
     dm = g["dm"].fillna(0).astype(int)
     keep = g["o"].to_numpy() >= dm.map(OVERVIEW_MIN_ORDER).to_numpy()
-    cols = ["id", "n", "r", "o", "d", "dm", "x", "geometry"]
+    cols = ["id", "n", "r", "o", "d", "ds", "dm", "x", "geometry"]
     pyogrio.write_dataframe(g.loc[keep & (dm == 0).to_numpy(), cols], SCRATCH / "flow_overview.fgb", driver="FlatGeobuf")
     pyogrio.write_dataframe(g.loc[keep & (dm > 0).to_numpy(), cols], SCRATCH / "flow_overview_other.fgb", driver="FlatGeobuf")
     log("wrote flow.fgb, flow_overview.fgb, flow_overview_other.fgb")
@@ -255,7 +298,7 @@ def tippecanoe(out, layers, zooms, filters):
     cmd = ["tippecanoe", "-o", rel(out), "--force", "-Z", str(zooms[0]), "-z", str(zooms[1]),
            "--no-feature-limit", "--no-tile-size-limit", "--no-tile-stats",
            "-j", json.dumps(filters), "-T", "id:int", "-T", "n:int", "-T", "r:int", "-T", "o:int", "-T", "d:int",
-           "-T", "p:int", "-T", "z:int", "-T", "x:int", "-T", "h:int", "-T", "dm:int",
+           "-T", "ds:int", "-T", "p:int", "-T", "z:int", "-T", "x:int", "-T", "h:int", "-T", "dm:int",
            "--quiet"]
     for name, path in layers:
         cmd += ["-L", f"{name}:{rel(path)}"]
@@ -303,7 +346,7 @@ def validate(nodes, attrs, widths, tiles):
     ok = True
     by = {nd["code"]: nd for nd in nodes}
     mo = next(nd for nd in nodes if nd["kind"] == "sub" and nd["name"] == "Missouri")
-    tot = sum(widths[str(mo["code"])]["counts"])
+    tot = sum(widths[str(mo["code"])]["segments"])
     print(f"  Missouri ({mo['code']}): width total {tot:,} vs n_segments {mo['n_segments']:,}",
           "OK" if tot == mo["n_segments"] else "MISMATCH")
     ok &= tot == mo["n_segments"]
@@ -311,12 +354,52 @@ def validate(nodes, attrs, widths, tiles):
     print(f"  Mississippi: max_d {ms['max_d']} (+1 inclusive = {ms['max_d'] + 1}; "
           f"longest_path_reaches {by[1]['longest_path_reaches']})")
     ok &= ms["max_d"] + 1 == by[1]["longest_path_reaches"]
-    bad = [nd["code"] for nd in nodes if str(nd["code"]) in widths
-           and sum(widths[str(nd["code"])]["counts"]) != nd["n_segments"]]
+    sg, rc = np.array(ms["segments"]), np.array(ms["reaches"])
+    got = ((int(sg.argmax()), int(sg.max())), (int(rc.argmax()), int(rc.max())), int(sg[560:568].sum()))
+    want = (MS_SEG_PEAK, MS_REACH_PEAK, MS_SEG_560_567)
+    print(f"  Mississippi widest level (level, count): segments {got[0]}, reaches {got[1]}; "
+          f"segments in levels 560-567 {got[2]:,}", "OK" if got == want else f"MISMATCH, want {want}")
+    ok &= got == want
+    sd = np.array(ms["segments_ds"])
+    got = (len(sd), (int(sd.argmax()), int(sd.max())), int(sd.sum()))
+    want = (MS_DS_LEVELS, MS_DS_PEAK, by[1]["n_segments"])
+    print(f"  Mississippi segment axis: {got[0]:,} levels (max_ds {ms['max_ds']:,}); widest level "
+          f"(hop, count) {got[1]}; total {got[2]:,}", "OK" if got == want else f"MISMATCH, want {want}")
+    ok &= got == want
+    bad, badr, short = [], [], []
+    bads, shorts, badds0 = [], [], []
+    for nd in nodes:
+        w = widths.get(str(nd["code"]))
+        if w is None:
+            continue
+        if sum(w["segments_ds"]) != nd["n_segments"]:
+            bads.append(nd["code"])
+        if len(w["segments_ds"]) != w["max_ds"] + 1 or w["segments_ds"][0] != 1:   # one mouth segment
+            shorts.append(nd["code"])
+        # networks start at 0; a sub-river's mouth is at least as many hops as reaches out
+        # (a sub-river can share its network's outlet, e.g. Santa Cruz (AZ): ds0 = d0 = 0)
+        if (nd["kind"] == "network" and w["ds0"] != 0) or w["ds0"] < w["d0"] or w["max_ds"] < w["max_d"]:
+            badds0.append(nd["code"])
+    print(f"  segment-axis totals == n_segments for {len(nodes) - len(bads)}/{len(nodes)} nodes; "
+          f"mismatches: {bads[:20]}; segments_ds not max_ds + 1 long or not 1 at the mouth: {shorts[:20]}; "
+          f"bad ds0: {badds0[:20]}")
+    ok &= not bads and not shorts and not badds0
+    for nd in nodes:
+        w = widths.get(str(nd["code"]))
+        if w is None:
+            continue
+        if sum(w["segments"]) != nd["n_segments"]:
+            bad.append(nd["code"])
+        if nd.get("n_reaches") is not None and sum(w["reaches"]) != nd["n_reaches"]:
+            badr.append(nd["code"])
+        if not len(w["segments"]) == len(w["reaches"]) == w["max_d"] + 1:
+            short.append(nd["code"])
     missing = [nd["code"] for nd in nodes if str(nd["code"]) not in widths]
     print(f"  width totals == n_segments for {len(nodes) - len(bad) - len(missing)}/{len(nodes)} nodes; "
           f"mismatches: {bad[:20]}; without width function: {missing[:20]}")
-    ok &= not bad and not missing
+    print(f"  reach totals == n_reaches for {len(nodes) - len(badr) - len(missing)}/{len(nodes)} nodes; "
+          f"mismatches: {badr[:20]}; arrays not max_d + 1 long: {short[:20]}")
+    ok &= not bad and not missing and not badr and not short
     for dom, sizes in widths["_networks"]["by_domain"].items():
         top = [nd["n_segments"] for nd in nodes if nd["kind"] == "network" and nd["dom"] == dom]
         same = sizes[:len(top)] == sorted(top, reverse=True)
@@ -344,8 +427,9 @@ def validate(nodes, attrs, widths, tiles):
             hit = [f["properties"] for f in feats if f["properties"].get("id") == fid]
             tbv = int(row["tb"])
             want = {"id": fid, "n": int(row["net"]), "r": int(row["river"]), "o": int(row["order"]),
-                    "d": int(row["d_reach"]), "dm": int(row["dom"]), "p": int(row["p"]), "z": int(row["z"])}
-            good = bool(hit) and all({k: v for k, v in h.items() if k not in ("x", "h")} ==
+                    "d": int(row["d_reach"]), "ds": int(row["d_seg"]), "dm": int(row["dom"]),
+                    "p": int(row["p"]), "z": int(row["z"])}
+            good = bool(hit) and all("ds" in h for h in hit) and all({k: v for k, v in h.items() if k not in ("x", "h")} ==
                                      {k: v for k, v in want.items() if k in h and not (k == "dm" and v == 0)}
                                      and h.get("x", 0) == tbv and h.get("dm", 0) == want["dm"] for h in hit)
             print(f"  {path.name} z{z}/{x}/{y}: {len(feats)} features; segment {fid} -> {hit[:1]} "
@@ -355,6 +439,7 @@ def validate(nodes, attrs, widths, tiles):
             ref = a.reindex(props["id"])
             agree = ((props["n"].to_numpy() == ref["net"].to_numpy()) & (props["r"].to_numpy() == ref["river"].to_numpy())
                      & (props["o"].to_numpy() == ref["order"].to_numpy()) & (props["d"].to_numpy() == ref["d_reach"].to_numpy())
+                     & (props["ds"].to_numpy() == ref["d_seg"].to_numpy())
                      & (props.get("dm", pd.Series(0, index=props.index)).fillna(0).to_numpy() == ref["dom"].to_numpy())
                      & (props.get("x", pd.Series(0, index=props.index)).fillna(0).to_numpy() == ref["tb"].to_numpy()))
             print(f"    all {len(props)} features in tile agree with segment_attrs: {bool(agree.all())}; "

@@ -5,7 +5,7 @@
 """Step 1 of the basin-explorer data build: river codes for every segment, all NWM domains.
 
 Assigns an integer code to every river the explorer can select, and tags every segment of
-the four NWM v3.1.6 domains (CONUS, AK, HI, PRVI) with
+the four NWM v3.1.7 domains (CONUS, AK, HI, PRVI) with
   dom        0 CONUS, 1 AK, 2 HI, 3 PRVI
   net        code of its independent network if that network is listed, else 0
   river      code of the innermost listed river it drains to (a sub-river code, else the
@@ -27,7 +27,7 @@ base + 1001 + i for listed sub-rivers (i in table order), with base = 0 (CONUS),
 10000 (AK), 20000 (HI), 30000 (PRVI). CONUS codes are unchanged (networks 1..500,
 sub-rivers 1001..). Primary rivers in the sub-river tables reuse their network's code.
 
-Inputs:  data/RouteLink_{CONUS,AK,HI,PRVI}.nc (NWM v3.1.6; repro/network_stats/fetch_data.py)
+Inputs:  data/RouteLink_{CONUS,AK,HI,PRVI}.nc (NWM v3.1.7; repro/network_stats/fetch_data.py)
          repro/network_stats/results/T_basins.csv, T_basins_{AK,HI,PRVI}.csv, T_subrivers.csv,
          T_subrivers_ext.csv (AK/HI/PRVI sub-rivers and, for every domain, the inflows of
          networks renamed by the lake-outlet / outlet-confluence rules)
@@ -251,7 +251,7 @@ def main():
     attrs.to_parquet(OUT_PQ, index=False)
     codes = [nd["code"] for nd in nodes]
     assert len(codes) == len(set(codes)), "codes must be unique across domains"
-    meta = {"routelink": "NWM v3.1.6 RouteLink_{CONUS,AK,HI,PRVI}.nc",
+    meta = {"routelink": "NWM v3.1.7 RouteLink_{CONUS,AK,HI,PRVI}.nc",
             "codes": "code = base + rank (listed networks) or base + 1001 + i (listed sub-rivers); "
                      "base CONUS 0, AK 10000, HI 20000, PRVI 30000",
             "domains": info,

@@ -262,10 +262,10 @@ def main() -> None:
 
     fig.text(0.07, 0.955, "Potomac River network: the X correction lowers and delays flood peaks on larger rivers",
              fontsize=14, fontweight="bold", ha="left")
-    fig.text(0.07, 0.935, "NWM v3.1.6 network (16,454 links; line width by stream order), synthetic 25 mm storm, "
+    fig.text(0.07, 0.935, "NWM v3.1.7 network (16,454 links; line width by stream order), synthetic 25 mm storm, "
              "dt = 300 s. Small streams barely change.", fontsize=10, color=INK2, ha="left")
     retrieved = src["dem_3dep_utm18n_150m.tif"]["retrieved"]
-    fig.text(0.07, 0.035, "River network: NWM v3.1.6 RouteLink (NOAA OWP). Gauges: USGS. Basin outline: USGS NLDI "
+    fig.text(0.07, 0.035, "River network: NWM v3.1.7 RouteLink (NOAA OWP). Gauges: USGS. Basin outline: USGS NLDI "
              "(NHDPlusV2). Relief: U.S. Geological Survey, 3D Elevation Program (3DEP), retrieved "
              f"{retrieved}. States: Natural Earth.", fontsize=7.5, color=INK2, ha="left")
     fig.text(0.07, 0.018, "Projection: UTM zone 18N (EPSG:32618); scale approximate. Synthetic storm, not an observed "

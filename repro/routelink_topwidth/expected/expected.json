@@ -1,5 +1,5 @@
 {
-  "_source": "the first run of this analysis as a standalone script (2026-10-01/02); inputs are the NWM v3.1.6 RouteLink files with the SHA-256 hashes in fetch_data.py",
+  "_source": "the first run of this analysis as a standalone script (2026-10-01/02); inputs are the NWM v3.1.7 RouteLink files with the SHA-256 hashes in fetch_data.py",
   "_tolerances": {
     "counts": "exact (inputs are hash-verified, the test is deterministic)",
     "percentages": "absolute 0.001 percentage points",

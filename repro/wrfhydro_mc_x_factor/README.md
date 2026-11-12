@@ -3,7 +3,7 @@ Evidence for [NCAR/wrf_hydro_nwm_public#921](https://github.com/NCAR/wrf_hydro_n
 and the PR that fixes it, [#923](https://github.com/NCAR/wrf_hydro_nwm_public/pull/923).
 
 **TL;DR**
-> On the NWM v3.1.6 Potomac network, the correction to the X factor *lowers and delays flood peaks on larger rivers by a few percent* (i.e., the peaks were too high and too early)
+> On the NWM v3.1.7 Potomac network, the correction to the X factor *lowers and delays flood peaks on larger rivers by a few percent* (i.e., the peaks were too high and too early)
 (lowers by 1.5–3.7% for reaches with catchment area above 
   about 650 km²; delays are between 1–3 hours). 
 
@@ -22,7 +22,7 @@ Developed and tested on macOS arm64, gfortran (GNU Fortran 16.2.0, Homebrew) onl
 
 *Detail:*
 - The correction to the X factor in the PR *lowers and delays flood peaks on larger rivers*.
-- For a synthetic storm (25mm precip) over the NWM v3.1.6 Potomac network, with default NWM
+- For a synthetic storm (25mm precip) over the NWM v3.1.7 Potomac network, with default NWM
   WRF-Hydro routing settings, the following results are observed on the channel network:
   - Mid-size rivers and the main stem (650–28,000 km²): peaks drop 1.5–3.7% and arrive
     0.8–3.2 h later.
@@ -54,7 +54,7 @@ Every headline result in this README uses the NWM's operational channel setting,
   channel driver (`DRIVE_CHANNEL`) does and what the operational NWM uses. In T-Route it is
   `assume_short_ts: True`.
 - **dt = 300 s**, the NWM channel time step (`DTRT_CH = 300`).
-- **NWM v3.1.6 links**: their lengths, slopes and channel geometry, including the compound
+- **NWM v3.1.7 links**: their lengths, slopes and channel geometry, including the compound
   (overbank) channel.
 - **A storm hydrograph**, not a sharp pulse.
 
@@ -96,7 +96,7 @@ copies in `figures/`, so they show on GitHub.
 ## 1. The Potomac network (parts 2 and 3), NWM conditions
 
 **Setup.**
-- **Network.** All 16,454 NWM v3.1.6 RouteLink links upstream of feature 4539621 (the
+- **Network.** All 16,454 NWM v3.1.7 RouteLink links upstream of feature 4539621 (the
   Potomac outlet). `RouteLink_CONUS.nc` comes from NCEP and is SHA-256-checked by
   `fetch_data.py`.
 - **Storm.** 25 mm of runoff over every link, in proportion to its length, with a gamma
@@ -170,7 +170,7 @@ divergence; its DivDASqKM is 730 km². See `AREA_NOTES` in `potomac_inputs.py`.
 
 **Why.** The theory tests in Appendix A use one prismatic channel (S0 = 10⁻³) with links of
 0.5–8 km and a sharp 1-hour pulse. That isolates the X question, but it doesn't look like
-an NWM river. So `reaches.py` builds single reaches from NWM v3.1.6 links, and drives them
+an NWM river. So `reaches.py` builds single reaches from NWM v3.1.7 links, and drives them
 with a storm hydrograph from part 2.
 
 **Setup** (`reaches.py`):

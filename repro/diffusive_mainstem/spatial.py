@@ -27,7 +27,7 @@ EHYDRO_META = "ehydro/ehydro_meta.json"
 
 # Recorded in results/provenance.json (details, licences and access dates: README.md "Sources").
 SOURCES: dict = {
-    "routelink": "NWM v3.1.6 RouteLink_{CONUS,AK,HI,PRVI}.nc, https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/",
+    "routelink": "NWM v3.1.7 RouteLink_{CONUS,AK,HI,PRVI}.nc, https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/",
     "nhdplus_vaa": "nhdplusTools VAA parquet, HydroShare 6092c8a62fac45be97a09bfd0b0bf726 (2021-02-26)",
     "nhdplus_erom": "EPA NHDPlusV2.1 EROMExtension, https://dmap-data-commons-ow.s3.amazonaws.com/NHDPlusV21/Data/ (21 CONUS VPUs)",
     "physio": "Fenneman & Johnson (1946), USGS, doi:10.5066/P9B1S3K8, https://water.usgs.gov/GIS/dsdl/physio_shp.zip",

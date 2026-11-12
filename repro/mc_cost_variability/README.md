@@ -19,7 +19,7 @@ scheduling model.
 ## Method
 
 **Case.** The Potomac case of [`../short_ts_switch/`](../short_ts_switch/README.md)
-(`potomac_storm`): all 16,454 segments upstream of NWM v3.1.6 feature 4539621, synthetic
+(`potomac_storm`): all 16,454 segments upstream of NWM v3.1.7 feature 4539621, synthetic
 storm released as a gamma pulse (shape 3, scale 4 h) from hour 24, baseflow 0.01 m³ s⁻¹
 km⁻², 40 days, dt = 300 s, initial state the exact baseflow steady state. Its inputs are
 rebuilt by `make_case.py` with that experiment's own `make_inputs.py`, imported read-only
@@ -260,7 +260,7 @@ with the range over the two full runs made where they differ:
 ## Cost vectors for `../jit_scheduling/`
 
 Written by `analyze.py` into `results/cost/` (gitignored; `./run.sh` regenerates them in
-about 7.5 minutes, or 4 without timing). Segment ids are NWM v3.1.6 feature ids of the
+about 7.5 minutes, or 4 without timing). Segment ids are NWM v3.1.7 feature ids of the
 Potomac network (the `link` of `RouteLink_CONUS.nc`, the same ids as
 `../jit_scheduling/`'s RouteLink graph); `to_feature_id` is RouteLink `to`, 0 at the
 outlet 4539621.
@@ -311,7 +311,7 @@ or rescaled, e.g. `max(1, round(100 · iters / mean))`. A schedule of the 24-h l
 
 ## Candidate claims
 
-- **MC-cost-1.** On the Potomac network (NWM v3.1.6, 16,454 segments, dt = 300 s,
+- **MC-cost-1.** On the Potomac network (NWM v3.1.7, 16,454 segments, dt = 300 s,
   `assume_short_ts` = True, corrected kernel), a Muskingum-Cunge call takes 2.33 secant
   iterations on average at baseflow and 2.9 during a flood (flow ≥ 2× baseflow): about
   25% more work per call; the typical count goes from 2 to 3. Source:

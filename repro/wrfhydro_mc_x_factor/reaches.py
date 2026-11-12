@@ -1,4 +1,4 @@
-"""Part 1, NWM conditions: the X change on single reaches built from NWM v3.1.6 links.
+"""Part 1, NWM conditions: the X change on single reaches built from NWM v3.1.7 links.
 
 AI-written (Claude, 2026-11-02); not reviewed. Runs after part 2 (it reads part 2's outputs).
 

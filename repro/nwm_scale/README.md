@@ -13,7 +13,7 @@ domain. A "calculation" is one segment update per 300-s step, as on the 2020 pos
 |---|---|
 | `configs.csv` | one row per configuration: cycles, hours, members, dt, `status` (measured/inferred), `how`, `dt_source`, source URL, date |
 | `segments.csv` | RouteLink segments per domain, and the `feature_id` count read from one channel_rt file per domain |
-| `dt_sources.csv` | `DTRT_CH`, `channel_option`, `out_dt`, `KHOUR`, `NOAH_TIMESTEP`, `RESTART_FREQUENCY_HOURS` from all 25 v3.1.6 parm families |
+| `dt_sources.csv` | `DTRT_CH`, `channel_option`, `out_dt`, `KHOUR`, `NOAH_TIMESTEP`, `RESTART_FREQUENCY_HOURS` from all 25 v3.1.7 parm families |
 | `catalog_nomads.py` | fetches and parses the NOMADS day listing (and the S3 mirror listing for exact sizes) |
 | `nc_attrs.py` | prints `model_initialization_time`, `model_total_valid_times`, `feature_id` count of channel_rt files |
 | `nwm_scale.py` | the calculation; cross-checks every `configs.csv` row against the catalog |
@@ -92,7 +92,7 @@ channel_rt files carry exactly the RouteLink count in every domain (`segments.cs
    simulated hours: last lead for forecasts; look-back + one interval for analyses.
 5. 21 channel_rt files (88 MB) were downloaded and read with `nc_attrs.py` (netCDF4):
    initialization and valid times, number of valid times, `feature_id` count, version.
-6. All 25 parm families of `https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/`
+6. All 25 parm families of `https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/`
    were read (`hydro.namelist`, `namelist.hrldas`): `DTRT_CH = 300` and `channel_option = 2`
    in every one (`dt_sources.csv`).
 
@@ -140,7 +140,7 @@ Counting each valid hour once would lower the total by 0.8 % (6.70e11).
   when upstream Psurge forcing data is available" (absent on 2026-10-29).
 - NOMADS: `.../com/nwm/prod/` and `.../com/nwm/v3.1/` list the same days; `.../com/nwm/v3.0/`
   stops at `nwm.20260818/`. Files: `NWM_version_number = v3.1`, `code_version = v5.4.0`.
-- NCO `https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/` lists only `nwm.v3.1.6/`. The NCO
+- NCO `https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/` lists only `nwm.v3.1.7/`. The NCO
   changes page `https://www.nco.ncep.noaa.gov/pmb/changes/` lists NWM entries only up to the
   v3.0 upgrade (2023-09-20, SCN 23-76); v3.1 is not on it.
 
@@ -177,7 +177,7 @@ The 2020 sheet's 7-member medium range is 5,856 sim-h/day per domain; now it is 
   `no_da` medium range and the 6-hourly long range.
 
 ## Remaining unknowns
-1. Blend runs: no `medium_range_blend` parm directory exists in v3.1.6, so `DTRT_CH = 300` is
+1. Blend runs: no `medium_range_blend` parm directory exists in v3.1.7, so `DTRT_CH = 300` is
    assumed from `medium_range` / `ak_medium_range`.
 2. Parm directories are matched to NOMADS directories by name. The job scripts were not read.
    Where they override `KHOUR` (Alaska 45-h cycles; members 2-6 at 204 h), the output shows
@@ -207,7 +207,7 @@ The 2020 sheet's 7-member medium range is 5,856 sim-h/day per domain; now it is 
   t00z f001; CONUS `analysis_assim` t03z tm02, `analysis_assim_extend` t16z tm00,
   `analysis_assim_long` t06z tm00, `long_range_mem2` t00z f006, `medium_range_mem2` t00z
   f001, `medium_range_blend` t00z f001, `medium_range_no_da` t00z f003, `short_range` t00z f001.
-- Namelists: `https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/<dir>/`
+- Namelists: `https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/<dir>/`
   (`dt_sources.csv`).
 - NWS SCN 26-64 Updated, 2026-07-30:
   `https://www.weather.gov/media/notification/pdf_2026/scn26-64_Updated_National_Water_Model_V3.1_aaa.pdf`
@@ -217,8 +217,8 @@ The 2020 sheet's 7-member medium range is 5,856 sim-h/day per domain; now it is 
   downloaded but not read).
 - NCO changes page: `https://www.nco.ncep.noaa.gov/pmb/changes/` (newest NWM entry: v3.0,
   SCN 23-76).
-- Segment counts: `repro/network_stats/README.md` (RouteLink v3.1.6 from
-  `https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/domain*/`, downloaded
+- Segment counts: `repro/network_stats/README.md` (RouteLink v3.1.7 from
+  `https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain*/`, downloaded
   2026-09-30). The 2020 count 2,729,077: AGU 2020 poster,
   `https://github.com/NOAA-OWP/t-route/blob/0d512ba026e3b10a432fb707fc80655a6c2f63e2/doc/AGU_Poster.md#L38`.
 - Earlier pass (kept for reference): `https://water.noaa.gov/about/nwm`; `nwmurl` 1.0.8 (PyPI),

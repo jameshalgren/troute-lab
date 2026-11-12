@@ -451,7 +451,7 @@ def main():
         o = int(np.nonzero(D["link"] == 3766342)[0][0])
         cl = np.sort(D["link"][D["net"] == o])
         assert len(tl) == len(cl) == 11248 and (tl == cl).all(), "test-case RouteLink differs from CONUS network"
-        print("[7] t-route test/LowerColorado_TX RouteLink.nc == network of outlet 3766342 in v3.1.6 (11,248 segments, same ids)")
+        print("[7] t-route test/LowerColorado_TX RouteLink.nc == network of outlet 3766342 in v3.1.7 (11,248 segments, same ids)")
     else:
         print("[7] skipped (run fetch_testcase.py to download the t-route test-case RouteLink)")
     print(f"[6] {cnt} full-size schedules validated (Rio Grande x 6 granularities, Mississippi segments)")

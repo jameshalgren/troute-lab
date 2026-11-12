@@ -3,7 +3,7 @@
 AI-written (Claude, 2026-10-16). The network and storm are the same as the
 `potomac_storm` case of repro/short_ts_switch (make_inputs.py there), so the two
 experiments can be compared:
-  - network: every NWM v3.1.6 RouteLink_CONUS.nc link upstream of feature 4539621
+  - network: every NWM v3.1.7 RouteLink_CONUS.nc link upstream of feature 4539621
     (the Potomac's outlet), 16,454 links;
   - lateral inflow to link i is proportional to its length L_i (RouteLink has no
     catchment area), with a nominal 1.25 km^2 of contributing area per km of channel:
@@ -31,7 +31,7 @@ from fetch_data import ROUTELINK, ROUTELINK_DEST
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "build" / "potomac"
 
-POTOMAC_OUTLET = 4539621          # NWM v3.1.6 feature_id of the Potomac's network outlet
+POTOMAC_OUTLET = 4539621          # NWM v3.1.7 feature_id of the Potomac's network outlet
 AREA_PER_KM = 1.25                # km^2 of contributing area per km of channel (nominal)
 BASEFLOW = 0.01                   # m^3/s per km^2
 STORM_MM = 25.0                   # storm runoff depth (mm)

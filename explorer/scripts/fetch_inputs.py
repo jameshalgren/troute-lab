@@ -3,7 +3,7 @@
 # ///
 """Download and verify the inputs of the basin-explorer build (read-only on the web).
 
-  1. NWM v3.1.6 RouteLink files (CONUS, AK, HI, PRVI): fetched by repro/network_stats/fetch_data.py
+  1. NWM v3.1.7 RouteLink files (CONUS, AK, HI, PRVI): fetched by repro/network_stats/fetch_data.py
      (URLs and SHA-256 pinned there) and linked into data/ (gitignored).
   2. NWM v3 channel hydrofabric (file geodatabase NWM_v3_hydrofabric.gdb), from the link on
      https://water.noaa.gov/about/nwm ("The file gdb is available here", accessed 2026-10-07):

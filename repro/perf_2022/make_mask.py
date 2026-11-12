@@ -8,12 +8,12 @@ pandas.read_csv(header=None); the first column becomes the index that filters th
 RouteLink) and at CIROH-UA d29f663. fetch_inputs.py --mask uses the same file to cut
 the lateral-inflow files down to these segments.
 
-Presets (outlet feature_ids from other repro/ experiments, NWM v3.1.6 RouteLink; the
+Presets (outlet feature_ids from other repro/ experiments, NWM v3.1.7 RouteLink; the
 script checks that the outlet exists in the RouteLink it is given):
-  potomac  4539621  mouth at Chesapeake Bay; 16,454 segments in v3.1.6
+  potomac  4539621  mouth at Chesapeake Bay; 16,454 segments in v3.1.7
                     (../short_ts_switch/README.md, case potomac_storm)
   ohio     1844789  last Ohio River segment above the Mississippi; 230,729 segments in
-                    v3.1.6 (../network_stats/expected/subrivers_expected.json)
+                    v3.1.7 (../network_stats/expected/subrivers_expected.json)
 
 Usage:
   uv run --locked python make_mask.py potomac [--routelink data/static/RouteLink_CONUS_v2.1.nc]

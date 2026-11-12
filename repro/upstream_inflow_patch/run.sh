@@ -13,7 +13,7 @@ for t in "${F90:-gfortran}" make git nc-config nf-config; do
 done
 
 # Inputs: the two test domains prepared by the sibling experiment (same T-Route commit;
-# LowerColorado_TX from t-route's test data, Potomac from NWM v3.1.6 RouteLink). Made
+# LowerColorado_TX from t-route's test data, Potomac from NWM v3.1.7 RouteLink). Made
 # there only if missing; that experiment's T-Route build is not touched.
 S=../short_ts_switch
 if [ ! -f "$S/build/inputs/lc_nwm/case.json" ] || [ ! -f "$S/build/inputs/potomac_storm/case.json" ]; then

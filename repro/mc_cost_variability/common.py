@@ -1,7 +1,7 @@
 """Shared paths, scenarios and case loading for the MC cost-variability experiment.
 
 The Potomac case is the one of ../short_ts_switch (README "Design", case potomac_storm):
-all 16,454 segments upstream of NWM v3.1.6 feature 4539621, synthetic storm, 40 days,
+all 16,454 segments upstream of NWM v3.1.7 feature 4539621, synthetic storm, 40 days,
 dt = 300 s. Its inputs are rebuilt here with ../short_ts_switch/make_inputs.py, imported
 read-only (its functions are called with this experiment's paths; nothing is written
 into ../short_ts_switch). Only the storm depth changes between scenarios.
@@ -34,9 +34,9 @@ if str(STS_DIR) not in sys.path:
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
-# NWM v3.1.6 RouteLink_CONUS.nc: URL, SHA-256 and size as pinned in
+# NWM v3.1.7 RouteLink_CONUS.nc: URL, SHA-256 and size as pinned in
 # ../short_ts_switch/fetch_data.py (ROUTELINK) and ../network_stats/fetch_data.py.
-ROUTELINK_URL = "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/domain/RouteLink_CONUS.nc"
+ROUTELINK_URL = "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain/RouteLink_CONUS.nc"
 ROUTELINK_SHA256 = "4957655896f4f27854f893d02fa084f9f79c1cf8e80ce77565a7356dadb6fc0e"
 ROUTELINK_CANDIDATES = [DATA / "RouteLink_CONUS.nc",
                         HERE.parent / "network_stats" / "data" / "RouteLink_CONUS.nc",

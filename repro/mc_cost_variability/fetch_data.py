@@ -1,4 +1,4 @@
-"""Find (or download) NWM v3.1.6 RouteLink_CONUS.nc and verify its SHA-256.
+"""Find (or download) NWM v3.1.7 RouteLink_CONUS.nc and verify its SHA-256.
 
     uv run --locked python fetch_data.py
 

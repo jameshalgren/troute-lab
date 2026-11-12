@@ -21,7 +21,7 @@ The basin table built from this experiment is `results/T_basins.csv` (Markdown r
 | Term | Definition |
 |---|---|
 | segment | One RouteLink row: an NHDPlus V2 flowline or other NWM `feature_id` |
-| outlet | A segment whose `to` is 0 or is not a `link` in the same file. In all four v3.1.6 files and in v2.1, every outlet has `to == 0`, so every network is "primary" (it ends at a true terminal segment) |
+| outlet | A segment whose `to` is 0 or is not a `link` in the same file. In all four v3.1.7 files and in v2.1, every outlet has `to == 0`, so every network is "primary" (it ends at a true terminal segment) |
 | network | All segments that drain to one outlet. Each segment has one `to`, so each network is a tree; the code also checks that there are no cycles (0 segments on cycles) |
 | headwater | A segment with no upstream segment |
 | junction | A segment with ≥ 2 upstream segments |
@@ -71,9 +71,9 @@ The basin table built from this experiment is `results/T_basins.csv` (Markdown r
     and (b) the CA/MX segments removed.
 
 ## Provenance of inputs (`fetch_data.py`, SHA-256 verified)
-- **NWM v3.1.6 `RouteLink_{CONUS,AK,HI,PRVI}.nc`**: the same URLs and hashes as
+- **NWM v3.1.7 `RouteLink_{CONUS,AK,HI,PRVI}.nc`**: the same URLs and hashes as
   [`../routelink_topwidth/`](../routelink_topwidth/), from
-  <https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/>.
+  <https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/>.
 - **NWM v2.1 `RouteLink_CONUS.nc` (optional, 269 MB)**: HydroShare resource
   [0a596929a3e5411bb0032a8de35e5089](https://www.hydroshare.org/resource/0a596929a3e5411bb0032a8de35e5089/),
   created 2022-09-23 by Austin Raney. Its abstract says the file was pulled from
@@ -117,7 +117,7 @@ Notes on using it (2026-10-06):
 
 ## How to run
 ```bash
-repro/network_stats/run.sh                 # ~590 MB of downloads (v3.1.6 + v2.1); ~1 min after download
+repro/network_stats/run.sh                 # ~590 MB of downloads (v3.1.7 + v2.1); ~1 min after download
 REQUIRED_ONLY=1 repro/network_stats/run.sh  # skip the optional v2.1 file
 ```
 Steps: `uv sync --locked` (Python 3.12.13, numpy 2.5.3, pandas 3.0.6, xarray 2026.9.0,
@@ -136,7 +136,7 @@ Outputs in `results/`:
   `T_subrivers_ext.csv`, `waterbody_networks.csv`, `bay_networks.csv`, `domains.json`
 - `provenance.json`
 
-## Results (NWM v3.1.6, `expected/expected.json`)
+## Results (NWM v3.1.7, `expected/expected.json`)
 | | CONUS | AK | HI | PRVI |
 |---|---:|---:|---:|---:|
 | Segments | 2,776,734 | 391,528 | 13,637 | 14,017 |
@@ -166,7 +166,7 @@ Outputs in `results/`:
   (UNVERIFIED; AK IDs are not NHDPlus V2 COMIDs). HI: 800013609 (21.96 N, −159.66 E).
   PRVI: 800040713 (18.44 N, −65.88 E). None of these is named here.
 
-### Transboundary findings (v3.1.6)
+### Transboundary findings (v3.1.7)
 Among the top 500 CONUS networks:
 - 284 outlets are `coastal`.
 - 24 are `international_boundary_cut`: the Colorado at the Mexico boundary, the
@@ -188,7 +188,7 @@ in Canada or Mexico. The difference is mostly NHDPlus V2's own Canadian coverage
 e.g. 47,584 Canadian segments in the Great Lakes (St. Lawrence) network.
 
 **Rio Grande (outlet 626220, at the Gulf of Mexico)**
-- **v3.1.6, as distributed:** one network of 54,182 segments, spanning 24.88–37.95 N
+- **v3.1.7, as distributed:** one network of 54,182 segments, spanning 24.88–37.95 N
   and −108.37 to −97.15 E. Longest path 1,739 segments / 1,032 reaches / 3,120 km.
   - All 1,409 of the 1,550 NLDI upstream-mainstem flowlines that are present in
     RouteLink lie in this one network, up to the Colorado headwaters (37.85 N). The
@@ -207,7 +207,7 @@ e.g. 47,584 Canadian segments in the Great Lakes (St. Lawrence) network.
   - then 1,163 segments (317255, 29.42 N, −101.04 E), and smaller pieces.
 
   Method (b), removing CA/MX segments, gives 346 pieces with the same two largest.
-  **So the Rio Grande is continuous in v3.1.6 (and in v2.1) only through the
+  **So the Rio Grande is continuous in v3.1.7 (and in v2.1) only through the
   cross-border segments.** This is consistent with the author's recollection that
   earlier versions split it, though no such earlier file was available to test
   directly.
@@ -222,15 +222,15 @@ e.g. 47,584 Canadian segments in the Great Lakes (St. Lawrence) network.
 | 2020-01-30 notebook ([`Network_Analysis_via_Parallelization_Demo.ipynb`](https://github.com/jameshalgren/wrf_hydro_nwm_public/blob/dynamic_channel_routing/trunk/NDHMS/dynamic_channel_routing/notebooks/Network_Analysis_via_Parallelization_Demo.ipynb)) | "2.7M" | | | 14,351 | |
 | [Technical-QA wiki](https://github.com/NOAA-OWP/t-route/wiki/Technical-QA) | | | | | 2,219 "segments" |
 | NWM v2.1 RouteLink (this run) | 2,776,738 | 2,114,381 | 1,046,102 | 12,822 | 3,174 seg / 2,219 reaches |
-| NWM v3.1.6 RouteLink (this run) | 2,776,734 | 2,114,380 | 1,046,104 | 12,820 | 3,174 seg / 2,219 reaches |
-| v3.1.6 without non-NHDPlus segments | 2,714,519 | | | 13,268 | |
-| v3.1.6 without CA/MX segments | 2,666,407 | | | 14,341 | |
+| NWM v3.1.7 RouteLink (this run) | 2,776,734 | 2,114,380 | 1,046,104 | 12,820 | 3,174 seg / 2,219 reaches |
+| v3.1.7 without non-NHDPlus segments | 2,714,519 | | | 13,268 | |
+| v3.1.7 without CA/MX segments | 2,666,407 | | | 14,341 | |
 
-- **v2.1 vs. v3.1.6 are almost identical.** There are 2 extra outlets in v2.1 (1319262,
+- **v2.1 vs. v3.1.7 are almost identical.** There are 2 extra outlets in v2.1 (1319262,
   24604493) and 3 networks whose sizes differ (Rio Grande 54,176 vs. 54,182; Colorado
   ±1; St. Lawrence ±4).
 - **Neither file reproduces the 2020 counts.** The poster has 47,657 fewer segments and
-  1,893 more networks than v3.1.6, so it used a different RouteLink. That was probably
+  1,893 more networks than v3.1.7, so it used a different RouteLink. That was probably
   an NWM v2.0 or earlier file (UNVERIFIED), perhaps one without some of the
   cross-border segments.
   - Removing segments does not match the 2020 numbers either. Removing the
@@ -242,9 +242,9 @@ e.g. 47,584 Canadian segments in the Great Lakes (St. Lawrence) network.
   crossed). The poster's 2,218 is most likely the same path counted exclusively
   (transitions, or omitting one end reach), and the wiki's 2,219 counted inclusively.
   UNVERIFIED: the 2020 code was not rerun. The path itself is the same in v2.1 and
-  v3.1.6.
+  v3.1.7.
 - **2.10M vs. 2.11M reaches.** The poster's 2,102,010 vs. our 2,114,380 (+12,370) goes
-  with its smaller segment count, i.e. a different RouteLink version. v2.1 → v3.1.6
+  with its smaller segment count, i.e. a different RouteLink version. v2.1 → v3.1.7
   changes the count by only 1. Both round to "2.1M reaches".
 
 ### Older RouteLink availability (searched 2026-10-06)
@@ -252,8 +252,9 @@ e.g. 47,584 Canadian segments in the Great Lakes (St. Lawrence) network.
   the same size is in a HydroShare resource of James Halgren's
   (b9d3bd7091244e8d99cbb8d6a8e1ae80, from `nwm.v2.2.0/parm/DOMAIN_WCOSS_Names/`).
 - **Not obtainable:**
-  - NCO nwprod serves only `nwm.v3.1.6`. Every older directory returns 404 (v1.2.0,
-    v2.0.x, v2.1.x, v2.2.x, v3.0.x, v3.1.0), and the Wayback Machine has no RouteLink
+  - NCO nwprod serves only `nwm.v3.1.7`. Every older directory returns 404 (v1.2.0,
+    v2.0.x, v2.1.x, v2.2.x, v3.0.x, v3.1.0, and since November 2026 v3.1.6, whose RouteLink
+    files v3.1.7 serves byte-identical), and the Wayback Machine has no RouteLink
     captures.
   - NOHRSC's `NWM_parameter_files_v2.1.tar.gz` (README: "applies to NWM v2.0")
     contains `RouteLink_NHDPLUS.nc.gz` but is 4.49 GB, above the 600 MB limit. It was
@@ -268,7 +269,7 @@ e.g. 47,584 Canadian segments in the Great Lakes (St. Lawrence) network.
 *Added 2026-10-06 (AI-assembled, not yet reviewed by the author).* For each river in
 the candidate list
 (the author's list, the AI suggestions, and the city-rivers section; encoded in
-`CANDIDATES` in `subrivers.py`), find the river's **mouth** segment in the v3.1.6 CONUS
+`CANDIDATES` in `subrivers.py`), find the river's **mouth** segment in the v3.1.7 CONUS
 RouteLink and compute the statistics of the subtree upstream of it, with the same
 definitions as above. Table: `results/T_subrivers.csv` (Markdown rows: `results/T_subrivers_rows.md`).
 
@@ -418,7 +419,7 @@ Lake Pontchartrain's tributaries, that Buffalo Bayou "has too many streams label
 it", and that "the Sabine is lumped into the Neches" (2026-10-07).
 The rules are in the docstring of `domains.py`; constants are at its top.
 
-**Coverage.** The NWM v3.1.6 Alaska RouteLink covers **Cook Inlet and the Copper River
+**Coverage.** The NWM v3.1.7 Alaska RouteLink covers **Cook Inlet and the Copper River
 only** (lon −154.7 to −140.1, lat 58.6–63.6; `processing_notes`: "combined NHDPlus HR
 Cook Inlet (Alaska) geodatabase … Arc-Hydro derived segments for Regions 190201 (Copper
 River)"). The Yukon, Tanana, Koyukuk, Porcupine, Kuskokwim, Noatak, Kobuk, Colville,

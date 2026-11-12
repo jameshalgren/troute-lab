@@ -15,9 +15,11 @@ configuration of that month, test_AnA.yaml at a6efbf4e):
   NWM v2.1 RouteLink, Muskingum-Cunge only (compute_kernel V02-structured), dt = 300 s,
   qts_subdivisions = 12 (hourly CHRTOUT forcing), assume_short_ts = True, no data
   assimilation, no waterbodies (break_network_at_waterbodies = False: the NWM v2.1
-  LAKEPARM file was not found in a public archive, see README.md), the four synthetic
-  Great Lakes segments of the NWM 2.1 RouteLink renamed as v3_doc.yaml requires for
-  CONUS runs.
+  LAKEPARM file is available in the public NOHRSC tarball, see README.md). The four Great Lakes
+  segments that v3_doc.yaml renames for CONUS runs (synthetic_wb_segments) are left as
+  ordinary MC segments: with waterbodies off, the rename breaks the lateral-inflow lookup
+  in a6efbf4e (see build()). Current-code runs start 1 h after era runs so both route the
+  same forcing files.
 Variable (command-line): parallel_compute_method, cpu_pool, subnetwork_target_size,
 max_loop_size (hours = files, forcing is hourly), output, start, length, domain mask,
 initial state.
@@ -34,7 +36,7 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import netCDF4
@@ -42,7 +44,7 @@ import yaml
 
 HERE = Path(__file__).resolve().parent
 DATA = Path(os.environ.get("PERF2022_DATA", HERE / "data")).resolve()
-SYNTHETIC_WB = [4800002, 4800004, 4800006, 4800007]  # doc/v3_doc.yaml at a6efbf4e
+SYNTHETIC_WB = [4800002, 4800004, 4800006, 4800007]  # doc/v3_doc.yaml at a6efbf4e; unused (see build)
 COLUMNS = {"key": "link", "downstream": "to", "dx": "Length", "n": "n", "ncc": "nCC", "s0": "So",
            "bw": "BtmWdth", "waterbody": "NHDWaterbodyComID", "gages": "gages", "tw": "TopWdth",
            "twcc": "TopWdthCC", "musk": "MusK", "musx": "MusX", "cs": "ChSlp", "alt": "alt"}
@@ -53,11 +55,18 @@ def build(a) -> tuple[dict, dict]:
     t0 = datetime.strptime(a.start, "%Y-%m-%d_%H")
     dt = 300
     nts = a.hours * 3600 // dt
-    sn = {"geo_file_path": str(a.routelink.resolve()),
-          "synthetic_wb_segments": SYNTHETIC_WB, "synthetic_wb_id_offset": 9.99e11}
+    # No synthetic_wb_segments: with waterbodies off, a6efbf4e renames the four Great Lakes
+    # links (4800002 -> 999004800002, ...) in the network but not in the CHRTOUT lateral
+    # inflow, and fails with KeyError '[999004800002] not in index' (lab Mac, 2026-11-10).
+    # Unrenamed, they are ordinary MC segments in both builds.
+    sn = {"geo_file_path": str(a.routelink.resolve())}
     if a.mask:
         sn["mask_file_path"] = str(a.mask.resolve())
-    restart = {"start_datetime": t0.strftime("%Y-%m-%d_%H:%M")}
+    # The two codes map files to hours differently: a6efbf4e routes from t0 with the file
+    # valid at t0+1h first; d29f663 (build_forcing_sets) expects the file valid at t0. fetch
+    # downloads (start, end], so current runs start 1 h later to route the same files.
+    t0_code = t0 + timedelta(hours=1) if a.code == "current" else t0
+    restart = {"start_datetime": t0_code.strftime("%Y-%m-%d_%H:%M")}
     if a.restart:
         restart = {"lite_channel_restart_file": str(a.restart.resolve())}
     forcing = {"qts_subdivisions": 3600 // dt, "dt": dt,
@@ -81,6 +90,7 @@ def build(a) -> tuple[dict, dict]:
            "output_parameters": out}
     if a.code == "current":
         sn["network_type"] = "NHDNetwork"
+        sn["synthetic_wb_segments"] = []  # troute-config defaults to the four Great Lakes IDs
         sn["columns"] = COLUMNS
         compute["data_assimilation_parameters"] = {
             "streamflow_da": {"streamflow_nudging": False},

@@ -12,7 +12,7 @@ Inputs
    git by commit SHA (immutable) into data/t-route/. Its test domain
    test/LowerColorado_TX/ (RouteLink subset + 28 hourly NWM CHRTOUT files) is one of
    the two domains; those files are additionally checked against the SHA-256 below.
-2. NWM v3.1.6 RouteLink_CONUS.nc from NCEP (same URL and hash as repro/network_stats/
+2. NWM v3.1.7 RouteLink_CONUS.nc from NCEP (same URL and hash as repro/network_stats/
    and repro/routelink_topwidth/), from which the Potomac network is extracted. If a
    sibling experiment already holds a verified copy, it is hard-linked (or copied)
    instead of downloaded again.
@@ -70,18 +70,19 @@ LC_FILES = {
     "channel_forcing/202108241600.CHRTOUT_DOMAIN1": "3f2b6df2cdac60933a1bcdb2a0477fbdab6f0c66181fd6fe248cbd380e8838df",
 }
 
-# NWM v3.1.6 (hash observed 2026-09-30, server Last-Modified Thu, 09 Jul 2026; identical
+# NWM v3.1.7 (hash first observed 2026-09-30 on v3.1.6; v3.1.7 is byte-identical, re-checked
+# 2026-11-12; identical
 # to repro/network_stats/fetch_data.py and repro/routelink_topwidth/fetch_data.py).
-ROUTELINK = ("https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.6/parm/domain/RouteLink_CONUS.nc",
+ROUTELINK = ("https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain/RouteLink_CONUS.nc",
              "4957655896f4f27854f893d02fa084f9f79c1cf8e80ce77565a7356dadb6fc0e", 269369766)
 ROUTELINK_DEST = DATA / "RouteLink_CONUS.nc"
 SIBLINGS = [HERE.parent / "network_stats" / "data" / "RouteLink_CONUS.nc",
             HERE.parent / "routelink_topwidth" / "data" / "RouteLink_CONUS.nc"]
 
 MOVED_HELP = """\
-NCEP keeps only operational NWM versions under /pmb/codes/nwprod/. If nwm.v3.1.6 has been
+NCEP keeps only operational NWM versions under /pmb/codes/nwprod/. If nwm.v3.1.7 has been
 retired, obtain the exact RouteLink_CONUS.nc (matching the SHA-256 above) from an archive
-of NWM v3.1.6 parameter files and place it in data/."""
+of NWM v3.1.7 parameter files and place it in data/."""
 
 
 def sha256(path: Path) -> str:
