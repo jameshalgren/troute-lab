@@ -3,7 +3,7 @@
 Tools and reproducible experiments for the National Water Model (NWM) channel network and
 [T-Route](https://github.com/NOAA-OWP/t-route), the NWM's channel-routing framework:
 
-- **[`explorer/`](explorer/)**: an interactive basin explorer for the NWM v3.1.6 channel
+- **[`explorer/`](explorer/)**: an interactive basin explorer for the NWM v3.1.7 channel
   network (RouteLink) in all four NWM domains.
 - **[`repro/`](repro/)**: five self-contained, deeply reproducible experiments (pinned
   environments, SHA-256-checked inputs downloaded by script, machine-checked expected results).
@@ -18,11 +18,26 @@ and are (hopefully) useful beyond it.
 
 ## Basin explorer
 
-<!-- TODO (author): screenshot, e.g. docs/explorer.png, and a one-line caption -->
+![The basin explorer: the Mississippi network and its width function](docs/explorer.png)
+
+*The Mississippi network, 40% of the NWM CONUS channel network (1,117,312 segments), has 990 potentially parallel segments at its widest topological level, 737 segments above the mouth, as shown in the table below.*
+
+| Mississippi tributary | Location at the widest level | Nearest USGS gage and/or NWS forecast point |
+|---|---|---|
+| Missouri | 39.24 N, 94.29 W, east of Kansas City, MO | USGS [06894650](https://waterdata.usgs.gov/monitoring-location/USGS-06894650/) / NWS [NAPM7](https://water.noaa.gov/gauges/napm7), Missouri River at Napoleon, MO (22 km) |
+| Upper Mississippi | 40.87 N, 91.04 W, near Burlington, IA | NWS [GLDI2](https://water.noaa.gov/gauges/gldi2), Mississippi River at Gladstone, IL (2 km) |
+| Ohio | 38.66 N, 83.64 W, near Maysville, KY | USGS [03238000](https://waterdata.usgs.gov/monitoring-location/USGS-03238000/) / NWS [MYVK2](https://water.noaa.gov/gauges/myvk2), Ohio River at Maysville, KY (13 km) |
+| Tennessee | 34.44 N, 86.43 W, near Guntersville, AL | NWS [GVDA1](https://water.noaa.gov/gauges/gvda1), Tennessee River below Guntersville Dam, AL (4 km) |
+| Illinois | 41.32 N, 88.71 W, Marseilles, IL | USGS [05543500](https://waterdata.usgs.gov/monitoring-location/USGS-05543500/), Illinois River at Marseilles, IL (1 km); NWS [MMOI2](https://water.noaa.gov/gauges/mmoi2), Illinois River at Marseilles Lock, tailwater (4 km) |
+| Des Moines | 40.81 N, 92.03 W, near Keosauqua, IA | USGS [05490500](https://waterdata.usgs.gov/monitoring-location/USGS-05490500/) / NWS [KEQI4](https://water.noaa.gov/gauges/keqi4), Des Moines River at Keosauqua, IA (11 km) |
+| Arkansas | 37.20 N, 97.14 W, near Oxford, KS | USGS [07145600](https://waterdata.usgs.gov/monitoring-location/USGS-07145600/) / NWS [OXFK1](https://water.noaa.gov/gauges/oxfk1), Arkansas River at Oxford, KS (9 km) |
+| Great Miami | 39.55 N, 84.37 W, near Middletown, OH | USGS [03272100](https://waterdata.usgs.gov/monitoring-location/USGS-03272100/) / NWS [MDTO1](https://water.noaa.gov/gauges/mdto1), Great Miami River at Middletown, OH (5 km) |
+| Canadian | 35.36 N, 98.00 W, upstream of Mustang, OK | USGS [07228940](https://waterdata.usgs.gov/monitoring-location/USGS-07228940/) / NWS [TUCO2](https://water.noaa.gov/gauges/tuco2), Canadian River near Mustang, OK (26 km) |
+| Osage | 38.18 N, 93.62 W, near Truman Dam, MO | USGS [06922440](https://waterdata.usgs.gov/monitoring-location/USGS-06922440/) / NWS [TKZM7](https://water.noaa.gov/gauges/tkzm7), Osage River at Truman Dam, MO (21 km) |
 
 **Hosted:** <https://jameshalgren.github.io/troute-lab/> (GitHub Pages, overview tiles).
 
-The explorer shows every independent drainage network of the NWM v3.1.6 channel network in
+The explorer shows every independent drainage network of the NWM v3.1.7 channel network in
 CONUS, Alaska (Cook Inlet and the Copper River, which is all the NWM Alaska domain contains),
 Hawaii, and Puerto Rico and the U.S. Virgin Islands. It lists named tributaries, width functions
 (segments per topological distance above the mouth), how much channel lies outside the United
@@ -66,7 +81,7 @@ reproduced). Conventions and prerequisites: [`repro/README.md`](repro/README.md)
   SHA; needs `gfortran`. `QUICK=1 repro/mc_courant_timestep/run.sh` runs the primary
   experiment only (about 30 s); a pinned `Dockerfile` is included.
 - **[`network_stats/`](repro/network_stats/)**: counts and sizes of the independent drainage
-  networks in the NWM v3.1.6 RouteLink (all four domains), the share of the largest network
+  networks in the NWM v3.1.7 RouteLink (all four domains), the share of the largest network
   (Mississippi, 40.2% of CONUS) and what it means for by-network parallelism, cuts at the
   international boundary, a comparison with NWM v2.1 and 2020 counts, and statistics for about
   160 named sub-rivers. A few minutes after the downloads (`REQUIRED_ONLY=1` skips the
