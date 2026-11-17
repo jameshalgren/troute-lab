@@ -1,0 +1,14 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/coastal/maskFiles/Ocean_Land_Mask_Hawaii_5m.nc (28121008 bytes; ncdump -k: 64-bit offset; header read by HTTP byte-range, 2026-11-10)
+netcdf Ocean_Land_Mask_Hawaii_5m {
+dimensions:
+	index = 878770 ;
+variables:
+	int index(index) ;
+	int OID_(index) ;
+	double Longitude(index) ;
+		Longitude:_FillValue = NaN ;
+	double Latitude(index) ;
+		Latitude:_FillValue = NaN ;
+	int Mask(index) ;
+	int Node(index) ;
+}

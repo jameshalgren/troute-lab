@@ -6,7 +6,7 @@ unmodified. The same corrections as the T-Route series (repro/kernel_fixes/patch
 0001-0008), adapted to this older file; each hunk is labelled FIX 000k with the series
 number. FIX 0005 here also sets velc on the no-flow branch, which this version leaves
 unassigned. Apply in a directory holding the file: git apply -p1 anw2020-corrected.patch
-AI-drafted (Claude), 2026-10-09; not yet reviewed by the author.
+AI-drafted (Claude), 2026-10-09; not yet reviewed.
 
 --- a/MCsingleSegStime_f2py_NOLOOP-anw.f90	2026-10-09 13:32:50
 +++ b/MCsingleSegStime_f2py_NOLOOP-anw.f90	2026-10-09 14:48:56

@@ -29,7 +29,7 @@ def catalog_file(name):
             return f"{d}/{name}"
     return None
 
-# 2020 poster spreadsheet (as given by the author): name, hours, cycles/day, members.
+# 2020 poster spreadsheet (as given by James Halgren): name, hours, cycles/day, members.
 # 2020 medium range = 7 members: member 1 at 240 h + members 2-7 at 204 h (NWM v2.0).
 Y2020 = [("analysis_assim", 3, 24, 1), ("short_range", 18, 24, 1), ("medium_range_member1", 240, 4, 1),
          ("medium_range_members2-7", 204, 4, 6), ("long_range", 720, 4, 4)]

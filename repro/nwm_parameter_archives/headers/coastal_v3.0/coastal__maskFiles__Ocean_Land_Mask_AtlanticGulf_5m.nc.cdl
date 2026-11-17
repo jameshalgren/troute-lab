@@ -1,0 +1,15 @@
+// source: coastal_v3.0 member ./coastal/maskFiles/Ocean_Land_Mask_AtlanticGulf_5m.nc (505812812 bytes, md5 72d685d639b97eb7b78b9cb8b60e0a74, ncdump -k: netCDF-4)
+netcdf Ocean_Land_Mask_AtlanticGulf_5m {
+dimensions:
+	index = 10537609 ;
+variables:
+	int64 index(index) ;
+	int64 OID_(index) ;
+	int64 Node(index) ;
+	double Longitude(index) ;
+		Longitude:_FillValue = NaN ;
+	double Latitude(index) ;
+		Latitude:_FillValue = NaN ;
+	double Mask(index) ;
+		Mask:_FillValue = NaN ;
+}

@@ -1,0 +1,14 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/coastal/maskFiles/Ocean_Land_Mask_5m_Pacific_Coast_V2.nc (100432048 bytes; ncdump -k: 64-bit offset; header read by HTTP byte-range, 2026-11-10)
+netcdf Ocean_Land_Mask_5m_Pacific_Coast_V2 {
+dimensions:
+	index = 3138490 ;
+variables:
+	int index(index) ;
+	int OID_(index) ;
+	double Longitude(index) ;
+		Longitude:_FillValue = NaN ;
+	double Latitude(index) ;
+		Latitude:_FillValue = NaN ;
+	int Mask(index) ;
+	int Node(index) ;
+}

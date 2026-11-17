@@ -2,7 +2,7 @@
 # Write the configurations of one stage of the plan (README.md) and print the commands
 # that run them. Runs nothing long.
 #
-#   make_matrix.sh smoke        Stage i  (author's laptop): CONUS one week; Potomac one year
+#   make_matrix.sh smoke        Stage i  (laptop): CONUS one week; Potomac one year
 #   make_matrix.sh ohio         Stage i, optional: Ohio one year
 #   make_matrix.sh month NCPU   Stage ii (lab Mac): CONUS January 2018, NCPU workers
 #   make_matrix.sh year NCPU    Stage ii (lab Mac): CONUS calendar 2018, NCPU workers
@@ -11,7 +11,7 @@
 # case.json); run_case.sh <build label> <that directory> runs it. Inputs must exist
 # first (fetch_inputs.py, make_mask.py; see README.md).
 #
-# AI-written (Claude, 2026-11-04); not yet reviewed by the author.
+# AI-written (Claude, 2026-11-04); not yet reviewed.
 set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 DATA=${PERF2022_DATA:-$HERE/data}

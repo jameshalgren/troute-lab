@@ -1,0 +1,38 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain/Diversion_CONUS.nc (16062 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf Diversion_CONUS {
+dimensions:
+	diversion = 1 ;
+	string15 = 15 ;
+variables:
+	string Diversion_Name(diversion) ;
+		Diversion_Name:long_name = "Name of the diversion" ;
+	char DA_Dest(diversion, string15) ;
+		DA_Dest:long_name = "DA gauge ID for the diversion destination used to operate the diverion." ;
+	char DA_Src(diversion, string15) ;
+		DA_Src:long_name = "DA gauge ID for the diversion source used to operate the diverion." ;
+	float DivCap(diversion) ;
+		DivCap:_FillValue = NaNf ;
+		DivCap:long_name = "Maximum diversion capacity (CMS)" ;
+		DivCap:units = "m^3s^-1" ;
+	float DivFrac(diversion) ;
+		DivFrac:_FillValue = NaNf ;
+		DivFrac:long_name = "Fraction of source flow to divert. DivType must be 1" ;
+		DivFrac:units = "fraction" ;
+	int DivFrom(diversion) ;
+		DivFrom:long_name = "Diversion source ID" ;
+	int DivTo(diversion) ;
+		DivTo:long_name = "Diversion destination ID" ;
+	int DivType(diversion) ;
+		DivType:long_name = "Diversion type. " ;
+	int FromType(diversion) ;
+		FromType:long_name = "Diversion source type. 1=reach, 2=reservoir" ;
+	int Lookback(diversion) ;
+		Lookback:long_name = "DA Gauge lookback period (hrs)" ;
+		Lookback:units = "hours" ;
+	int ToType(diversion) ;
+		ToType:long_name = "Diversion destination type. 1=reach, 2=reservoir" ;
+
+// global attributes:
+		:Creation_Date = "Tue Jun 18 13:07:00 2024" ;
+		:version = "NWM v3.1" ;
+}

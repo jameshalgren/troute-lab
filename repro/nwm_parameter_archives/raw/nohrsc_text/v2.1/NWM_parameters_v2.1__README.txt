@@ -1,0 +1,41 @@
+Current NWM parameter files
+---------------------------
+ * Applies to NWM v2.1, starting early 2021. Files included for CONUS, Hawaii (HI),
+   and Puerto Rico/US Virgin Islands (PRVI) modeling domains.
+ * This file list and description generally applies to previous versions of the
+   NWM, but file contents may differ between versions.
+
+* Fulldom_CONUS_LongRange
+File description:  This file contains gridded physiographic and model parameter
+data for the 'Long-range' CONUS configuration of the National Water Model.
+
+* Fulldom_*_FullRouting
+File description:  This file contains gridded physiographic and model parameter
+data for all 'Analysis and Assimilation', 'Short Range' and 'Medium Range'
+configurations of the National Water Model.
+
+* RouteLink
+File description:  This file contains river channel definition and parameter
+data, and USGS stream gauge river reach definitions used in all configurations
+of the National Water Model. Based on NHDPlus v2.
+
+* spatialweights_CONUS_LongRange
+File description:  This file contains the spatial regridding weights, used to
+map variables from the 1km WRF-Hydro model grid to the NHDPlusv2 catchment
+objects used in the 'Long Range' CONUS configuration of the National Water Model.
+
+* spatialweights_*_FullRouting
+File description:  This file contains the spatial regridding weights, used to
+map variables from the 250m WRF-Hydro model grid to the NHDPlusv2 catchment
+objects used in all 'Analysis and Assimilation', 'Short Range' and 'Medium
+Range' configurations of the National Water Model.
+
+* LAKEPARM
+File description: Provides the static parameters that describe the initial
+fullness, size (in terms of surface area and maximum elevation), and discharge
+mechanisms (orifice and weir) for each NWM waterbody. The lake_id corresponds
+with the NHD+WaterbodyComID. Based on NHDPlus v2.
+
+* nudgingParams 
+File description: Channel_rt nudge parameters. Supplies the parameters for the
+application of streamflow nudging data assimilation within the model

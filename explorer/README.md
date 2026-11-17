@@ -1,6 +1,6 @@
 # Basin explorer
 
-*AI-assembled (Claude, 2026-10-06/07); not yet reviewed by the author.* File schemas:
+*AI-assembled (Claude, 2026-10-06/07); not yet reviewed.* File schemas:
 [`DATA_CONTRACT.md`](DATA_CONTRACT.md).
 
 The explorer shows the independent drainage networks of the NWM v3.1.7 channel network
@@ -109,8 +109,8 @@ in the NWM Alaska domain.
 HI/PRVI: the same rule on NHDPlus V2.1 (EPA WATERS). AK: USGS GNIS Domestic Names streams
 (mouth and source points), because the NHDPlus HR service did not answer level-path
 queries (2026-10-07 and 2026-10-08). Networks whose name
-came from a river *upstream* of a lake, bay or confluence at the outlet are renamed (the
-author's Tchefuncte, Buffalo Bayou and Neches examples): **Lake Pontchartrain (Amite River,
+came from a river *upstream* of a lake, bay or confluence at the outlet are renamed (after
+the requested Tchefuncte, Buffalo Bayou and Neches examples): **Lake Pontchartrain (Amite River,
 Tangipahoa River, Tchefuncte River)**, **San Jacinto River and Buffalo Bayou**, **Sabine
 Lake (Sabine River, Neches River)**, and 61 others (64 in all four domains) listed in
 `repro/network_stats/results/lake_renames.csv`, each with its rule and flags. The rivers entering

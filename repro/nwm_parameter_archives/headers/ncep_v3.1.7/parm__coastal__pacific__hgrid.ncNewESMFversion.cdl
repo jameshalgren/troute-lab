@@ -1,0 +1,25 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/coastal/pacific/hgrid.ncNewESMFversion (225701857 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf hgrid {
+dimensions:
+	elementCount = 6050741 ;
+	maxNodePElement = 3 ;
+	nodeCount = 3138490 ;
+	coordDim = 2 ;
+variables:
+	int elementConn(elementCount, maxNodePElement) ;
+		elementConn:_FillValue = -1 ;
+		elementConn:long_name = "Node Indices that define the element connectivity" ;
+		elementConn:start_index = 0b ;
+	double nodeCoords(nodeCount, coordDim) ;
+		nodeCoords:units = "degrees" ;
+	byte numElementConn(elementCount) ;
+		numElementConn:long_name = "Number of nodes per element" ;
+	double centerCoords(elementCount, coordDim) ;
+		centerCoords:units = "degrees" ;
+
+// global attributes:
+		:gridType = "unstructured" ;
+		:version = "0.9" ;
+		:history = "Fri Oct 18 19:45:07 2024: ncap2 -s elementConn=elementConn+1 hgrid-prev.nc hgrid.nc" ;
+		:NCO = "netCDF Operators version 4.7.9 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)" ;
+}

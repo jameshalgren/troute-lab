@@ -1,0 +1,894 @@
+{
+ "source": "https://www.nohrsc.noaa.gov/owp_files/nwm/nwm_parameters/NWM_coastal_parameters_v3.0.tar.gz",
+ "read_from": "streamed from source",
+ "label": "coastal_v3.0",
+ "compressed_bytes": 6195378227,
+ "compressed_sha256": "6b73c2b7e57fe4903ac46aa0781f2226da8bf81b85c39cc9b99c0a18b53cc431",
+ "scanned_utc": "2026-11-10T17:28:11",
+ "members": [
+  {
+   "name": "./coastal",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2023-04-28 17:48:44",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/Tides",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2022-12-02 19:09:29",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/Tides/TidalConst",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2022-12-02 19:10:42",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/Tides/TidalConst/n2.nc",
+   "type": "file",
+   "size": 132879586,
+   "mtime": "2022-12-02 19:10:34",
+   "mode": "0o644",
+   "md5": "f05014b2c0fb3b2ffe723a79dda21ed3",
+   "sha256": "418ae4f3612f0d5575e4fecd085ae5c5ae40f4fa8fb40ab201b7b108f94700c3",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/Tides/TidalConst/m2.nc",
+   "type": "file",
+   "size": 132879586,
+   "mtime": "2022-12-02 19:10:31",
+   "mode": "0o644",
+   "md5": "ba25f413b336dcb8b50ee4b83e83e275",
+   "sha256": "16713253b9d603efc6f3d35507827eaf0dcdddaedd586419bcadfbaba058ec2d",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/Tides/TidalConst/o1.nc",
+   "type": "file",
+   "size": 132879586,
+   "mtime": "2022-12-02 19:10:36",
+   "mode": "0o644",
+   "md5": "34ea85df99d7b81bf2dfa1ff88a8ad62",
+   "sha256": "c5f694dcc726241d2a213f869710a582ea77c11a3d002e687696999afdf7305c",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/Tides/TidalConst/q1.nc",
+   "type": "file",
+   "size": 132879586,
+   "mtime": "2022-12-02 19:10:42",
+   "mode": "0o644",
+   "md5": "c22ae8b6cdfe82b0e9e59c238d6ee28c",
+   "sha256": "4022b69b23b24158391c1dcf33d780277514a1b564078cb02d77d0f302803948",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/Tides/TidalConst/k1.nc",
+   "type": "file",
+   "size": 132879586,
+   "mtime": "2022-12-02 19:10:25",
+   "mode": "0o644",
+   "md5": "314a49d3eb3cbd1175c4ad6dad7a7864",
+   "sha256": "e50379c0465785f7d7a18fa8f024e27c2f8d617b34841ed605a4b50af19bba6e",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/Tides/TidalConst/k2.nc",
+   "type": "file",
+   "size": 132879586,
+   "mtime": "2022-12-02 19:10:28",
+   "mode": "0o644",
+   "md5": "dfaf5ecee6176a79efcbd5b5b5620896",
+   "sha256": "015fd50fe8443e2a2ca393b12ed646e9f8cd44f32c502eb392425da4e3d3527c",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/Tides/TidalConst/p1.nc",
+   "type": "file",
+   "size": 132879586,
+   "mtime": "2022-12-02 19:10:39",
+   "mode": "0o644",
+   "md5": "1bc049bcc0f51e6cf94901d70e94f8bd",
+   "sha256": "91b827b6a86fda0d42e21a5892c7cb1a17085260183e4873f606441594648b6a",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/Tides/TidalConst/s2.nc",
+   "type": "file",
+   "size": 132879586,
+   "mtime": "2022-12-02 19:10:45",
+   "mode": "0o644",
+   "md5": "3e1efb98c7f2280dd7fd99e5b98b5d24",
+   "sha256": "c67413c8b0f35a02ffd021b390fa522f40b04fd4e6a7f0cc51c4be4ba6565044",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/hawaii",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2023-04-28 19:58:12",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/hawaii/windrot_geo2proj.gr3",
+   "type": "file",
+   "size": 80636157,
+   "mtime": "2023-01-27 14:23:25",
+   "mode": "0o644",
+   "md5": "c7b7ba35a794268ca4dd92db75ed4084",
+   "sha256": "43fb20f234bc7c2d93b7f0044fbdf3a02c26c5672092c5c1126418fe9eab0324",
+   "magic": "57696e64"
+  },
+  {
+   "name": "./coastal/hawaii/vgrid.in",
+   "type": "file",
+   "size": 172,
+   "mtime": "2022-10-26 18:00:26",
+   "mode": "0o644",
+   "md5": "13af415067a30369603a4002db7d695b",
+   "sha256": "236545e5e63c4bbf979eb9c55a1ce5fe22b002e87491e26283cb6672f673767c",
+   "magic": "32202169"
+  },
+  {
+   "name": "./coastal/hawaii/open_bnds_hgrid.nc",
+   "type": "file",
+   "size": 422410,
+   "mtime": "2023-01-27 14:27:05",
+   "mode": "0o644",
+   "md5": "31c845baea78a85cac53a0bd98101d23",
+   "sha256": "1deedcb64a76cd68c3c8510466dc9c02e704cb32b3589ffe7c61f7c00bd76491",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/hawaii/hgrid.utm",
+   "type": "file",
+   "size": 39114789,
+   "mtime": "2022-10-26 18:00:25",
+   "mode": "0o644",
+   "md5": "fe95f78302d716ceabdc719cb16bec5c",
+   "sha256": "6477d977853e2c2e1c9c2b5822c2a459793f4c386dd2868c447bdba1e68a92d7",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/hawaii/hgrid.nc",
+   "type": "file",
+   "size": 63464378,
+   "mtime": "2023-01-27 14:26:49",
+   "mode": "0o644",
+   "md5": "2ef444aa432c2eabf47332d9e191d607",
+   "sha256": "0e25305085299e525df1fb1f560e9a3c2e85be426bca4d4b214e8b67c5be7b24",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/hawaii/elev.ic",
+   "type": "file",
+   "size": 84855138,
+   "mtime": "2023-03-12 02:12:51",
+   "mode": "0o644",
+   "md5": "010c316eed038a2991407842c9c5e0e7",
+   "sha256": "e381fc58f43b6606fc5025c475ac65765af194636be45c51ee64e4414575d56f",
+   "magic": "656c6576"
+  },
+  {
+   "name": "./coastal/hawaii/element_areas.txt",
+   "type": "file",
+   "size": 13426191,
+   "mtime": "2023-01-27 14:27:20",
+   "mode": "0o644",
+   "md5": "f8a610a17552cdbbfcc1eb7e82527e49",
+   "sha256": "55e0a00fe78cd3a52ff80dccc54d37b6a15ca8ef363bd7599d36ab1d2383c063",
+   "magic": "3139352e"
+  },
+  {
+   "name": "./coastal/hawaii/hgrid.gr3",
+   "type": "file",
+   "size": 86109350,
+   "mtime": "2023-03-12 02:13:08",
+   "mode": "0o644",
+   "md5": "30cd27afb9f83770a7ede777f8a25bed",
+   "sha256": "79cf6f8b91b0a83d525aea42ba21b09ffa8a7556c14a05ee305c7f6e827cfa94",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/hawaii/nwmReaches.csv",
+   "type": "file",
+   "size": 15251,
+   "mtime": "2023-01-27 14:23:21",
+   "mode": "0o644",
+   "md5": "980b342d4e0f487080ccb4367e8113a7",
+   "sha256": "65cd86b77e2cb36dd4f1d5a0ce198931e2cd77ef1a3f9a5a01ba54e565c3d7a4",
+   "magic": "3733310a"
+  },
+  {
+   "name": "./coastal/hawaii/manning.gr3",
+   "type": "file",
+   "size": 81876381,
+   "mtime": "2023-01-27 14:23:21",
+   "mode": "0o644",
+   "md5": "f7607abc24b277dcf44617bcb10b1ad6",
+   "sha256": "b36fe95e93b2f70db3a5451f376eeb96598632650009cf378f4a810983abb3cb",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/hawaii/hgrid.ll",
+   "type": "file",
+   "size": 86109350,
+   "mtime": "2023-03-12 02:13:08",
+   "mode": "0o644",
+   "md5": "30cd27afb9f83770a7ede777f8a25bed",
+   "sha256": "79cf6f8b91b0a83d525aea42ba21b09ffa8a7556c14a05ee305c7f6e827cfa94",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/hawaii/sflux",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2022-10-26 18:00:24",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/hawaii/sflux/sflux_inputs.txt",
+   "type": "file",
+   "size": 16,
+   "mtime": "2022-10-26 18:00:24",
+   "mode": "0o644",
+   "md5": "4b15331d78774cf49ae8a9701c481afc",
+   "sha256": "0c3b61f05de491bcff132f09e02c53f93e584b50da2819dc60b008e432caa549",
+   "magic": "2673666c"
+  },
+  {
+   "name": "./coastal/hawaii/hgrid.cpp",
+   "type": "file",
+   "size": 99729099,
+   "mtime": "2023-02-15 19:24:32",
+   "mode": "0o644",
+   "md5": "e558bec8e82f7e6756d7dc5ea420f511",
+   "sha256": "02f9f4b8332599ec99aea1869781b55b3809ba480619bef99ee43b040f2f8902",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/hawaii/hgrid.vtk",
+   "type": "file",
+   "size": 48836839,
+   "mtime": "2022-10-26 18:00:22",
+   "mode": "0o644",
+   "md5": "1885d6035a39b7d58dee1cee756acb64",
+   "sha256": "9985a7a0be84aba8e5c5e2529127911732adfba75f3f6837187de4260e3ab22b",
+   "magic": "23207674"
+  },
+  {
+   "name": "./coastal/hawaii/param.nml",
+   "type": "file",
+   "size": 49519,
+   "mtime": "2023-04-14 15:19:39",
+   "mode": "0o644",
+   "md5": "72717386229ab8273279daf12d942c87",
+   "sha256": "bc3d82002676473a48954995e4be7a826d2291d8f8d41b07e68a990cad8d7530",
+   "magic": "21706172"
+  },
+  {
+   "name": "./coastal/hawaii/bctides.in",
+   "type": "file",
+   "size": 82,
+   "mtime": "2023-01-27 14:22:35",
+   "mode": "0o644",
+   "md5": "b793281842a8e30ee46d89440396c93c",
+   "sha256": "a2ed58374d6d22bb47dc18675ca1a37d015106bcb70a4f0475f8f98f89a35876",
+   "magic": "2131302f"
+  },
+  {
+   "name": "./coastal/atlgulf",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2023-05-01 13:41:29",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/atlgulf/windrot_geo2proj.gr3",
+   "type": "file",
+   "size": 1085234838,
+   "mtime": "2023-04-28 17:44:03",
+   "mode": "0o644",
+   "md5": "90780bc1774c6bdcb9e2e608e6e5f27f",
+   "sha256": "8409f2c5e32b308eacd9b2a90f1fdd89d045945f02dd31aae0fd1fc72e961784",
+   "magic": "57696e64"
+  },
+  {
+   "name": "./coastal/atlgulf/vgrid.in",
+   "type": "file",
+   "size": 172,
+   "mtime": "2023-04-28 17:44:01",
+   "mode": "0o644",
+   "md5": "13af415067a30369603a4002db7d695b",
+   "sha256": "236545e5e63c4bbf979eb9c55a1ce5fe22b002e87491e26283cb6672f673767c",
+   "magic": "32202169"
+  },
+  {
+   "name": "./coastal/atlgulf/open_bnds_hgrid.nc",
+   "type": "file",
+   "size": 999841,
+   "mtime": "2023-04-28 17:44:01",
+   "mode": "0o644",
+   "md5": "8ea16365acb4488f6d89413300fd5305",
+   "sha256": "e177b045ce1e9c99e61b45c7100ff49a48bd893055ca836a07b034f60bd18636",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/atlgulf/hgrid.utm",
+   "type": "file",
+   "size": 1060814755,
+   "mtime": "2023-05-01 13:41:31",
+   "mode": "0o644",
+   "md5": "e1e9fbafcd90cfa8d324ddd6763ca872",
+   "sha256": "c7b06930ce3705016689c4a800caad8961f5ab86aadfa1ca944607cdfd836163",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/atlgulf/hgrid.nc",
+   "type": "file",
+   "size": 776682334,
+   "mtime": "2023-04-28 17:43:59",
+   "mode": "0o644",
+   "md5": "412e388318798812bb5140c8e486ee6c",
+   "sha256": "b688ab68c28c89f8a121f7ac3a6795b08fc931d2289c33fc31a68c725e9b3ed4",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/atlgulf/elev.ic",
+   "type": "file",
+   "size": 1141687052,
+   "mtime": "2023-04-28 17:43:54",
+   "mode": "0o644",
+   "md5": "c504887613fadd455dfbc212171c7a2b",
+   "sha256": "2c1f92b9c1dea56d9fdf8b4bda3870f29a9be0b26b16b85adfd03e2612d970f6",
+   "magic": "656c6576"
+  },
+  {
+   "name": "./coastal/atlgulf/element_areas.txt",
+   "type": "file",
+   "size": 164656091,
+   "mtime": "2023-04-28 17:43:53",
+   "mode": "0o644",
+   "md5": "31ccb0adb3b49f5c5cd475621753d6ca",
+   "sha256": "6e4dadabba753acb716e0bfa3b877d96a3f989907b71b7abae35bab9b61fa99c",
+   "magic": "31393530"
+  },
+  {
+   "name": "./coastal/atlgulf/hgrid.gr3",
+   "type": "file",
+   "size": 1145865241,
+   "mtime": "2023-04-28 17:43:57",
+   "mode": "0o644",
+   "md5": "7e230445295c28a98e14758d3f0d2865",
+   "sha256": "c7cbfbe0a34b715bbadfb6cc28e0af18f3b58d51c93abd5fa225836ee1ada98b",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/atlgulf/nwmReaches.csv",
+   "type": "file",
+   "size": 106799,
+   "mtime": "2023-04-28 17:44:01",
+   "mode": "0o644",
+   "md5": "53df181b1fec66daf97269fe16ae75d4",
+   "sha256": "f14b5534e66351fd993eea89ef1d236a5a78d0b5222fdbb35e1899c53150afaa",
+   "magic": "35353837"
+  },
+  {
+   "name": "./coastal/atlgulf/manning.gr3",
+   "type": "file",
+   "size": 1098881790,
+   "mtime": "2023-04-28 17:44:01",
+   "mode": "0o644",
+   "md5": "febbbe564f8c35c4c5754f3e63b483ae",
+   "sha256": "6330c5cd661aec96965d00125bb99776845b3f3d0d5bcf25a2ee834c04c32f72",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/atlgulf/hgrid.ll",
+   "type": "file",
+   "size": 1145865241,
+   "mtime": "2023-04-28 17:43:58",
+   "mode": "0o644",
+   "md5": "7e230445295c28a98e14758d3f0d2865",
+   "sha256": "c7cbfbe0a34b715bbadfb6cc28e0af18f3b58d51c93abd5fa225836ee1ada98b",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/atlgulf/sflux",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2023-04-28 16:35:01",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/atlgulf/sflux/sflux_inputs.txt",
+   "type": "file",
+   "size": 16,
+   "mtime": "2023-04-26 19:43:46",
+   "mode": "0o644",
+   "md5": "4b15331d78774cf49ae8a9701c481afc",
+   "sha256": "0c3b61f05de491bcff132f09e02c53f93e584b50da2819dc60b008e432caa549",
+   "magic": "2673666c"
+  },
+  {
+   "name": "./coastal/atlgulf/hgrid.cpp",
+   "type": "file",
+   "size": 1297667657,
+   "mtime": "2023-04-28 17:43:55",
+   "mode": "0o644",
+   "md5": "710fa27115d4902a51e146922e218dfc",
+   "sha256": "e693fff51d6f1df5d7fdcfa63c4290433584eeaddd4b1c0266a7527bf90e68ed",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/atlgulf/hgrid.vtk",
+   "type": "file",
+   "size": 1406890042,
+   "mtime": "2023-04-28 17:44:00",
+   "mode": "0o644",
+   "md5": "6eaad434f0095606a2eca0de1edb2309",
+   "sha256": "2cb47d8bc7a144af34c77b98db559a8934861914864a6578bc13aa5ed3d5781b",
+   "magic": "23207674"
+  },
+  {
+   "name": "./coastal/atlgulf/param.nml",
+   "type": "file",
+   "size": 49518,
+   "mtime": "2023-04-14 15:19:18",
+   "mode": "0o644",
+   "md5": "bb3a1eadd489318d40aa89052fdbcd79",
+   "sha256": "af422a18c992861d6c7a0504f8ae7b93fd8442883edb9f369931ad62dd6da2d5",
+   "magic": "21706172"
+  },
+  {
+   "name": "./coastal/atlgulf/elevation_correction.csv",
+   "type": "file",
+   "size": 938281,
+   "mtime": "2023-04-28 17:43:53",
+   "mode": "0o644",
+   "md5": "bd5da6a1e4efcb88ff0ed45c40568321",
+   "sha256": "88de6e323c52a595ca0ba50d0c1dc933f28aef4b94c700986f85d3979d29a6b4",
+   "magic": "efbbbf4f"
+  },
+  {
+   "name": "./coastal/atlgulf/bctides.in",
+   "type": "file",
+   "size": 71,
+   "mtime": "2023-04-28 17:43:53",
+   "mode": "0o644",
+   "md5": "344115e7aae2ad1ce9fdec459f2a4ec3",
+   "sha256": "1710ca64332536d936a8bc22739c7176905060dc26bb1cedeb76bbe65f4a742d",
+   "magic": "2131302f"
+  },
+  {
+   "name": "./coastal/maskFiles",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2023-04-27 16:27:47",
+   "mode": "0o755"
+  },
+  {
+   "name": "./coastal/maskFiles/Ocean_Land_Mask_PR_USVI_5m.nc",
+   "type": "file",
+   "size": 118580912,
+   "mtime": "2023-01-27 19:23:44",
+   "mode": "0o644",
+   "md5": "92d408ca150e34bbeefaea5e4d4be3ee",
+   "sha256": "f38f3f03441fbd12b35b69a6ffecb45dff949c2d0d9a26581d577f0a0004ea16",
+   "magic": "43444602",
+   "nc_kind": "64-bit offset"
+  },
+  {
+   "name": "./coastal/maskFiles/Ocean_Land_Mask_Hawaii_5m.nc",
+   "type": "file",
+   "size": 28121008,
+   "mtime": "2023-01-27 19:23:44",
+   "mode": "0o644",
+   "md5": "008d1cfcf34ddac15c8f0bc291dabf6a",
+   "sha256": "f150512d633bd4ecf38a6cf5cb0c9d699e28a5579c195ebaf83f4344d8d99766",
+   "magic": "43444602",
+   "nc_kind": "64-bit offset"
+  },
+  {
+   "name": "./coastal/maskFiles/Ocean_Land_Mask_5m_Pacific_Coast_V2.nc",
+   "type": "file",
+   "size": 100432048,
+   "mtime": "2022-11-29 14:57:33",
+   "mode": "0o644",
+   "md5": "7f5f550c249c53210119dc012d4c8cb0",
+   "sha256": "3468204fc9e8cebcd49df20868be7c73b28e0fb813fdcdebaefd6003727524c3",
+   "magic": "43444602",
+   "nc_kind": "64-bit offset"
+  },
+  {
+   "name": "./coastal/maskFiles/Ocean_Land_Mask_AtlanticGulf_5m.nc",
+   "type": "file",
+   "size": 505812812,
+   "mtime": "2023-04-28 17:49:49",
+   "mode": "0o644",
+   "md5": "72d685d639b97eb7b78b9cb8b60e0a74",
+   "sha256": "634f0b1a8bc96417e1bdccf0e98bd3df974601dd46a318b360cea8bb4af32177",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/pacific",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2023-04-28 19:57:54",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/pacific/windrot_geo2proj.gr3",
+   "type": "file",
+   "size": 328965912,
+   "mtime": "2023-01-27 14:34:10",
+   "mode": "0o644",
+   "md5": "ab4f1851f39b92319b2387d4e7b6b620",
+   "sha256": "e76c014d388c89e9684ba0ed2ee5d1b8fa21a95b71d907d63ae052a3e4835910",
+   "magic": "57696e64"
+  },
+  {
+   "name": "./coastal/pacific/vgrid.in",
+   "type": "file",
+   "size": 172,
+   "mtime": "2022-10-26 18:01:25",
+   "mode": "0o644",
+   "md5": "13af415067a30369603a4002db7d695b",
+   "sha256": "236545e5e63c4bbf979eb9c55a1ce5fe22b002e87491e26283cb6672f673767c",
+   "magic": "32202169"
+  },
+  {
+   "name": "./coastal/pacific/open_bnds_hgrid.nc",
+   "type": "file",
+   "size": 2201562,
+   "mtime": "2023-01-27 14:39:29",
+   "mode": "0o644",
+   "md5": "e45783c5168d52f9d015912fa067f46c",
+   "sha256": "a80fb1973b268cfaea709e15600ed5f175f9e3209f8b6eed39979b6ce10f12ae",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/pacific/hgrid.utm",
+   "type": "file",
+   "size": 381095165,
+   "mtime": "2022-10-26 18:01:20",
+   "mode": "0o644",
+   "md5": "9884436f3f31f1343163ffa9469ac323",
+   "sha256": "f3ed9bc8dc7b7b0a338d50fbd384f67198227b13bb0fe27c24975b4649c2c9df",
+   "magic": "68677269"
+  },
+  {
+   "name": "./coastal/pacific/hgrid.nc",
+   "type": "file",
+   "size": 225697079,
+   "mtime": "2023-01-27 14:38:32",
+   "mode": "0o644",
+   "md5": "59d8f90d8a1f1bb67fc9b0e300cfb115",
+   "sha256": "cb0486b014b04ee01f407a84d60606974c8851babcb1cc8f876ea6edca205b46",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/pacific/elev.ic",
+   "type": "file",
+   "size": 340818673,
+   "mtime": "2023-03-10 22:32:00",
+   "mode": "0o644",
+   "md5": "a2aa9681534f38c2ad29268c20feaf1c",
+   "sha256": "daf9ed91fe78b13f3521f619a1a8c2d3cd0bce2dfafccbdab1b14ba005e3ebc6",
+   "magic": "656c6576"
+  },
+  {
+   "name": "./coastal/pacific/element_areas.txt",
+   "type": "file",
+   "size": 47622735,
+   "mtime": "2023-01-27 14:40:24",
+   "mode": "0o644",
+   "md5": "5faddb43699d17513e173f98d99c1396",
+   "sha256": "cad2f62f73585cd656f13c6a032d9f11943fc8cd71a646caa9b3565b603ff0e2",
+   "magic": "31313631"
+  },
+  {
+   "name": "./coastal/pacific/hgrid.gr3",
+   "type": "file",
+   "size": 346251903,
+   "mtime": "2023-03-10 22:32:10",
+   "mode": "0o644",
+   "md5": "cae1d33654af96c21edc063cf080b97f",
+   "sha256": "14205d8a23328e2fdb20cfe5cd2c6ae73683d43decb041d4128f552284f64771",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/pacific/nwmReaches.csv",
+   "type": "file",
+   "size": 74848,
+   "mtime": "2023-01-27 14:33:54",
+   "mode": "0o644",
+   "md5": "549b0a45de58489afb792eff1a590cda",
+   "sha256": "21d0dff10c13b12380edf6618eb9badcc80ba39d4ccd94637feb6a3e47c3be92",
+   "magic": "33333935"
+  },
+  {
+   "name": "./coastal/pacific/manning.gr3",
+   "type": "file",
+   "size": 333673353,
+   "mtime": "2023-01-27 14:33:54",
+   "mode": "0o644",
+   "md5": "9f0c699e0ce39a87b49c8bf83437b8bd",
+   "sha256": "042cf1a2a538abf7fe80dd879255a8cd82b3223a7d8fef299334b5879e408c60",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/pacific/hgrid.ll",
+   "type": "file",
+   "size": 346251903,
+   "mtime": "2023-03-10 22:32:10",
+   "mode": "0o644",
+   "md5": "cae1d33654af96c21edc063cf080b97f",
+   "sha256": "14205d8a23328e2fdb20cfe5cd2c6ae73683d43decb041d4128f552284f64771",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/pacific/sflux",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2023-04-28 16:35:28",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/pacific/sflux/sflux_inputs.txt",
+   "type": "file",
+   "size": 16,
+   "mtime": "2022-10-26 18:01:12",
+   "mode": "0o644",
+   "md5": "4b15331d78774cf49ae8a9701c481afc",
+   "sha256": "0c3b61f05de491bcff132f09e02c53f93e584b50da2819dc60b008e432caa549",
+   "magic": "2673666c"
+  },
+  {
+   "name": "./coastal/pacific/hgrid.cpp",
+   "type": "file",
+   "size": 370454132,
+   "mtime": "2023-02-15 19:23:14",
+   "mode": "0o644",
+   "md5": "41cad83f41f27773f0437fbd839056cc",
+   "sha256": "9116037b3f5717e32e8ed5a186e85bfe4d7c0734698ba46d94afbb492d694663",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/pacific/hgrid.vtk",
+   "type": "file",
+   "size": 492442828,
+   "mtime": "2022-10-26 18:00:53",
+   "mode": "0o644",
+   "md5": "3ad68e4898de3171cf30bd0dc97a1bdf",
+   "sha256": "55f5f9cd2c3c4e85e28e5812f81aa9ee1d03ab9642b7ca061ce710dd830fc17f",
+   "magic": "23207674"
+  },
+  {
+   "name": "./coastal/pacific/param.nml",
+   "type": "file",
+   "size": 49519,
+   "mtime": "2023-04-14 15:19:52",
+   "mode": "0o644",
+   "md5": "a488d2f7b3e6bb42bb0285a188af4f6f",
+   "sha256": "1ceb2199653ed93106dd55ff77159a4d79f74a467d0e56127d633f2e56493099",
+   "magic": "21706172"
+  },
+  {
+   "name": "./coastal/pacific/elevation_correction.csv",
+   "type": "file",
+   "size": 2506640,
+   "mtime": "2023-03-07 19:48:56",
+   "mode": "0o644",
+   "md5": "7b9090e212f21b521fac8f8bf2ce5d90",
+   "sha256": "6de0bcb7bfd9d7507db630cc525019b6abf9b5004f01c21f4ec0048d4645e5fc",
+   "magic": "efbbbf4f"
+  },
+  {
+   "name": "./coastal/pacific/bctides.in",
+   "type": "file",
+   "size": 72,
+   "mtime": "2023-01-27 14:32:23",
+   "mode": "0o644",
+   "md5": "2915e83a3cbc087a830fe73405258f17",
+   "sha256": "c49659cdc4de504b5a244c886ea9a91b69bc5088b8a2cb3d18bfcc7a517d56b6",
+   "magic": "2131302f"
+  },
+  {
+   "name": "./coastal/prvi",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2023-04-28 19:58:22",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/prvi/windrot_geo2proj.gr3",
+   "type": "file",
+   "size": 370667778,
+   "mtime": "2023-01-24 16:58:02",
+   "mode": "0o644",
+   "md5": "f9b0269fe3769bb333bff13afaaa265f",
+   "sha256": "512b64cbe326137d5beabb4e8ed7b19ae0589f1cd31b2bc602eb18e645a91cc8",
+   "magic": "57696e64"
+  },
+  {
+   "name": "./coastal/prvi/vgrid.in",
+   "type": "file",
+   "size": 172,
+   "mtime": "2022-10-26 18:01:58",
+   "mode": "0o644",
+   "md5": "13af415067a30369603a4002db7d695b",
+   "sha256": "236545e5e63c4bbf979eb9c55a1ce5fe22b002e87491e26283cb6672f673767c",
+   "magic": "32202169"
+  },
+  {
+   "name": "./coastal/prvi/open_bnds_hgrid.nc",
+   "type": "file",
+   "size": 606286,
+   "mtime": "2023-01-24 20:36:50",
+   "mode": "0o644",
+   "md5": "29c218ad655d99762f8946c62840ee1f",
+   "sha256": "f4179b940e41c52833e99e9c69fa24a9cf4bbff250c3357fbba23b0ac3cf20bb",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/prvi/hgrid.utm",
+   "type": "file",
+   "size": 112977344,
+   "mtime": "2022-10-26 18:01:56",
+   "mode": "0o644",
+   "md5": "bcf4533617e4918b81da8a54a138d0b8",
+   "sha256": "df9db37ce0dce842f5453080e8fe97514a46cc7c25ee41881702ec0fe5e15ac0",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/prvi/hgrid.nc",
+   "type": "file",
+   "size": 273082222,
+   "mtime": "2023-01-24 20:35:02",
+   "mode": "0o644",
+   "md5": "c2ce0aa37e3a8156dba96f36ad67d00a",
+   "sha256": "31145ebf06507cdfaa611e539af092c0ceff2d118d21859e72229ee7100793d0",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "./coastal/prvi/elev.ic",
+   "type": "file",
+   "size": 384843729,
+   "mtime": "2023-03-10 22:27:53",
+   "mode": "0o644",
+   "md5": "c956de3f193aae1ae1fcddfece433682",
+   "sha256": "78a07a5493770a3ef0df4ecc151e3d9cc6616316c828a53458e722e9fafe0260",
+   "magic": "656c6576"
+  },
+  {
+   "name": "./coastal/prvi/element_areas.txt",
+   "type": "file",
+   "size": 58123395,
+   "mtime": "2023-01-24 22:11:15",
+   "mode": "0o644",
+   "md5": "fa88a70128fd93671810a45d4c75d2c1",
+   "sha256": "e907a895779ab714a35d30455589031192e230b42a89b82503a65ea52fee0b31",
+   "magic": "3338372e"
+  },
+  {
+   "name": "./coastal/prvi/hgrid.gr3",
+   "type": "file",
+   "size": 391844826,
+   "mtime": "2023-03-10 22:27:42",
+   "mode": "0o644",
+   "md5": "9332f5a56be5833393278284c26ef0ca",
+   "sha256": "ba973dee276784b78cb4a5a616f0f51beb5a4cbea1629e06dee2d70f007cf9a0",
+   "magic": "68677269"
+  },
+  {
+   "name": "./coastal/prvi/nwmReaches.csv",
+   "type": "file",
+   "size": 15821,
+   "mtime": "2023-01-24 16:57:44",
+   "mode": "0o644",
+   "md5": "24b260d41eed9323b7461c69f7f9f923",
+   "sha256": "a26622b6e4ea4c557fbbea5448b67c9d9f1c50717337f5562f9bde7a504aaf07",
+   "magic": "3736370a"
+  },
+  {
+   "name": "./coastal/prvi/manning.gr3",
+   "type": "file",
+   "size": 376216253,
+   "mtime": "2023-01-24 16:57:44",
+   "mode": "0o644",
+   "md5": "6b7d656a9e5d092a905011cf3f97b78c",
+   "sha256": "efa7edc9af7277458e4567352841dc0702db68315ccdd24ae4d02fbd38e649e3",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/prvi/hgrid.ll",
+   "type": "file",
+   "size": 391844826,
+   "mtime": "2023-03-10 22:27:43",
+   "mode": "0o644",
+   "md5": "9332f5a56be5833393278284c26ef0ca",
+   "sha256": "ba973dee276784b78cb4a5a616f0f51beb5a4cbea1629e06dee2d70f007cf9a0",
+   "magic": "68677269"
+  },
+  {
+   "name": "./coastal/prvi/sflux",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2022-10-26 18:01:54",
+   "mode": "0o2755"
+  },
+  {
+   "name": "./coastal/prvi/sflux/sflux_inputs.txt",
+   "type": "file",
+   "size": 16,
+   "mtime": "2022-10-26 18:01:54",
+   "mode": "0o644",
+   "md5": "4b15331d78774cf49ae8a9701c481afc",
+   "sha256": "0c3b61f05de491bcff132f09e02c53f93e584b50da2819dc60b008e432caa549",
+   "magic": "2673666c"
+  },
+  {
+   "name": "./coastal/prvi/hgrid.cpp",
+   "type": "file",
+   "size": 446212653,
+   "mtime": "2023-02-15 21:53:27",
+   "mode": "0o644",
+   "md5": "38ab7143cd9fb98eb1152d84f4bf1ae3",
+   "sha256": "11012590a95a116f27608076626f355589525851eaad75004686de6d9e569f1e",
+   "magic": "2f736372"
+  },
+  {
+   "name": "./coastal/prvi/hgrid.vtk",
+   "type": "file",
+   "size": 163058989,
+   "mtime": "2022-10-26 18:01:48",
+   "mode": "0o644",
+   "md5": "f23a25df94acde86de639b2355f976c2",
+   "sha256": "3e72659c2f3fa46e3854bb4117e4e9db4b4a0c3f28bbb2047dfd9dbf8f16c4e9",
+   "magic": "23207674"
+  },
+  {
+   "name": "./coastal/prvi/param.nml",
+   "type": "file",
+   "size": 49519,
+   "mtime": "2023-04-14 15:20:06",
+   "mode": "0o644",
+   "md5": "72717386229ab8273279daf12d942c87",
+   "sha256": "bc3d82002676473a48954995e4be7a826d2291d8f8d41b07e68a990cad8d7530",
+   "magic": "21706172"
+  },
+  {
+   "name": "./coastal/prvi/bctides.in",
+   "type": "file",
+   "size": 83,
+   "mtime": "2023-01-24 16:56:07",
+   "mode": "0o644",
+   "md5": "206a03ead11a1aeafb2d45a22ba36b05",
+   "sha256": "d44ffd6c9ffdf4f0a5ce4a74aff6d5252f1700e641795f1dbef0dffd59d51eea",
+   "magic": "2131302f"
+  }
+ ]
+}

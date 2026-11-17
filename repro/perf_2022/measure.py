@@ -1,6 +1,6 @@
 """Run one command and record wall time, CPU time, and memory of its whole process tree.
 
-AI-written (Claude, 2026-11-04); not yet reviewed by the author.
+AI-written (Claude, 2026-11-04); not yet reviewed.
 
   uv run --locked python measure.py --out RUN_DIR [--interval 2] -- CMD [ARGS...]
 

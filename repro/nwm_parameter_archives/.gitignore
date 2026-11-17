@@ -1,0 +1,18 @@
+# build/ holds the hand-written main_template.md and the tables it includes: keep it,
+# although the repo's top-level .gitignore ignores repro/*/build/.
+!/build/
+# Crawl outputs that are re-created by `./rebuild.sh --crawl` and not needed offline.
+# The offline rebuild needs only listings/, headers/, build/main_template.md,
+# raw/ncep_text/ and raw/nohrsc_text/.
+/raw/*
+!/raw/ncep_text/
+!/raw/nohrsc_text/
+# local tarball copies and scratch
+*.tar.gz
+*.part
+/cache/
+/scratch/
+# Python
+__pycache__/
+*.pyc
+.venv/

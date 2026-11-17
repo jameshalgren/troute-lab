@@ -1,0 +1,224 @@
+{
+ "source": "https://www.nohrsc.noaa.gov/owp_files/nwm/nwm_parameters/NWM_parameter_files_v2.1.tar.gz",
+ "read_from": "verified local copy (size and SHA-256 match the published file)",
+ "label": "v2.1",
+ "compressed_bytes": 4485467589,
+ "compressed_sha256": "911fe35d9a6761183a3c9957794b5631fe013bde408edc38048c5b7808e679ea",
+ "scanned_utc": "2026-11-10T16:38:43",
+ "members": [
+  {
+   "name": "NWM_parameters_v2.1",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2021-04-14 19:29:34",
+   "mode": "0o775"
+  },
+  {
+   "name": "NWM_parameters_v2.1/RouteLink_CONUS.nc",
+   "type": "file",
+   "size": 269366417,
+   "mtime": "2021-03-08 22:54:23",
+   "mode": "0o664",
+   "md5": "7c6d36554c39df06693a7589597ab484",
+   "sha256": "1b95f69aa8efcb48a1bd4a28136fabc6a59a5bda87de70f19bb0d453ace1d193",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4 classic model"
+  },
+  {
+   "name": "NWM_parameters_v2.1/LAKEPARM_CONUS.nc",
+   "type": "file",
+   "size": 583546,
+   "mtime": "2021-03-08 23:39:39",
+   "mode": "0o664",
+   "md5": "a895833399efffa4a682791d83a9ed60",
+   "sha256": "fc74940d1babad92cf5ce855042f91b2d8529b627a3b9766b7c82e4d39064d46",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4 classic model"
+  },
+  {
+   "name": "NWM_parameters_v2.1/nudgingParams_CONUS.nc",
+   "type": "file",
+   "size": 2677812,
+   "mtime": "2021-03-08 23:39:31",
+   "mode": "0o664",
+   "md5": "576a977eea18cfd7c99bf2657b688f19",
+   "sha256": "ec30e3cfe4e0d5e3927bad323c904f7b39ea3969e4a10dd7bdc7b4d6789fccd1",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "NWM_parameters_v2.1/Fulldom_CONUS_LongRange.nc",
+   "type": "file",
+   "size": 760985740,
+   "mtime": "2021-03-08 22:54:08",
+   "mode": "0o664",
+   "md5": "7db92aef6837acd9f5dc2a76b149a06f",
+   "sha256": "fca6e6e5e2d7bcc4a5b3ce35d0fe0bb9e62258da3e6866ec8eb7b239ad908036",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4 classic model"
+  },
+  {
+   "name": "NWM_parameters_v2.1/Fulldom_CONUS_FullRouting.nc",
+   "type": "file",
+   "size": 13589932407,
+   "mtime": "2021-03-08 23:00:49",
+   "mode": "0o664",
+   "md5": "dae0768e6a2977c8de1c57620c4be4aa",
+   "sha256": "bba6b846c9143e49418798606dbf0da546d646f6e08db85a92e2c70616850e12",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4 classic model"
+  },
+  {
+   "name": "NWM_parameters_v2.1/Fulldom_HI_FullRouting.nc",
+   "type": "file",
+   "size": 828475389,
+   "mtime": "2021-03-08 23:00:15",
+   "mode": "0o664",
+   "md5": "ccd03b89b3801c987f2072d3e15fda3e",
+   "sha256": "4dfd25b35d15c060328c89c79d9f7b65f15c7d7712dd4b492d683ce7f4bc8da2",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4 classic model"
+  },
+  {
+   "name": "NWM_parameters_v2.1/Fulldom_PRVI_FullRouting.nc",
+   "type": "file",
+   "size": 168366969,
+   "mtime": "2021-03-08 22:59:57",
+   "mode": "0o664",
+   "md5": "0ed45272d739ae609ef5dd4410d1b7ef",
+   "sha256": "267bb396db123928ebfe22ee9836ee871ecfd2393fdc6cb9d4d1c684b07e6bdd",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4 classic model"
+  },
+  {
+   "name": "NWM_parameters_v2.1/LAKEPARM_HI.nc",
+   "type": "file",
+   "size": 22950,
+   "mtime": "2021-03-08 23:39:19",
+   "mode": "0o664",
+   "md5": "250675556ed6bee727168e379c4e174e",
+   "sha256": "3e9839902727a3593bcaa3dd6f9377adcf09cdb170e235580b2e78fc2715e92b",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "NWM_parameters_v2.1/LAKEPARM_PRVI.nc",
+   "type": "file",
+   "size": 23095,
+   "mtime": "2021-03-08 23:38:54",
+   "mode": "0o664",
+   "md5": "c8e3fe28bd1916a9eeddbd3f5e15112f",
+   "sha256": "ea934444b5d7f9192f2208bbc2068f1033ead0b2329ac6c732a5daa00b55b200",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4 classic model"
+  },
+  {
+   "name": "NWM_parameters_v2.1/RouteLink_HI.nc",
+   "type": "file",
+   "size": 1346576,
+   "mtime": "2021-03-08 22:58:55",
+   "mode": "0o664",
+   "md5": "08d48fde4c00cecc3be05beb6f411ca0",
+   "sha256": "ea82aede846acbe5c1e150d5a1ddfff39e36747bbb5a44373ff4494afd0f4e8c",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4 classic model"
+  },
+  {
+   "name": "NWM_parameters_v2.1/RouteLink_PRVI.nc",
+   "type": "file",
+   "size": 1380521,
+   "mtime": "2021-03-08 22:59:35",
+   "mode": "0o664",
+   "md5": "b3dc9745ebb428b52c7cf30ff22d12db",
+   "sha256": "0c27fa2dc37ef6417e14fada7d562f2393319845a8d7001fc2a50caf9a0238b2",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4 classic model"
+  },
+  {
+   "name": "NWM_parameters_v2.1/nudgingParams_HI.nc",
+   "type": "file",
+   "size": 49188,
+   "mtime": "2021-03-08 23:39:12",
+   "mode": "0o664",
+   "md5": "4deb94c0f30df0a04ecb2665575f6d1e",
+   "sha256": "76544ebb137c56cb3c069b999edf376606c3fdc30df8a2cdfcd43e05d82a7ab8",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "NWM_parameters_v2.1/nudgingParams_PRVI.nc",
+   "type": "file",
+   "size": 71132,
+   "mtime": "2021-03-08 23:38:47",
+   "mode": "0o664",
+   "md5": "7233c93822a9db1ef309ae4bde8ffe6e",
+   "sha256": "a1e9c54c27642208914906c3bea9f31b5bae06585737e3f629b8a535810bb67f",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "NWM_parameters_v2.1/spatialweights_CONUS_LongRange.nc",
+   "type": "file",
+   "size": 639711046,
+   "mtime": "2021-03-08 22:59:07",
+   "mode": "0o664",
+   "md5": "68346d781274009a4d17045a926f534e",
+   "sha256": "23e073b2d390c063188807a3c60b5a60811fc373e8a8926707fc89fc840d351d",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "NWM_parameters_v2.1/spatialweights_CONUS_FullRouting.nc",
+   "type": "file",
+   "size": 4962512130,
+   "mtime": "2021-03-08 23:01:52",
+   "mode": "0o664",
+   "md5": "057c41bbdfec4af462f0ae7eb0e15c00",
+   "sha256": "5242c3fad1ba1841660e717ac1b4f811149577334b971a99e417b2720beb12f5",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "NWM_parameters_v2.1/spatialweights_HI_FullRouting.nc",
+   "type": "file",
+   "size": 40222955,
+   "mtime": "2021-03-08 22:58:43",
+   "mode": "0o664",
+   "md5": "2701bf4e333d2f2ef526cb22e9d24a50",
+   "sha256": "d5fc19a1debe4af282ff750a3cc0566348e6b8262fcabbd614a8ce00c402b96b",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "NWM_parameters_v2.1/spatialweights_PRVI_FullRouting.nc",
+   "type": "file",
+   "size": 36604358,
+   "mtime": "2021-03-08 22:59:28",
+   "mode": "0o664",
+   "md5": "695a1d6b0a8ee3732342e8ceea5b0d07",
+   "sha256": "6f03795e7718012c100ba4b1ea6cd22f1aece220190cf14efc83fb68fdc0a95e",
+   "magic": "89484446",
+   "nc_kind": "netCDF-4"
+  },
+  {
+   "name": "NWM_parameters_v2.1/md5sum.txt",
+   "type": "file",
+   "size": 994,
+   "mtime": "2021-04-13 22:29:45",
+   "mode": "0o664",
+   "md5": "23dc748e58e33a5739e2bed326accdf6",
+   "sha256": "a275f703b13a981282b73e514271868106d47e13bb8a26429b036c8f9b982e48",
+   "magic": "64616530"
+  },
+  {
+   "name": "NWM_parameters_v2.1/README.txt",
+   "type": "file",
+   "size": 2003,
+   "mtime": "2021-04-14 19:29:34",
+   "mode": "0o664",
+   "md5": "c682ce9fe37be8181e7f3dba876b2f1d",
+   "sha256": "2c83e5630b77f38486aee43db0af7dd723c67839de36076c88f7abc5e349ec55",
+   "magic": "43757272"
+  }
+ ]
+}

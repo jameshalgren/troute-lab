@@ -1,0 +1,23 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/coastal/pacific/hgrid.ncOldESMFversion (225697079 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf hgrid {
+dimensions:
+	nodeCount = 3138490 ;
+	elementCount = 6050741 ;
+	maxNodePElement = 3 ;
+	coordDim = 2 ;
+variables:
+	double nodeCoords(nodeCount, coordDim) ;
+		nodeCoords:units = "degrees" ;
+	int elementConn(elementCount, maxNodePElement) ;
+		elementConn:_FillValue = -1 ;
+		elementConn:long_name = "Node Indices that define the element connectivity" ;
+		elementConn:start_index = 0b ;
+	byte numElementConn(elementCount) ;
+		numElementConn:long_name = "Number of nodes per element" ;
+	double centerCoords(elementCount, coordDim) ;
+		centerCoords:units = "degrees" ;
+
+// global attributes:
+		:gridType = "unstructured" ;
+		:version = "0.9" ;
+}

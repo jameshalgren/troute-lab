@@ -1,0 +1,37 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/forcingParam/Long_Range/CFSv2_Climo/cfs_dlwsfc_0101_00_dist_params.nc (1170616 bytes; ncdump -k: classic; header read by HTTP byte-range, 2026-11-10)
+netcdf cfs_dlwsfc_0101_00_dist_params {
+dimensions:
+	param = UNLIMITED ; // (0 currently)
+	lat_0 = 190 ;
+	lon_0 = 384 ;
+variables:
+	double DISTRIBUTION_PARAM_1(lat_0, lon_0) ;
+		DISTRIBUTION_PARAM_1:units = "W/m2" ;
+		DISTRIBUTION_PARAM_1:_FillValue = 1.00000002004088e+20 ;
+	float lat_0(lat_0) ;
+		lat_0:La1 = 89.277f ;
+		lat_0:Lo1 = 0.f ;
+		lat_0:La2 = -89.277f ;
+		lat_0:Lo2 = 359.062f ;
+		lat_0:Di = 0.9374987f ;
+		lat_0:N = 95.f ;
+		lat_0:units = "degrees_north" ;
+		lat_0:grid_type = "Gaussian Latitude/Longitude" ;
+		lat_0:long_name = "latitude" ;
+	float lon_0(lon_0) ;
+		lon_0:La1 = 89.277f ;
+		lon_0:Lo1 = 0.f ;
+		lon_0:La2 = -89.277f ;
+		lon_0:Lo2 = 359.062f ;
+		lon_0:Di = 0.9374987f ;
+		lon_0:N = 95.f ;
+		lon_0:units = "degrees_east" ;
+		lon_0:grid_type = "Gaussian Latitude/Longitude" ;
+		lon_0:long_name = "longitude" ;
+	double DISTRIBUTION_PARAM_2(lat_0, lon_0) ;
+		DISTRIBUTION_PARAM_2:_FillValue = 1.00000002004088e+20 ;
+
+// global attributes:
+		:creation_date = "Sun Sep  6 17:34:59 MDT 2015" ;
+		:title = "test output of CFS distribution parameters" ;
+}

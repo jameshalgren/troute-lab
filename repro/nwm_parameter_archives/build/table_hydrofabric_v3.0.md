@@ -1,0 +1,2 @@
+Compressed: 3,250,751,657 bytes, SHA-256 `77d8975b543ff864cdac0736cc4f455fe86d77049c4d8b1fb8e458ec755dbc94`. 97 files, 5,067,922,143 bytes uncompressed.
+- 97 ESRI File Geodatabase internal files (`a0000000NN.gdbtable/.gdbtablx/.spx/.atx/.gdbindexes/.freelist/.horizon`, plus `gdb`, `timestamps`), 5,067,922,143 bytes, dated 2022-06-08 to 2023-04-12. Full per-file list with MD5: [listings/members_hydrofabric_v3.0.json](listings/members_hydrofabric_v3.0.json).

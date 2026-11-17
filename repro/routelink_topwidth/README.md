@@ -1,6 +1,6 @@
 # RouteLink compound-channel top width (NWM v3.1.7)
 
-*AI-assembled (Claude, 2026-10-05); not yet reviewed by the author.*
+*AI-assembled (Claude, 2026-10-05); not yet reviewed.*
 
 ## Question
 How is `TopWdthCC` (the compound-channel/floodplain top width used by Muskingum-Cunge

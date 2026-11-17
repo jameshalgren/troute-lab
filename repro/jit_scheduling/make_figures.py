@@ -266,7 +266,7 @@ def tables():
             for _, x in t[t.scope == sc].iterrows():
                 f.write(f"| {x.granularity} | {int(x['T']) or ''} | {x.policy} | {int(x.n_units):,} | {x.makespan:,.0f} | {x.lb:,.0f} | "
                         f"{x.excess_over_lb_pct:.1f} | {x.util*100:.1f} | {x.tail_len:,.0f} | {x.structural_tail:,.0f} | {x.speedup:.2f} |\n")
-    # makespan by core count (the high-core regime matters for the author's 1000x argument)
+    # makespan by core count (the high-core regime matters for the paper's 1000x argument)
     rows = []
     for sc in ["Mississippi", "CONUS", "RioGrande", "LowerColorado_TX", "Brazos", "LowerColorado_TX+Brazos", "Trinity"]:
         for g in ("segment", "reach_unit", "reach_cost"):

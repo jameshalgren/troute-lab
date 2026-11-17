@@ -1,0 +1,9 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/forcingParam/ESMFWeightFiles/ESMF_weight_NDFD_b0.nc4 (350224384 bytes; ncdump -k: classic; header read by HTTP byte-range, 2026-11-10)
+netcdf ESMF_weight_NDFD_b0 {
+dimensions:
+	n_s = 17694720 ;
+variables:
+	double S(n_s) ;
+	int col(n_s) ;
+	int row(n_s) ;
+}

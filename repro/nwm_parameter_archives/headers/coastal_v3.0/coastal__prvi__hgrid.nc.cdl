@@ -1,0 +1,23 @@
+// source: coastal_v3.0 member ./coastal/prvi/hgrid.nc (273082222 bytes, md5 c2ce0aa37e3a8156dba96f36ad67d00a, ncdump -k: netCDF-4)
+netcdf hgrid {
+dimensions:
+	nodeCount = 3705642 ;
+	elementCount = 7371800 ;
+	maxNodePElement = 3 ;
+	coordDim = 2 ;
+variables:
+	double nodeCoords(nodeCount, coordDim) ;
+		nodeCoords:units = "degrees" ;
+	int elementConn(elementCount, maxNodePElement) ;
+		elementConn:_FillValue = -1 ;
+		elementConn:long_name = "Node Indices that define the element connectivity" ;
+		elementConn:start_index = 0b ;
+	byte numElementConn(elementCount) ;
+		numElementConn:long_name = "Number of nodes per element" ;
+	double centerCoords(elementCount, coordDim) ;
+		centerCoords:units = "degrees" ;
+
+// global attributes:
+		:gridType = "unstructured" ;
+		:version = "0.9" ;
+}

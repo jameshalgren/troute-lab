@@ -1,0 +1,12 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/post_processing/masks/mbrfc.nc (191760 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf mbrfc {
+dimensions:
+	feature_id = 2171 ;
+variables:
+	string to(feature_id) ;
+	double lat(feature_id) ;
+		lat:_FillValue = NaN ;
+	double lon(feature_id) ;
+		lon:_FillValue = NaN ;
+	int64 feature_id(feature_id) ;
+}

@@ -1,0 +1,8 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/post_processing/masks/prvi.serfc.nc (8404 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf prvi.serfc {
+dimensions:
+	station = 69 ;
+variables:
+	int64 station_id(station) ;
+		station_id:long_name = "Station Id" ;
+}

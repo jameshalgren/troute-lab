@@ -1,0 +1,894 @@
+{
+ "source": "https://www.nohrsc.noaa.gov/owp_files/nwm/data_tools/NWM_v2.1_channel_hydrofabric.tar.gz",
+ "read_from": "streamed from source",
+ "label": "hydrofabric_v2.1",
+ "compressed_bytes": 646132558,
+ "compressed_sha256": "7e20135bb54954a04ece50e3ed8c304cb765fbb565cd7f0b35813ccdb1d050ff",
+ "scanned_utc": "2026-11-10T17:43:10",
+ "members": [
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2021-04-19 13:45:14",
+   "mode": "0o755"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb",
+   "type": "dir",
+   "size": 0,
+   "mtime": "2021-04-19 13:45:40",
+   "mode": "0o755"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000006.gdbtable",
+   "type": "file",
+   "size": 1431,
+   "mtime": "2020-10-26 12:49:52",
+   "mode": "0o644",
+   "md5": "357322aacdc847913c9db3079659380f",
+   "sha256": "36ad8d20e3d3e7b1d527ddcb70fe28e59dc3dba9afbe134f6fd002be93ee8064",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000005.CatItemTypesByUUID.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-20 14:38:36",
+   "mode": "0o644",
+   "md5": "1515fc455d3f8fe6302902c211fc907c",
+   "sha256": "6160c3d421b05e7db96172a1d982ab27e07505b388c4fa16e4a9b78bbe2aa430",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000002e.gdbtable",
+   "type": "file",
+   "size": 36420524,
+   "mtime": "2020-02-14 15:10:30",
+   "mode": "0o644",
+   "md5": "e35f362203b4a740e1e790efcbfeb9ac",
+   "sha256": "198f3618591f81c94b29fba6b2929cea83b8131d1c65fea738b132796fa07aa9",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/timestamps",
+   "type": "file",
+   "size": 400,
+   "mtime": "2020-10-26 13:32:22",
+   "mode": "0o644",
+   "md5": "52862fdd69d2965c019dea6306e050c1",
+   "sha256": "09642d897783b5dce462e4f4c0bd8ce07fd7d969b4e153e89f8bb6e79afa8e5c",
+   "magic": "ffffffff"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000001.gdbtablx",
+   "type": "file",
+   "size": 5152,
+   "mtime": "2020-10-26 12:49:08",
+   "mode": "0o644",
+   "md5": "a850371eebcefb7672a5dd941fc6b676",
+   "sha256": "74f61a9927a3bddca3d34ec1b1799100432856e430a1c3767a44ebad3951568c",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000001.gdbindexes",
+   "type": "file",
+   "size": 110,
+   "mtime": "2020-01-29 16:26:12",
+   "mode": "0o644",
+   "md5": "85022decc419825cdcb0c2b8c0e1355e",
+   "sha256": "80ba95b873e151074244f7655f9e29ce8967aab1bd57ff4c06a329b723a3d46c",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000039.gdbindexes",
+   "type": "file",
+   "size": 116,
+   "mtime": "2020-10-26 12:48:20",
+   "mode": "0o644",
+   "md5": "b7cfb73a52559416c0f02bbe0c239b8b",
+   "sha256": "760bd4864717c60d5e7c0c6461a622062680e6f79f51250f49456aa609b43774",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000003a.gdbtable",
+   "type": "file",
+   "size": 115985,
+   "mtime": "2020-10-26 12:50:24",
+   "mode": "0o644",
+   "md5": "9e7935cfcdf8a6220d1704cd4f912107",
+   "sha256": "7af8d422f6307dc175482b6e697a8b1b128d27fbe0f4cffb16990b9096196546",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000037.gdbtablx",
+   "type": "file",
+   "size": 71712,
+   "mtime": "2020-10-26 12:25:22",
+   "mode": "0o644",
+   "md5": "fa34d601ee6915099d06f7735ad9d74b",
+   "sha256": "0ce4ed5a1e9d1d4ef7898e6fd2752fbddde34ebb52a7c17897df3ac28e84fe52",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000039.gdbtable",
+   "type": "file",
+   "size": 7604744,
+   "mtime": "2020-10-26 12:48:38",
+   "mode": "0o644",
+   "md5": "6f8048c8baa04b239aa5b4c06c99dbc9",
+   "sha256": "f8bb4dd93a80ca3b79105d05ceb9e7b1ba2d918dba850a8c49fa9cc7c10d5588",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000022.spx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-02-14 13:24:12",
+   "mode": "0o644",
+   "md5": "b7480284c581dbd2e4d11d4a39cfb694",
+   "sha256": "767b99a71de8bbb1e3973f22e84a1e080984b0626acff70e6a4711c897dcb804",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000003.gdbtablx",
+   "type": "file",
+   "size": 5152,
+   "mtime": "2020-02-14 15:00:16",
+   "mode": "0o644",
+   "md5": "fec8e5b685bdb38142053cb0e8ae3705",
+   "sha256": "a3a02e24bdde6c19bbf4b5d403921a9a30616fd1a2c5db04a011673c6f82286e",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000007.gdbtablx",
+   "type": "file",
+   "size": 5152,
+   "mtime": "2020-10-20 14:38:54",
+   "mode": "0o644",
+   "md5": "a02753b92046d8f4e0a8b398198def6f",
+   "sha256": "14e28a06e28bd48cf02f611a843b2f394895e2899f30867cb585d05f0f0951cd",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000005.gdbindexes",
+   "type": "file",
+   "size": 296,
+   "mtime": "2020-01-29 16:26:16",
+   "mode": "0o644",
+   "md5": "3585065e17c6580b63043f419a2a17cb",
+   "sha256": "c21e650994b48cc72d174b3caf2ac1bd19e2d7305c8087aaae97e24caecf98a5",
+   "magic": "04000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000036.freelist",
+   "type": "file",
+   "size": 4440,
+   "mtime": "2020-02-14 19:15:14",
+   "mode": "0o644",
+   "md5": "86f4932f79d1fa3daa7f1982714d3d4e",
+   "sha256": "90bd864c96f3e7821757d1d6ab7f9a2affd96d4bae572b4573176675f04f3fed",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000002c.freelist",
+   "type": "file",
+   "size": 356696,
+   "mtime": "2020-02-25 18:24:02",
+   "mode": "0o644",
+   "md5": "3be47d8331febf3ad0719883bf6cb6a8",
+   "sha256": "60d2eccf8a176fd5067ab124346ad75b80abd115f3df5853aea27dda738f8899",
+   "magic": "c6010000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000003a.gdbindexes",
+   "type": "file",
+   "size": 116,
+   "mtime": "2020-10-26 12:50:06",
+   "mode": "0o644",
+   "md5": "b7cfb73a52559416c0f02bbe0c239b8b",
+   "sha256": "760bd4864717c60d5e7c0c6461a622062680e6f79f51250f49456aa609b43774",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000007.CatRelTypesByOriginItemTypeID.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-20 14:38:48",
+   "mode": "0o644",
+   "md5": "3e23e7e43efffd771135bfcf7b822cab",
+   "sha256": "03ab6d9f6a4cbacd1c6b4d6a25495e0db0aae78d2727cbd6de5b62deb1113ef5",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000005.CatItemTypesByParentTypeID.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-20 14:38:36",
+   "mode": "0o644",
+   "md5": "2e1fd4b169997b5260ccd26a04f21ded",
+   "sha256": "a0a776ae973a066ae8944300c17b305d78a1ee76cb812698c00c6bfdad105fc6",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000004.FDO_UUID.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-26 12:49:36",
+   "mode": "0o644",
+   "md5": "8d6145cf00e7bad96d3455dc1d499b5f",
+   "sha256": "af58d7e80e03808b826f30fecea72517a2f2a7caf47dc1937e6baf6df11645aa",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000036.spx",
+   "type": "file",
+   "size": 106518,
+   "mtime": "2020-02-14 18:51:28",
+   "mode": "0o644",
+   "md5": "6b218f0c8dc056d469d0b73b9d07612f",
+   "sha256": "22c552f060e78c7481ec4b14fc49ee5b3a251008a08c4b786ec91a4caaae5ec0",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000006.CatRelsByOriginID.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-26 12:49:48",
+   "mode": "0o644",
+   "md5": "6699d8c90609178c17541a792d77e070",
+   "sha256": "977bcf154ae6530be108d74fbbb7bec5489bed3f24504403abfa9ce2e42268d8",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000001.gdbtable",
+   "type": "file",
+   "size": 1059,
+   "mtime": "2020-10-26 12:48:54",
+   "mode": "0o644",
+   "md5": "0f2e4f4fcb9d412a2cd5f12e0640982f",
+   "sha256": "cbb83c6f756126208dd74b16ade82f7645d1b24e1f020cffcea6b94352ce94e6",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000037.gdbtable",
+   "type": "file",
+   "size": 31484916,
+   "mtime": "2020-10-26 12:25:20",
+   "mode": "0o644",
+   "md5": "52c573a1e819f06f2a3680e2fefa15d1",
+   "sha256": "d622d0c24bd3bbe0857795d3390e9c2f5df701d9974af5b88e5373f41937be8b",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000002.gdbtable",
+   "type": "file",
+   "size": 2055,
+   "mtime": "2020-01-29 16:26:12",
+   "mode": "0o644",
+   "md5": "3495bffca79ecf00acd87e64ea18c5d1",
+   "sha256": "9efa50dc62a40e109a546054943ae5ad4b3d41aa81ece0dfa026b7b23cb09da8",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000030.gdbtable",
+   "type": "file",
+   "size": 6311102,
+   "mtime": "2020-02-14 15:20:36",
+   "mode": "0o644",
+   "md5": "5164fd59a3ab976065277805744a234f",
+   "sha256": "17114cca3aa4739113b812f9f81fd14b56b880971f8fbd4af445af7c87919d47",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/gdb",
+   "type": "file",
+   "size": 4,
+   "mtime": "2020-01-29 16:26:12",
+   "mode": "0o644",
+   "md5": "cbe23d9655fccd4311acdd6261c81bd8",
+   "sha256": "2594b6a92ebfb1c3312deb7d01c015fb95e9fbe9bd7bc6b527af07813ec7b910",
+   "magic": "05000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000003a.spx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-26 12:50:24",
+   "mode": "0o644",
+   "md5": "f2892e5f9906030614aaa9f837e66d08",
+   "sha256": "f0343d1b941245abc444fb67004ea69bc6abd05ab4f6ba12871ecc408fa0a861",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000006.gdbindexes",
+   "type": "file",
+   "size": 318,
+   "mtime": "2020-01-29 16:26:14",
+   "mode": "0o644",
+   "md5": "82cc637cc7e2ca712226d2493179ad0c",
+   "sha256": "1919a00326f198a90dc97545ec448c10b2b90d367020222212f7b00433fe09b5",
+   "magic": "05000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000005.CatItemTypesByName.atx",
+   "type": "file",
+   "size": 12310,
+   "mtime": "2020-10-20 14:38:36",
+   "mode": "0o644",
+   "md5": "479b4978daa6039275de19bd6522c5d6",
+   "sha256": "b74e11ac5454bf5c65360c33185ac93963e98778d1b16adba91ce618d3737e5f",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000038.gdbtablx",
+   "type": "file",
+   "size": 13885472,
+   "mtime": "2020-10-26 12:46:34",
+   "mode": "0o644",
+   "md5": "859f2011113521b29d41c94635037ce1",
+   "sha256": "569dd05aa48701dc01b37d2010889a618c46a78ee3c2f45e529c6360addb8f44",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000003.gdbtable",
+   "type": "file",
+   "size": 3465,
+   "mtime": "2020-02-14 15:00:16",
+   "mode": "0o644",
+   "md5": "da65bfeb0fe7718d0c6efaec328f4fbe",
+   "sha256": "7946bd784f97c6e6633edeb1bce6d9ae870e8b57b64803fa1026c56c62bc619b",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000004.CatItemsByPhysicalName.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-26 12:49:36",
+   "mode": "0o644",
+   "md5": "02df610740f38a210c8310b08ca8e23e",
+   "sha256": "9d4c952789e4f786055b787550bde5399c278d0ee0876fa15df435f5a1d3f213",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000036.gdbtablx",
+   "type": "file",
+   "size": 30752,
+   "mtime": "2020-02-14 19:15:14",
+   "mode": "0o644",
+   "md5": "f746aea846893359c1db311af155ac3f",
+   "sha256": "4d26b39f2d55b6850ca895bf1041fe3bc696e63ad60b2606f26342b7282ea4b8",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000002c.horizon",
+   "type": "file",
+   "size": 32,
+   "mtime": "2020-10-26 13:11:06",
+   "mode": "0o644",
+   "md5": "5cc15be59323404d065535f367ecaacf",
+   "sha256": "9fab34115b351a30fb6adb5818d8f08e4dd3a024b7247dbbc61c56929ab6e223",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000030.spx",
+   "type": "file",
+   "size": 233494,
+   "mtime": "2020-02-14 15:20:36",
+   "mode": "0o644",
+   "md5": "c215074dc17365e1ba29df6c8da2cc3a",
+   "sha256": "38c1e5580830282e704a48498bca848ef1c5fb1bc933db20721f42c1da63bdc2",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000036.gdbtable",
+   "type": "file",
+   "size": 28301281,
+   "mtime": "2020-02-14 18:56:08",
+   "mode": "0o644",
+   "md5": "fe56131b5c788819b77400a053ff6057",
+   "sha256": "86f0e4640a751a40e37f0872d96e5ea22714530fad405161671ae4270f0a68ab",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000002e.gdbindexes",
+   "type": "file",
+   "size": 116,
+   "mtime": "2020-02-14 15:10:30",
+   "mode": "0o644",
+   "md5": "b7cfb73a52559416c0f02bbe0c239b8b",
+   "sha256": "760bd4864717c60d5e7c0c6461a622062680e6f79f51250f49456aa609b43774",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000004.gdbtablx",
+   "type": "file",
+   "size": 5152,
+   "mtime": "2020-10-26 12:52:20",
+   "mode": "0o644",
+   "md5": "99c19befc2cb9163311f1bea7006a27b",
+   "sha256": "4cae6e41f042e823cad6885450832a80281ad4da3521a91ac34389a9b770db69",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000003.gdbindexes",
+   "type": "file",
+   "size": 42,
+   "mtime": "2020-01-29 16:26:12",
+   "mode": "0o644",
+   "md5": "f56e7d854fe89ea7d26f7ee865d8f0a5",
+   "sha256": "de0911d18e2f304380c04ae123ea18057d262d788301f7cc3148298231c7c618",
+   "magic": "01000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000004.horizon",
+   "type": "file",
+   "size": 32,
+   "mtime": "2020-10-20 14:38:12",
+   "mode": "0o644",
+   "md5": "5cc15be59323404d065535f367ecaacf",
+   "sha256": "9fab34115b351a30fb6adb5818d8f08e4dd3a024b7247dbbc61c56929ab6e223",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000037.spx",
+   "type": "file",
+   "size": 344086,
+   "mtime": "2020-10-26 12:25:22",
+   "mode": "0o644",
+   "md5": "7a1dbf870d9ea21e0079cf89296c8805",
+   "sha256": "02f2af3a80ba38de4ee7b3f8fdc416fa989896a47c3e9a4c4016b81a63b9d97b",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000004.freelist",
+   "type": "file",
+   "size": 78168,
+   "mtime": "2020-10-26 12:52:20",
+   "mode": "0o644",
+   "md5": "759ecfdd7049067787057b38c38365ad",
+   "sha256": "9bdf0be19b7b479e86ced91c08d66ff4fb3e38ae48e55382c29b9f735d0c6626",
+   "magic": "10000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000030.gdbindexes",
+   "type": "file",
+   "size": 116,
+   "mtime": "2020-02-14 15:20:36",
+   "mode": "0o644",
+   "md5": "b7cfb73a52559416c0f02bbe0c239b8b",
+   "sha256": "760bd4864717c60d5e7c0c6461a622062680e6f79f51250f49456aa609b43774",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000006.freelist",
+   "type": "file",
+   "size": 4440,
+   "mtime": "2020-10-26 12:49:48",
+   "mode": "0o644",
+   "md5": "e24ff2b1076287795648e1c284339a9d",
+   "sha256": "0ae57285b823019a68a0183aa70f95b6e5d50efe5e7b6279b6e9b09d9650ab63",
+   "magic": "08000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000039.horizon",
+   "type": "file",
+   "size": 32,
+   "mtime": "2020-10-26 13:40:46",
+   "mode": "0o644",
+   "md5": "5cc15be59323404d065535f367ecaacf",
+   "sha256": "9fab34115b351a30fb6adb5818d8f08e4dd3a024b7247dbbc61c56929ab6e223",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000022.gdbtable",
+   "type": "file",
+   "size": 14609,
+   "mtime": "2020-02-14 13:24:12",
+   "mode": "0o644",
+   "md5": "41d1e6e4761e19e5e43fa2665413cc49",
+   "sha256": "71221d6363bac55c9e2740db008c620ed73df75acd07a165deb711e3a1b0224d",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000038.spx",
+   "type": "file",
+   "size": 54554646,
+   "mtime": "2020-10-26 12:46:34",
+   "mode": "0o644",
+   "md5": "2d858c841ff92706fc7dd3a1fd74aed9",
+   "sha256": "337b059f6d325f07ec21e2058a3b2f390f3ceaa33c73fb71a3e640605d94ef33",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000006.gdbtablx",
+   "type": "file",
+   "size": 5152,
+   "mtime": "2020-10-26 12:49:52",
+   "mode": "0o644",
+   "md5": "c480807caf10c4c490249e0b589e15b4",
+   "sha256": "e557b211cefc2ac99bcff078fad5d16dc7c2dda5824efb34f89d64a8696a3cef",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000007.CatRelTypesByForwardLabel.atx",
+   "type": "file",
+   "size": 12310,
+   "mtime": "2020-10-20 14:38:48",
+   "mode": "0o644",
+   "md5": "e0f4db013e99e3a9ac5ad1bcb8059265",
+   "sha256": "1d1e4731c32973e0f87a3ae1a6e23bcdd573204ff9faf7a9dc8bd09ff9e142b9",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000002e.spx",
+   "type": "file",
+   "size": 237590,
+   "mtime": "2020-02-14 15:10:30",
+   "mode": "0o644",
+   "md5": "a22aa4cbdbbb9ba502e5f3f2558d9544",
+   "sha256": "8ea3bee30d4106e47f3b693a2ccada9a746ce63f89865d1d5f57ff22f394a6f7",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000006.CatRelsByType.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-26 12:49:54",
+   "mode": "0o644",
+   "md5": "156fcc38029a66af1c725c72595eac08",
+   "sha256": "98bdd39707989e51787e60dd657092d5c3e7f9ddd5d06ddfa0b74c75e086e7ca",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000002c.gdbindexes",
+   "type": "file",
+   "size": 116,
+   "mtime": "2020-02-25 17:11:32",
+   "mode": "0o644",
+   "md5": "b7cfb73a52559416c0f02bbe0c239b8b",
+   "sha256": "760bd4864717c60d5e7c0c6461a622062680e6f79f51250f49456aa609b43774",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000039.gdbtablx",
+   "type": "file",
+   "size": 71712,
+   "mtime": "2020-10-26 12:48:38",
+   "mode": "0o644",
+   "md5": "768312b61a0337fa5608b49290790018",
+   "sha256": "3e4b3c1e20953745ec5520c78ee7f45f0885918468cf79a0f909256b0a81b7bb",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000002c.spx",
+   "type": "file",
+   "size": 61841430,
+   "mtime": "2020-02-14 15:08:12",
+   "mode": "0o644",
+   "md5": "793fea3ca3169530d5da6f983b3b981b",
+   "sha256": "e15533ad0b6c8bcf93878665db1907166b027d428686a8825b1e5e9e934e3195",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000007.CatRelTypesByBackwardLabel.atx",
+   "type": "file",
+   "size": 12310,
+   "mtime": "2020-10-20 14:38:48",
+   "mode": "0o644",
+   "md5": "324eb0ca5663289ba9c48e696abc831d",
+   "sha256": "39b8e0869318f1a94950dd268b334b233816b3daefa15d70867019fb4689d4df",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000005.gdbtablx",
+   "type": "file",
+   "size": 5152,
+   "mtime": "2020-10-20 14:38:36",
+   "mode": "0o644",
+   "md5": "1329c953645ef5694272cfe294d3d9dc",
+   "sha256": "9793ea81fc2e5e1f4350aa4eda703d85364d0b1ed3097f25f9876168203cbf4b",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000037.gdbindexes",
+   "type": "file",
+   "size": 116,
+   "mtime": "2020-10-26 12:25:00",
+   "mode": "0o644",
+   "md5": "b7cfb73a52559416c0f02bbe0c239b8b",
+   "sha256": "760bd4864717c60d5e7c0c6461a622062680e6f79f51250f49456aa609b43774",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000037.horizon",
+   "type": "file",
+   "size": 32,
+   "mtime": "2020-10-26 13:22:02",
+   "mode": "0o644",
+   "md5": "5cc15be59323404d065535f367ecaacf",
+   "sha256": "9fab34115b351a30fb6adb5818d8f08e4dd3a024b7247dbbc61c56929ab6e223",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000007.gdbindexes",
+   "type": "file",
+   "size": 602,
+   "mtime": "2020-01-29 16:26:14",
+   "mode": "0o644",
+   "md5": "d7c9c452f4fafb3b4cd5036ef90a9031",
+   "sha256": "dc98e24d04eddd7f38905d176c1ea43c547a3a2daa0c80091a20d3443c726621",
+   "magic": "07000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000022.gdbindexes",
+   "type": "file",
+   "size": 116,
+   "mtime": "2020-02-14 13:24:12",
+   "mode": "0o644",
+   "md5": "b7cfb73a52559416c0f02bbe0c239b8b",
+   "sha256": "760bd4864717c60d5e7c0c6461a622062680e6f79f51250f49456aa609b43774",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000038.gdbtable",
+   "type": "file",
+   "size": 681816302,
+   "mtime": "2020-10-26 12:46:32",
+   "mode": "0o644",
+   "md5": "42a9dec12ef34675e05cba3f56fe694d",
+   "sha256": "2b06ff2429bf13709ea3dd395b12a80bbdf1c6d713c3e2d32e68334b08dea35f",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000002e.gdbtablx",
+   "type": "file",
+   "size": 66592,
+   "mtime": "2020-02-14 15:10:30",
+   "mode": "0o644",
+   "md5": "74f0da6b55848f9ea1276da912af56ff",
+   "sha256": "11e986543789d6edf100172b399eedde485306ea88c33ed9b4d2f240aa5de497",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000007.gdbtable",
+   "type": "file",
+   "size": 3626,
+   "mtime": "2020-10-20 14:38:36",
+   "mode": "0o644",
+   "md5": "01a730c0fdc5d5fbcd6c11214767f9f3",
+   "sha256": "389b7515333c6608e1e012f7b2b54610e840ff7a011b478734152c95cccf05b4",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000022.gdbtablx",
+   "type": "file",
+   "size": 5152,
+   "mtime": "2020-02-14 13:24:12",
+   "mode": "0o644",
+   "md5": "c0481bbc59dded93bfb1262bdcbea0ed",
+   "sha256": "921febe1bddb57a66f9cbf3f19051a6568365440c56568a7fd89d235a7d69637",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000002.gdbtablx",
+   "type": "file",
+   "size": 5152,
+   "mtime": "2020-01-29 16:26:12",
+   "mode": "0o644",
+   "md5": "32e61f56cbeb3c35b78c9606a1867b2d",
+   "sha256": "f3ac9865dec6ab40e73d91dd1f5c2eef0248e66e359d4abb1d97edba92b5df88",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000005.gdbtable",
+   "type": "file",
+   "size": 2021,
+   "mtime": "2020-10-20 14:38:22",
+   "mode": "0o644",
+   "md5": "4cce3f8b16c301bcf9ecac64e00f8df8",
+   "sha256": "13c4caabfe805f8bbbc1f4fa56f87ca343ba544394503b5da139c3c3b0c3627b",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000006.CatRelsByDestinationID.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-26 12:49:54",
+   "mode": "0o644",
+   "md5": "97d9e2305c1a33fad973292632ddce1c",
+   "sha256": "e98aebd9207e39c99a382e75b4069836b7a46dc58cf80b83f8c0e525601a95ea",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000038.gdbindexes",
+   "type": "file",
+   "size": 116,
+   "mtime": "2020-10-26 12:42:34",
+   "mode": "0o644",
+   "md5": "b7cfb73a52559416c0f02bbe0c239b8b",
+   "sha256": "760bd4864717c60d5e7c0c6461a622062680e6f79f51250f49456aa609b43774",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000003a.gdbtablx",
+   "type": "file",
+   "size": 5152,
+   "mtime": "2020-10-26 12:50:24",
+   "mode": "0o644",
+   "md5": "df2bd6023ee378ca54326f56e9c00954",
+   "sha256": "40279a382ab40875dc21289420e69183945b8a2bd1524813b1f38230f39da667",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000007.CatRelTypesByUUID.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-20 14:38:48",
+   "mode": "0o644",
+   "md5": "92a9f9df2ed2e69c3d288f64dfc04598",
+   "sha256": "5919a8a1c9358a769249a950f47c30e7aa02ec248bab6967102826fba93e087e",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000004.spx",
+   "type": "file",
+   "size": 131094,
+   "mtime": "2020-10-26 12:49:30",
+   "mode": "0o644",
+   "md5": "d21c6a5f4c15082fa5bc2710125fbaa7",
+   "sha256": "ab0c88d25ebaed8d791635035c52bde12debf5112a39e5adff2e00331a86f683",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000001.TablesByName.atx",
+   "type": "file",
+   "size": 12310,
+   "mtime": "2020-10-26 12:49:08",
+   "mode": "0o644",
+   "md5": "74e6cb4af65b329bfa22cd0234fb32b0",
+   "sha256": "2f3bd65abbf5dd9f70fc3a7cce64c9e53ff45e57c5a18adcc8ea6d12b4880dec",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000007.CatRelTypesByDestItemTypeID.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-20 14:38:48",
+   "mode": "0o644",
+   "md5": "3bbb9e9075b98eed5d7bdafea0654c0c",
+   "sha256": "4a65848b307acd48dfd42cc1300752eb9f87920d71f56235921969b99467b8ec",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000036.gdbindexes",
+   "type": "file",
+   "size": 116,
+   "mtime": "2020-02-14 18:56:08",
+   "mode": "0o644",
+   "md5": "b7cfb73a52559416c0f02bbe0c239b8b",
+   "sha256": "760bd4864717c60d5e7c0c6461a622062680e6f79f51250f49456aa609b43774",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000003a.horizon",
+   "type": "file",
+   "size": 32,
+   "mtime": "2020-10-26 13:41:30",
+   "mode": "0o644",
+   "md5": "5cc15be59323404d065535f367ecaacf",
+   "sha256": "9fab34115b351a30fb6adb5818d8f08e4dd3a024b7247dbbc61c56929ab6e223",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000030.gdbtablx",
+   "type": "file",
+   "size": 71712,
+   "mtime": "2020-02-14 15:20:36",
+   "mode": "0o644",
+   "md5": "b69b94db49f95e6676e6042bec345245",
+   "sha256": "72a549fa591a463c9212d9f63a685b6c51a92a6553a614e1e274dd41d056c910",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a0000002c.gdbtablx",
+   "type": "file",
+   "size": 13624352,
+   "mtime": "2020-02-26 16:48:10",
+   "mode": "0o644",
+   "md5": "5a8721413480304d4a93563b51268e7b",
+   "sha256": "60159850c93ebb7d3cc3e24a7a58633b0617adcc1d291fdfa6079be8fa87dd95",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000004.CatItemsByType.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-26 12:49:36",
+   "mode": "0o644",
+   "md5": "ebbd19a4a39de396e14c0a6da0f973da",
+   "sha256": "e132fdb92fc98a4054bb6643f323c041289aa385274d3538634f9c402deddbca",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000006.FDO_UUID.atx",
+   "type": "file",
+   "size": 4118,
+   "mtime": "2020-10-26 12:49:48",
+   "mode": "0o644",
+   "md5": "67553eb288520ceb57082b47bd5d2781",
+   "sha256": "b9039d8e30f8a6bd17e748490b3895ef1c2ebc2bca23ac9a8638820883293ebc",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000001.freelist",
+   "type": "file",
+   "size": 12632,
+   "mtime": "2020-10-26 12:49:08",
+   "mode": "0o644",
+   "md5": "bd0c45637e1a62d604bf0aaca409f205",
+   "sha256": "cdfd5e1ec755f527dc388cf2e63b62eeab26a0e9b72bdb0253c02520b02bae64",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000038.horizon",
+   "type": "file",
+   "size": 32,
+   "mtime": "2020-10-26 13:17:44",
+   "mode": "0o644",
+   "md5": "5cc15be59323404d065535f367ecaacf",
+   "sha256": "9fab34115b351a30fb6adb5818d8f08e4dd3a024b7247dbbc61c56929ab6e223",
+   "magic": "02000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000039.spx",
+   "type": "file",
+   "size": 282646,
+   "mtime": "2020-10-26 12:48:38",
+   "mode": "0o644",
+   "md5": "a507c539ff516429b23074c656d5d1ae",
+   "sha256": "5f4030b19a0009a036f740b6cea4a01002b4107ce11e4b9977e000a6d097ca17",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000004.gdbindexes",
+   "type": "file",
+   "size": 310,
+   "mtime": "2020-01-29 16:26:14",
+   "mode": "0o644",
+   "md5": "6c458f4bf707ee637122876d926a20f5",
+   "sha256": "f29887c93b126a3feb0e20958cd73cc774f76ab79284b9c7286dc12eb05db858",
+   "magic": "05000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000004.gdbtable",
+   "type": "file",
+   "size": 954060,
+   "mtime": "2020-10-26 12:52:20",
+   "mode": "0o644",
+   "md5": "7ded2bf7c78a3d526cfc7f7e4c24d49f",
+   "sha256": "43281072f1e6356ad4db462399b430399ea4e4e14388b1a722009fe7cc3ca365",
+   "magic": "03000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/nwm_v2_1_hydrofabric.gdb/a00000007.CatRelTypesByName.atx",
+   "type": "file",
+   "size": 12310,
+   "mtime": "2020-10-20 14:38:48",
+   "mode": "0o644",
+   "md5": "5f8cc99f847b8875f085e4845e8e5fd3",
+   "sha256": "fd8ee52ac2990bb7ba3381714e5445ed203aec39900d3f31f7649b6e178ba518",
+   "magic": "00000000"
+  },
+  {
+   "name": "NWM_v2.1_channel_hydrofabric_10262020/NWM_v2.1_channel_hydrofabric_10262020.mxd",
+   "type": "file",
+   "size": 609280,
+   "mtime": "2020-10-26 14:12:42",
+   "mode": "0o644",
+   "md5": "924b691a79d63f421b4574a676273c04",
+   "sha256": "f19cbadf43afedc24604a1b73117acbe75a65eaa134ef0993e13f1da61d5f9db",
+   "magic": "d0cf11e0"
+  }
+ ]
+}

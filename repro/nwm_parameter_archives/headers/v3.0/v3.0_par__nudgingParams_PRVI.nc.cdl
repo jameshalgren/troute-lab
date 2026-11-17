@@ -1,0 +1,31 @@
+// source: v3.0 member v3.0_par/nudgingParams_PRVI.nc (71038 bytes, md5 5255ecff1dd502c6838f2c7d299ca267, ncdump -k: netCDF-4)
+netcdf nudgingParams_PRVI {
+dimensions:
+	stationIdStrLen = 15 ;
+	stationIdInd = UNLIMITED ; // (83 currently)
+	threshInd = 1 ;
+	monthInd = 12 ;
+	threshCatInd = 2 ;
+variables:
+	char stationId(stationIdInd, stationIdStrLen) ;
+		stationId:units = "-" ;
+		stationId:long_name = "USGS station identifer" ;
+	float R(stationIdInd) ;
+		R:units = "meters" ;
+		R:long_name = "Radius of influence in meters" ;
+	float G(stationIdInd) ;
+		G:units = "-" ;
+		G:long_name = "Amplitude of nudging" ;
+	float tau(stationIdInd) ;
+		tau:units = "minutes" ;
+		tau:long_name = "Time tapering parameter half window size in minutes" ;
+	float qThresh(stationIdInd, monthInd, threshInd) ;
+		qThresh:units = "m^3/s" ;
+		qThresh:long_name = "Discharge threshold category" ;
+	float expCoeff(stationIdInd, monthInd, threshCatInd) ;
+		expCoeff:units = "minutes" ;
+		expCoeff:long_name = "Coefficient b in denominator e^(-dt/b)" ;
+
+// global attributes:
+		:version = "NWM v3.0" ;
+}

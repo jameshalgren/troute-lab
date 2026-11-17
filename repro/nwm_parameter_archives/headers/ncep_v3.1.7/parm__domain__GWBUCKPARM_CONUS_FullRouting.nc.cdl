@@ -1,0 +1,29 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain/GWBUCKPARM_CONUS_FullRouting.nc (87206818 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf GWBUCKPARM_CONUS_FullRouting {
+dimensions:
+	BasinDim = 2724837 ;
+variables:
+	int Basin(BasinDim) ;
+		Basin:long_name = "Basin monotonic ID (1...n)" ;
+	float Coeff(BasinDim) ;
+		Coeff:long_name = "Coefficient" ;
+	float Expon(BasinDim) ;
+		Expon:long_name = "Exponent" ;
+	float Zmax(BasinDim) ;
+		Zmax:long_name = "Zmax" ;
+	float Zinit(BasinDim) ;
+		Zinit:long_name = "Zinit" ;
+	float Area_sqkm(BasinDim) ;
+		Area_sqkm:long_name = "Basin area in square kilometers" ;
+	int ComID(BasinDim) ;
+		ComID:long_name = "NHDCatchment FEATUREID (NHDFlowline ComID)" ;
+	float Loss(BasinDim) ;
+		Loss:units = "-" ;
+		Loss:long_name = "Fraction of bucket output lost" ;
+
+// global attributes:
+		:featureType = "point" ;
+		:history = "Mon Apr  3 09:01:09 2023: ncatted -O -a version,global,o,c,NWM v3.0 GWBUCKPARM_FullRouting_NWMv3.0.nc\nCreated Mon Sep 13 11:05:38 2021" ;
+		:version = "NWM v3.1" ;
+		:NCO = "netCDF Operators version 4.7.9 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)" ;
+}

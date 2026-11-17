@@ -1,0 +1,58 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/mpe/MRMS_to_HRAP_regrid_weight_conserve.nc (2997897215 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf MRMS_to_HRAP_regrid_weight_conserve {
+dimensions:
+	n_a = 24500000 ;
+	n_b = 987601 ;
+	n_s = 28069777 ;
+	nv_a = 4 ;
+	nv_b = 4 ;
+	num_wgts = 1 ;
+	src_grid_rank = 2 ;
+	dst_grid_rank = 2 ;
+variables:
+	int src_grid_dims(src_grid_rank) ;
+	int dst_grid_dims(dst_grid_rank) ;
+	double yc_a(n_a) ;
+		yc_a:units = "degrees" ;
+	double yc_b(n_b) ;
+		yc_b:units = "degrees" ;
+	double xc_a(n_a) ;
+		xc_a:units = "degrees" ;
+	double xc_b(n_b) ;
+		xc_b:units = "degrees" ;
+	double yv_a(n_a, nv_a) ;
+		yv_a:units = "degrees" ;
+	double xv_a(n_a, nv_a) ;
+		xv_a:units = "degrees" ;
+	double yv_b(n_b, nv_b) ;
+		yv_b:units = "degrees" ;
+	double xv_b(n_b, nv_b) ;
+		xv_b:units = "degrees" ;
+	int mask_a(n_a) ;
+		mask_a:units = "unitless" ;
+	int mask_b(n_b) ;
+		mask_b:units = "unitless" ;
+	double area_a(n_a) ;
+		area_a:units = "square radians" ;
+	double area_b(n_b) ;
+		area_b:units = "square radians" ;
+	double frac_a(n_a) ;
+		frac_a:units = "unitless" ;
+	double frac_b(n_b) ;
+		frac_b:units = "unitless" ;
+	int col(n_s) ;
+	int row(n_s) ;
+	double S(n_s) ;
+
+// global attributes:
+		:title = "ESMF Offline Regridding Weight Generator" ;
+		:normalization = "destarea" ;
+		:map_method = "Conservative remapping" ;
+		:ESMF_regrid_method = "First-order Conservative" ;
+		:conventions = "NCAR-CSM" ;
+		:domain_a = "MRMS_Grid_SCRIP.nc" ;
+		:domain_b = "HRAP_Grid_SCRIP.nc" ;
+		:grid_file_src = "MRMS_Grid_SCRIP.nc" ;
+		:grid_file_dst = "HRAP_Grid_SCRIP.nc" ;
+		:CVS_revision = "7.0.0" ;
+}

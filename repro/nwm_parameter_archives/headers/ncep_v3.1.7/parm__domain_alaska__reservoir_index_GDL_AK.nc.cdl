@@ -1,0 +1,24 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain_alaska/reservoir_index_GDL_AK.nc (15090 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf reservoir_index_GDL_AK {
+dimensions:
+	feature_id = 237 ;
+	RFC_COMID = 6 ;
+	rfc_gage_id_len = 5 ;
+variables:
+	int64 lake_id(feature_id) ;
+		lake_id:long_name = "Lake ID" ;
+	int reservoir_type(feature_id) ;
+		reservoir_type:long_name = "Classification of reservoir release data type; Level pool = 1, USGS-persistence = 2, USACE-persistence = 3, RFC-forecasts = 4, APRFC-GDL = 5" ;
+		reservoir_type:units = "Categorical" ;
+	char rfc_gage_id(RFC_COMID, rfc_gage_id_len) ;
+		rfc_gage_id:long_name = "This is the RFC location ID for the outflow forecast" ;
+	int64 rfc_lake_id(RFC_COMID) ;
+		rfc_lake_id:long_name = "This is the NWM Waterbody ID for the waterbody identified upstream of RFC gages." ;
+	int rfc_forecast_persist(RFC_COMID) ;
+		rfc_forecast_persist:long_name = "Maximum number of days to persist on the last value of RFC forecast" ;
+	int rfc_timeslice_offset(RFC_COMID) ;
+		rfc_timeslice_offset:long_name = "Offset time in hours for the model to search forward in time from the model start time for a given RFC Timeslice file." ;
+
+// global attributes:
+		:version = "NWM v3.1" ;
+}

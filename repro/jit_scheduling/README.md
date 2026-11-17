@@ -1,10 +1,10 @@
 # Opportunistic vs. just-in-time (JIT) scheduling of the NWM channel network
 
-*AI-assembled (Claude) at James Halgren's request; not reviewed by the author.*
+*AI-assembled (Claude) at James Halgren's request; not yet reviewed.*
 - *2026-10-29: first version, then revised after an independent review (tail metric,
   subnetwork listing order, upstream order in the BFS, the 2020 "rounds" policy, wording).*
-- *2026-10-30: reworked per [`RERUN_PLAN.md`](RERUN_PLAN.md) item 1, following the
-  author's clarification (2026-10-30): the 2020 tests were on segments and measured
+- *2026-10-30: reworked per [`RERUN_PLAN.md`](RERUN_PLAN.md) item 1, following
+  James Halgren's clarification (2026-10-30): the 2020 tests were on segments and measured
   saturation, used as a surrogate for performance. Segments are now the primary
   granularity, saturation is reported first, and the policies have plain names. Added: a
   reach-level JIT ordered by segment distance, the Potomac scope, and hooks for the
@@ -18,7 +18,7 @@ T-Route must compute the river network upstream to downstream. With a fixed numb
 cores, how well does each scheduling policy keep the cores busy, and how long does the
 run take?
 
-**The author's recollection** (2026-10-06; clarified 2026-10-30, see
+**James Halgren's recollection** (2026-10-06; clarified 2026-10-30, see
 `RERUN_PLAN.md`). A 2020 spreadsheet experiment on segments showed that "we could saturate
 cores more effectively by this JIT orderering than by opportunistic ordering where every
 independent node in a particular network calculates right away". Saturation, meaning few
@@ -98,8 +98,8 @@ path) in brackets:
   are then idle under any policy; Hu's rule reaches the bound, the others do not. By 128
   cores, JIT strides and Hu's rule both reach the critical path on every network except
   the Mississippi and CONUS.
-- *The single-core tail.* The author asked how long it is under pure opportunistic
-  scheduling. On the Mississippi by segment it is 1,163 cycles under rounds at every core count from 8 to 1,024, and 978 to
+- *The single-core tail.* How long is it under pure opportunistic
+  scheduling? On the Mississippi by segment it is 1,163 cycles under rounds at every core count from 8 to 1,024, and 978 to
   1,158 under naive first-ready (1,119 at 36 cores). JIT strides end with 5.
   The network forces 1,163 cycles on one core even with unlimited cores (the structural
   tail), because the last stretch of the mainstem cannot be split. What JIT and Hu's rule
@@ -180,7 +180,7 @@ reaches; Mississippi 1,117,312 segments, 868,651 reaches, longest path 3,174 seg
 | Trinity River | 1523997 | 9,616 | 6,533 | 336 | `gnis_name` "Trinity River" |
 | Potomac River | 4539621 | 16,454 | 12,111 | 527 | All segments upstream of NWM feature 4539621 (a network outlet in v3.1.7, the mouth at Chesapeake Bay), as in `../short_ts_switch/README.md` (`potomac_storm`). The scope of the measured per-segment costs (RERUN_PLAN item 2; see "Unequal costs") |
 
-**The t-route test case.** The author asked (2026-10-29): *please use
+**The t-route test case.** Requested 2026-10-29: *please use
 the "Little Colorado" river in Texas as the small network. Do it alone and together with
 the Brazos as you can see happens in the test case in the T-route application folder.*
 What the repository shows (`NOAA-OWP/t-route` at `12a8eae0`, checked 2026-10-29):
@@ -199,7 +199,7 @@ What the repository shows (`NOAA-OWP/t-route` at `12a8eae0`, checked 2026-10-29)
   `test/LowerColorado_TX_v4/domain/coastal_domain_LC_US_DS.yaml` lists "Brazos River, TX"
   among six Texas rivers (with ids that are not RouteLink ids). The "Colorado TX + Brazos"
   scope here is my own union of the two RouteLink networks. Whether a different pairing
-  was meant is a question for the author.
+  was meant is a question for James Halgren.
 
 ## Definitions and assumptions
 - **Segment** = one RouteLink row. **Network** = all segments draining to one outlet.

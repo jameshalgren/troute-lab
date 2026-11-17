@@ -1,0 +1,28 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain_puertorico/GWBUCKPARM_PRVI_FullRouting.nc (449672 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf GWBUCKPARM_PRVI_FullRouting {
+dimensions:
+	BasinDim = 13692 ;
+variables:
+	int Basin(BasinDim) ;
+		Basin:long_name = "Basin monotonic ID (1...n)" ;
+	float Coeff(BasinDim) ;
+		Coeff:long_name = "Coefficient" ;
+	float Expon(BasinDim) ;
+		Expon:long_name = "Exponent" ;
+	float Zmax(BasinDim) ;
+		Zmax:long_name = "Zmax" ;
+	float Zinit(BasinDim) ;
+		Zinit:long_name = "Zinit" ;
+	float Area_sqkm(BasinDim) ;
+		Area_sqkm:long_name = "Basin area in square kilometers" ;
+	int ComID(BasinDim) ;
+		ComID:long_name = "NHDCatchment FEATUREID (NHDFlowline ComID)" ;
+	float Loss(BasinDim) ;
+		Loss:units = "-" ;
+		Loss:long_name = "Fraction of bucket output lost" ;
+
+// global attributes:
+		:featureType = "point" ;
+		:history = "Created Fri Jun 18 08:58:02 2021" ;
+		:version = "NWM v3.1" ;
+}

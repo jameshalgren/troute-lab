@@ -89,8 +89,8 @@ def C(key, label, names, parent, source, vpus, group, box=None, joins=None, kind
 
 
 # Candidate list (2026-10-06). `source`:
-# JH = author's list; AI = AI suggestion; city = the "rivers important to major cities"
-# section (AI suggestions the author asked for); "AI; JH-endorsed" = Yampa/White.
+# JH = James Halgren's list; AI = AI suggestion; city = the "rivers important to major cities"
+# section (requested AI suggestions); "AI; JH-endorsed" = Yampa/White.
 # Parents come first (each candidate's scope is its parent's subtree).
 CANDIDATES = [
     # ---- primary networks that act as parents

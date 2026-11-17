@@ -1,0 +1,34 @@
+// source: v2.1 member NWM_parameters_v2.1/nudgingParams_CONUS.nc (2677812 bytes, md5 576a977eea18cfd7c99bf2657b688f19, ncdump -k: netCDF-4)
+netcdf nudgingParams_CONUS {
+dimensions:
+	stationIdStrLen = 15 ;
+	stationIdInd = UNLIMITED ; // (7994 currently)
+	threshInd = 1 ;
+	monthInd = 12 ;
+	threshCatInd = 2 ;
+variables:
+	char stationId(stationIdInd, stationIdStrLen) ;
+		stationId:units = "-" ;
+		stationId:long_name = "USGS station identifer" ;
+	float R(stationIdInd) ;
+		R:units = "meters" ;
+		R:long_name = "Radius of influence in meters" ;
+	float G(stationIdInd) ;
+		G:units = "-" ;
+		G:long_name = "Amplitude of nudging" ;
+	float tau(stationIdInd) ;
+		tau:units = "minutes" ;
+		tau:long_name = "Time tapering parameter half window size in minutes" ;
+	float qThresh(stationIdInd, monthInd, threshInd) ;
+		qThresh:units = "m^3/s" ;
+		qThresh:long_name = "Discharge threshold category" ;
+	float expCoeff(stationIdInd, monthInd, threshCatInd) ;
+		expCoeff:units = "minutes" ;
+		expCoeff:long_name = "Coefficient b in denominator e^(-dt/b)" ;
+
+// global attributes:
+		:region = "CONUS" ;
+		:history = "Sun Dec 22 10:35:18 2019: ncatted -O -a version,global,o,c,NWM v2.1 nudgingParam_NWMv2.1.nc" ;
+		:NCO = "netCDF Operators version 4.7.9 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)" ;
+		:version = "NWM v2.1" ;
+}

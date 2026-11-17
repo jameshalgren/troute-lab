@@ -1,0 +1,28 @@
+#!/bin/csh
+
+set echo
+
+cp nldas2_022800_dist_params.nc	nldas2_022900_dist_params.nc
+cp nldas2_022801_dist_params.nc	nldas2_022901_dist_params.nc
+cp nldas2_022802_dist_params.nc	nldas2_022902_dist_params.nc
+cp nldas2_022803_dist_params.nc	nldas2_022903_dist_params.nc
+cp nldas2_022804_dist_params.nc	nldas2_022904_dist_params.nc
+cp nldas2_022805_dist_params.nc	nldas2_022905_dist_params.nc
+cp nldas2_022806_dist_params.nc	nldas2_022906_dist_params.nc
+cp nldas2_022807_dist_params.nc	nldas2_022907_dist_params.nc
+cp nldas2_022808_dist_params.nc	nldas2_022908_dist_params.nc
+cp nldas2_022809_dist_params.nc	nldas2_022909_dist_params.nc
+cp nldas2_022810_dist_params.nc	nldas2_022910_dist_params.nc
+cp nldas2_022811_dist_params.nc	nldas2_022911_dist_params.nc
+cp nldas2_022812_dist_params.nc	nldas2_022912_dist_params.nc
+cp nldas2_022813_dist_params.nc	nldas2_022913_dist_params.nc
+cp nldas2_022814_dist_params.nc	nldas2_022914_dist_params.nc
+cp nldas2_022815_dist_params.nc	nldas2_022915_dist_params.nc
+cp nldas2_022816_dist_params.nc	nldas2_022916_dist_params.nc
+cp nldas2_022817_dist_params.nc	nldas2_022917_dist_params.nc
+cp nldas2_022818_dist_params.nc	nldas2_022918_dist_params.nc
+cp nldas2_022819_dist_params.nc	nldas2_022919_dist_params.nc
+cp nldas2_022820_dist_params.nc	nldas2_022920_dist_params.nc
+cp nldas2_022821_dist_params.nc	nldas2_022921_dist_params.nc
+cp nldas2_022822_dist_params.nc	nldas2_022922_dist_params.nc
+cp nldas2_022823_dist_params.nc	nldas2_022923_dist_params.nc

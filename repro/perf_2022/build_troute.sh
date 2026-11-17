@@ -11,7 +11,7 @@
 # Defaults: era -> original (the faithful 2022 build), current -> corrected.
 #
 # Needs (not installed by this script): uv, git, make, a C compiler, gfortran, and
-# netCDF-C + netCDF-Fortran (nc-config, nf-config), all approved by the author first.
+# netCDF-C + netCDF-Fortran (nc-config, nf-config), each installed only after approval.
 # Apple-silicon Mac (macOS 14+): `brew install gcc netcdf netcdf-fortran`. Intel Mac:
 # Homebrew has no Intel bottles of gcc/netcdf (2026-11-04); use conda-forge (gfortran,
 # netcdf-fortran, libnetcdf for osx-64) and set F90. Linux: distribution packages.
@@ -26,7 +26,7 @@
 #     Apple clang 21; the current code declares them `void`);
 #   * era only: NETCDFINC comes from nf-config (compiler.sh hard-codes an openmpi path).
 #
-# AI-written (Claude, 2026-11-04); not yet reviewed by the author. NOT YET RUN: gfortran
+# AI-written (Claude, 2026-11-04); not yet reviewed. NOT YET RUN: gfortran
 # and netCDF-Fortran were not installed on the machine where it was written.
 set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)

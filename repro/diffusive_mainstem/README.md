@@ -2,7 +2,7 @@
 
 *AI-assembled screening (Claude, 2026-10-08; revised 2026-10-20: known error and parameter
 effects reported separately, "mainstem" wording; revised 2026-10-28: mainstem selected by
-divergence-routed drainage area); not yet reviewed by the author. No model is run.*
+divergence-routed drainage area); not yet reviewed. No model is run.*
 
 ## Question
 The need here is to work towards accurate overall routing. We know that the MC algorithm

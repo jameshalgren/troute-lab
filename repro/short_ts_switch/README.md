@@ -1,7 +1,7 @@
 # `assume_short_ts`: what the short-time-step assumption does in T-Route
 
 *AI-assembled (Claude, 2026-10-07; mechanism checks, terminology and mass balance
-2026-10-08 after the author's comments); not yet reviewed by the author.*
+2026-10-08 after James Halgren's comments); not yet reviewed.*
 
 ## Question
 T-Route's Muskingum-Cunge (MC) kernel has a switch, `compute_parameters.assume_short_ts`.
@@ -25,13 +25,13 @@ call either one "the lag", because, as shown below, that word suggests the wrong
 (True, assumption enabled, previous-step upstream inflow) and **STS off** (False,
 assumption disabled, current-step upstream inflow).
 
-No evaluation of the switch existed. The author
+No evaluation of the switch existed. James Halgren
 calls it "a near-term priority". How much does the switch change routed flows, how does
 the change build up through a network, and how does it depend on the routing timestep dt?
 
 ## Kernel update (2026-10-09): results now come from the corrected MC kernel
 
-**Rule** (author, batch 04, P1c): tests use a kernel without uninitialized variables or
+**Rule** (James Halgren, batch 04, P1c): tests use a kernel without uninitialized variables or
 other true coding errors.
 
 **What changed.**
@@ -87,7 +87,7 @@ longer closes well:
 The unpatched-kernel thresholds are unchanged.
 
 ## What one would expect, and what happens
-**Expectation (the author's reasoning, 2026-10-08).** With `False`, a segment sees the
+**Expectation (James Halgren's reasoning, 2026-10-08).** With `False`, a segment sees the
 inflow its upstream neighbour has just produced. With `True`, it sees last step's value.
 During a fast rise, the information therefore waits one extra timestep at every segment
 before it is passed on. Over many segments, `True` should *delay* the flood wave by at
@@ -110,7 +110,7 @@ NWM-like settings K·X is much larger than dt/2. The net shift per segment is
 is so large that T-Route clamps Km to dt (Courant ≥ 1), Δ = dt(1/2 − X) ≥ 0, and the
 expected delay appears. That is the dt = 3600 s case.
 
-**Status.** The author asked for this to be confirmed in depth and flagged for review by
+**Status.** Requested: confirm this in depth. It is flagged for review by
 a numerical-methods reader.
 The checks are in "Mechanism checks" below.
 
@@ -430,7 +430,7 @@ is 80 m³/s per hour. This is the steep front of the upper-basin flood wave arri
 
 ## Closure diagnostics on the network (`closure.sh`, 2026-10-08; `results/closure/`)
 
-*AI-assembled (Claude), 2026-10-08; not yet reviewed by the author.* This section reports
+*AI-assembled (Claude), 2026-10-08; not yet reviewed.* This section reports
 the same K and X values as `repro/mc_courant_timestep/` "Extension" does for Wlostowski's
 channel, now for every segment-step of the Potomac and LowerColorado runs above.
 
@@ -646,7 +646,7 @@ where the shift is dt/4.
   locked environment of the main experiment is unchanged.
 - macOS arm64 / gfortran 15.2.0 only.
 
-## Calibration caveat (author, 2026-10-08)
+## Calibration caveat (James Halgren, 2026-10-08)
 The NWM's channel and other parameters were calibrated with the short-time-step
 assumption in place (WRF-Hydro, i.e. True). Some of the True/False difference may
 therefore already be absorbed by calibration: parameters tuned under True may be

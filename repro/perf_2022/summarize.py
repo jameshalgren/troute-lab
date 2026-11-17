@@ -1,6 +1,6 @@
 """Collect every finished run under results/ into results/summary.csv and results/summary.md.
 
-AI-written (Claude, 2026-11-04); not yet reviewed by the author.
+AI-written (Claude, 2026-11-04); not yet reviewed.
 
 For each RUN_DIR/<build>/r<k>/ with metrics.json + case.json + stdout.log:
   * t-route's own TIMING SUMMARY (network graph, initial conditions [era only], forcing,

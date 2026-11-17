@@ -1,0 +1,40 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain/reservoir_index_Extended_AnA.nc (114296 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf reservoir_index_Extended_AnA {
+dimensions:
+	feature_id = 5782 ;
+	USGS_COMID = 76 ;
+	usgs_gage_id_len = 15 ;
+	number_of_lags = 12 ;
+	USACE_COMID = 70 ;
+	usace_gage_id_len = 15 ;
+	RFC_COMID = 397 ;
+	rfc_gage_id_len = 5 ;
+variables:
+	int64 lake_id(feature_id) ;
+		lake_id:long_name = "Lake ID" ;
+	int reservoir_type(feature_id) ;
+		reservoir_type:long_name = "Classification of reservoir release data type; Level pool = 1, USGS-persistence = 2, USACE-persistence = 3, RFC-forecasts = 4" ;
+		reservoir_type:units = "Categorical" ;
+	int64 usgs_lake_id(USGS_COMID) ;
+		usgs_lake_id:long_name = "This is the NWM Waterbody ID for the waterbody identified upstream of USGS gages." ;
+	char usgs_gage_id(USGS_COMID, usgs_gage_id_len) ;
+		usgs_gage_id:long_name = "Downstream USGS gage IDs" ;
+	double usgs_persistence_coefficients(USGS_COMID, number_of_lags) ;
+		usgs_persistence_coefficients:_FillValue = NaN ;
+		usgs_persistence_coefficients:long_name = "Persistence coefficients which are set to 1.0 for USGS sites" ;
+	char usace_gage_id(USACE_COMID, usace_gage_id_len) ;
+		usace_gage_id:long_name = "Downstream USACE gage IDs" ;
+	int64 usace_lake_id(USACE_COMID) ;
+		usace_lake_id:long_name = "This is the NWM Waterbody ID for the waterbody identified upstream of USACE gages." ;
+	double usace_persistence_coefficients(USACE_COMID, number_of_lags) ;
+		usace_persistence_coefficients:_FillValue = NaN ;
+		usace_persistence_coefficients:long_name = "Persistence coefficients which are set to 1.0 for USACE sites" ;
+	char rfc_gage_id(RFC_COMID, rfc_gage_id_len) ;
+		rfc_gage_id:long_name = "This is the RFC location ID for the outflow forecast" ;
+	int64 rfc_lake_id(RFC_COMID) ;
+		rfc_lake_id:long_name = "This is the NWM Waterbody ID for the waterbody identified upstream of RFC gages." ;
+	int rfc_forecast_persist(RFC_COMID) ;
+		rfc_forecast_persist:long_name = "Maximum number of days to persist on the last value of RFC forecast" ;
+	int rfc_timeslice_offset(RFC_COMID) ;
+		rfc_timeslice_offset:long_name = "Offset time in hours for the model to search forward in time from the model start time for a given RFC Timeslice file." ;
+}

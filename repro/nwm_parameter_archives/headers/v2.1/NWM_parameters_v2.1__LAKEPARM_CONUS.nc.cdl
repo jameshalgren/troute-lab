@@ -1,0 +1,92 @@
+// source: v2.1 member NWM_parameters_v2.1/LAKEPARM_CONUS.nc (583546 bytes, md5 a895833399efffa4a682791d83a9ed60, ncdump -k: netCDF-4 classic model)
+netcdf LAKEPARM_CONUS {
+dimensions:
+	feature_id = 5783 ;
+variables:
+	int Dam_Length(feature_id) ;
+		Dam_Length:coordinates = "lat lon" ;
+		Dam_Length:grid_mapping = "crs" ;
+		Dam_Length:long_name = "Lake ID" ;
+		Dam_Length:units = "Meters" ;
+	double LkMxE(feature_id) ;
+		LkMxE:coordinates = "lat lon" ;
+		LkMxE:grid_mapping = "crs" ;
+		LkMxE:long_name = "Maximum lake elevation (m ASL)" ;
+	double OrificeE(feature_id) ;
+		OrificeE:coordinates = "lat lon" ;
+		OrificeE:grid_mapping = "crs" ;
+		OrificeE:long_name = "Orifice elevation (m ASL)" ;
+	double WeirE(feature_id) ;
+		WeirE:coordinates = "lat lon" ;
+		WeirE:grid_mapping = "crs" ;
+		WeirE:long_name = "Weir elevation (m ASL)" ;
+		WeirE:units = "m" ;
+	int lake_id(feature_id) ;
+		lake_id:long_name = "Lake ID" ;
+		lake_id:grid_mapping = "crs" ;
+		lake_id:cf_role = "timeseries_id" ;
+		lake_id:coordinates = "lat lon" ;
+	double LkArea(feature_id) ;
+		LkArea:long_name = "Lake area (sq. km)" ;
+		LkArea:grid_mapping = "crs" ;
+		LkArea:coordinates = "lat lon" ;
+	double WeirC(feature_id) ;
+		WeirC:long_name = "Weir coefficient" ;
+		WeirC:grid_mapping = "crs" ;
+		WeirC:coordinates = "lat lon" ;
+	double WeirL(feature_id) ;
+		WeirL:long_name = "Weir length (m)" ;
+		WeirL:grid_mapping = "crs" ;
+		WeirL:coordinates = "lat lon" ;
+	double OrificeC(feature_id) ;
+		OrificeC:long_name = "Orifice coefficient" ;
+		OrificeC:grid_mapping = "crs" ;
+		OrificeC:coordinates = "lat lon" ;
+	double OrificeA(feature_id) ;
+		OrificeA:long_name = "Orifice cross-sectional area (sq. m)" ;
+		OrificeA:grid_mapping = "crs" ;
+		OrificeA:coordinates = "lat lon" ;
+	float lat(feature_id) ;
+		lat:units = "degrees_north" ;
+		lat:long_name = "latitude of the lake centroid" ;
+		lat:standard_name = "latitude" ;
+	float lon(feature_id) ;
+		lon:units = "degrees_east" ;
+		lon:long_name = "longitude of the lake centroid" ;
+		lon:standard_name = "longitude" ;
+	double time(feature_id) ;
+		time:units = "days since 2000-01-01 00:00:00" ;
+		time:long_name = "time of measurement" ;
+		time:standard_name = "time" ;
+		time:grid_mapping = "crs" ;
+		time:coordinates = "lat lon" ;
+	int ascendingIndex(feature_id) ;
+		ascendingIndex:long_name = "Index to use for sorting IDs (ascending)" ;
+		ascendingIndex:grid_mapping = "crs" ;
+		ascendingIndex:coordinates = "lat lon" ;
+	float ifd(feature_id) ;
+		ifd:long_name = "Initial fraction water depth" ;
+		ifd:grid_mapping = "crs" ;
+		ifd:coordinates = "lat lon" ;
+	char crs ;
+		crs:_CoordinateAxes = "lat lon" ;
+		crs:inverse_flattening = 298.257223563 ;
+		crs:spatial_ref = "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]];-400 -400 1000000000;-100000 10000;-100000 10000;8.98315284119521E-09;0.001;0.001;IsHighPrecision" ;
+		crs:transform_name = "latitude_longitude" ;
+		crs:semi_major_axis = 6378137. ;
+		crs:long_name = "CRS definition" ;
+		crs:grid_mapping_name = "latitude_longitude" ;
+		crs:semi_minor_axis = 6356752.31424518 ;
+		crs:longitude_of_prime_meridian = 0. ;
+		crs:esri_pe_string = "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]];-400 -400 1000000000;-100000 10000;-100000 10000;8.98315284119521E-09;0.001;0.001;IsHighPrecision" ;
+
+// global attributes:
+		:Conventions = "CF-1.5" ;
+		:featureType = "timeSeries" ;
+		:history = "Fri Sep  6 09:47:15 2019: ncatted -O -a units,Dam_Length,c,c,Meters LAKEPARM_NWMv2.1_2019_09_05_w_dam_length.nc\n",
+			"Fri Sep  6 09:43:30 2019: ncatted -O -a long_name,Dam_Length,c,c,Dam Length LAKEPARM_NWMv2.1_2019_09_05_w_dam_length.nc\n",
+			"Created Thu Apr 18 10:02:20 2019" ;
+		:NCO = "netCDF Operators version 4.7.9 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)" ;
+		:region = "CONUS" ;
+		:version = "NWM v2.1" ;
+}

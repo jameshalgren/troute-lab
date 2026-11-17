@@ -1,6 +1,6 @@
 """Fetch the public inputs for repro/perf_2022 into data/ (gitignored).
 
-AI-written (Claude, 2026-11-04); not yet reviewed by the author. Tested only on the
+AI-written (Claude, 2026-11-04); not yet reviewed. Tested only on the
 small cases named in README.md ("What was tested").
 
 Subcommands

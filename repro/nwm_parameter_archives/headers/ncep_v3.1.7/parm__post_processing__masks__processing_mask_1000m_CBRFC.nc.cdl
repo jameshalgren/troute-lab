@@ -1,0 +1,69 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/post_processing/masks/processing_mask_1000m_CBRFC.nc (496648 bytes; ncdump -k: netCDF-4 classic model; header read by HTTP byte-range, 2026-11-10)
+netcdf processing_mask_1000m_CBRFC {
+dimensions:
+	time = 1 ;
+	reference_time = 1 ;
+	y = 3840 ;
+	x = 4608 ;
+variables:
+	int time(time) ;
+		time:standard_name = "time" ;
+		time:long_name = "valid output time" ;
+		time:units = "minutes since 2019-04-16 18:38:58 UTC" ;
+	int reference_time(reference_time) ;
+		reference_time:standard_name = "forecast_reference_time" ;
+		reference_time:long_name = "forecast reference time" ;
+		reference_time:units = "minutes since 1970-01-01 00:00:00 UTC" ;
+	double y(y) ;
+		y:standard_name = "projection_y_coordinate" ;
+		y:long_name = "y coordinate of projection" ;
+		y:units = "m" ;
+		y:_CoordinateAxisType = "GeoY" ;
+		y:resolution = 1000. ;
+	double x(x) ;
+		x:standard_name = "projection_x_coordinate" ;
+		x:long_name = "x coordinate of projection" ;
+		x:units = "m" ;
+		x:_CoordinateAxisType = "GeoX" ;
+		x:resolution = 1000. ;
+	char ProjectionCoordinateSystem ;
+		ProjectionCoordinateSystem:grid_mapping_name = "lambert_conformal_conic" ;
+		ProjectionCoordinateSystem:transform_name = "lambert_conformal_conic" ;
+		ProjectionCoordinateSystem:longitude_of_prime_meridian = 0. ;
+		ProjectionCoordinateSystem:standard_parallel = 30., 60. ;
+		ProjectionCoordinateSystem:longitude_of_central_meridian = -97. ;
+		ProjectionCoordinateSystem:latitude_of_projection_origin = 40. ;
+		ProjectionCoordinateSystem:false_northing = 0. ;
+		ProjectionCoordinateSystem:false_easting = 0. ;
+		ProjectionCoordinateSystem:earth_radius = 6370000. ;
+		ProjectionCoordinateSystem:_CoordinateTransformType = "Projection" ;
+		ProjectionCoordinateSystem:_CoordinateAxes = "y x" ;
+		ProjectionCoordinateSystem:esri_pe_string = "PROJCS[\"Sphere_Lambert_Conformal_Conic\",GEOGCS[\"GCS_Sphere\",DATUM[\"D_Sphere\",SPHEROID[\"Sphere\",6370000,0.0]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Lambert_Conformal_Conic\"],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],PARAMETER[\"central_meridian\",-97],PARAMETER[\"standard_parallel_1\",30],PARAMETER[\"standard_parallel_2\",60],PARAMETER[\"latitude_of_origin\",40],UNIT[\"Meter\",1.0]];-35691800 -29075200 126180232.640845;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision" ;
+	byte mask(time, y, x) ;
+		mask:_FillValue = -1b ;
+		mask:missing_value = -1b ;
+		mask:long_name = "CBRFC processing mask" ;
+		mask:units = "unitless" ;
+		mask:grid_mapping = "ProjectionCoordinateSystem" ;
+		mask:proj4 = "+proj=lcc +lat_1=30 +lat_2=60 +lat_0=40 +lon_0=-97 +x_0=0 +y_0=0 +a=6370000 +b=6370000 +units=m +no_defs " ;
+		mask:esri_pe_string = "PROJCS[\"Sphere_Lambert_Conformal_Conic\",GEOGCS[\"GCS_Sphere\",DATUM[\"D_Sphere\",SPHEROID[\"Sphere\",6370000,0.0]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Lambert_Conformal_Conic\"],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],PARAMETER[\"central_meridian\",-97],PARAMETER[\"standard_parallel_1\",30],PARAMETER[\"standard_parallel_2\",60],PARAMETER[\"latitude_of_origin\",40],UNIT[\"Meter\",1.0]];-35691800 -29075200 126180232.640845;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision" ;
+		mask:flag_meanings = "out_of_area in_area" ;
+		mask:flag_values = 0b, 1b ;
+		mask:minimum_data_value = 0b ;
+		mask:maximum_data_value = 1b ;
+
+// global attributes:
+		:Conventions = "CF-1.6" ;
+		:institution = "NOAA/NWS/National Water Center" ;
+		:source = "a processing mask for CBRFC region" ;
+		:title = "A processing mask for WRF-HYDRO output for CBRFC region" ;
+		:model_initialization_time = "2019-04-10_21:00:00" ;
+		:model_output_valid_time = "2019-04-11_00:00:00" ;
+		:model_total_valid_times = 3 ;
+		:code_version = "v5.1.0-beta2" ;
+		:NWM_version_number = "v2.0" ;
+		:model_output_type = "land" ;
+		:model_configuration = "analysis_and_assimilation" ;
+		:proj4 = "+proj=lcc +units=m +a=6370000.0 +b=6370000.0 +lat_1=30.0 +lat_2=60.0 +lat_0=40.0 +lon_0=-97.0 +x_0=0 +y_0=0 +k_0=1.0 +nadgrids=@null +wktext  +no_defs" ;
+		:GDAL_DataType = "Generic" ;
+}

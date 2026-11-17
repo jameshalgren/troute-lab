@@ -1,0 +1,130 @@
+## identical in all 25 configs:
+  INDIR = './forcing'
+  OUTDIR = './'
+  START_HOUR = 00
+  START_MIN = 00
+  DYNAMIC_VEG_OPTION = 4
+  CANOPY_STOMATAL_RESISTANCE_OPTION = 1
+  BTR_OPTION = 1
+  RUNOFF_OPTION = 7
+  SURFACE_DRAG_OPTION = 1
+  FROZEN_SOIL_OPTION = 1
+  SUPERCOOLED_WATER_OPTION = 1
+  RADIATIVE_TRANSFER_OPTION = 3
+  SNOW_ALBEDO_OPTION = 1
+  TBOT_OPTION = 2
+  TEMP_TIME_SCHEME_OPTION = 3
+  GLACIER_OPTION = 2
+  SURFACE_RESISTANCE_OPTION = 4
+  SPLIT_OUTPUT_COUNT = 1
+  NSOIL = 4
+  soil_thick_input(1) = 0.10
+  soil_thick_input(2) = 0.30
+  soil_thick_input(3) = 0.60
+  soil_thick_input(4) = 1.00
+  ZLVL = 10.0
+  rst_bi_in = 0
+  rst_bi_out = 0
+  act_lev = 40
+
+## varying:
+  HRLDAS_SETUP_FILE:
+      './DOMAIN/wrfinput_AK.nc'  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, medium_range_alaska_no_da
+      './DOMAIN/wrfinput_CONUS.nc'  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, long_range, medium_range, medium_range_no_da, short_range
+      './DOMAIN/wrfinput_HI.nc'  <- analysis_assim_hawaii_no_da, hi_analysis_assim, hi_short_range, short_range_hawaii_no_da
+      './DOMAIN/wrfinput_PRVI.nc'  <- analysis_assim_puertorico_no_da, pr_analysis_assim, pr_short_range, short_range_puertorico_no_da
+  SPATIAL_FILENAME:
+      './DOMAIN/soilproperties_AK_FullRouting.nc'  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, medium_range_alaska_no_da
+      './DOMAIN/soilproperties_CONUS_FullRouting.nc'  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+      './DOMAIN/soilproperties_HI_FullRouting.nc'  <- analysis_assim_hawaii_no_da, hi_analysis_assim, hi_short_range, short_range_hawaii_no_da
+      './DOMAIN/soilproperties_CONUS_LongRange.nc'  <- analysis_assim_long_no_da, analysis_assim_longrange, long_range
+      './DOMAIN/soilproperties_PRVI_FullRouting.nc'  <- analysis_assim_puertorico_no_da, pr_analysis_assim, pr_short_range, short_range_puertorico_no_da
+  START_YEAR:
+      2019  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, medium_range_alaska_no_da
+      2021  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_hawaii_no_da, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range, medium_range_no_da, short_range, short_range_hawaii_no_da
+      2022  <- analysis_assim_puertorico_no_da, pr_analysis_assim, pr_short_range, short_range_puertorico_no_da
+  START_MONTH:
+      08  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, medium_range_alaska_no_da
+      10  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, long_range, medium_range, medium_range_no_da, short_range
+      03  <- analysis_assim_hawaii_no_da, hi_analysis_assim, hi_short_range, short_range_hawaii_no_da
+      02  <- analysis_assim_puertorico_no_da, pr_analysis_assim, pr_short_range, short_range_puertorico_no_da
+  START_DAY:
+      18  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, medium_range_alaska_no_da
+      24  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, long_range, medium_range, medium_range_no_da, short_range
+      09  <- analysis_assim_hawaii_no_da, hi_analysis_assim, hi_short_range, short_range_hawaii_no_da
+      04  <- analysis_assim_puertorico_no_da, pr_analysis_assim, pr_short_range, short_range_puertorico_no_da
+  RESTART_FILENAME_REQUESTED:
+      './RESTART/RESTART.2019081800_DOMAIN1'  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, medium_range_alaska_no_da
+      './RESTART/RESTART.2021102400_DOMAIN1'  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+      './RESTART/RESTART.2021030900_DOMAIN1'  <- analysis_assim_hawaii_no_da, hi_analysis_assim, hi_short_range, short_range_hawaii_no_da
+      './RESTART_LR/RESTART.2021102400_DOMAIN1'  <- analysis_assim_long_no_da, analysis_assim_longrange, long_range
+      './RESTART/RESTART.2022020400_DOMAIN1'  <- analysis_assim_puertorico_no_da, pr_short_range, short_range_puertorico_no_da
+      './RESTART/RESTART.2022102415_DOMAIN1'  <- pr_analysis_assim
+  KHOUR:
+      3  <- ak_analysis_assim, analysis_assim, analysis_assim_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, pr_analysis_assim
+      32  <- ak_analysis_assim_extended, analysis_assim_extend_alaska_no_da
+      240  <- ak_medium_range, medium_range, medium_range_alaska_no_da, medium_range_no_da
+      15  <- ak_short_range
+      28  <- analysis_assim_extend_no_da, analysis_assim_extended
+      12  <- analysis_assim_long_no_da, analysis_assim_longrange
+      48  <- hi_short_range, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      720  <- long_range
+      18  <- short_range
+  PCP_PARTITION_OPTION:
+      1  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      4  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+  IMPERV_OPTION:
+      9  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, hi_analysis_assim, hi_short_range, medium_range_alaska_no_da, short_range_hawaii_no_da
+      2  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, analysis_assim_puertorico_no_da, long_range, medium_range, medium_range_no_da, pr_analysis_assim, pr_short_range, short_range, short_range_puertorico_no_da
+  FORCING_TIMESTEP:
+      3600  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, medium_range, medium_range_alaska_no_da, medium_range_no_da, pr_analysis_assim, pr_short_range, short_range, short_range_puertorico_no_da
+      900  <- analysis_assim_hawaii_no_da, short_range_hawaii_no_da
+      10800  <- long_range
+  NOAH_TIMESTEP:
+      3600  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, analysis_assim_puertorico_no_da, long_range, medium_range, medium_range_alaska_no_da, medium_range_no_da, pr_analysis_assim, pr_short_range, short_range, short_range_puertorico_no_da
+      900  <- analysis_assim_hawaii_no_da, hi_analysis_assim, hi_short_range, short_range_hawaii_no_da
+  OUTPUT_TIMESTEP:
+      3600  <- ak_analysis_assim, ak_analysis_assim_extended, ak_short_range, analysis_assim, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_hawaii_no_da, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, pr_analysis_assim, pr_short_range, short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      10800  <- ak_medium_range, medium_range, medium_range_alaska_no_da, medium_range_no_da
+      86400  <- long_range
+  RESTART_FREQUENCY_HOURS:
+      1  <- ak_analysis_assim, analysis_assim, analysis_assim_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, pr_analysis_assim
+      4  <- ak_analysis_assim_extended, analysis_assim_extend_alaska_no_da, analysis_assim_extend_no_da, analysis_assim_extended
+      6000  <- ak_medium_range, long_range, medium_range, medium_range_alaska_no_da, medium_range_no_da
+      600  <- ak_short_range, hi_short_range, pr_short_range, short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+  FORC_TYP:
+      2  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim, analysis_assim_extended, analysis_assim_longrange, hi_analysis_assim, hi_short_range, long_range, medium_range, pr_analysis_assim, pr_short_range, short_range
+      9  <- analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_extend_no_da, analysis_assim_hawaii_no_da, analysis_assim_long_no_da, analysis_assim_no_da, analysis_assim_puertorico_no_da, medium_range_alaska_no_da, medium_range_no_da, short_range_hawaii_no_da, short_range_puertorico_no_da
+  crocus_opt:
+      1  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, medium_range_alaska_no_da
+      0  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_hawaii_no_da, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range, medium_range_no_da, pr_analysis_assim, pr_short_range, short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+  forcing_name_T:
+      (absent)  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      "T2D"  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+  forcing_name_Q:
+      (absent)  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      "Q2D"  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+  forcing_name_U:
+      (absent)  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      "U2D"  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+  forcing_name_V:
+      (absent)  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      "V2D"  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+  forcing_name_P:
+      (absent)  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      "PSFC"  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+  forcing_name_LW:
+      (absent)  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      "LWDOWN"  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+  forcing_name_SW:
+      (absent)  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      "SWDOWN"  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+  forcing_name_PR:
+      (absent)  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      "RAINRATE"  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+  forcing_name_SN:
+      (absent)  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      ""  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range
+  forcing_name_LF:
+      (absent)  <- ak_analysis_assim, ak_analysis_assim_extended, ak_medium_range, ak_short_range, analysis_assim_alaska_no_da, analysis_assim_extend_alaska_no_da, analysis_assim_hawaii_no_da, analysis_assim_puertorico_no_da, hi_analysis_assim, hi_short_range, long_range, medium_range_alaska_no_da, pr_analysis_assim, pr_short_range, short_range_hawaii_no_da, short_range_puertorico_no_da
+      "LQFRAC"  <- analysis_assim, analysis_assim_extend_no_da, analysis_assim_extended, analysis_assim_long_no_da, analysis_assim_longrange, analysis_assim_no_da, medium_range, medium_range_no_da, short_range

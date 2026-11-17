@@ -2,7 +2,7 @@
 
 ## Taking this on (handoff brief)
 
-This is a self-contained subtask: someone other than the author can run it end to end.
+This is a self-contained subtask: anyone can run it end to end.
 
 - **Goal:** measure how long the 2022-era t-route and the current t-route take for one
   CONUS year on the same machine and inputs, where the time and memory go, and how that
@@ -11,13 +11,13 @@ This is a self-contained subtask: someone other than the author can run it end t
 - **Already decided:** the code versions and kernel arms (Builds), the inputs and the
   lateral-inflow variable (Inputs), the most likely 2022 configuration (Configuration), the
   stages and their order (Stages), what to measure (What to measure). Change them only with
-  the author.
+  James Halgren's agreement.
 - **You need:** a Mac or Linux machine with gfortran, netCDF-Fortran and `uv`; about 200 GB
   of disk for the year; comfort with Python, a shell, and reading t-route YAML configs. No
   hydrology needed to run it; knowing what the record says about the 2022 run
   (Question, Configuration) helps to judge results.
 - **Start here:** stage 0 (builds), then stage i-a (one CONUS week), on any machine. Long
-  runs (ii-a, ii-b) go on the author's lab Mac or an equivalent.
+  runs (ii-a, ii-b) go on the lab Mac (see Status) or an equivalent.
 - **Done when:** `summarize.py` produces the table in "What to measure" for ii-a (all four
   builds, plus the two earlier `nogil` builds) and ii-b (`era-original`, `current-corrected`),
   with three repeats of the week
@@ -27,8 +27,8 @@ This is a self-contained subtask: someone other than the author can run it end t
   was, start from the record: the
   [NOAA-OWP/t-route#526](https://github.com/NOAA-OWP/t-route/issues/526#issuecomment-1049031284)
   comment quoted under Question, its authors, and the PRs before it (Configuration).
-- **Status (2026-11-04):** the plan and scripts exist, nothing has run. The author is
-  installing the toolchain and configuring the lab Mac (Apple M4 Max, 16 cores, 64 GB,
+- **Status (2026-11-04):** the plan and scripts exist, nothing has run. The toolchain
+  is being installed and the lab Mac configured (Apple M4 Max, 16 cores, 64 GB,
   macOS 26.7.1, 434 GB free; checked over SSH 2026-11-04).
 
 ## Question
@@ -72,12 +72,12 @@ the NWM RouteLink path (`NHDNetwork.py`) and NGWPC's 2026 optimizations
 ([benchmark/RESULTS.md](https://github.com/NGWPC/t-route/blob/development/benchmark/RESULTS.md)). It reads
 netCDF lateral inflow with `xr.open_mfdataset` (its requirements.txt comment), not tested here.
 
-### Earlier `nogil` builds: was the 2022 code a regression? (author, 2026-11-04)
+### Earlier `nogil` builds: was the 2022 code a regression? (requested 2026-11-04)
 
-The author asks that the test check whether the earlier, GIL-releasing code ran better. Two
+The test should also check whether the earlier, GIL-releasing code ran better. Two
 of Adam Wlostowski's PRs changed the parallel model in the three months before #526: #501
-switched joblib from threads to processes, and #509 removed the `with nogil:` blocks. The
-author's three possibilities:
+switched joblib from threads to processes, and #509 removed the `with nogil:` blocks. Three
+possibilities (James Halgren's):
 
 1. **Regression.** Adam was focused on drop-in compatibility with the NWM inputs, and some
    of that work (possibly date arithmetic) was hard to do inside `nogil` blocks, so
@@ -150,7 +150,7 @@ global attribute `model_output_valid_time`. `fetch_inputs.py` range-reads just t
 unchanged: **4.84 MB per hour on disk, ~42 GB for a year** (measured on two files).
 a6efbf4e's own `nhd_io.get_ql_from_chrtout` returns bit-identical lateral inflow from a slim
 file and from the original (checked 2026-11-04, see "What was tested"). Measured fetch rate
-on the author's connection: 24 hourly files in 11.5 s with 16 worker processes, so one year
+on the test connection: 24 hourly files in 11.5 s with 16 worker processes, so one year
 in roughly 1–1.5 h.
 
 ## Configuration (what the 2022 run most likely used)
@@ -203,7 +203,7 @@ magnitude.
 | Stage | Where | Data (transfer / disk) | Peak memory | Wall per run | Runs |
 |---|---|---|---|---|---|
 | 0. Builds | both Macs | ~0.4 GB per build dir (measured for source + env) | – | minutes | 2–4 |
-| i-a. CONUS, 1 week | author's laptop (M5: 4 performance + 6 efficiency cores, 32 GiB) | ~1.2 GB / 0.8 GB | 10–20 GB with 12-h loops | 20 min – 2 h | 5 variants × 2–4 builds |
+| i-a. CONUS, 1 week | laptop (M5: 4 performance + 6 efficiency cores, 32 GiB) | ~1.2 GB / 0.8 GB | 10–20 GB with 12-h loops | 20 min – 2 h | 5 variants × 2–4 builds |
 | i-b. Potomac (16,454 segments), 1 year, serial | Mac | the yearly pass: ~60–90 GB transferred; subset 0.5 GB (+42 GB if the CONUS slim files are kept for stage ii) | < 2 GB | 0.5–1.5 h | 4 (2 × 2) |
 | i-c. Ohio (230,729 segments), 1 year (optional) | Mac | subset ~5.3 GB, same pass | 3–6 GB | serial 7–20 h; 4 workers 2–6 h | 2–4 |
 | ii-a. CONUS, January 2018 | lab Mac | 3.6 GB (or the year) | 20–40 GB (24-h loops) | ~1.5 h if #501's throughput holds | ~10–14 |
@@ -218,7 +218,7 @@ run hit a bus error on Cheyenne while 864 steps fit
 ([#223](https://github.com/NOAA-OWP/t-route/pull/223#issuecomment-780832517)), so loop length
 mattered then and will here. Watch `peak_pss_gib`.
 
-### Stage i (author's laptop)
+### Stage i (laptop)
 
 **Needs approval: Homebrew install of the Fortran/netCDF toolchain** (none of it is on the
 machine as of 2026-11-04; the earlier repro/ builds evidently had it):
@@ -237,7 +237,7 @@ uv run --locked python fetch_inputs.py routelink
 uv run --locked python make_mask.py potomac && uv run --locked python make_mask.py ohio
 # one week of CONUS forcing (stage i-a)
 uv run --locked python fetch_inputs.py forcing 2018-01-01_00 2018-01-08_00
-# the whole year once: CONUS slim files (for stage ii) plus the two subdomains (needs author approval: ~60-90 GB transfer)
+# the whole year once: CONUS slim files (for stage ii) plus the two subdomains (needs approval: ~60-90 GB transfer)
 uv run --locked python fetch_inputs.py forcing 2018-01-01_00 2019-01-01_00 --mask data/masks/potomac.csv --mask data/masks/ohio.csv --workers 16
 ./make_matrix.sh smoke          # writes configs, prints the run_case.sh commands
 ./run_case.sh era-original results/conus_week/jitc_cpu4_loop12/era      # etc.
@@ -269,7 +269,7 @@ On the lab Mac:
 ```bash
 git clone <this repository> && cd <clone>/repro/perf_2022     # or copy repro/perf_2022 + repro/kernel_fixes
 ./remote_check.sh --data-dir /path/with/200GB                    # report only; installs nothing
-# toolchain per the table above (author approval), then:
+# toolchain per the table above (after approval), then:
 ./remote_check.sh --data-dir /path/with/200GB --build-all        # builds the 2 x 2 if every tool is present
 export PERF2022_DATA=/path/with/200GB/data
 uv run --locked python fetch_inputs.py routelink

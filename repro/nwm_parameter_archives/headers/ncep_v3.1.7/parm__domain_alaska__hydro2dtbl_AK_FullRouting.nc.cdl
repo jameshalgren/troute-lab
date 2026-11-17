@@ -1,0 +1,74 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain_alaska/hydro2dtbl_AK_FullRouting.nc (9711438 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf hydro2dtbl_AK_FullRouting {
+dimensions:
+	south_north = 459 ;
+	west_east = 879 ;
+variables:
+	float NEXP(south_north, west_east) ;
+		NEXP:_FillValue = -9999.f ;
+	float LKSAT(south_north, west_east) ;
+		LKSAT:_FillValue = -9999.f ;
+	float OV_ROUGH2D(south_north, west_east) ;
+		OV_ROUGH2D:_FillValue = -9999.f ;
+	float SMCMAX1(south_north, west_east) ;
+		SMCMAX1:_FillValue = -9999.f ;
+	float SMCREF1(south_north, west_east) ;
+		SMCREF1:_FillValue = -9999.f ;
+	float SMCWLT1(south_north, west_east) ;
+		SMCWLT1:_FillValue = -9999.f ;
+
+// global attributes:
+		:TITLE = "OUTPUT FROM GEOGRID V4.1" ;
+		:SIMULATION_START_DATE = "0000-00-00_00:00:00" ;
+		:WEST-EAST_GRID_DIMENSION = 880 ;
+		:SOUTH-NORTH_GRID_DIMENSION = 460 ;
+		:BOTTOM-TOP_GRID_DIMENSION = 0 ;
+		:WEST-EAST_PATCH_START_UNSTAG = 1 ;
+		:WEST-EAST_PATCH_END_UNSTAG = 879 ;
+		:WEST-EAST_PATCH_START_STAG = 1 ;
+		:WEST-EAST_PATCH_END_STAG = 880 ;
+		:SOUTH-NORTH_PATCH_START_UNSTAG = 1 ;
+		:SOUTH-NORTH_PATCH_END_UNSTAG = 459 ;
+		:SOUTH-NORTH_PATCH_START_STAG = 1 ;
+		:SOUTH-NORTH_PATCH_END_STAG = 460 ;
+		:GRIDTYPE = "C" ;
+		:DX = 1000.f ;
+		:DY = 1000.f ;
+		:DYN_OPT = 2 ;
+		:CEN_LAT = 61.54014f ;
+		:CEN_LON = -148.2596f ;
+		:TRUELAT1 = 60.f ;
+		:TRUELAT2 = 1.e+20f ;
+		:MOAD_CEN_LAT = 60.8f ;
+		:STAND_LON = -135.f ;
+		:POLE_LAT = 90.f ;
+		:POLE_LON = 0.f ;
+		:corner_lats = 58.44132f, 62.29021f, 64.25155f, 60.10735f, 58.43982f, 62.28846f, 64.25198f, 60.10771f, 58.43712f, 62.2944f, 64.25611f, 60.10286f, 58.43562f, 62.29265f, 64.25654f, 60.10322f ;
+		:corner_lons = -154.6657f, -157.6794f, -140.3305f, -139.5622f, -154.6738f, -157.6884f, -140.32f, -139.5532f, -154.6629f, -157.6832f, -140.3315f, -139.5615f, -154.6709f, -157.6922f, -140.321f, -139.5525f ;
+		:MAP_PROJ = 2 ;
+		:MMINLU = "USGS" ;
+		:NUM_LAND_CAT = 95 ;
+		:ISWATER = 16 ;
+		:ISLAKE = -1 ;
+		:ISICE = 24 ;
+		:ISURBAN = 1 ;
+		:ISOILWATER = 14 ;
+		:grid_id = 2 ;
+		:parent_id = 1 ;
+		:i_parent_start = 766 ;
+		:j_parent_start = 313 ;
+		:i_parent_end = 1058 ;
+		:j_parent_end = 465 ;
+		:parent_grid_ratio = 3 ;
+		:sr_x = 1 ;
+		:sr_y = 1 ;
+		:FLAG_MF_XY = 1 ;
+		:FLAG_LAI12M = 1 ;
+		:FLAG_LAKE_DEPTH = 1 ;
+		:FLAG_IMPERV = 1 ;
+		:FLAG_CANFRA = 1 ;
+		:NCO = "netCDF Operators version 4.9.5 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)" ;
+		:history = "Tue May 25 04:50:29 2021: ncks -O -x -v HGT_M hydro2dtbl_nosnow_gnatsgo.nc hydro2dtbl_nosnow_gnatsgo.nc\nTue May 25 04:50:29 2021: ncks -O -4 -v HGT_M geo_em.d02.20210419_nlcd2016_nosnow_gnatsgo_cleanup.nc hydro2dtbl_nosnow_gnatsgo.nc\nMon May 24 22:32:05 2021: ncap2 -O -s where(LU_INDEX==24) LU_INDEX=23 geo_em.d02.20210419_nlcd2016_nosnow_gnatsgo_cleanup.nc geo_em.d02.20210419_nlcd2016_nosnow_gnatsgo_cleanup.nc\nMon May 24 21:33:01 2021: ncks -A -v SOILCTOP ../200327/geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20210419_nlcd2016_snow_gnatsgo.nc\nMon May 24 21:32:41 2021: ncks -A -v SOILCBOT ../200327/geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20210419_nlcd2016_snow_gnatsgo.nc\nMon May 24 21:32:10 2021: ncks -A -v SCT_DOM ../200327/geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20210419_nlcd2016_snow_gnatsgo.nc\nMon May 24 21:31:57 2021: ncks -A -v SCB_DOM ../200327/geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20210419_nlcd2016_snow_gnatsgo.nc" ;
+		:history_of_appended_files = "Mon May 24 21:33:01 2021: Appended file ../200327/geo_em.d02.20200327_snow_cleanup_gnatsgo.nc had following \"history\" attribute:\nTue Jun  9 09:16:51 2020: ncap2 -O -s where (SCT_DOM==16) SCT_DOM=3 geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nTue Jun  9 09:12:26 2020: ncap2 -O -s where (SCT_DOM2>0) SCT_DOM=SCT_DOM2 geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nTue Jun  9 09:11:06 2020: ncks -A -v SCT_DOM2 ../../soils/sctdom_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nMon May 24 21:32:41 2021: Appended file ../200327/geo_em.d02.20200327_snow_cleanup_gnatsgo.nc had following \"history\" attribute:\nTue Jun  9 09:16:51 2020: ncap2 -O -s where (SCT_DOM==16) SCT_DOM=3 geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nTue Jun  9 09:12:26 2020: ncap2 -O -s where (SCT_DOM2>0) SCT_DOM=SCT_DOM2 geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nTue Jun  9 09:11:06 2020: ncks -A -v SCT_DOM2 ../../soils/sctdom_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nMon May 24 21:32:10 2021: Appended file ../200327/geo_em.d02.20200327_snow_cleanup_gnatsgo.nc had following \"history\" attribute:\nTue Jun  9 09:16:51 2020: ncap2 -O -s where (SCT_DOM==16) SCT_DOM=3 geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nTue Jun  9 09:12:26 2020: ncap2 -O -s where (SCT_DOM2>0) SCT_DOM=SCT_DOM2 geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nTue Jun  9 09:11:06 2020: ncks -A -v SCT_DOM2 ../../soils/sctdom_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nMon May 24 21:31:57 2021: Appended file ../200327/geo_em.d02.20200327_snow_cleanup_gnatsgo.nc had following \"history\" attribute:\nTue Jun  9 09:16:51 2020: ncap2 -O -s where (SCT_DOM==16) SCT_DOM=3 geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nTue Jun  9 09:12:26 2020: ncap2 -O -s where (SCT_DOM2>0) SCT_DOM=SCT_DOM2 geo_em.d02.20200327_snow_cleanup_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\nTue Jun  9 09:11:06 2020: ncks -A -v SCT_DOM2 ../../soils/sctdom_gnatsgo.nc geo_em.d02.20200327_snow_cleanup_gnatsgo.nc\n" ;
+		:version = "NWM v3.1" ;
+}

@@ -2,12 +2,12 @@
 
 *AI-assembled (Claude), 2026-10-30, for item 2 of
 [`../jit_scheduling/RERUN_PLAN.md`](../jit_scheduling/RERUN_PLAN.md) (measurement part);
-not yet reviewed by the author.*
+not yet reviewed.*
 
 ## Question
 
 The scheduling study in [`../jit_scheduling/`](../jit_scheduling/README.md) assumes every
-segment costs the same. The author points out that significant floods "take at least
+segment costs the same. James Halgren points out that significant floods "take at least
 slightly longer to converge in each calculation" (2026-10-30; `../jit_scheduling/RERUN_PLAN.md`). T-Route's
 Muskingum-Cunge (MC) kernel solves for depth with a secant iteration (`secant2_h`, called
 from `muskingcungenwm`), so the work per call depends on the flow. How large is that

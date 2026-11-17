@@ -1,0 +1,14 @@
+// source: coastal_v3.0 member ./coastal/maskFiles/Ocean_Land_Mask_Hawaii_5m.nc (28121008 bytes, md5 008d1cfcf34ddac15c8f0bc291dabf6a, ncdump -k: 64-bit offset)
+netcdf Ocean_Land_Mask_Hawaii_5m {
+dimensions:
+	index = 878770 ;
+variables:
+	int index(index) ;
+	int OID_(index) ;
+	double Longitude(index) ;
+		Longitude:_FillValue = NaN ;
+	double Latitude(index) ;
+		Latitude:_FillValue = NaN ;
+	int Mask(index) ;
+	int Node(index) ;
+}

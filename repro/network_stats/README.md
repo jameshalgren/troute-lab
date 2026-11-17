@@ -1,16 +1,17 @@
 # NWM channel network as independent drainage networks
 
-*AI-assembled (Claude, 2026-10-06); not yet reviewed by the author.*
+*AI-assembled (Claude, 2026-10-06); not yet reviewed.*
 
 ## Question
 Independent drainage networks never affect each other's computation, so they can be
 routed in parallel with no communication. How many independent networks does the
 operational NWM channel network (RouteLink) have? How large are they? How far does
-by-network parallelism go before the largest network (the Mississippi) caps it? The
-author recalls that with 3 processors, one took the Mississippi and two took the rest.
+by-network parallelism go before the largest network (the Mississippi) caps it? In
+the 2020 tests, with 3 processors, one took the Mississippi and two took the rest (James
+Halgren's recollection; not recorded).
 Related checks:
-- Are the big transboundary rivers continuous or cut at the border? The author recalls
-  that early RouteLink versions broke the Rio Grande into separate networks.
+- Are the big transboundary rivers continuous or cut at the border? Early RouteLink
+  versions broke the Rio Grande into separate networks (James Halgren's recollection).
 - How do these numbers compare with the 2020 numbers (AGU 2020 poster, 2020-01-30
   notebook, Technical-QA wiki)?
 
@@ -158,7 +159,7 @@ Outputs in `results/`:
   ⌈2,776,734 / 1,117,312⌉ = ⌈2.49⌉ = 3, FFD packs CONUS into **3** processors, and
   LPT with P = 3 reaches makespan = the Mississippi alone (40.2% of total). One
   processor takes the Mississippi and the other two share the remaining 59.8% (about
-  29.9% each). This matches the author's recollection. Channel length as work gives
+  29.9% each). This matches the recollection in "Question". Channel length as work gives
   the same result (largest 39.3%, 3 processors). From P = 3 to 16 the makespan stays
   at 40.2%: by-network parallelism alone cannot exceed a 2.49× speedup on CONUS.
 - **Largest networks in the other domains.** AK: outlet 75000200000234 at 61.30 N,
@@ -208,7 +209,7 @@ e.g. 47,584 Canadian segments in the Great Lakes (St. Lawrence) network.
 
   Method (b), removing CA/MX segments, gives 346 pieces with the same two largest.
   **So the Rio Grande is continuous in v3.1.7 (and in v2.1) only through the
-  cross-border segments.** This is consistent with the author's recollection that
+  cross-border segments.** This is consistent with the recollection that
   earlier versions split it, though no such earlier file was available to test
   directly.
 - **The Colorado** keeps its whole mainstem in one network (1,871/1,874 flowlines).
@@ -256,9 +257,12 @@ e.g. 47,584 Canadian segments in the Great Lakes (St. Lawrence) network.
     v2.0.x, v2.1.x, v2.2.x, v3.0.x, v3.1.0, and since November 2026 v3.1.6, whose RouteLink
     files v3.1.7 serves byte-identical), and the Wayback Machine has no RouteLink
     captures.
-  - NOHRSC's `NWM_parameter_files_v2.1.tar.gz` (README: "applies to NWM v2.0")
-    contains `RouteLink_NHDPLUS.nc.gz` but is 4.49 GB, above the 600 MB limit. It was
-    not downloaded.
+  - NOHRSC's `NWM_parameter_files_v2.1.tar.gz` contains
+    `NWM_parameters_v2.1/RouteLink_CONUS.nc` (the same SHA-256 as the HydroShare copy
+    above) but is 4.49 GB, above the 600 MB limit. It was not downloaded. NOHRSC's
+    outer `README.txt` ("Applies to NWM v2.0") lists `RouteLink_NHDPLUS.nc.gz`, which
+    no tarball now served contains (checked 2026-11-10; see
+    [`../nwm_parameter_archives/`](../nwm_parameter_archives/)).
   - AWS `noaa-nwm-pds`, `noaa-nwm-retrospective-2-1-pds`, `noaa-nwm-retro-v2-0-pds`
     and `noaa-nwm-retrospective-3-0-pds`, and the GCS `national-water-model` bucket,
     have no parameter or domain files.
@@ -266,9 +270,9 @@ e.g. 47,584 Canadian segments in the Great Lakes (St. Lawrence) network.
   - Zenodo was not searched.
 
 ## Sub-rivers (`subrivers.py`)
-*Added 2026-10-06 (AI-assembled, not yet reviewed by the author).* For each river in
+*Added 2026-10-06 (AI-assembled, not yet reviewed).* For each river in
 the candidate list
-(the author's list, the AI suggestions, and the city-rivers section; encoded in
+(James Halgren's list, the AI suggestions, and the city-rivers section; encoded in
 `CANDIDATES` in `subrivers.py`), find the river's **mouth** segment in the v3.1.7 CONUS
 RouteLink and compute the statistics of the subtree upstream of it, with the same
 definitions as above. Table: `results/T_subrivers.csv` (Markdown rows: `results/T_subrivers_rows.md`).
@@ -410,10 +414,10 @@ changes the snapshot changes its SHA-256, so `check.py` fails until
   km² at the Illinois mouth and 255,657 km² at the Rock. RouteLink keeps one `to` per
   segment, so the subtree counts are not affected.
 - "confident" means the rule picked one unambiguous mouth that flows into the expected
-  river. It does not mean the author has checked the row.
+  river. It does not mean the row has been checked by hand.
 
 ## Full NWM domain, lake-outlet and confluence names (`domains.py`)
-*Added 2026-10-07 (AI-assembled, not yet reviewed by the author).* The author asked for
+*Added 2026-10-07 (AI-assembled, not yet reviewed).* James Halgren asked for
 "the full domain" and noted that the network named "Tchefuncte River" captures all of
 Lake Pontchartrain's tributaries, that Buffalo Bayou "has too many streams labelled to
 it", and that "the Sabine is lumped into the Neches" (2026-10-07).
@@ -464,7 +468,7 @@ that is not the largest, it is renamed "<largest> and <other>", or "<water body>
 by the first GNIS name going up their level path.
 
 **Renamed networks** (`results/lake_renames.csv`, rule and flags per row): CONUS 46
-(20 lake-outlet, 26 confluence), AK 1, HI 6, PRVI 11. The author's examples:
+(20 lake-outlet, 26 confluence), AK 1, HI 6, PRVI 11. Examples (the first three are the ones raised above):
 - #33 Tchefuncte River → **Lake Pontchartrain (Amite River, Tangipahoa River, Tchefuncte
   River)**. Flag `tributary_below_lake`: the Bogue Chitto (2,327 segments, 24.5% of the
   network) joins at the Rigolets, below the lake, through Pearl River distributaries.
@@ -475,7 +479,7 @@ by the first GNIS name going up their level path.
   the Neches (5,641) meet at Sabine Lake / Sabine Pass.
 - #212 Sammamish River → Lake Washington (Cedar River, Sammamish River).
 - Others are listed in `lake_renames.csv`. Several confluence renames are mechanical and
-  need the author's review (e.g. #85 "Mill Creek and Tule River", #122 "Silva Creek and
+  need review (e.g. #85 "Mill Creek and Tule River", #122 "Silva Creek and
   Mimbres River", #95 "Pawtuckaway River and Piscataqua River").
 
 **Inflow sub-rivers.** Every named inflow (≥ 5% of the water body's drainage) or branch of

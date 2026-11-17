@@ -1,0 +1,19 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/post_processing/thresholds/p05.nc (523623811 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf p05 {
+dimensions:
+	feature_id = 2776734 ;
+	time = 366 ;
+variables:
+	int feature_id(feature_id) ;
+		feature_id:long_name = "unique identifier for river reach feature" ;
+	ushort time(time) ;
+		time:long_name = "day of year" ;
+		time:unit = "day" ;
+		time:valid_range = 1US, 366US ;
+	int streamflow_0_4(time, feature_id) ;
+		streamflow_0_4:_FillValue = -99900 ;
+		streamflow_0_4:long_name = "5th percentile of 7-day average streamflow" ;
+		streamflow_0_4:units = "m3 s-1" ;
+		streamflow_0_4:add_offset = 0.f ;
+		streamflow_0_4:scale_factor = 0.01f ;
+}

@@ -15,7 +15,7 @@
 # anything); export MALLOC_ARENA_MAX / OMP_NUM_THREADS yourself for a tuning arm, and
 # measure.py records them.
 #
-# AI-written (Claude, 2026-11-04); not yet reviewed by the author. NOT YET RUN against a
+# AI-written (Claude, 2026-11-04); not yet reviewed. NOT YET RUN against a
 # t-route build (no Fortran compiler on the machine where it was written).
 set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)

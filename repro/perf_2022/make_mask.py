@@ -1,6 +1,6 @@
 """Write a t-route domain mask: every RouteLink segment upstream of (and including) an outlet.
 
-AI-written (Claude, 2026-11-04); not yet reviewed by the author.
+AI-written (Claude, 2026-11-04); not yet reviewed.
 
 The mask is a one-column CSV of feature_ids with no header. That is the format t-route's
 `supernetwork_parameters: mask_file_path` reads at a6efbf4e (nhd_io.read_mask ->

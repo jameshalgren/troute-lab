@@ -1,0 +1,62 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/forcingParam/Long_Range/NLDAS_Climo/nldas2_010100_dist_params.nc (0 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf nldas2_010100_dist_params {
+dimensions:
+	param = UNLIMITED ; // (0 currently)
+	lat_0 = 190 ;
+	lon_0 = 384 ;
+variables:
+	float lat_0(lat_0) ;
+		lat_0:long_name = "latitude" ;
+		lat_0:grid_type = "Gaussian Latitude/Longitude" ;
+		lat_0:units = "degrees_north" ;
+		lat_0:N = 95. ;
+		lat_0:Di = 0.9374987 ;
+		lat_0:Lo2 = 359.062 ;
+		lat_0:La2 = -89.277 ;
+		lat_0:Lo1 = 0. ;
+		lat_0:La1 = 89.277 ;
+	float lon_0(lon_0) ;
+		lon_0:long_name = "longitude" ;
+		lon_0:grid_type = "Gaussian Latitude/Longitude" ;
+		lon_0:units = "degrees_east" ;
+		lon_0:N = 95. ;
+		lon_0:Di = 0.9374987 ;
+		lon_0:Lo2 = 359.062 ;
+		lon_0:La2 = -89.277 ;
+		lon_0:Lo1 = 0. ;
+		lon_0:La1 = 89.277 ;
+	double UGRD10M_PARAM_1(lat_0, lon_0) ;
+		UGRD10M_PARAM_1:_FillValue = -9999. ;
+	double UGRD10M_PARAM_2(lat_0, lon_0) ;
+		UGRD10M_PARAM_2:_FillValue = -9999. ;
+	double VGRD10M_PARAM_1(lat_0, lon_0) ;
+		VGRD10M_PARAM_1:_FillValue = -9999. ;
+	double VGRD10M_PARAM_2(lat_0, lon_0) ;
+		VGRD10M_PARAM_2:_FillValue = -9999. ;
+	double T2M_PARAM_1(lat_0, lon_0) ;
+		T2M_PARAM_1:_FillValue = -9999. ;
+	double T2M_PARAM_2(lat_0, lon_0) ;
+		T2M_PARAM_2:_FillValue = -9999. ;
+	double Q2M_PARAM_1(lat_0, lon_0) ;
+		Q2M_PARAM_1:_FillValue = -9999. ;
+	double Q2M_PARAM_2(lat_0, lon_0) ;
+		Q2M_PARAM_2:_FillValue = -9999. ;
+	double PSFC_PARAM_1(lat_0, lon_0) ;
+		PSFC_PARAM_1:_FillValue = -9999. ;
+	double PSFC_PARAM_2(lat_0, lon_0) ;
+		PSFC_PARAM_2:_FillValue = -9999. ;
+	double LW_PARAM_1(lat_0, lon_0) ;
+		LW_PARAM_1:_FillValue = -9999. ;
+	double LW_PARAM_2(lat_0, lon_0) ;
+		LW_PARAM_2:_FillValue = -9999. ;
+	double SW_PARAM_1(lat_0, lon_0) ;
+		SW_PARAM_1:_FillValue = -9999. ;
+	double SW_PARAM_2(lat_0, lon_0) ;
+		SW_PARAM_2:_FillValue = -9999. ;
+	double PRATE_PARAM_1(lat_0, lon_0) ;
+		PRATE_PARAM_1:_FillValue = -9999. ;
+	double PRATE_PARAM_2(lat_0, lon_0) ;
+		PRATE_PARAM_2:_FillValue = -9999. ;
+	double ZERO_PRECIP_PROB(lat_0, lon_0) ;
+		ZERO_PRECIP_PROB:_FillValue = -9999. ;
+}

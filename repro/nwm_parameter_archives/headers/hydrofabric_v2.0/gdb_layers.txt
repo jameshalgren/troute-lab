@@ -1,0 +1,47 @@
+# hydrofabric_v2.0: FileGDB layer schemas (pyogrio 0.13.0, GDAL 3.12.4) from https://www.nohrsc.noaa.gov/owp_files/nwm/data_tools/NWM_v2.0_channel_hydrofabric.tar.gz
+
+## NWM_v2.0_channel_hydrofabric/nwm_v2_0_hydrofabric.gdb
+
+### layer nwm_reaches_conus  geometry=MultiLineString  features=2729077  crs=EPSG:4269
+    feature_id: int32
+    source: object
+    lat: float32
+    lon: float32
+    gnis_name: object
+    stream_order: int16
+    Shape_Length: float64
+
+### layer nwm_reaches_hawaii  geometry=MultiLineString  features=13637  crs=EPSG:4269
+    feature_id: int32
+    source: object
+    lat: float32
+    lon: float32
+    gnis_name: object
+    stream_order: int16
+    Shape_Length: float64
+
+### layer nwm_catchments_hawaii  geometry=MultiPolygon  features=13296  crs=PROJCS["USA_Contiguous_Albers_Equal_Area_Conic",GEOGCS["NAD8
+    feature_id: int32
+    source: object
+    Shape_Length: float64
+    Shape_Area: float64
+
+### layer nwm_catchments_conus  geometry=MultiPolygon  features=2677135  crs=PROJCS["USA_Contiguous_Albers_Equal_Area_Conic",GEOGCS["NAD8
+    feature_id: int32
+    source: object
+    Shape_Length: float64
+    Shape_Area: float64
+
+### layer nwm_waterbodies_conus  geometry=MultiPolygon Z  features=5459  crs=PROJCS["USA_Contiguous_Albers_Equal_Area_Conic",GEOGCS["NAD8
+    feature_id: int32
+    source: object
+    gnis_name: object
+    Shape_Length: float64
+    Shape_Area: float64
+
+### layer nwm_waterbodies_hawaii  geometry=MultiPolygon Z  features=9  crs=PROJCS["USA_Contiguous_Albers_Equal_Area_Conic",GEOGCS["NAD8
+    feature_id: int32
+    source: object
+    gnis_name: object
+    Shape_Length: float64
+    Shape_Area: float64

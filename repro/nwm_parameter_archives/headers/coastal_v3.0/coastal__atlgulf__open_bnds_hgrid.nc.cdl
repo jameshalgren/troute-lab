@@ -1,0 +1,25 @@
+// source: coastal_v3.0 member ./coastal/atlgulf/open_bnds_hgrid.nc (999841 bytes, md5 8ea16365acb4488f6d89413300fd5305, ncdump -k: netCDF-4)
+netcdf open_bnds_hgrid {
+dimensions:
+	nodeCount = 21096 ;
+	openBndNodeCount = 9211 ;
+	elementCount = 21094 ;
+	maxNodePElement = 3 ;
+	coordDim = 2 ;
+variables:
+	double nodeCoords(nodeCount, coordDim) ;
+		nodeCoords:units = "degrees" ;
+	int openBndNodes(openBndNodeCount) ;
+	int elementConn(elementCount, maxNodePElement) ;
+		elementConn:_FillValue = -1 ;
+		elementConn:long_name = "Node Indices that define the element connectivity" ;
+		elementConn:start_index = 0b ;
+	byte numElementConn(elementCount) ;
+		numElementConn:long_name = "Number of nodes per element" ;
+	double centerCoords(elementCount, coordDim) ;
+		centerCoords:units = "degrees" ;
+
+// global attributes:
+		:gridType = "unstructured" ;
+		:version = "0.9" ;
+}

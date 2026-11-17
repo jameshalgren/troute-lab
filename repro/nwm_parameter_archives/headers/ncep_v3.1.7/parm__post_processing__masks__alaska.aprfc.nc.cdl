@@ -1,0 +1,8 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/post_processing/masks/alaska.aprfc.nc (3370 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf alaska.aprfc {
+dimensions:
+	feature_id = 106 ;
+variables:
+	int64 feature_id(feature_id) ;
+		feature_id:long_name = "Station Id" ;
+}

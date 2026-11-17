@@ -1,0 +1,54 @@
+# hydrofabric_v3.0: FileGDB layer schemas (pyogrio 0.13.0, GDAL 3.12.4) from https://www.nohrsc.noaa.gov/owp_files/nwm/data_tools/NWM_v3.0_channel_hydrofabric.tar.gz
+
+## NWM_v3_hydrofabric.gdb
+
+### layer nwm_reaches_alaska  geometry=MultiLineString  features=391522  crs=EPSG:4269
+    ID: float64
+    Shape_Length: float64
+
+### layer nwm_waterbodies_alaska  geometry=MultiPolygon Z  features=231  crs=EPSG:4269
+    ID: float64
+    Shape_Length: float64
+    Shape_Area: float64
+
+### layer nwm_catchments_alaska  geometry=MultiPolygon  features=390548  crs=EPSG:4269
+    ID: float64
+    Shape_Length: float64
+    Shape_Area: float64
+
+### layer nwm_reaches_conus  geometry=MultiLineString  features=2776734  crs=EPSG:4269
+    ID: int32
+    Shape_Length: float64
+
+### layer nwm_waterbodies_conus  geometry=MultiPolygon Z  features=5782  crs=PROJCS["USA_Contiguous_Albers_Equal_Area_Conic",GEOGCS["NAD8
+    ID: float64
+    Shape_Length: float64
+    Shape_Area: float64
+
+### layer nwm_catchments_conus  geometry=MultiPolygon  features=2724837  crs=EPSG:4269
+    ID: int32
+    Shape_Length: float64
+    Shape_Area: float64
+
+### layer nwm_reaches_hawaii  geometry=MultiLineString  features=13637  crs=EPSG:4269
+    ID: int32
+    Shape_Length: float64
+
+### layer nwm_waterbodies_hawaii  geometry=MultiPolygon Z  features=9  crs=EPSG:4269
+    ID: int32
+    Shape_Length: float64
+    Shape_Area: float64
+
+### layer nwm_catchments_hawaii  geometry=MultiPolygon  features=13296  crs=EPSG:4269
+    ID: int32
+    Shape_Length: float64
+    Shape_Area: float64
+
+### layer nwm_reaches_puertorico  geometry=MultiLineString  features=14017  crs=EPSG:4269
+    ID: int32
+    Shape_Length: float64
+
+### layer nwm_catchments_puertorico  geometry=MultiPolygon  features=13692  crs=EPSG:4269
+    ID: int32
+    Shape_Length: float64
+    Shape_Area: float64

@@ -62,7 +62,7 @@ WB_MISSING = -9999
 BIG_ID = 1_000_000_000
 TOPK = (1, 2, 3, 5, 10, 20, 100)
 P_RANGE = range(1, 17)
-N_TABLE = 500  # rows in results/T_basins.csv (author's request: top 500 primary rivers)
+N_TABLE = 500  # rows in results/T_basins.csv (requested: top 500 primary rivers)
 
 
 def load(path: Path) -> dict:

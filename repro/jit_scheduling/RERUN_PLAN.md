@@ -1,10 +1,10 @@
 # Rerun plan, 2026-10-30: segments, saturation, unequal costs, and the theory
 
-*AI-drafted (Claude), 2026-10-30, at the author's request of that day. Not
-reviewed by the author. The study's results and conventions are in [README.md](README.md);
+*AI-drafted (Claude), 2026-10-30, at James Halgren's request of that day. Not yet
+reviewed. The study's results and conventions are in [README.md](README.md);
 this file records why the study is being rerun and what the rerun must show.*
 
-## The author's framing
+## Framing (James Halgren)
 
 > During development, I ran tests on both segments and reaches, but the calculation unit is
 > segments, so my first spreadsheets were segment-based. The goal was to maximize core
@@ -44,7 +44,7 @@ this file records why the study is being rerun and what the rerun must show.*
 > an appendix or footnote in the paper, with some of the theoretical background for all of
 > this.
 
-Follow-up (the author): rerun item 1 and do item 4 now; do item 2 with the Potomac case;
+Follow-up (James Halgren): rerun item 1 and do item 4 now; do item 2 with the Potomac case;
 document item 3 as a next paper.
 
 ## Recap of the existing results (AI, 2026-10-30)
@@ -60,7 +60,7 @@ one core; JIT with 5.
 | 128 | 1,145 | 1,163 | 5 | 103 |
 | 1,024 | 1,158 | 1,163 | 5 | 1,161 |
 
-The finish line the author saw in 2020 is real: naive opportunistic scheduling spends the
+The finish line seen in the 2020 spreadsheets is real: naive opportunistic scheduling spends the
 last ~1,150 cycles on one core. JIT overlaps that stretch with other work.
 
 **Saturation and performance are one objective in this model.** With fixed total work W
@@ -91,7 +91,7 @@ reaches with cost = segments gives exactly the segment result (31,118 cycles at 
 because its priority uses segment distance. The 2020 segment test measured the right thing,
 and a reach-level implementation needs segment-distance priorities.
 
-**Scale footnote (author, 2026-10-30).** The AGU 2020 poster's "over 600 billion"
+**Scale footnote (James Halgren, 2026-10-30).** The AGU 2020 poster's "over 600 billion"
 routing computations per day
 ([`doc/AGU_Poster.md` L50](https://github.com/NOAA-OWP/t-route/blob/0d512ba026e3b10a432fb707fc80655a6c2f63e2/doc/AGU_Poster.md#L50))
 may simply have used the exact segment count; "around 600 billion" is fine for the paper (the 2020 sheet gives

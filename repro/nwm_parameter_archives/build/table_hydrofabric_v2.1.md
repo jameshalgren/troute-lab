@@ -1,0 +1,3 @@
+Compressed: 646,132,558 bytes, SHA-256 `7e20135bb54954a04ece50e3ed8c304cb765fbb565cd7f0b35813ccdb1d050ff`. 87 files, 939,825,532 bytes uncompressed.
+- 86 ESRI File Geodatabase internal files (`a0000000NN.gdbtable/.gdbtablx/.spx/.atx/.gdbindexes/.freelist/.horizon`, plus `gdb`, `timestamps`), 939,216,252 bytes, dated 2020-01-29 to 2020-10-26. Full per-file list with MD5: [listings/members_hydrofabric_v2.1.json](listings/members_hydrofabric_v2.1.json).
+- `NWM_v2.1_channel_hydrofabric_10262020/NWM_v2.1_channel_hydrofabric_10262020.mxd` (609,280 bytes, 2020-10-26, MD5 `924b691a79d63f421b4574a676273c04`)

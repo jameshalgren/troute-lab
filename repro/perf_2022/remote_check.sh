@@ -20,8 +20,8 @@
 #                  Linux); but Homebrew has no Intel macOS bottles of gcc or netcdf
 #                  (2026-11-04), so the toolchain comes from a source build or conda-forge.
 #
-# AI-written (Claude, 2026-11-04); not yet reviewed by the author. Tested only on the
-# author's Apple-silicon laptop.
+# AI-written (Claude, 2026-11-04); not yet reviewed. Tested only on an
+# Apple-silicon laptop.
 set -uo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 DATA_DIR=$HERE

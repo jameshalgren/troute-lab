@@ -1,11 +1,11 @@
 # Corrections to T-Route's Muskingum-Cunge kernel
 
-*AI-assembled (Claude), 2026-10-09; not yet reviewed by the author. The patch messages
+*AI-assembled (Claude), 2026-10-09; not yet reviewed. The patch messages
 are AI-drafted suggestions; James Halgren rewrites them before anything is submitted.*
 
 ## Why
 
-The author set a rule (James Halgren, 2026-10-09):
+The rule (James Halgren, 2026-10-09):
 
 > For this work, all tests in this repo should use a kernel that doesn't have any
 > uninitialized variables or other true coding errors in the MC kernel, even where these
@@ -279,7 +279,7 @@ With it, the Potomac True-vs-False comparison would be +34.4% / −74.6 h.
   "unpatched → corrected" differences driven by 0001, are not portable. The corrected
   kernel's are.
 - 0006–0008 change the solver's strategy, not only remove undefined behaviour.
-  - The author's rule includes them because false convergence is a true error, and its
+  - The rule above includes them because false convergence is a true error, and its
     fix needs 0008 not to lose water.
   - 0007 (hold the depth) is a policy.
   - 0008's thresholds (a tenth of the estimate, four seeds) are NGWPC's choices and have

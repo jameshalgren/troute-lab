@@ -1,0 +1,14 @@
+// source: coastal_v3.0 member ./coastal/maskFiles/Ocean_Land_Mask_5m_Pacific_Coast_V2.nc (100432048 bytes, md5 7f5f550c249c53210119dc012d4c8cb0, ncdump -k: 64-bit offset)
+netcdf Ocean_Land_Mask_5m_Pacific_Coast_V2 {
+dimensions:
+	index = 3138490 ;
+variables:
+	int index(index) ;
+	int OID_(index) ;
+	double Longitude(index) ;
+		Longitude:_FillValue = NaN ;
+	double Latitude(index) ;
+		Latitude:_FillValue = NaN ;
+	int Mask(index) ;
+	int Node(index) ;
+}

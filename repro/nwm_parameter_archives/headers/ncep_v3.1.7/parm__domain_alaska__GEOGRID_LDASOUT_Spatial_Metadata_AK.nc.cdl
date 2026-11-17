@@ -1,0 +1,56 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/domain_alaska/GEOGRID_LDASOUT_Spatial_Metadata_AK.nc (30298 bytes; ncdump -k: netCDF-4 classic model; header read by HTTP byte-range, 2026-11-10)
+netcdf GEOGRID_LDASOUT_Spatial_Metadata_AK {
+dimensions:
+	y = 459 ;
+	x = 879 ;
+	string1 = 1 ;
+variables:
+	double y(y) ;
+		y:standard_name = "projection_y_coordinate" ;
+		y:long_name = "y coordinate of projection" ;
+		y:units = "m" ;
+		y:_CoordinateAxisType = "GeoY" ;
+		y:resolution = 1000. ;
+	double x(x) ;
+		x:standard_name = "projection_x_coordinate" ;
+		x:long_name = "x coordinate of projection" ;
+		x:units = "m" ;
+		x:_CoordinateAxisType = "GeoX" ;
+		x:resolution = 1000. ;
+	char crs(string1) ;
+		crs:grid_mapping_name = "polar_stereographic" ;
+		crs:latitude_of_projection_origin = 90. ;
+		crs:standard_parallel = 60. ;
+		crs:straight_vertical_longitude_from_pole = -135. ;
+		crs:false_easting = 0. ;
+		crs:false_northing = 0. ;
+		crs:long_name = "CRS definition" ;
+		crs:longitude_of_prime_meridian = 0. ;
+		crs:semi_major_axis = 6370000. ;
+		crs:inverse_flattening = 0. ;
+		crs:spatial_ref = "PROJCS[\"Sphere_Stereographic\",GEOGCS[\"Sphere\",DATUM[\"Sphere\",SPHEROID[\"unnamed\",6370000,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",60],PARAMETER[\"central_meridian\",-135],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",SOUTH],AXIS[\"Northing\",SOUTH]]" ;
+		crs:crs_wkt = "PROJCS[\"Sphere_Stereographic\",GEOGCS[\"Sphere\",DATUM[\"Sphere\",SPHEROID[\"unnamed\",6370000,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",60],PARAMETER[\"central_meridian\",-135],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",SOUTH],AXIS[\"Northing\",SOUTH]]" ;
+		crs:GeoTransform = "-1130889.442087718 1000 0 -2704514.413754986 0 -1000 " ;
+		crs:esri_pe_string = "PROJCS[\"Sphere_Stereographic\",GEOGCS[\"Sphere\",DATUM[\"Sphere\",SPHEROID[\"unnamed\",6370000,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",60],PARAMETER[\"central_meridian\",-135],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",SOUTH],AXIS[\"Northing\",SOUTH]]" ;
+
+// global attributes:
+		:Conventions = "CF-1.7" ;
+		:GDAL_DataType = "Generic" ;
+		:Source_Software = "WRF-Hydro GIS Pre-processor v5.2 (04/2021)" ;
+		:history = "Created Wed May  5 10:04:51 2021" ;
+		:processing_notes = "Created: Tue May  4 16:15:33 2021" ;
+		:proj4 = "+proj=stere +lat_0=90 +lat_ts=60 +lon_0=-135 +x_0=0 +y_0=0 +R=6370000 +units=m +no_defs" ;
+		:MAP_PROJ = 2 ;
+		:corner_lats = 58.44132f, 62.29021f, 64.25155f, 60.10735f, 58.43982f, 62.28846f, 64.25198f, 60.10771f, 58.43712f, 62.2944f, 64.25611f, 60.10286f, 58.43562f, 62.29265f, 64.25654f, 60.10322f ;
+		:corner_lons = -154.6657f, -157.6794f, -140.3305f, -139.5622f, -154.6738f, -157.6884f, -140.32f, -139.5532f, -154.6629f, -157.6832f, -140.3315f, -139.5615f, -154.6709f, -157.6922f, -140.321f, -139.5525f ;
+		:TRUELAT1 = 60.f ;
+		:TRUELAT2 = 1.e+20f ;
+		:STAND_LON = -135.f ;
+		:POLE_LAT = 90.f ;
+		:POLE_LON = 0.f ;
+		:MOAD_CEN_LAT = 60.8f ;
+		:CEN_LAT = 61.54014f ;
+		:DX = 1000.f ;
+		:DY = 1000.f ;
+		:version = "NWM v3.1" ;
+}

@@ -1,6 +1,6 @@
 """Write one t-route configuration (YAML) plus case.json for a timing run.
 
-AI-written (Claude, 2026-11-04); not yet reviewed by the author.
+AI-written (Claude, 2026-11-04); not yet reviewed.
 
 The same physical setup is written in two dialects:
   --code era      NOAA-OWP/t-route a6efbf4e (2022-02-16), V3 YAML, run with

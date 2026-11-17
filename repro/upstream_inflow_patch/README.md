@@ -1,6 +1,6 @@
 # Upstream inflow boundaries for T-Route: a patch and a clip-and-replay test
 
-*AI-assembled (Claude, 2026-10-08); not yet reviewed by the author. The patch is a
+*AI-assembled (Claude, 2026-10-08); not yet reviewed. The patch is a
 proposal to share (for example with the CIROH-UA community version of T-Route). It is not
 ready for direct inclusion.*
 
@@ -111,7 +111,7 @@ shipped kernel's results therefore depend on leftover memory, i.e. on the order 
 segments are computed, and clipping changes that order.
 
 **Kernel update (2026-10-09).** The builds were renamed and the kernel replaced under the
-author's rule that tests use a kernel without known coding errors:
+rule that tests use a kernel without known coding errors:
 - `corrected` (the default) is the patch plus the corrected MC kernel
   (`../kernel_fixes/patches/0001-0008`: Taher Chegini's NGWPC #123/#127 fixes, Brodie
   Alexander's rs_route #7, three new ones). It replaces `qj`.

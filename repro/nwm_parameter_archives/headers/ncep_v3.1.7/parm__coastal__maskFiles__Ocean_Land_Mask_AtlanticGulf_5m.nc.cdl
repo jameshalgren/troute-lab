@@ -1,0 +1,15 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/coastal/maskFiles/Ocean_Land_Mask_AtlanticGulf_5m.nc (505812812 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf Ocean_Land_Mask_AtlanticGulf_5m {
+dimensions:
+	index = 10537609 ;
+variables:
+	int64 index(index) ;
+	int64 OID_(index) ;
+	int64 Node(index) ;
+	double Longitude(index) ;
+		Longitude:_FillValue = NaN ;
+	double Latitude(index) ;
+		Latitude:_FillValue = NaN ;
+	double Mask(index) ;
+		Mask:_FillValue = NaN ;
+}

@@ -1,0 +1,32 @@
+// source: v3.0 member v3.0_par/nudgingParams_HI.nc (49188 bytes, md5 df5f734451061987ebc159abf80090d3, ncdump -k: netCDF-4)
+netcdf nudgingParams_HI {
+dimensions:
+	stationIdStrLen = 15 ;
+	stationIdInd = UNLIMITED ; // (58 currently)
+	threshInd = 1 ;
+	monthInd = 12 ;
+	threshCatInd = 2 ;
+variables:
+	char stationId(stationIdInd, stationIdStrLen) ;
+		stationId:units = "-" ;
+		stationId:long_name = "USGS station identifier" ;
+	float R(stationIdInd) ;
+		R:units = "meters" ;
+		R:long_name = "Radius of influence in meters" ;
+	float G(stationIdInd) ;
+		G:units = "-" ;
+		G:long_name = "Amplitude of nudging" ;
+	float tau(stationIdInd) ;
+		tau:units = "minutes" ;
+		tau:long_name = "Time tapering parameter hald window size in minutes" ;
+	float qThresh(stationIdInd, monthInd, threshInd) ;
+		qThresh:units = "m^3/s" ;
+		qThresh:long_name = "Discharge threshold category" ;
+	float expCoeff(stationIdInd, monthInd, threshCatInd) ;
+		expCoeff:units = "minutes" ;
+		expCoeff:long_name = "Coefficient b in denominator e^(-dt/b)" ;
+
+// global attributes:
+		:region = "Hawaii" ;
+		:version = "NWM v3.0" ;
+}

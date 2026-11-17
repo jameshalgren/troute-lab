@@ -18,13 +18,13 @@ Runs after analyze.py (reads results/networks_<DOMAIN>.csv) and subrivers.py.
      network if its mouth lies within MOUTH_KM of the outlet segment's RouteLink point and its
      source lies within SOURCE_KM of a segment of the network; of several, the one with the
      longest mouth-source distance. No match: UNVERIFIED.
-2. LAKE-OUTLET NAMES (all four domains; CONUS top 500). The author noted that the network
-   named "Tchefuncte River" drains Lake Pontchartrain and all its tributaries. (Cause: in
+2. LAKE-OUTLET NAMES (all four domains; CONUS top 500). The network named
+   "Tchefuncte River" drains Lake Pontchartrain and all its tributaries. (Cause: in
    NHDPlus V2 the artificial paths through Lake Pontchartrain carry the GNIS name "Tchefuncte
    River", and the lake polygon has no GNIS name.) Rule:
      a. Walk upstream from the outlet along the RouteLink mainstem (at each junction the
         upstream segment with the most segments above it) for at most LAKE_WALK segments.
-     b. Each RouteLink waterbody met (NHDWaterbodyComID != -9999; the author: "isn't
+     b. Each RouteLink waterbody met (NHDWaterbodyComID != -9999; James Halgren: "isn't
         particularly well curated") is a candidate lake L, in walk order. Its drainage D =
         the segments upstream of (and including) the first lake segment on the walk.
      c. L captures the network if D >= LAKE_MIN_DRAIN of the network, L has >= 2 inflows
@@ -98,7 +98,7 @@ LAKE_GNIS_KM = 3.0
 CONF_WALK = 10        # outlet-confluence rule: junctions within this many mainstem segments of the outlet
 CONF_MIN_SHARE = 0.15  # ... where at least two branches each hold this share of the network
 CONF_WATER_WALK = 10  # a water body this close to the outlet names a renamed confluence
-# Water bodies the author asked about: (label, GNIS name, GNIS class, state, radius km around the GNIS point)
+# Water bodies asked about: (label, GNIS name, GNIS class, state, radius km around the GNIS point)
 BAYS = [("Galveston Bay", "Galveston Bay", "Bay", "Texas", 35), ("Sabine Lake", "Sabine Lake", "Lake", "Texas", 25),
         ("Lake Pontchartrain", "Lake Pontchartrain", "Lake", "Louisiana", 40), ("Mobile Bay", "Mobile Bay", "Bay", "Alabama", 45),
         ("Chesapeake Bay", "Chesapeake Bay", "Bay", "Maryland", 150), ("Delaware Bay", "Delaware Bay", "Bay", "Delaware", 60),

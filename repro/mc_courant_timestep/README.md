@@ -1,6 +1,6 @@
 # Muskingum-Cunge Courant number vs. timestep (Wlostowski, 2020)
 
-*AI-assembled (Claude, 2026-10-05); not yet reviewed by the author.*
+*AI-assembled (Claude, 2026-10-05); not yet reviewed.*
 
 ## Question
 On a uniform synthetic channel, what happens to Muskingum-Cunge (MC) routing when the
@@ -83,7 +83,7 @@ Tolerances in `check.py`: peak time ±1 output interval (dt/3600 h); max C ±0.0
 flow rtol 1e-4 against the baseline.
 
 ## Corrected kernel (added 2026-10-09)
-Project rule (author, batch 04, P1c): tests use a kernel without known coding errors. The
+Project rule (James Halgren, batch 04, P1c): tests use a kernel without known coding errors. The
 2020 kernel above has the same coding errors as T-Route's current kernel. See
 [`../kernel_fixes/`](../kernel_fixes/README.md). They are:
 - `Qj_0` is read before it is set;
@@ -149,7 +149,7 @@ Notebook vs. `init_zero` build, `assume_short_ts = False`:
 
 The notebook's non-physical depths at dt = 5, 60, and 120 s could **not** be reproduced
 with any of the three builds. They are consistent with (but not proven to be) the
-uninitialized `AREAC` taking non-zero values on the 2020 machine, and with the author's
+uninitialized `AREAC` taking non-zero values on the 2020 machine, and with the notebook's
 own note that "I remain confused about the behavior of this model". With the
 deterministic build, peak outlet flow and timing shift as in the primary experiment:
 dt ≤ 60 s peak at day 2.082 (249.5 m³/s), dt = 400 s at 2.315 (242.8), dt = 600 s at
@@ -161,7 +161,7 @@ junction in this setup, so this is **not** an evaluation of it on a real network
 
 ## Extension to 3600 s and 4 h (14400 s)
 
-*AI-assembled (Claude), 2026-10-08; not yet reviewed by the author.* This extension
+*AI-assembled (Claude), 2026-10-08; not yet reviewed.* This extension
 stretches Wlostowski's test to routing timesteps of 3600 s and up to 4 h (14,400 s), as
 was done for `../short_ts_switch`, and reports the X and K values the Cunge closure
 produces. Code: `run_extended.py` (runs),

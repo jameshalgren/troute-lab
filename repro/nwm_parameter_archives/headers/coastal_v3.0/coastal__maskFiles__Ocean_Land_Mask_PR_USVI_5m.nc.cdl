@@ -1,0 +1,14 @@
+// source: coastal_v3.0 member ./coastal/maskFiles/Ocean_Land_Mask_PR_USVI_5m.nc (118580912 bytes, md5 92d408ca150e34bbeefaea5e4d4be3ee, ncdump -k: 64-bit offset)
+netcdf Ocean_Land_Mask_PR_USVI_5m {
+dimensions:
+	index = 3705642 ;
+variables:
+	int index(index) ;
+	int OID_(index) ;
+	double Longitude(index) ;
+		Longitude:_FillValue = NaN ;
+	double Latitude(index) ;
+		Latitude:_FillValue = NaN ;
+	int Mask(index) ;
+	int Node(index) ;
+}

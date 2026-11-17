@@ -1,0 +1,53 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/forcingParam/Medium_Range/PRISM_Precip_Clim_Aug_NWM_Mtn_Mapper_Denom.nc (213923262 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf PRISM_Precip_Clim_Aug_NWM_Mtn_Mapper_Denom {
+dimensions:
+	x = 4608 ;
+	y = 3840 ;
+variables:
+	double x(x) ;
+		string x:standard_name = "projection_x_coordinate" ;
+		string x:long_name = "x coordinate of projection" ;
+		string x:units = "m" ;
+	double y(y) ;
+		string y:standard_name = "projection_y_coordinate" ;
+		string y:long_name = "y coordinate of projection" ;
+		string y:units = "m" ;
+	double lon(y, x) ;
+	double lat(y, x) ;
+	float Data(y, x) ;
+		string Data:institution = "Office of Water Prediction" ;
+		Data:gisrs_product_code = 0 ;
+		string Data:long_name = "monthly climatological precipitation" ;
+		string Data:standard_name = "precipitation_amount" ;
+		string Data:satellite_data = "no" ;
+		string Data:thematic = "no" ;
+		string Data:data_are_elevations = "no" ;
+		Data:number_of_color_tables = 0s ;
+		Data:_FillValue = -9999.f ;
+		string Data:units = "m" ;
+		Data:add_offset = 0.f ;
+		Data:scale_factor = 1.f ;
+		Data:no_data_value = -9999.f ;
+		Data:minimum_data_value = 0.1757164f ;
+		Data:maximum_data_value = 257.8598f ;
+		string Data:start_date = "1981-08-01 00:00:00" ;
+		string Data:stop_date = "2010-08-31 23:59:59" ;
+		string Data:grid_mapping = "Lambert_conformal_conic" ;
+	char Lambert_conformal_conic ;
+		string Lambert_conformal_conic:grid_mapping_name = "lambert_conformal_conic" ;
+		Lambert_conformal_conic:standard_parallel = 60., 30. ;
+		Lambert_conformal_conic:longitude_of_central_meridian = -97. ;
+		Lambert_conformal_conic:latitude_of_projection_origin = 40. ;
+		Lambert_conformal_conic:false_easting = 0. ;
+		Lambert_conformal_conic:false_northing = 0. ;
+		Lambert_conformal_conic:semi_major_axis = 6370000. ;
+		Lambert_conformal_conic:inverse_flattening = 0. ;
+
+// global attributes:
+		string :format_version = "NOHRSC NetCDF raster file v1.2" ;
+		string :Conventions = "CF-1.6" ;
+		string :title = "PRISM 800 meter (30 arc sec) precipitation climatology for August 1981-2010, version 14.1-20140502-1000, budget-regridded to the National Water Model (NWM) Lambert conformal grid/projection, then to the Global Forecast System (GFS) T1534 (3072 x 1536) Gaussian grid (approximately 13 km resolution), then back to the NWM grid, for use in a \"Mountain Mapper\" precipitation downscaling process. Mass conservation accomplished in 0 iterations; final conservation step not included." ;
+		string :source = "PRISM precipitation climatology" ;
+		string :history = "2018-05-22 17:36:07 UTC created by module: nwm_prism_regrid_gfs13km.pro" ;
+		string :comment = "2018-05-22 17:36:07 UTC created comment: PRISM data regridded by module nwm_prism_regrid_gfs13km.pro, written in IDL by Greg Fall and Ziya Zhang, 2018-04-17" ;
+}

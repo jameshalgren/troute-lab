@@ -1,0 +1,8 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/post_processing/masks/serfc.nc (5231 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf serfc {
+dimensions:
+	feature_id = 1024 ;
+variables:
+	int64 feature_id(feature_id) ;
+		feature_id:long_name = "Station Id" ;
+}

@@ -1,0 +1,11 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/forcingParam/Short_Range/lapse_param.nc (70779120 bytes; ncdump -k: classic; header read by HTTP byte-range, 2026-11-10)
+netcdf lapse_param {
+dimensions:
+	ncl0 = 3840 ;
+	ncl1 = 4608 ;
+variables:
+	float lapse(ncl0, ncl1) ;
+		lapse:_FillValue = 9.96921e+36f ;
+		lapse:remap = "remapped via ESMF_regrid_with_weights: Bilinear remapping" ;
+		lapse:missing_value = 9.96921e+36f ;
+}

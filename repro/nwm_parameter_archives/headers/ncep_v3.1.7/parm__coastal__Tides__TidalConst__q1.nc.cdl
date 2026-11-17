@@ -1,0 +1,63 @@
+// source: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v3.1.7/parm/coastal/Tides/TidalConst/q1.nc (132879586 bytes; ncdump -k: netCDF-4; header read by HTTP byte-range, 2026-11-10)
+netcdf q1 {
+dimensions:
+	lat = 2881 ;
+	lon = 5760 ;
+	nv = 2 ;
+variables:
+	float lat(lat) ;
+		string lat:long_name = "latitude" ;
+		string lat:units = "degrees_north" ;
+		string lat:bounds = "lat_bnds" ;
+		string lat:axis = "Y" ;
+		lat:valid_min = -90. ;
+		lat:valid_max = 90. ;
+	float lat_bnds(lat, nv) ;
+		string lat_bnds:comment = "latitude values at the north and south bounds of each pixel." ;
+		string lat_bnds:units = "degrees_north" ;
+	float lon(lon) ;
+		string lon:long_name = "longitude" ;
+		string lon:units = "degrees_east" ;
+		string lon:bounds = "lon_bnds" ;
+		string lon:axis = "X" ;
+		lon:valid_min = 0. ;
+		lon:valid_max = 360. ;
+	float lon_bnds(lon, nv) ;
+		string lon_bnds:comment = "longitude values at the west and east bounds of each pixel." ;
+		string lon_bnds:units = "degrees_north" ;
+	int nv(nv) ;
+		string nv:comment = "Vertex" ;
+		string nv:units = "1" ;
+	int crs ;
+		string crs:grid_mapping_name = "latitude_longitude" ;
+		crs:semi_major_axis = 6371000. ;
+		crs:inverse_flattening = 0 ;
+	float phase(lat, lon) ;
+		phase:_FillValue = 1.844674e+19f ;
+		string phase:units = "degrees" ;
+		string phase:long_name = "Sea surface height phaselag due to non equilibrium ocean tide at q1 frequency " ;
+		string phase:grid_mapping = "crs" ;
+	float amplitude(lat, lon) ;
+		amplitude:_FillValue = 1.844674e+19f ;
+		string amplitude:units = "cm" ;
+		string amplitude:long_name = "Sea surface height amplitude due to non equilibrium ocean tide at q1 frequency" ;
+		string amplitude:grid_mapping = "crs" ;
+
+// global attributes:
+		string :cdm_data_type = "Grid" ;
+		string :license = "http://www.aviso.oceanobs.com/fileadmin/documents/data/License_Aviso.pdf" ;
+		string :title = "FES2014b tide elevations" ;
+		string :product_version = "b" ;
+		string :summary = "global tide solution using finite element mesh, T-UGO barotropic model and data assimilation of altimetry and tidal gauges" ;
+		string :project = "FES2014" ;
+		string :credits = "LEGOS, NOVELTIS, CLS, CNES" ;
+		string :contact = "aviso@oceanobs.com" ;
+		string :references = "http://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes/description-fes2014.html" ;
+		string :date_created = "2016-10-20 12:35:24" ;
+		string :history = "2016-10-20 12:35:24:creation" ;
+		string :Conventions = "CF-1.6" ;
+		string :geospatial_lat_units = "degrees_north" ;
+		string :geospatial_lon_units = "degrees_east" ;
+		:geospatial_lat_resolution = 0.0625 ;
+		:geospatial_lon_resolution = 0.0625 ;
+}

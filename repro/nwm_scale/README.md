@@ -1,6 +1,6 @@
 # NWM routing-calculation estimate: 2020 poster vs. operations now
 
-*AI-assembled (Claude, 2026-10-29); not reviewed by the author.*
+*AI-assembled (Claude, 2026-10-29); not reviewed.*
 
 How many channel-routing calculations does the operational National Water Model (NWM) do per
 day? Calculation: sum over configurations of simulation-hours/day (cycles/day x hours/cycle x

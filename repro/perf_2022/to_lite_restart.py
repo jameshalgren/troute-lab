@@ -1,6 +1,6 @@
 """Convert a warm-start CSV (fetch_inputs.py warmstart) into a t-route "lite" channel restart.
 
-AI-written (Claude, 2026-11-04); not yet reviewed by the author.
+AI-written (Claude, 2026-11-04); not yet reviewed.
 
 Run it with the Python of the t-route build that will read the file, because the restart
 is a pandas pickle (a6efbf4e nhd_io.read_lite_restart / write_lite_restart: a DataFrame
