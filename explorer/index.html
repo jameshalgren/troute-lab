@@ -563,8 +563,42 @@ function renderHist() {
     label: `<strong>${fmt(v)}</strong> networks with ${fmt(2 ** e)}–${fmt(2 ** (e + 1) - 1)} segments${e === hiBin ? `<br>includes ${esc(net.name)}` : ""}` }));
   drawBars(bins, { xlabel: "Segments in network (log₂ bins)", ylabel: "Networks",
     marker: hiBin >= 0 ? hiBin : null, markerLabel: net ? `${net.name} (${fmt(net.n_segments)})` : "" });
-  const total = sizes.reduce((a, b) => a + b, 0), big = Math.max(...sizes);
-  $("#histnote").textContent = `The largest network holds ${(100 * big / total).toFixed(1)}% of all segments, which caps by-network parallelism. Median network: ${fmt(sizes.slice().sort((a, b) => a - b)[Math.floor(sizes.length / 2)])} segments.`;
+  fitNote($("#histnote"), sizesNote(sizes, n, net));
+}
+// Set the first wording that fits the two lines #histnote reserves (the fixed layout);
+// the last one if none does. renderHist runs on resize, so the fit follows the panel width.
+function fitNote(el, texts) {
+  const cs = getComputedStyle(el), lh = parseFloat(cs.lineHeight) || 1.45 * parseFloat(cs.fontSize);
+  const max = 2 * lh + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + 1;
+  for (const t of texts) { el.textContent = t; if (el.scrollHeight <= max) return; }
+}
+// Caption of the network-sizes chart, fullest wording first: where the selected river's
+// network falls among the domain's networks (`sizes`, the chart's own data), or a domain
+// summary without a selection. "Larger than p%" counts networks with strictly fewer
+// segments; rank = 1 + the number with strictly more.
+function sizesNote(sizes, n, net) {
+  const total = sizes.reduce((a, b) => a + b, 0), big = Math.max(...sizes), count = sizes.length;
+  const share = v => { const p = 100 * v / total; return p < 0.05 ? "<0.1%" : `${p.toFixed(1)}%`; };
+  const nets = `${fmt(count)} ${DOM_NAME[S.dom]} networks`, X = share(big);
+  if (!net) {
+    const asc = sizes.slice().sort((a, b) => a - b), med = fmt(asc[Math.floor(count / 2)]), segs = "segments";
+    const top = share(asc.slice(-10).reduce((a, b) => a + b, 0));
+    return [`The largest of the ${nets} holds ${X} of all segments; half have ${med} or fewer ${segs}, and the 10 largest hold ${top}.`,
+      `Largest of ${fmt(count)} networks: ${X} of segments; median ${med}; 10 largest: ${top}.`];
+  }
+  const the = s => s.replace(/^the\s+/i, "");   // avoid "the the"
+  const k = net.n_segments, ks = `${fmt(k)} segments`, sh = share(k);
+  const more = sizes.filter(s => s > k).length, fewer = sizes.filter(s => s < k).length;
+  // a tributary isn't its own network: place the network it belongs to
+  const sub = n.kind !== "network";
+  const who = sub ? `The ${the(n.name)} is part of the ${the(net.name)} network` : `The ${the(net.name)} network`;
+  const is = sub ? "," : " is";
+  if (more === 0)
+    return [`${who} (${ks}, ${sh} of all segments)${is} the largest of the ${nets}.`,
+      `${the(net.name)} network: ${ks} (${sh}), the largest of ${fmt(count)}.`];
+  const p = 100 * fewer / count, pt = p >= 99 ? Math.min(p, 99.99).toFixed(2) : String(Math.round(p)), r = fmt(more + 1);
+  return [`${who} (${ks}, ${sh} of all segments)${is} larger than ${pt}% of the ${nets} (rank ${r}).`,
+    `${the(net.name)} network: ${ks} (${sh}), rank ${r} of ${fmt(count)}, larger than ${pt}%.`];
 }
 
 /* ---------------- map ---------------- */
